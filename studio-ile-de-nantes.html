@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Appartement centre-ville — Gamloc Immo (Nantes)</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif;}
+body{background:#050505;color:white;overflow-x:hidden;}
+body::before{content:"";position:fixed;width:600px;height:600px;background:radial-gradient(circle,#d4af37,transparent 70%);top:-220px;left:-220px;filter:blur(160px);opacity:.14;z-index:-1;}
+body::after{content:"";position:fixed;width:520px;height:520px;background:radial-gradient(circle,#d4af37,transparent 70%);bottom:-240px;right:-240px;filter:blur(180px);opacity:.10;z-index:-1;}
+
+header{position:fixed;top:0;left:0;width:100%;background:rgba(0,0,0,.72);backdrop-filter:blur(12px);border-bottom:1px solid rgba(212,175,55,.20);z-index:1000;}
+header::after{content:"";position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:60%;height:1px;background:linear-gradient(90deg,transparent,#d4af37,transparent);opacity:.55;}
+.nav{max-width:1200px;margin:auto;display:flex;justify-content:space-between;align-items:center;padding:18px 20px;gap:20px;}
+.logo a{text-decoration:none;color:#d4af37;font-weight:800;letter-spacing:2px;font-size:16px;}
+.navlinks{display:flex;gap:34px;list-style:none;flex-wrap:wrap;justify-content:flex-end;}
+.navlinks a{text-decoration:none;color:white;font-size:14px;position:relative;opacity:.95;}
+.navlinks a::after{content:"";position:absolute;width:0%;height:2px;background:#d4af37;left:0;bottom:-7px;transition:.3s;}
+.navlinks a:hover::after{width:100%;}
+
+.section{max-width:1200px;margin:110px auto;padding:0 20px;}
+.badge{display:inline-block;padding:6px 14px;border:1px solid rgba(212,175,55,.38);border-radius:30px;font-size:12px;margin:0 0 16px 0;color:#d4af37;background:rgba(0,0,0,.25);}
+h1{font-size:46px;line-height:1.08;margin:0 0 10px 0;}
+.p{color:#aaa;max-width:78ch;line-height:1.65;}
+.meta{display:flex;gap:12px;flex-wrap:wrap;margin-top:12px;color:#bdbdbd;font-size:13px;}
+.pill{padding:8px 12px;border-radius:999px;border:1px solid rgba(255,255,255,.10);background:rgba(255,255,255,.03);}
+
+.actions{margin-top:22px;display:flex;gap:14px;flex-wrap:wrap;}
+.actions a{display:inline-block;padding:16px 34px;border-radius:40px;font-weight:800;text-decoration:none;font-size:16px;transition:.25s;}
+.btn-gold{background:#d4af37;color:black;box-shadow:0 0 22px rgba(212,175,55,.32);}
+.btn-gold:hover{transform:translateY(-2px);box-shadow:0 0 30px rgba(212,175,55,.45);}
+.btn-outline{border:1px solid rgba(212,175,55,.85);color:#d4af37;background:transparent;}
+.btn-outline:hover{background:rgba(212,175,55,.12);transform:translateY(-2px);}
+
+.heroCard{margin-top:18px;border-radius:22px;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.02);overflow:hidden;}
+.heroImgBtn{display:block;position:relative;cursor:pointer;}
+.heroImgBtn img{width:100%;height:420px;object-fit:cover;display:block;}
+@media(max-width:560px){.heroImgBtn img{height:260px;}}
+
+.heroOverlay{
+position:absolute; inset:0;
+background:linear-gradient(180deg, rgba(0,0,0,.08), rgba(0,0,0,.55));
+display:flex; align-items:flex-end; justify-content:space-between;
+padding:16px;
+}
+.heroOverlay .hint{
+display:inline-flex;gap:10px;align-items:center;
+padding:10px 12px;border-radius:999px;
+border:1px solid rgba(255,255,255,.14);
+background:rgba(0,0,0,.35);
+color:rgba(255,255,255,.92);
+font-size:13px;
+}
+.heroOverlay .price{
+padding:10px 12px;border-radius:999px;
+border:1px solid rgba(212,175,55,.30);
+background:rgba(212,175,55,.10);
+color:#d4af37;
+font-weight:800;
+font-size:13px;
+}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:28px;margin-top:28px;}
+.card{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);padding:30px;border-radius:22px;}
+.card h3{color:#d4af37;margin-bottom:10px;font-size:18px;}
+.card p, .card li{color:#aaa;font-size:14px;line-height:1.55;}
+ul{margin:10px 0 0 18px;}
+
+footer{margin-top:90px;padding:44px 20px;text-align:center;border-top:1px solid rgba(255,255,255,.08);color:#777;font-size:14px;}
+@media(max-width:560px){.navlinks{gap:18px;}}
+
+
+.modal{position:fixed; inset:0;background:rgba(0,0,0,.78);backdrop-filter: blur(10px);display:none;z-index:2000;}
+.modal.open{display:flex;}
+.modalInner{margin:auto;width:min(1100px, 92vw);}
+.modalTop{display:flex;justify-content:space-between;align-items:center;padding:10px 6px 12px 6px;}
+.modalTitle{color:rgba(255,255,255,.92);font-weight:800;letter-spacing:.3px;}
+.modalClose{border:1px solid rgba(255,255,255,.16);background:rgba(255,255,255,.06);color:white;padding:10px 12px;border-radius:12px;cursor:pointer;}
+.viewer{border-radius:22px;border:1px solid rgba(255,255,255,.10);background:rgba(255,255,255,.03);overflow:hidden;position:relative;}
+.viewer img{width:100%;height:min(72vh, 700px);object-fit:cover;display:block;}
+.viewerBtn{position:absolute; top:50%;transform:translateY(-50%);border:1px solid rgba(255,255,255,.18);background:rgba(0,0,0,.35);color:white;padding:10px 12px;border-radius:14px;cursor:pointer;user-select:none;}
+.viewerBtn:hover{background:rgba(0,0,0,.50);}
+.viewerBtn.prev{left:12px;}
+.viewerBtn.next{right:12px;}
+.thumbRow{display:flex; gap:10px; overflow:auto;padding:12px 2px 0 2px;}
+.thumb{flex:0 0 auto;width:110px; height:74px;border-radius:14px;overflow:hidden;border:1px solid rgba(255,255,255,.10);opacity:.78;cursor:pointer;background:rgba(255,255,255,.03);}
+.thumb img{width:100%;height:100%;object-fit:cover;display:block;}
+.thumb.active{opacity:1;border-color:rgba(212,175,55,.45);}
+.counter{color:rgba(255,255,255,.78);font-size:13px;padding:8px 6px 0 6px;}
+</style>
+</head>
+
+<body>
+<header>
+<div class="nav">
+<div class="logo"><a href="index.html">GAMLOC IMMO</a></div>
+<ul class="navlinks">
+<li><a href="conciergerie.html">Conciergerie</a></li>
+<li><a href="confier-mon-bien.html">Confier mon bien</a></li>
+<li><a href="appartements.html">Appartements</a></li>
+<li><a href="avis.html">Avis</a></li>
+<li><a href="contact.html">Contact</a></li>
+</ul>
+</div>
+</header>
+
+<main class="section" style="margin-top:130px;">
+<div class="badge">Appartement • Nantes centre</div>
+<h1>Appartement centre-ville</h1>
+<p class="p">4 voyageurs • Île de Nantes • Confort premium</p>
+
+<div class="meta">
+
+</div>
+
+
+<div class="heroCard">
+<a class="heroImgBtn" id="openGallery" href="javascript:void(0)" aria-label="Ouvrir la galerie photos">
+<img
+id="heroImg"
+src="app1img1.avif"
+alt="Photo de présentation - appartement centre-ville Nantes">
+<div class="heroOverlay">
+
+
+</div>
+</a>
+</div>
+
+<div class="actions">
+<a class="btn-gold" href="https://www.airbnb.fr/rooms/1539126270117140046?source_impression_id=p3_1771711851_P3uSEvdJd16bUN21" target="_blank" rel="noopener">Réserver sur Airbnb</a>
+<a class="btn-outline" href="appartements.html">Retour aux appartements</a>
+</div>
+
+<div class="grid">
+<div class="card">
+<h3>À propos</h3>
+<li>
+Bienvenue au "Nid du Bouffay"
+un T2 de 50 m² au charme discret, niché dans l’un des quartiers les plus emblématiques de Nantes.
+
+<li>Situé en hyper centre de Nantes, entre vieilles pierres et énergie citadine, ce nid allie authenticité et confort moderne dans un lieu vivant.</li>
+<li>Préparez vous à découvrir la ville à pied :culture,douceur de vivre et sa gastronomie sont au rendez-vous.🧑‍🍳</li>
+<li>Situé au 4ᵉ étage sans ascenseur,l'appartement n’est pas adapté aux personnes à mobilité réduite (PMR).🧑‍🦼‍➡️</li>
+</li>
+</div>
+
+<div class="card">
+<h3>Équipements</h3>
+<ul>
+<li>Wi-Fi</li>
+<li>Cuisine équipée</li>
+<li>Linge fourni</li>
+<li>TV / Chauffage (si vrai)</li>
+<li>Sèche-cheveux</li>
+<li>Eau chaude</li>
+<li>Lave-linge</li>
+<li>Serviettes, draps, savon et papier toilette</li>
+<li>Cintres</li>
+<li>Linge de lit en coton</li>
+
+
+</ul>
+</div>
+
+<div class="card">
+<h3>Prix & réservation</h3>
+<p><strong style="color:#f7c626;"></strong> <span style="color:#aaa;"></span></p>
+<p style="margin-top:10px;">
+Clique sur “Réserver” pour voir les disponibilités et finaliser la réservation directement sur Airbnb.
+</p>
+
+<a class="btn-gold" href="AIRBNB_URL" target="_blank" rel="noopener" style="margin-top:16px; display:inline-block;">
+
+</a>
+</div>
+
+<div class="card">
+<h3>Règles & horaires</h3>
+<ul>
+<li>
+🕒 Horaires d’arrivée
+Les arrivées se font sur un créneau défini à l’avance, conformément à l’organisation Airbnb.
+Merci de nous communiquer votre heure d’arrivée dès que possible afin que nous puissions nous rendre disponibles pour vous accueillir dans les meilleures conditions.
+</li>
+<li>🏡 À votre arrivée
+Le logement sera prêt à vous accueillir :
+lit fait, linge propre, essentiels à disposition pour que vous vous sentiez immédiatement chez vous.</li>
+<li>🚭 Logement non-fumeur
+Pour le confort de tous, il est strictement interdit de fumer à l’intérieur.
+</li>
+<li>🤝 Pendant votre séjour
+Nous restons bien sûr disponibles si vous avez la moindre question.</li>
+
+</ul>
+</div>
+</div>
+</main>
+
+<footer>Gamloc Immo — Nantes</footer>
+
+
+<div class="modal" id="galleryModal" aria-hidden="true">
+<div class="modalInner">
+<div class="modalTop">
+<div class="modalTitle">Galerie — Appartement centre-ville</div>
+<button class="modalClose" id="closeGallery" type="button">Fermer ✕</button>
+</div>
+
+<div class="viewer">
+<button class="viewerBtn prev" id="prevBtn" type="button">‹</button>
+<button class="viewerBtn next" id="nextBtn" type="button">›</button>
+<img id="viewerImg" src="" alt="Photo appartement">
+</div>
+
+<div class="counter" id="counter"></div>
+<div class="thumbRow" id="thumbRow"></div>
+</div>
+</div>
+
+<script>
+
+const photos = 
+
+
+const modal = document.getElementById("galleryModal");]
+const openBtn = document.getElementById("openGallery");
+const closeBtn = document.getElementById("closeGallery");
+const viewerImg = document.getElementById("viewerImg");
+const thumbRow = document.getElementById("thumbRow");
+const counter = document.getElementById("counter");
+const prevBtn = document.getElementById("prevBtn");
+const nextBtn = document.getElementById("nextBtn");
+
+let idx = 0;
+
+function renderThumbs(){
+thumbRow.innerHTML = "";
+photos.forEach((p,i)=>{
+const t = document.createElement("div");
+t.className = "thumb" + (i===idx ? " active" : "");
+t.innerHTML = `<img src="${p.src}" alt="${p.label} ${i+1}">`;
+t.addEventListener("click", ()=>{ idx=i; render(); });
+thumbRow.appendChild(t);
+});
+}
+function render(){
+viewerImg.src = photos[idx].src;
+viewerImg.alt = `Photo ${idx+1} — ${photos[idx].label}`;
+counter.textContent = `${idx+1} / ${photos.length} — ${photos[idx].label}`;
+[...thumbRow.children].forEach((el,i)=>el.classList.toggle("active", i===idx));
+}
+function openModal(){
+modal.classList.add("open");
+modal.setAttribute("aria-hidden","false");
+if(!thumbRow.children.length) renderThumbs();
+render();
+}
+function closeModal(){
+modal.classList.remove("open");
+modal.setAttribute("aria-hidden","true");
+}
+
+openBtn.addEventListener("click", openModal);
+closeBtn.addEventListener("click", closeModal);
+modal.addEventListener("click", (e)=>{ if(e.target === modal) closeModal(); });
+
+prevBtn.addEventListener("click", ()=>{ idx = (idx - 1 + photos.length) % photos.length; render(); });
+nextBtn.addEventListener("click", ()=>{ idx = (idx + 1) % photos.length; render(); });
+
+window.addEventListener("keydown", (e)=>{
+if(!modal.classList.contains("open")) return;
+if(e.key === "Escape") closeModal();
+if(e.key === "ArrowLeft") prevBtn.click();
+if(e.key === "ArrowRight") nextBtn.click();
+});
+</script>
+</body>
+</html>

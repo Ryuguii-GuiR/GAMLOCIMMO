@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gamloc Immo — Contact</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif;}
+body{background:#050505;color:white;overflow-x:hidden;}
+body::before{content:"";position:fixed;width:600px;height:600px;background:radial-gradient(circle,#d4af37,transparent 70%);top:-220px;left:-220px;filter:blur(160px);opacity:.14;z-index:-1;}
+body::after{content:"";position:fixed;width:520px;height:520px;background:radial-gradient(circle,#d4af37,transparent 70%);bottom:-240px;right:-240px;filter:blur(180px);opacity:.10;z-index:-1;}
+header{position:fixed;top:0;left:0;width:100%;background:rgba(0,0,0,.72);backdrop-filter:blur(12px);border-bottom:1px solid rgba(212,175,55,.20);z-index:1000;}
+header::after{content:"";position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:60%;height:1px;background:linear-gradient(90deg,transparent,#d4af37,transparent);opacity:.55;}
+.nav{max-width:1200px;margin:auto;display:flex;justify-content:space-between;align-items:center;padding:18px 20px;gap:20px;}
+.logo a{text-decoration:none;color:#d4af37;font-weight:800;letter-spacing:2px;font-size:16px;}
+.navlinks{display:flex;gap:34px;list-style:none;flex-wrap:wrap;justify-content:flex-end;}
+.navlinks a{text-decoration:none;color:white;font-size:14px;position:relative;opacity:.95;}
+.navlinks a::after{content:"";position:absolute;width:0%;height:2px;background:#d4af37;left:0;bottom:-7px;transition:.3s;}
+.navlinks a:hover::after{width:100%;}
+
+.section{max-width:1200px;margin:110px auto;padding:0 20px;}
+.badge{display:inline-block;padding:6px 14px;border:1px solid rgba(212,175,55,.38);border-radius:30px;font-size:12px;margin:0 0 16px 0;color:#d4af37;background:rgba(0,0,0,.25);}
+h1{font-size:54px;line-height:1.08;margin:0 0 12px 0;}
+.p{color:#aaa;max-width:78ch;line-height:1.65;}
+
+.form{margin-top:26px;display:grid;gap:14px;max-width:700px;}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+label{font-size:13px;color:#cfcfcf;}
+input,textarea{
+width:100%;padding:12px 12px;border-radius:14px;
+border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.03);color:white;outline:none;
+}
+textarea{min-height:140px;resize:vertical;}
+.btn{
+display:inline-block;padding:16px 34px;border-radius:40px;font-weight:800;
+text-decoration:none;background:#d4af37;color:black;border:none;cursor:pointer;
+box-shadow:0 0 22px rgba(212,175,55,.32);
+}
+.footer-note{margin-top:10px;color:#9a9a9a;font-size:12px;line-height:1.5;}
+footer{margin-top:90px;padding:44px 20px;text-align:center;border-top:1px solid rgba(255,255,255,.08);color:#777;font-size:14px;}
+@media(max-width:700px){.row{grid-template-columns:1fr;}h1{font-size:42px;}.navlinks{gap:18px;}}
+</style>
+</head>
+<body>
+
+<header>
+<div class="nav">
+<div class="logo"><a href="index.html">GAMLOC IMMO</a></div>
+<ul class="navlinks">
+<li><a href="conciergerie.html">Conciergerie</a></li>
+<li><a href="confier-mon-bien.html">Confier mon bien</a></li>
+<li><a href="appartements.html">Appartements</a></li>
+<li><a href="avis.html">Avis</a></li>
+<li><a href="contact.html">Contact</a></li>
+</ul>
+</div>
+</header>
+
+<main class="section" style="margin-top:130px;">
+<div class="badge">Contact • Nantes</div>
+<h1>Contact</h1>
+<p class="p">Une question, un devis, une demande ? Écris-nous.</p>
+
+
+<form class="form"
+name="contact"
+method="POST"
+data-netlify="true"
+data-netlify-honeypot="bot-field"
+action="/merci.html">
+
+
+<input type="hidden" name="form-name" value="contact">
+
+
+<p style="display:none;">
+<label>Ne pas remplir : <input name="bot-field"></label>
+</p>
+
+<div class="row">
+<div>
+<label>Nom</label>
+<input name="nom" required>
+</div>
+<div>
+<label>Email</label>
+<input type="email" name="email" required>
+</div>
+</div>
+
+<div>
+<label>Téléphone (optionnel)</label>
+<input name="telephone">
+</div>
+
+<div>
+<label>Message</label>
+<textarea name="message" required placeholder="Dis-nous ce que tu veux (conciergerie / réservation / infos)…"></textarea>
+<div class="footer-note">En envoyant ce formulaire, vous acceptez d’être recontacté par Gamloc Immo.</div>
+</div>
+
+<button class="btn" type="submit">Envoyer</button>
+</form>
+</main>
+
+<footer>Gamloc Immo — Nantes</footer>
+</body>
+</html>

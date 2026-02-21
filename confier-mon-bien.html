@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gamloc Immo — Confier mon bien (Nantes)</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif;}
+body{background:#050505;color:white;overflow-x:hidden;}
+body::before{content:"";position:fixed;width:600px;height:600px;background:radial-gradient(circle,#d4af37,transparent 70%);top:-220px;left:-220px;filter:blur(160px);opacity:.14;z-index:-1;}
+body::after{content:"";position:fixed;width:520px;height:520px;background:radial-gradient(circle,#d4af37,transparent 70%);bottom:-240px;right:-240px;filter:blur(180px);opacity:.10;z-index:-1;}
+header{position:fixed;top:0;left:0;width:100%;background:rgba(0,0,0,.72);backdrop-filter:blur(12px);border-bottom:1px solid rgba(212,175,55,.20);z-index:1000;}
+header::after{content:"";position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:60%;height:1px;background:linear-gradient(90deg,transparent,#d4af37,transparent);opacity:.55;}
+.nav{max-width:1200px;margin:auto;display:flex;justify-content:space-between;align-items:center;padding:18px 20px;gap:20px;}
+.logo a{text-decoration:none;color:#d4af37;font-weight:800;letter-spacing:2px;font-size:16px;}
+.navlinks{display:flex;gap:34px;list-style:none;flex-wrap:wrap;justify-content:flex-end;}
+.navlinks a{text-decoration:none;color:white;font-size:14px;position:relative;opacity:.95;}
+.navlinks a::after{content:"";position:absolute;width:0%;height:2px;background:#d4af37;left:0;bottom:-7px;transition:.3s;}
+.navlinks a:hover::after{width:100%;}
+
+.section{max-width:1200px;margin:110px auto;padding:0 20px;}
+.badge{display:inline-block;padding:6px 14px;border:1px solid rgba(212,175,55,.38);border-radius:30px;font-size:12px;margin:0 0 16px 0;color:#d4af37;background:rgba(0,0,0,.25);}
+h1{font-size:54px;line-height:1.08;margin:0 0 12px 0;}
+.p{color:#aaa;max-width:78ch;line-height:1.65;}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:28px;margin-top:28px;}
+.card{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);padding:30px;border-radius:22px;transition:.35s;}
+.card:hover{transform:translateY(-10px);border:1px solid rgba(212,175,55,.38);box-shadow:0 0 22px rgba(212,175,55,.12);}
+.card h3{color:#d4af37;margin-bottom:10px;font-size:18px;}
+.card p{color:#aaa;font-size:14px;line-height:1.55;}
+
+.form{margin-top:28px;display:grid;gap:14px;max-width:820px;}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+label{font-size:13px;color:#cfcfcf;}
+
+/* ✅ Inputs + selects : cohérents */
+input,select,textarea{
+width:100%;
+padding:12px 12px;
+border-radius:14px;
+border:1px solid rgba(255,255,255,.12);
+background:rgba(255,255,255,.03);
+color:white;
+outline:none;
+}
+
+/* ✅ Fix select "tout blanc" + menu déroulant */
+select{
+appearance:none;
+-webkit-appearance:none;
+-moz-appearance:none;
+background-image:
+linear-gradient(45deg, transparent 50%, rgba(255,255,255,.85) 50%),
+linear-gradient(135deg, rgba(255,255,255,.85) 50%, transparent 50%);
+background-position:
+calc(100% - 18px) calc(50% - 3px),
+calc(100% - 12px) calc(50% - 3px);
+background-size:6px 6px, 6px 6px;
+background-repeat:no-repeat;
+padding-right:40px;
+color-scheme: dark; /* aide certains navigateurs */
+}
+
+/* Les options du menu */
+option{
+background:#0b0b0b;
+color:#fff;
+}
+
+/* Focus plus visible */
+input:focus, select:focus, textarea:focus{
+border-color:rgba(212,175,55,.55);
+box-shadow:0 0 0 3px rgba(212,175,55,.10);
+}
+
+textarea{min-height:120px;resize:vertical;}
+
+.btn{
+display:inline-block;
+padding:16px 34px;border-radius:40px;
+font-weight:800;text-decoration:none;
+background:#d4af37;color:black;
+box-shadow:0 0 22px rgba(212,175,55,.32);
+border:none;cursor:pointer;
+}
+
+.note{margin-top:14px;color:#aaa;font-size:13px;line-height:1.6;}
+footer{margin-top:90px;padding:44px 20px;text-align:center;border-top:1px solid rgba(255,255,255,.08);color:#777;font-size:14px;}
+@media(max-width:700px){.row{grid-template-columns:1fr;}h1{font-size:42px;}.navlinks{gap:18px;}}
+</style>
+</head>
+<body>
+
+<header>
+<div class="nav">
+<div class="logo"><a href="index.html">GAMLOC IMMO</a></div>
+<ul class="navlinks">
+<li><a href="conciergerie.html">Conciergerie</a></li>
+<li><a href="confier-mon-bien.html">Confier mon bien</a></li>
+<li><a href="appartements.html">Appartements</a></li>
+<li><a href="avis.html">Avis</a></li>
+<li><a href="contact.html">Contact</a></li>
+</ul>
+</div>
+</header>
+
+<main class="section" style="margin-top:130px;">
+<div class="badge">Propriétaires • Nantes</div>
+<h1>Confier mon bien</h1>
+<p class="p">
+Vous voulez louer en courte durée sans gérer l’opérationnel ?
+Gamloc Immo (Superhôte Airbnb) s’occupe de tout et vise une expérience premium.
+</p>
+
+<div class="grid">
+<div class="card">
+<h3>Objectif : performance</h3>
+<p>Optimisation du positionnement, calendrier, et stratégie tarifaire.</p>
+</div>
+<div class="card">
+<h3>Objectif : tranquillité</h3>
+<p>Check-in/out, ménage, voyageurs, suivi : vous déléguez.</p>
+</div>
+<div class="card">
+<h3>Objectif : qualité</h3>
+<p>Standards constants → meilleurs avis → meilleure conversion.</p>
+</div>
+</div>
+
+<section class="section" style="margin-top:70px;padding:0;">
+<h1 style="font-size:34px;margin-bottom:10px;">Demande d’estimation</h1>
+<p class="p">Nous vous répondrons par mail dans les plus brefs délais.</p>
+
+<!-- ✅ Netlify Forms : ce form remonte dans Netlify (et dans ton admin ensuite) -->
+<form class="form"
+name="confier-mon-bien"
+method="POST"
+data-netlify="true"
+data-netlify-honeypot="bot-field"
+action="/merci.html">
+
+<input type="hidden" name="form-name" value="confier-mon-bien">
+
+<!-- anti-spam -->
+<p style="display:none;">
+<label>Ne pas remplir : <input name="bot-field"></label>
+</p>
+
+<div class="row">
+<div>
+<label>Nom</label>
+<input name="nom" required>
+</div>
+<div>
+<label>Email</label>
+<input type="email" name="email" required>
+</div>
+</div>
+
+<div class="row">
+<div>
+<label>Téléphone</label>
+<input name="telephone" required>
+</div>
+<div>
+<label>Type de bien</label>
+<select name="type" required>
+<option value="">Choisir…</option>
+<option value="Studio">Studio</option>
+<option value="T2">T2</option>
+<option value="T3+">T3+</option>
+<option value="Maison">Maison</option>
+</select>
+</div>
+</div>
+
+<div class="row">
+<div>
+<label>Quartier (Nantes)</label>
+<input name="quartier" placeholder="Centre, Île de Nantes, Graslin…" required>
+</div>
+<div>
+<label>Couchages</label>
+<input type="number" min="1" name="couchages" required>
+</div>
+</div>
+
+<div>
+<label>Message</label>
+<textarea name="message" required placeholder="Objectifs, lien annonce si existante, contraintes…"></textarea>
+</div>
+
+<button class="btn" type="submit">Envoyer</button>
+<div class="note">⭐ Superhôte Airbnb — qualité constante, communication rapide, voyageurs satisfaits.</div>
+</form>
+</section>
+</main>
+
+<footer>Gamloc Immo — Nantes</footer>
+</body>
+</html>

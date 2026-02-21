@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gamloc Immo — Nos appartements à Nantes</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif;}
+body{background:#050505;color:white;overflow-x:hidden;}
+body::before{content:"";position:fixed;width:600px;height:600px;background:radial-gradient(circle,#d4af37,transparent 70%);top:-220px;left:-220px;filter:blur(160px);opacity:.14;z-index:-1;}
+body::after{content:"";position:fixed;width:520px;height:520px;background:radial-gradient(circle,#d4af37,transparent 70%);bottom:-240px;right:-240px;filter:blur(180px);opacity:.10;z-index:-1;}
+header{position:fixed;top:0;left:0;width:100%;background:rgba(0,0,0,.72);backdrop-filter:blur(12px);border-bottom:1px solid rgba(212,175,55,.20);z-index:1000;}
+header::after{content:"";position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:60%;height:1px;background:linear-gradient(90deg,transparent,#d4af37,transparent);opacity:.55;}
+.nav{max-width:1200px;margin:auto;display:flex;justify-content:space-between;align-items:center;padding:18px 20px;gap:20px;}
+.logo a{text-decoration:none;color:#d4af37;font-weight:800;letter-spacing:2px;font-size:16px;}
+.navlinks{display:flex;gap:34px;list-style:none;flex-wrap:wrap;justify-content:flex-end;}
+.navlinks a{text-decoration:none;color:white;font-size:14px;position:relative;opacity:.95;}
+.navlinks a::after{content:"";position:absolute;width:0%;height:2px;background:#d4af37;left:0;bottom:-7px;transition:.3s;}
+.navlinks a:hover::after{width:100%;}
+
+.section{max-width:1200px;margin:110px auto;padding:0 20px;}
+.badge{display:inline-block;padding:6px 14px;border:1px solid rgba(212,175,55,.38);border-radius:30px;font-size:12px;margin:0 0 16px 0;color:#d4af37;background:rgba(0,0,0,.25);}
+h1{font-size:54px;line-height:1.08;margin:0 0 12px 0;}
+.p{color:#aaa;max-width:78ch;line-height:1.65;}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:28px;margin-top:28px;}
+.card{display:block;text-decoration:none;color:white;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);padding:30px;border-radius:22px;transition:.35s;}
+.card:hover{transform:translateY(-10px);border:1px solid rgba(212,175,55,.38);box-shadow:0 0 22px rgba(212,175,55,.12);}
+.card h3{color:#d4af37;margin-bottom:10px;font-size:18px;}
+.card p{color:#aaa;font-size:14px;line-height:1.55;}
+.card img{width:100%;height:240px;object-fit:cover;border-radius:16px;margin-bottom:16px;border:1px solid rgba(255,255,255,.08);}
+.tagline{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;color:#bdbdbd;font-size:13px;}
+
+footer{margin-top:90px;padding:44px 20px;text-align:center;border-top:1px solid rgba(255,255,255,.08);color:#777;font-size:14px;}
+@media(max-width:560px){.navlinks{gap:18px;}h1{font-size:42px;}}
+</style>
+</head>
+<body>
+
+<header>
+<div class="nav">
+<div class="logo"><a href="index.html">GAMLOC IMMO</a></div>
+<ul class="navlinks">
+<li><a href="conciergerie.html">Conciergerie</a></li>
+<li><a href="confier-mon-bien.html">Confier mon bien</a></li>
+<li><a href="appartements.html">Appartements</a></li>
+<li><a href="avis.html">Avis</a></li>
+<li><a href="contact.html">Contact</a></li>
+</ul>
+</div>
+</header>
+
+<main class="section" style="margin-top:130px;">
+<div class="badge">Locations • Nantes</div>
+<h1>Nos appartements</h1>
+<p class="p">
+Découvrez nos logements à Nantes. Chaque page est claire et orientée réservation.
+(Quand vous aurez le widget de réservation synchronisé, on l’intègre dans les pages.)
+</p>
+
+<div class="grid">
+<a class="card" href="appartement-centre-ville.html">
+<img src="app2img1.avif" alt="Appartement centre-ville Nantes">
+<h3>Appartement centre-ville</h3>
+<div class="tagline"><span>4 voyageurs</span><span>Hyper centre</span></div>
+<p style="margin-top:10px;">Confort premium, emplacement stratégique, séjour fluide.</p>
+</a>
+
+<a class="card" href="studio-ile-de-nantes.html">
+<img src="app1img1.avif" alt="Studio Île de Nantes">
+<h3>Studio moderne</h3>
+<div class="tagline"><span>2 voyageurs</span><span>Île de Nantes</span></div>
+<p style="margin-top:10px;">Design moderne, calme, parfait pour courts séjours.</p>
+</a>
+</div>
+</main>
+
+<footer>Gamloc Immo — Nantes</footer>
+</body>
+</html>
