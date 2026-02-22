@@ -428,6 +428,183 @@ footer{
   color:#6b7280;font-size:14px;
 }
 
+/* ===============================
+   ✅ AJOUT : “On s’occupe de tout”
+   (style comme tes captures)
+   =============================== */
+.takeCare{
+  max-width:1200px;
+  margin:110px auto 0;
+  padding:0 20px;
+}
+.takeCareTitle{
+  text-align:center;
+  font-size:44px;
+  letter-spacing:-.5px;
+  color:var(--blue2);
+  margin:0 0 32px 0;
+}
+.takeCareTitle em{
+  font-family: "Georgia", serif;
+  font-style: italic;
+  font-weight: 500;
+}
+
+.tcBlock{
+  display:grid;
+  grid-template-columns: 1fr 1.35fr;
+  gap:34px;
+  align-items:start;
+  margin-top:26px;
+  position:relative;
+}
+.tcBlock.rightLead{
+  grid-template-columns: 1.35fr 1fr;
+}
+
+.tcLeft{
+  position:relative;
+  padding:10px 0;
+}
+.tcKicker{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:7px 12px;
+  border:1px solid rgba(14,74,166,.18);
+  background:rgba(14,74,166,.05);
+  border-radius:999px;
+  font-weight:800;
+  font-size:12px;
+  color:var(--blue2);
+  margin-bottom:14px;
+}
+.tcKicker .mini{
+  width:10px;height:10px;border-radius:999px;
+  background:linear-gradient(180deg,var(--gold2),var(--gold));
+  box-shadow:0 0 16px rgba(212,175,55,.25);
+}
+.tcHeading{
+  font-size:44px;
+  line-height:1.04;
+  color:#0d0f16;
+  margin:0 0 10px 0;
+}
+.tcDesc{
+  color:var(--muted);
+  line-height:1.7;
+  max-width:44ch;
+  margin-bottom:14px;
+}
+
+/* flèche “comme sur les screens” : SVG en fond */
+.tcArrow{
+  position:absolute;
+  left:0;
+  bottom:-10px;
+  width:180px;
+  height:auto;
+  opacity:.95;
+  pointer-events:none;
+}
+.tcBlock.rightLead .tcArrow{
+  left:auto;
+  right:0;
+  transform: scaleX(-1);
+}
+
+/* cartes */
+.tcCards{
+  display:grid;
+  gap:16px;
+  padding:6px 0;
+}
+.tcCard{
+  display:grid;
+  grid-template-columns: 190px 1fr;
+  gap:18px;
+  padding:18px;
+  border-radius:18px;
+  border:1px solid rgba(10,18,40,.10);
+  background:rgba(255,255,255,.68);
+  box-shadow: 0 14px 34px rgba(3,7,18,.08);
+}
+.tcThumb{
+  height:112px;
+  border-radius:14px;
+  border:1px solid rgba(10,18,40,.10);
+  background:linear-gradient(180deg, rgba(14,74,166,.06), rgba(212,175,55,.05));
+  display:flex;
+  align-items:flex-end;
+  justify-content:flex-start;
+  padding:10px;
+  color:rgba(13,15,22,.55);
+  font-weight:800;
+  font-size:11px;
+}
+.tcBody h4{
+  font-size:14px;
+  margin:0 0 8px 0;
+  color:#0d0f16;
+}
+.tcBody p{
+  margin:0 0 10px 0;
+  color:var(--muted);
+  font-size:13px;
+  line-height:1.6;
+}
+.tcMore{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  text-decoration:none;
+  font-weight:900;
+  font-size:12px;
+  color:var(--blue2);
+}
+.tcMore:hover{ text-decoration:underline; }
+
+.tcDivider{
+  margin:50px 0 0 0;
+}
+
+.tcCard{
+  grid-template-columns: 260px 1fr; /* avant 190px */
+  padding:22px;                     /* un peu plus grande */
+}
+
+.tcThumb{
+  height:160px;                     /* avant 112px */
+  overflow:hidden;
+}
+
+.tcThumb img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+/* responsive */
+@media(max-width:980px){
+  .takeCareTitle{font-size:36px;}
+  .tcBlock, .tcBlock.rightLead{
+    grid-template-columns:1fr;
+    gap:18px;
+  }
+  .tcHeading{font-size:36px;}
+  .tcArrow{
+    position:relative;
+    left:auto;right:auto;
+    margin-top:10px;
+    width:160px;
+  }
+  .tcBlock.rightLead .tcArrow{
+    transform:none;
+  }
+  .tcCard{
+    grid-template-columns: 1fr;
+  }
+  .tcThumb{height:140px;}
+}
 
 @media(max-width:980px){
   .hero{grid-template-columns:1fr;gap:26px;padding-top:120px;}
@@ -482,7 +659,6 @@ footer{
   </div>
 </header>
 
-
 <div class="mobileOverlay" id="mobileOverlay" aria-hidden="true">
   <nav class="mobilePanel" aria-label="Menu mobile">
     <div class="mobileTop">
@@ -510,7 +686,6 @@ footer{
 
 <section class="hero">
   <div>
-
     <h1>Profitez de vos proches,<br>on gère vos voyageurs</h1>
 
     <p>
@@ -524,9 +699,8 @@ footer{
     </div>
   </div>
 
-  <img src="GAMLLL.png" alt="Appartement premium">
+  <img src="1e5b38bc-3ac0-46e2-a97c-a5ac7e106f7d.png" alt="Appartement premium">
 </section>
-
 
 <section class="reviewsBand" aria-label="Avis voyageurs">
   <div class="reviewsWrap">
@@ -544,7 +718,6 @@ footer{
           <a class="smallBtn primary"
              href="https://www.airbnb.fr/rooms/1405740911071108953#reviews"
              target="_blank" rel="noopener">
-             
             Voir les avis Airbnb
           </a>
           <a class="smallBtn" href="confier-mon-bien.html">Demander une estimation</a>
@@ -563,7 +736,6 @@ footer{
           </div>
         </div>
 
-        
         <div class="avatarRow" aria-label="Voyageurs">
           <div class="avatar"><img src="AIRBNB.png" alt="Alex"></div>
           <div class="avatar"><img src="AIRBNB.png" alt="Sarah"></div>
@@ -591,9 +763,7 @@ footer{
             <div class="reviewer">
               <div class="pp"><img src="AIRBNB.png" alt="Alex"></div>
               Alex
-              <span class="chip">
-                Airbnb
-              </span>
+              <span class="chip">Airbnb</span>
             </div>
             <div class="reviewStars">★★★★★</div>
           </div>
@@ -607,9 +777,7 @@ footer{
             <div class="reviewer">
               <div class="pp"><img src="AIRBNB.png" alt="Sarah"></div>
               Sarah
-              <span class="chip">
-                Airbnb 
-              </span>
+              <span class="chip">Airbnb</span>
             </div>
             <div class="reviewStars">★★★★★</div>
           </div>
@@ -621,6 +789,154 @@ footer{
       </div>
     </div>
 
+  </div>
+</section>
+
+<!-- ✅ AJOUTÉ : On s’occupe de tout (Gagnez du temps / Gagnez de l’argent) -->
+<section class="takeCare" aria-label="On s’occupe de tout">
+  <h2 class="takeCareTitle">On s’occupe <em>de tout</em></h2>
+
+  <!-- ===== Gagnez du temps (gauche) ===== -->
+  <div class="tcBlock">
+    <div class="tcLeft">
+      
+      <h3 class="tcHeading">Gagnez du<br>temps</h3>
+      <p class="tcDesc">
+        Ne perdez plus de temps avec la gestion quotidienne : messages, entrées et sorties,
+        ménage, linge, consommables, et relation voyageurs.
+      </p>
+
+      <!-- Flèche vers les cartes (droite) -->
+  
+        <path d="M10 90 C65 150, 140 150, 200 88" stroke="rgba(212,175,55,.95)" stroke-width="10" stroke-linecap="round"/>
+        <path d="M195 88 L168 78" stroke="rgba(212,175,55,.95)" stroke-width="10" stroke-linecap="round"/>
+        <path d="M195 88 L176 110" stroke="rgba(212,175,55,.95)" stroke-width="10" stroke-linecap="round"/>
+      </svg>
+    </div>
+
+    <div class="tcCards">
+      <div class="tcCard">
+            <div class="tcThumb">
+  <picture>
+    <source srcset="Illustration-Communication-avec-les-voyageurs-CE.webp" type="image/webp">
+    <img src="Illustration-Communication-avec-les-voyageurs-CE.webp" alt="" loading="lazy">
+  </picture>
+</div>
+        <div class="tcBody">
+          <h4>Communication avec les voyageurs</h4>
+          <p>Réponses rapides, instructions claires, suivi pendant le séjour.</p>
+          <a class="tcMore" href="services.html">En savoir plus →</a>
+        </div>
+      </div>
+
+      <div class="tcCard">
+        <div class="tcThumb">
+  <picture>
+    <source srcset="Illustration-Entrees-Sorties-CE-min.webp" type="image/webp">
+    <img src="Illustration-Entrees-Sorties-CE-min.webp" alt="" loading="lazy">
+  </picture>
+</div>
+
+        <div class="tcBody">
+          <h4>Entrées et sorties</h4>
+          <p>Accueil, remise des clés, contrôle du logement, coordination.</p>
+          <a class="tcMore" href="services.html">En savoir plus →</a>
+        </div>
+      </div>
+
+      <div class="tcCard">
+            <div class="tcThumb">
+  <picture>
+    <source srcset="Illustration-Nettoyage-et-gestion-du-linge-OF-CE-min.webp" type="image/webp">
+    <img src="Illustration-Nettoyage-et-gestion-du-linge-OF-CE-min.webp" alt="" loading="lazy">
+  </picture>
+</div>
+        <div class="tcBody">
+          <h4>Ménage & linge</h4>
+          <p>Standard hôtelier, linge fourni, réassort et finitions.</p>
+          <a class="tcMore" href="services.html">En savoir plus →</a>
+        </div>
+      </div>
+
+      <div class="tcCard">
+          <div class="tcThumb">
+  <picture>
+    <source srcset="Illustration-Maintenance-OF-CE-min.webp" type="image/webp">
+    <img src="Illustration-Maintenance-OF-CE-min.webp" alt="" loading="lazy">
+  </picture>
+</div>
+        <div class="tcBody">
+          <h4>Maintenance</h4>
+          <p>Gestion des petits incidents, fuites, bobos, interventions rapides.</p>
+          <a class="tcMore" href="services.html">En savoir plus →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tcDivider"></div>
+
+  <!-- ===== Gagnez de l'argent (droite) ===== -->
+  <div class="tcBlock rightLead">
+    <div class="tcCards">
+      <div class="tcCard">
+         <div class="tcThumb">
+  <picture>
+    <source srcset="illustration-Creation-dune-annonce-optimisee-OF-CE-min.webp" type="image/webp">
+    <img src="illustration-Creation-dune-annonce-optimisee-OF-CE-min.webp" alt="" loading="lazy">
+  </picture>
+</div>
+        <div class="tcBody">
+          <h4>Création d’une annonce optimisée</h4>
+          <p>Présentation, photos, titres : plus de clics → plus de réservations.</p>
+          <a class="tcMore" href="services.html">En savoir plus →</a>
+        </div>
+      </div>
+
+      <div class="tcCard">
+         <div class="tcThumb">
+  <picture>
+    <source srcset="Illustration-Boost-de-votre-referencemen-OF-CE-min.webp" type="image/webp">
+    <img src="Illustration-Boost-de-votre-referencemen-OF-CE-min.webp" alt="" loading="lazy">
+  </picture>
+</div>
+        <div class="tcBody">
+          <h4>Boost de votre référencement</h4>
+          <p>Optimisation Airbnb/Booking pour améliorer la visibilité de l’annonce.</p>
+          <a class="tcMore" href="services.html">En savoir plus →</a>
+        </div>
+      </div>
+
+      <div class="tcCard">
+           <div class="tcThumb">
+  <picture>
+    <source srcset="Illustration-Gestion-dynamique-des-prix-et-calendrier-OF-CE-min.webp" type="image/webp">
+    <img src="Illustration-Gestion-dynamique-des-prix-et-calendrier-OF-CE-min.webp" alt="" loading="lazy">
+  </picture>
+</div>
+        <div class="tcBody">
+          <h4>Gestion dynamique des prix & calendrier</h4>
+          <p>Tarifs ajustés selon la demande, saison, événements + règles de séjour.</p>
+          <a class="tcMore" href="services.html">En savoir plus →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="tcLeft">
+ 
+      <h3 class="tcHeading">Gagnez de<br>l’argent</h3>
+      <p class="tcDesc">
+        Optimisation, prix, calendrier : une stratégie qui améliore la visibilité,
+        les réservations et la rentabilité.
+      </p>
+
+      <!-- Flèche vers les cartes (gauche) -->
+    
+        <path d="M10 90 C65 150, 140 150, 200 88" stroke="rgba(212,175,55,.95)" stroke-width="10" stroke-linecap="round"/>
+        <path d="M195 88 L168 78" stroke="rgba(212,175,55,.95)" stroke-width="10" stroke-linecap="round"/>
+        <path d="M195 88 L176 110" stroke="rgba(212,175,55,.95)" stroke-width="10" stroke-linecap="round"/>
+      </svg>
+    </div>
   </div>
 </section>
 
