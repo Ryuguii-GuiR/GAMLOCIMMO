@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gamloc Immo — Conciergerie Airbnb à Nantes</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif;}
+body{background:#050505;color:white;overflow-x:hidden;}
+body::before{content:"";position:fixed;width:600px;height:600px;background:radial-gradient(circle,#d4af37,transparent 70%);top:-220px;left:-220px;filter:blur(160px);opacity:.14;z-index:-1;}
+body::after{content:"";position:fixed;width:520px;height:520px;background:radial-gradient(circle,#d4af37,transparent 70%);bottom:-240px;right:-240px;filter:blur(180px);opacity:.10;z-index:-1;}
+
+header{position:fixed;top:0;left:0;width:100%;background:rgba(0,0,0,.72);backdrop-filter:blur(12px);border-bottom:1px solid rgba(212,175,55,.20);z-index:1000;}
+header::after{content:"";position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:60%;height:1px;background:linear-gradient(90deg,transparent,#d4af37,transparent);opacity:.55;}
+.nav{max-width:1200px;margin:auto;display:flex;justify-content:space-between;align-items:center;padding:18px 20px;gap:20px;}
+.logo a{text-decoration:none;color:#d4af37;font-weight:800;letter-spacing:2px;font-size:16px;}
+.navlinks{display:flex;gap:34px;list-style:none;flex-wrap:wrap;justify-content:flex-end;}
+.navlinks a{text-decoration:none;color:white;font-size:14px;position:relative;opacity:.95;}
+.navlinks a::after{content:"";position:absolute;width:0%;height:2px;background:#d4af37;left:0;bottom:-7px;transition:.3s;}
+.navlinks a:hover::after{width:100%;}
+
+.section{max-width:1200px;margin:110px auto;padding:0 20px;}
+.section h1{font-size:54px;line-height:1.08;margin:0 0 12px 0;}
+.section h2{font-size:34px;margin:0 0 24px 0;text-align:center;}
+.p{color:#aaa;max-width:78ch;line-height:1.65;}
+.badge{display:inline-block;padding:6px 14px;border:1px solid rgba(212,175,55,.38);border-radius:30px;font-size:12px;margin:0 0 16px 0;color:#d4af37;background:rgba(0,0,0,.25);}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:28px;margin-top:28px;}
+.card{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);padding:30px;border-radius:22px;transition:.35s;}
+.card:hover{transform:translateY(-10px);border:1px solid rgba(212,175,55,.38);box-shadow:0 0 22px rgba(212,175,55,.12);}
+.card h3{color:#d4af37;margin-bottom:10px;font-size:18px;}
+.card p{color:#aaa;font-size:14px;line-height:1.55;}
+
+.actions{margin-top:26px;}
+.actions a{display:inline-block;padding:16px 34px;border-radius:40px;font-weight:700;text-decoration:none;margin-right:14px;font-size:16px;transition:.25s;}
+.btn-gold{background:#d4af37;color:black;box-shadow:0 0 22px rgba(212,175,55,.32);}
+.btn-gold:hover{transform:translateY(-2px);box-shadow:0 0 30px rgba(212,175,55,.45);}
+.btn-outline{border:1px solid rgba(212,175,55,.85);color:#d4af37;background:transparent;}
+.btn-outline:hover{background:rgba(212,175,55,.12);transform:translateY(-2px);}
+
+.superhost{margin:70px auto 0 auto;text-align:center;color:#d9d9d9;font-size:18px;}
+.superhost span{color:#d4af37;font-weight:800;}
+
+footer{margin-top:90px;padding:44px 20px;text-align:center;border-top:1px solid rgba(255,255,255,.08);color:#777;font-size:14px;}
+@media(max-width:560px){.navlinks{gap:18px;}.actions a{display:block;width:100%;text-align:center;margin:0 0 12px 0;}.section h1{font-size:42px;}}
+</style>
+</head>
+<body>
+
+<header>
+<div class="nav">
+<div class="logo"><a href="index.html">GAMLOC IMMO</a></div>
+<ul class="navlinks">
+<li><a href="conciergerie.html">Conciergerie</a></li>
+<li><a href="confier-mon-bien.html">Confier mon bien</a></li>
+<li><a href="appartements.html">Appartements</a></li>
+<li><a href="avis.html">Avis</a></li>
+<li><a href="contact.html">Contact</a></li>
+</ul>
+</div>
+</header>
+
+<main class="section" style="margin-top:130px;">
+<div class="badge">Superhôte Airbnb • Nantes</div>
+<h1>Conciergerie Airbnb à Nantes</h1>
+<p class="p">
+Gamloc Immo gère votre location courte durée de A à Z : expérience voyageurs, propreté premium,
+communication rapide, et optimisation de la rentabilité (Airbnb / Booking).
+</p>
+
+<div class="actions">
+<a class="btn-gold" href="confier-mon-bien.html">Confier mon bien</a>
+<a class="btn-outline" href="contact.html">Nous contacter</a>
+</div>
+
+<section class="section" style="margin-top:70px;">
+<h2>Ce que nous gérons</h2>
+<div class="grid">
+<div class="card">
+<h3>Check-in / Check-out</h3>
+<p>Arrivées fluides, instructions claires, et suivi sur place si besoin.</p>
+</div>
+<div class="card">
+<h3>Ménage & linge premium</h3>
+<p>Standard hôtelier : propreté constante, linge, finitions, réassort.</p>
+</div>
+<div class="card">
+<h3>Assistance voyageurs</h3>
+<p>Réactivité, messages, résolution rapide des imprévus, satisfaction.</p>
+</div>
+<div class="card">
+<h3>Optimisation</h3>
+<p>Conseils annonce/prix, saisonnalité, meilleure performance.</p>
+</div>
+<div class="card">
+<h3>Calendriers & plateformes</h3>
+<p>Organisation Airbnb/Booking et mise à jour des disponibilités.</p>
+</div>
+<div class="card">
+<h3>Coordination interventions</h3>
+<p>Petite maintenance, prestataires, suivi et contrôle qualité.</p>
+</div>
+</div>
+
+<div class="superhost">
+⭐ Statut <span>Superhôte Airbnb</span> — qualité constante, communication rapide, voyageurs satisfaits.
+</div>
+</section>
+</main>
+
+<footer>Gamloc Immo — Conciergerie Airbnb à Nantes</footer>
+</body>
+</html>
