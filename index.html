@@ -627,6 +627,15 @@ footer{
   .card{padding:22px;}
   .apart img{height:200px;}
 }
+
+@media (max-width: 980px){
+  .tcBlock, .tcBlock.rightLead{
+    display:flex;
+    flex-direction:column;
+  }
+  .tcBlock.rightLead .tcLeft{ order: 0; }
+  .tcBlock.rightLead .tcCards{ order: 1; }
+}
 </style>
 </head>
 
