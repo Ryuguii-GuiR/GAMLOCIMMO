@@ -79,8 +79,16 @@ header::after{
 .navlinks{
   display:flex;gap:26px;list-style:none;flex-wrap:wrap;justify-content:flex-end;
 }
+
 .navlinks a{
-  text-decoration:none;color:white;font-size:14px;position:relative;opacity:.96;
+  text-decoration:none;
+  color:white;
+  font-size:14px;
+  position:relative;
+  opacity:.96;
+  font-weight:850;   /* ← comme les autres pages */
+}
+
 }
 .navlinks a::after{
   content:"";position:absolute;left:0;bottom:-8px;height:2px;width:0%;
