@@ -963,7 +963,9 @@
     menuBtn?.addEventListener("click", openMenu);
     menuClose?.addEventListener("click", closeMenu);
     overlay?.addEventListener("click", (e)=>{ if(e.target === overlay) closeMenu(); });
-    window.addEventListener("keydown", (e)=>{ if(e.key === "Escape") 
+    window.addEventListener("keydown", (e)=>{
+  if(e.key === "Escape") closeMenu();
+});
     const revealEls = document.querySelectorAll(".reveal");
     const faqItems = document.querySelectorAll(".faqItem");
 
