@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
@@ -80,13 +80,16 @@ header::after{
   display:flex;gap:26px;list-style:none;flex-wrap:wrap;justify-content:flex-end;
 }
 
+
 .navlinks a{
   text-decoration:none;
   color:white;
   font-size:14px;
   position:relative;
   opacity:.96;
-  font-weight:850;   /* ← comme les autres pages */
+  font-weight:850;
+  display:inline-block; /* ← indispensable pour que le trait fonctionne */
+  padding-bottom:4px;   /* ← laisse la place au trait */
 }
 
 }
