@@ -46,7 +46,7 @@
       filter:blur(190px);opacity:.18;z-index:-1;
     }
 
-    /* ===== Header ===== */
+    
     header{
       position:fixed;top:0;left:0;width:100%;
       background:var(--headerBlue);
@@ -96,7 +96,7 @@
     .navlinks a.active::after{width:100%;}
     .navlinks a.active{opacity:1;}
 
-    /* Mobile menu button */
+    
     .menuBtn{
       display:none;
       width:46px;height:46px;
@@ -184,10 +184,10 @@
       font-size:12px;line-height:1.55;
     }
 
-    /* ===== Page top ===== */
+    
     .pageTop{padding-top:126px;}
 
-    /* ===== HERO (centered properly on desktop) ===== */
+   
     .hero{
       padding:46px 0 18px;
       display:grid;
@@ -195,7 +195,7 @@
       gap:34px;
       align-items:center;
     }
-    .heroLeft{max-width:600px;} /* ✅ fixes the “all left” feel */
+    .heroLeft{max-width:600px;} 
     .kicker{
       display:inline-flex;align-items:center;gap:10px;
       padding:8px 14px;border-radius:999px;
@@ -268,8 +268,8 @@
       min-height:260px;
       display:grid;
       place-items:center;
-      max-width:520px;     /* ✅ keeps nice balance */
-      justify-self:end;    /* ✅ aligns card neatly */
+      max-width:520px;    
+      justify-self:end;   
     }
     .heroCard::after{
       content:"";
@@ -306,7 +306,7 @@
       opacity:.9;
     }
 
-    /* ===== Sections ===== */
+   
     .section{margin:76px 0;}
     .sectionTitle{
       text-align:center;
@@ -326,7 +326,7 @@
       font-weight:600;
     }
 
-    /* ===== Services (proper image format) ===== */
+    
     .svcGrid{display:grid;grid-template-columns:1fr;gap:18px;}
 
     .svc{
@@ -354,7 +354,7 @@
     }
     .svc:nth-child(even) .svcMedia{border-right:none;border-left:1px solid rgba(10,18,40,.08);}
 
-    /* ✅ correct “format” = fixed ratio container + cover image */
+    
     .svcFigure{
       width:100%;
       border-radius:20px;
@@ -362,7 +362,7 @@
       border:1px solid rgba(10,18,40,.10);
       box-shadow: 0 18px 44px rgba(3,7,18,.12);
       background:#fff;
-      aspect-ratio: 16 / 10;   /* ✅ change if you want (16/9, 4/3, etc.) */
+      aspect-ratio: 16 / 10;
       position:relative;
     }
     .svcFigure img{
@@ -459,7 +459,7 @@
       color:var(--blue2);
     }
 
-    /* ===== FAQ (more “conciergelite-like”: clean, premium, fluid) ===== */
+    
     .faqSection{
       margin:88px 0 106px;
       border-radius:30px;
@@ -503,7 +503,7 @@
       padding:16px;
     }
 
-    /* item container */
+   
     details.faqItem{
       border-radius:22px;
       border:1px solid rgba(10,18,40,.10);
@@ -517,7 +517,7 @@
     details.faqItem.is-in{transform: translateY(0);opacity:1;}
     details.faqItem[open]{box-shadow: 0 18px 40px rgba(3,7,18,.09);}
 
-    /* summary row */
+
     details.faqItem summary{
       list-style:none;
       cursor:pointer;
@@ -581,7 +581,7 @@
     }
     details.faqItem[open] .faqChevron{transform: rotate(180deg); background:rgba(244,191,19,.22);}
 
-    /* animated content */
+
     .faqA{
       padding:0 18px 18px 84px;
       color:rgba(13,15,22,.80);
@@ -590,7 +590,7 @@
       font-size:15px;
     }
 
-    /* nice divider line that “fills” when open */
+  
     .faqFill{
       height:2px;
       margin:0 18px 0 84px;
@@ -602,7 +602,7 @@
     }
     details.faqItem[open] .faqFill{transform: scaleX(1);}
 
-    /* ===== Reveal animation ===== */
+ 
     .reveal{
       opacity:0;
       transform: translateY(14px);
@@ -620,7 +620,7 @@
       font-weight:650;
     }
 
-    /* ===== Responsive ===== */
+
     @media(max-width:980px){
       .hero{grid-template-columns:1fr;gap:18px;}
       .heroLeft{max-width:none;}
@@ -744,8 +744,7 @@
         <article class="svc reveal">
           <div class="svcMedia">
             <div class="svcFigure" aria-label="Image communication voyageurs">
-              <!-- ✅ METS TON IMAGE ICI -->
-              <img src="images/communication.webp" alt="Communication voyageurs" loading="lazy" onerror="this.style.display='none'; this.parentNode.querySelector('.fallback').style.display='grid';">
+              <img src="Illustration-Communication-avec-les-voyageurs-CE.webp" alt="Communication voyageurs" loading="lazy" onerror="this.style.display='none'; this.parentNode.querySelector('.fallback').style.display='grid';">
               <div class="svcBadge"><span class="bDot" aria-hidden="true"></span>Expérience voyageurs</div>
               <div class="fallback" style="display:none;position:absolute;inset:0;place-items:center;color:rgba(13,15,22,.55);font-weight:900;font-size:12px;letter-spacing:.6px;text-transform:uppercase;background:rgba(255,255,255,.65);">
                 IMAGE — Communication
@@ -775,7 +774,7 @@
         <article class="svc reveal">
           <div class="svcMedia">
             <div class="svcFigure" aria-label="Image entrées et sorties">
-              <img src="images/checkin.webp" alt="Entrées et sorties" loading="lazy" onerror="this.style.display='none'; this.parentNode.querySelector('.fallback').style.display='grid';">
+              <img src="Illustration-Entrees-Sorties-CE-min.webp" alt="Entrées et sorties" loading="lazy" onerror="this.style.display='none'; this.parentNode.querySelector('.fallback').style.display='grid';">
               <div class="svcBadge"><span class="bDot" aria-hidden="true"></span>Opérationnel</div>
               <div class="fallback" style="display:none;position:absolute;inset:0;place-items:center;color:rgba(13,15,22,.55);font-weight:900;font-size:12px;letter-spacing:.6px;text-transform:uppercase;background:rgba(255,255,255,.65);">
                 IMAGE — Entrées / Sorties
@@ -805,7 +804,7 @@
         <article class="svc reveal">
           <div class="svcMedia">
             <div class="svcFigure" aria-label="Image ménage et linge">
-              <img src="images/menage.webp" alt="Ménage et linge" loading="lazy" onerror="this.style.display='none'; this.parentNode.querySelector('.fallback').style.display='grid';">
+              <img src="Illustration-Nettoyage-et-gestion-du-linge-OF-CE-min.webp" alt="Ménage et linge" loading="lazy" onerror="this.style.display='none'; this.parentNode.querySelector('.fallback').style.display='grid';">
               <div class="svcBadge"><span class="bDot" aria-hidden="true"></span>Standard premium</div>
               <div class="fallback" style="display:none;position:absolute;inset:0;place-items:center;color:rgba(13,15,22,.55);font-weight:900;font-size:12px;letter-spacing:.6px;text-transform:uppercase;background:rgba(255,255,255,.65);">
                 IMAGE — Ménage / Linge
@@ -834,7 +833,7 @@
         <article class="svc reveal">
           <div class="svcMedia">
             <div class="svcFigure" aria-label="Image optimisation">
-              <img src="images/optimisation.webp" alt="Annonce et optimisation" loading="lazy" onerror="this.style.display='none'; this.parentNode.querySelector('.fallback').style.display='grid';">
+              <img src="illustration-Creation-dune-annonce-optimisee-OF-CE-min.webp" alt="Annonce et optimisation" loading="lazy" onerror="this.style.display='none'; this.parentNode.querySelector('.fallback').style.display='grid';">
               <div class="svcBadge"><span class="bDot" aria-hidden="true"></span>Performance</div>
               <div class="fallback" style="display:none;position:absolute;inset:0;place-items:center;color:rgba(13,15,22,.55);font-weight:900;font-size:12px;letter-spacing:.6px;text-transform:uppercase;background:rgba(255,255,255,.65);">
                 IMAGE — Optimisation
