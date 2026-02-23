@@ -32,21 +32,20 @@
     body{background:var(--bg);color:var(--text);overflow-x:hidden;}
     a{color:inherit;text-decoration:none}
     .wrap{max-width:1200px;margin:0 auto;padding:0 20px;}
-    .sr-only{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;}
+    code{font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;}
 
-    /* subtle glow */
     body::before{
       content:"";position:fixed;top:-220px;left:-220px;width:720px;height:720px;
       background:radial-gradient(circle, rgba(244,191,19,.30), transparent 68%);
-      filter:blur(170px);opacity:.18;z-index:-1;
+      filter:blur(170px);opacity:.16;z-index:-1;
     }
     body::after{
       content:"";position:fixed;bottom:-240px;right:-240px;width:680px;height:680px;
       background:radial-gradient(circle, rgba(14,74,166,.28), transparent 68%);
-      filter:blur(190px);opacity:.18;z-index:-1;
+      filter:blur(190px);opacity:.16;z-index:-1;
     }
 
-    
+    /* ===== Header ===== */
     header{
       position:fixed;top:0;left:0;width:100%;
       background:var(--headerBlue);
@@ -56,7 +55,7 @@
     }
     header::after{
       content:"";position:absolute;bottom:0;left:50%;transform:translateX(-50%);
-      width:min(920px, 92%);
+      width:min(820px, 84%);
       height:1px;
       background:linear-gradient(90deg, transparent, var(--yellow), rgba(255,255,255,.65), transparent);
       opacity:.85;
@@ -96,7 +95,7 @@
     .navlinks a.active::after{width:100%;}
     .navlinks a.active{opacity:1;}
 
-    
+    /* Mobile menu */
     .menuBtn{
       display:none;
       width:46px;height:46px;
@@ -116,7 +115,6 @@
     .menuIcon span:nth-child(1){ top:0; }
     .menuIcon span:nth-child(2){ top:7px; opacity:.95; }
     .menuIcon span:nth-child(3){ top:14px; }
-
     body.menu-open .menuIcon span:nth-child(1){ top:7px; transform: rotate(45deg); }
     body.menu-open .menuIcon span:nth-child(2){ opacity:0; }
     body.menu-open .menuIcon span:nth-child(3){ top:7px; transform: rotate(-45deg); }
@@ -174,7 +172,6 @@
     body.menu-open .mobileLinks li:nth-child(3) a{ transition-delay:.10s; }
     body.menu-open .mobileLinks li:nth-child(4) a{ transition-delay:.13s; }
     body.menu-open .mobileLinks li:nth-child(5) a{ transition-delay:.16s; }
-
     .mobileHint{
       margin-top:14px;
       padding:12px 14px;border-radius:16px;
@@ -184,18 +181,22 @@
       font-size:12px;line-height:1.55;
     }
 
-    
+    /* ===== Page ===== */
     .pageTop{padding-top:126px;}
 
-   
     .hero{
-      padding:46px 0 18px;
+      padding:46px 0 10px;
       display:grid;
-      grid-template-columns: 1.15fr 1fr;
+      grid-template-columns: 1.05fr .95fr;
       gap:34px;
       align-items:center;
+      justify-items:center;
     }
-    .heroLeft{max-width:600px;} 
+    .heroLeft{
+      max-width:680px;
+      text-align:center;
+      justify-self:center;
+    }
     .kicker{
       display:inline-flex;align-items:center;gap:10px;
       padding:8px 14px;border-radius:999px;
@@ -203,7 +204,8 @@
       background:linear-gradient(90deg, rgba(244,191,19,.12), rgba(14,74,166,.10));
       color:var(--blue2);
       font-size:12px;font-weight:900;
-      margin-bottom:14px;
+      margin:0 auto 14px;
+      width:fit-content;
     }
     .kicker .dot{
       width:8px;height:8px;border-radius:999px;
@@ -219,20 +221,13 @@
     }
     .lead{
       color:var(--muted);
-      line-height:1.85;
-      max-width:62ch;
+      line-height:1.9;
+      max-width:74ch;
+      margin:0 auto 18px;
       font-size:15px;
       font-weight:600;
-      margin-bottom:18px;
     }
-    .hl{
-      background:linear-gradient(90deg, rgba(244,191,19,.35), rgba(244,191,19,.10));
-      border-radius:10px;
-      padding:0 6px;
-      font-weight:900;
-      color:#111;
-    }
-    .ctaRow{display:flex;gap:12px;flex-wrap:wrap;}
+    .ctaRow{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;}
     .btn{
       display:inline-flex;align-items:center;justify-content:center;gap:10px;
       padding:14px 18px;border-radius:999px;
@@ -255,6 +250,8 @@
     .btn:hover{transform:translateY(-2px);box-shadow:0 18px 34px rgba(3,7,18,.10);}
 
     .heroCard{
+      width:min(520px, 100%);
+      justify-self:center;
       border-radius:24px;
       border:1px solid rgba(10,18,40,.10);
       background:
@@ -268,8 +265,6 @@
       min-height:260px;
       display:grid;
       place-items:center;
-      max-width:520px;    
-      justify-self:end;   
     }
     .heroCard::after{
       content:"";
@@ -291,12 +286,13 @@
       display:grid;
       gap:12px;
     }
-    .statRow{display:flex;align-items:center;justify-content:space-between;gap:12px;}
+    .statRow{display:flex;gap:12px;flex-wrap:wrap;}
     .stat{
       padding:12px 12px;border-radius:16px;
       border:1px solid rgba(10,18,40,.10);
       background:rgba(14,74,166,.04);
-      width:100%;
+      width:calc(50% - 6px);
+      min-width:220px;
     }
     .stat strong{display:block;font-size:18px;color:var(--blue2);font-weight:900;letter-spacing:-.2px;}
     .stat span{display:block;font-size:12px;color:rgba(13,15,22,.62);font-weight:800;margin-top:3px;}
@@ -306,41 +302,43 @@
       opacity:.9;
     }
 
-   
-    .section{margin:76px 0;}
+    .section{margin:58px 0;}
     .sectionTitle{
       text-align:center;
       font-size:40px;
       letter-spacing:-.7px;
       color:var(--blue2);
-      margin-bottom:14px;
+      margin-bottom:12px;
       font-weight:900;
     }
     .sectionSub{
       text-align:center;
       color:var(--muted);
       max-width:78ch;
-      margin:0 auto 34px;
+      margin:0 auto 28px;
       line-height:1.85;
       font-size:15px;
       font-weight:600;
     }
 
-    
-    .svcGrid{display:grid;grid-template-columns:1fr;gap:18px;}
-
+    /* ===== Services list centered ===== */
+    .svcGrid{
+      max-width:1100px;
+      margin:0 auto;
+      display:grid;
+      gap:18px;
+    }
     .svc{
-      border-radius:28px;
+      border-radius:26px;
       border:1px solid rgba(10,18,40,.10);
-      background:rgba(255,255,255,.78);
+      background:rgba(255,255,255,.72);
       box-shadow: var(--softShadow);
       overflow:hidden;
       display:grid;
       grid-template-columns: 1.05fr 1fr;
-      min-height:320px;
+      min-height:280px;
     }
     .svc:nth-child(even){grid-template-columns: 1fr 1.05fr;}
-
     .svcMedia{
       position:relative;
       border-right:1px solid rgba(10,18,40,.08);
@@ -354,39 +352,29 @@
     }
     .svc:nth-child(even) .svcMedia{border-right:none;border-left:1px solid rgba(10,18,40,.08);}
 
-    
-    .svcFigure{
+    /* ✅ bon format image */
+    .svcMedia figure{
       width:100%;
-      border-radius:20px;
+      max-width:560px;
+      margin:0;
+      aspect-ratio: 16 / 10;
+      border-radius:18px;
       overflow:hidden;
       border:1px solid rgba(10,18,40,.10);
       box-shadow: 0 18px 44px rgba(3,7,18,.12);
       background:#fff;
-      aspect-ratio: 16 / 10;
-      position:relative;
     }
-    .svcFigure img{
-      position:absolute;inset:0;
+    .svcMedia img{width:100%;height:100%;object-fit:cover;display:block;}
+    .svcMedia .ph{
       width:100%;height:100%;
-      object-fit:cover;
-      display:block;
-    }
-    .svcBadge{
-      position:absolute;left:14px;top:14px;
-      display:inline-flex;align-items:center;gap:10px;
-      padding:8px 12px;border-radius:999px;
-      background:rgba(255,255,255,.82);
-      border:1px solid rgba(10,18,40,.10);
-      font-weight:900;
-      font-size:12px;
-      color:var(--blue2);
-      box-shadow: 0 10px 24px rgba(3,7,18,.08);
-      backdrop-filter: blur(8px);
-    }
-    .svcBadge .bDot{
-      width:9px;height:9px;border-radius:999px;
-      background:linear-gradient(180deg,var(--yellow2),var(--yellow));
-      box-shadow:0 0 14px rgba(244,191,19,.25);
+      display:grid;place-items:center;
+      color:rgba(13,15,22,.55);
+      font-weight:900;font-size:12px;
+      letter-spacing:.6px;text-transform:uppercase;
+      background:rgba(255,255,255,.65);
+      border:1px dashed rgba(10,18,40,.18);
+      border-radius:18px;
+      padding:14px;
     }
 
     .svcBody{
@@ -394,6 +382,7 @@
       display:flex;
       flex-direction:column;
       justify-content:center;
+      text-align:center;
     }
     .pill{
       display:inline-flex;align-items:center;gap:10px;
@@ -404,210 +393,62 @@
       font-weight:900;
       font-size:12px;
       width:fit-content;
-      margin-bottom:12px;
+      margin:0 auto 12px;
     }
-    .pill .pDot{width:8px;height:8px;border-radius:999px;background:linear-gradient(180deg,var(--yellow2),var(--yellow));box-shadow:0 0 14px rgba(244,191,19,.25);}
-
+    .pill .pDot{
+      width:8px;height:8px;border-radius:999px;
+      background:linear-gradient(180deg,var(--yellow2),var(--yellow));
+      box-shadow:0 0 14px rgba(244,191,19,.25);
+    }
     .svcBody h3{
       font-size:28px;
       color:#0d0f16;
-      letter-spacing:-.6px;
-      margin-bottom:10px;
+      letter-spacing:-.5px;
+      margin:0 auto 10px;
       font-weight:900;
+      max-width:28ch;
     }
     .svcBody p{
       color:var(--muted);
       line-height:1.9;
       font-weight:600;
-      margin-bottom:14px;
-      max-width:68ch;
+      margin:0 auto 14px;
+      max-width:70ch;
     }
-    .svcList{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:14px;}
+
+    .svcList{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:0 0 14px 0;}
     .chip{
       display:inline-flex;align-items:center;gap:8px;
-      padding:9px 11px;border-radius:999px;
+      padding:8px 10px;border-radius:999px;
       border:1px solid rgba(10,18,40,.10);
-      background:rgba(255,255,255,.75);
+      background:rgba(255,255,255,.70);
       font-size:12px;
       font-weight:900;
       color:rgba(13,15,22,.78);
     }
     .chip i{
-      width:20px;height:20px;border-radius:999px;
+      width:18px;height:18px;border-radius:999px;
       display:inline-grid;place-items:center;
       background:rgba(244,191,19,.20);
       border:1px solid rgba(244,191,19,.35);
       color:#111;
-      font-style:normal;
-      font-weight:900;
-      line-height:1;
-      font-size:12px;
+      font-style:normal;font-weight:900;line-height:1;font-size:12px;
     }
-    .svcActions{display:flex;gap:10px;flex-wrap:wrap;margin-top:4px;}
+
+    .svcActions{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:4px;}
     .linkBtn{
       display:inline-flex;align-items:center;gap:10px;
       padding:12px 14px;border-radius:999px;
       font-weight:900;font-size:13px;
       border:1px solid rgba(10,18,40,.12);
-      background:rgba(255,255,255,.82);
-      transition: transform .18s var(--ease), box-shadow .18s var(--ease), background .18s var(--ease);
+      background:rgba(255,255,255,.78);
+      transition: transform .18s var(--ease), box-shadow .18s var(--ease);
     }
     .linkBtn:hover{transform:translateY(-2px);box-shadow: 0 18px 34px rgba(3,7,18,.10);}
-    .linkBtn.primary{
-      background:rgba(14,74,166,.06);
-      border-color: rgba(14,74,166,.20);
-      color:var(--blue2);
-    }
+    .linkBtn.primary{background:rgba(14,74,166,.06);border-color: rgba(14,74,166,.20);color:var(--blue2);}
 
-    
-    .faqSection{
-      margin:88px 0 106px;
-      border-radius:30px;
-      border:1px solid rgba(10,18,40,.10);
-      background:
-        radial-gradient(1200px 520px at 12% 0%, rgba(244,191,19,.10), transparent 60%),
-        radial-gradient(1200px 520px at 92% 0%, rgba(14,74,166,.10), transparent 60%),
-        linear-gradient(180deg, rgba(255,255,255,.80), rgba(255,255,255,.70));
-      box-shadow: var(--softShadow);
-      overflow:hidden;
-    }
-
-    .faqHead{
-      padding:26px 24px;
-      border-bottom:1px solid rgba(10,18,40,.08);
-      display:flex;
-      justify-content:space-between;
-      align-items:flex-end;
-      gap:18px;
-      flex-wrap:wrap;
-    }
-    .faqHead h2{
-      font-size:42px;
-      letter-spacing:-.8px;
-      color:var(--blue2);
-      font-weight:900;
-      line-height:1.05;
-    }
-    .faqHead p{
-      color:var(--muted);
-      line-height:1.75;
-      font-weight:650;
-      max-width:70ch;
-      padding-bottom:4px;
-    }
-
-    .faqGrid{
-      display:grid;
-      grid-template-columns: 1fr;
-      gap:12px;
-      padding:16px;
-    }
-
-   
-    details.faqItem{
-      border-radius:22px;
-      border:1px solid rgba(10,18,40,.10);
-      background:rgba(255,255,255,.82);
-      box-shadow: 0 10px 26px rgba(3,7,18,.06);
-      overflow:hidden;
-      transform: translateY(8px);
-      opacity:0;
-      transition: transform .6s var(--ease), opacity .6s var(--ease), box-shadow .18s var(--ease);
-    }
-    details.faqItem.is-in{transform: translateY(0);opacity:1;}
-    details.faqItem[open]{box-shadow: 0 18px 40px rgba(3,7,18,.09);}
-
-
-    details.faqItem summary{
-      list-style:none;
-      cursor:pointer;
-      padding:18px 18px;
-      display:grid;
-      grid-template-columns: 52px 1fr 44px;
-      gap:14px;
-      align-items:center;
-      user-select:none;
-    }
-    details.faqItem summary::-webkit-details-marker{display:none;}
-
-    .faqIcon{
-      width:52px;height:52px;border-radius:18px;
-      display:grid;place-items:center;
-      background:
-        radial-gradient(120px 120px at 30% 30%, rgba(244,191,19,.35), transparent 60%),
-        linear-gradient(180deg, rgba(19,42,175,.12), rgba(19,42,175,.06));
-      border:1px solid rgba(19,42,175,.18);
-      position:relative;
-      overflow:hidden;
-    }
-    .faqIcon::after{
-      content:"";
-      position:absolute;inset:-40%;
-      background:radial-gradient(circle, rgba(244,191,19,.35), transparent 60%);
-      filter: blur(18px);
-      opacity:.55;
-      transform: translateX(-16px);
-      transition: transform .55s var(--ease);
-    }
-    details.faqItem[open] .faqIcon::after{transform: translateX(16px);}
-    .faqIcon span{
-      position:relative;z-index:1;
-      width:22px;height:22px;border-radius:999px;
-      border:2px solid rgba(13,15,22,.70);
-      display:grid;place-items:center;
-      font-weight:900;
-      font-size:14px;
-      line-height:1;
-      color:rgba(13,15,22,.75);
-      transition: transform .35s var(--ease);
-    }
-    details.faqItem[open] .faqIcon span{transform: rotate(90deg);}
-
-    .faqQ{
-      font-size:16px;
-      font-weight:900;
-      letter-spacing:-.2px;
-      color:var(--blue2);
-      line-height:1.35;
-    }
-    .faqChevron{
-      width:44px;height:44px;border-radius:16px;
-      display:grid;place-items:center;
-      background:rgba(244,191,19,.14);
-      border:1px solid rgba(244,191,19,.28);
-      transition: transform .45s var(--ease), background .2s var(--ease);
-      font-weight:900;
-      color:#0b0d12;
-    }
-    details.faqItem[open] .faqChevron{transform: rotate(180deg); background:rgba(244,191,19,.22);}
-
-
-    .faqA{
-      padding:0 18px 18px 84px;
-      color:rgba(13,15,22,.80);
-      line-height:1.95;
-      font-weight:650;
-      font-size:15px;
-    }
-
-  
-    .faqFill{
-      height:2px;
-      margin:0 18px 0 84px;
-      background:linear-gradient(90deg, rgba(244,191,19,.95), rgba(14,74,166,.35));
-      transform: scaleX(0);
-      transform-origin:left;
-      transition: transform .55s var(--ease);
-      opacity:.85;
-    }
-    details.faqItem[open] .faqFill{transform: scaleX(1);}
-
- 
-    .reveal{
-      opacity:0;
-      transform: translateY(14px);
-      transition: opacity .7s var(--ease), transform .7s var(--ease);
-    }
+    /* reveal */
+    .reveal{opacity:0;transform: translateY(14px);transition: opacity .7s var(--ease), transform .7s var(--ease);}
     .reveal.in{opacity:1;transform: translateY(0);}
 
     footer{
@@ -620,34 +461,28 @@
       font-weight:650;
     }
 
-
     @media(max-width:980px){
       .hero{grid-template-columns:1fr;gap:18px;}
-      .heroLeft{max-width:none;}
       h1{font-size:42px;}
-      .heroCard{min-height:220px;justify-self:stretch;max-width:none;}
-      .sectionTitle{font-size:34px;}
-      .faqHead h2{font-size:34px;}
-      .svc{grid-template-columns:1fr;min-height:unset;}
+      .heroCard{min-height:220px;width:min(560px, 100%);}
+      .stat{width:100%;}
+      .svc{grid-template-columns:1fr;}
       .svc:nth-child(even){grid-template-columns:1fr;}
       .svcMedia{border-right:none;border-left:none;border-bottom:1px solid rgba(10,18,40,.08);}
       .svc:nth-child(even) .svcMedia{border-left:none;border-bottom:1px solid rgba(10,18,40,.08);}
-      .faqA{padding-left:18px;}
-      .faqFill{margin-left:18px;}
+      .svcMedia figure{max-width:740px;aspect-ratio: 16/9;}
+      .sectionTitle{font-size:34px;}
     }
     @media(max-width:820px){
       .navlinks{display:none;}
       .menuBtn{display:inline-block;}
       .nav{padding:12px 14px;}
-      header::after{width:90%;}
+      header::after{width:86%;}
     }
     @media(max-width:560px){
       .wrap{padding:0 14px;}
       .btn{width:100%;}
-      .ctaRow{gap:10px;}
-      details.faqItem summary{grid-template-columns: 52px 1fr 44px;}
-      .faqQ{font-size:15px;}
-      .faqA{font-size:14px;}
+      .svcBody h3{font-size:24px;}
     }
   </style>
 </head>
@@ -700,10 +535,10 @@
     <section class="wrap hero">
       <div class="heroLeft reveal">
         <div class="kicker"><span class="dot" aria-hidden="true"></span>Nos services</div>
-        <h1>Une gestion locative premium,<br>simple et performante</h1>
+        <h1>On s’occupe de tout,<br>et on optimise la performance</h1>
         <p class="lead">
-          On prend en charge l’opérationnel (voyageurs, ménage, check-in/out) et la performance
-          (annonce, prix, calendrier) pour améliorer vos <span class="hl">avis</span> et vos <span class="hl">revenus</span>.
+          Comme sur ton index : <b>expérience voyageurs</b> + <b>opérationnel</b> + <b>optimisation</b>.
+          Tu remplaces juste les images par les tiennes (<code>.webp</code> OK).
         </p>
         <div class="ctaRow">
           <a class="btn primary" href="confier-mon-bien.html">Confier mon bien</a>
@@ -715,17 +550,17 @@
         <div class="heroCardInner">
           <div class="statRow">
             <div class="stat">
-              <strong>Gestion complète</strong>
-              <span>Voyageurs • Ménage • Check-in/out</span>
+              <strong>Gagnez du temps</strong>
+              <span>Gestion quotidienne complète</span>
             </div>
             <div class="stat">
-              <strong>Optimisation</strong>
-              <span>Prix • Calendrier • Annonce</span>
+              <strong>Gagnez de l’argent</strong>
+              <span>Annonce • Prix • Calendrier</span>
             </div>
           </div>
           <div class="miniLine" aria-hidden="true"></div>
           <div class="stat">
-            <strong>Objectif</strong>
+            <strong>Résultat</strong>
             <span>Plus de réservations & meilleurs avis</span>
           </div>
         </div>
@@ -733,231 +568,201 @@
     </section>
 
     <section class="wrap section">
-      <h2 class="sectionTitle reveal">Nos services</h2>
+      <h2 class="sectionTitle reveal">Tous nos services</h2>
       <p class="sectionSub reveal">
-        Remplace simplement les <b>src=""</b> des images par tes fichiers (les <code>.webp</code> fonctionnent).
-        Le format est géré automatiquement (ratio + cover).
+        Partie “gagnez du temps” + “gagnez de l’argent” + la gestion complète.  
+        (Si tu veux, après tu me donnes les noms exacts de tes fichiers images et je te mets les <code>src</code> clean.)
       </p>
 
       <div class="svcGrid">
-        <!-- 1 -->
+
+        <!-- ===== GAGNEZ DU TEMPS (index) ===== -->
         <article class="svc reveal">
           <div class="svcMedia">
-            <div class="svcFigure" aria-label="Image communication voyageurs">
-              <img src="Illustration-Communication-avec-les-voyageurs-CE.webp" alt="Communication voyageurs" loading="lazy" onerror="this.style.display='none'; this.parentNode.querySelector('.fallback').style.display='grid';">
-              <div class="svcBadge"><span class="bDot" aria-hidden="true"></span>Expérience voyageurs</div>
-              <div class="fallback" style="display:none;position:absolute;inset:0;place-items:center;color:rgba(13,15,22,.55);font-weight:900;font-size:12px;letter-spacing:.6px;text-transform:uppercase;background:rgba(255,255,255,.65);">
-                IMAGE — Communication
-              </div>
-            </div>
+            <figure>
+              <!-- <img src="images/communication.webp" alt="Communication voyageurs"> -->
+              <div class="ph">IMAGE — Communication voyageurs</div>
+            </figure>
           </div>
           <div class="svcBody">
-            <div class="pill"><span class="pDot" aria-hidden="true"></span>Expérience voyageurs</div>
-            <h3>Communication voyageurs</h3>
-            <p>
-              Réponses rapides, instructions claires et suivi pendant le séjour pour limiter les problèmes
-              et augmenter la satisfaction.
-            </p>
+            <div class="pill"><span class="pDot" aria-hidden="true"></span>Gagnez du temps</div>
+            <h3>Communication avec les voyageurs</h3>
+            <p>Réponses rapides, instructions claires, suivi pendant le séjour.</p>
             <div class="svcList">
-              <span class="chip"><i>✓</i>Messages 7j/7</span>
-              <span class="chip"><i>✓</i>Check-in guidé</span>
-              <span class="chip"><i>✓</i>Suivi séjour</span>
+              <span class="chip"><i>✓</i>Messages</span>
+              <span class="chip"><i>✓</i>Infos séjour</span>
+              <span class="chip"><i>✓</i>Suivi</span>
             </div>
             <div class="svcActions">
-              <a class="linkBtn primary" href="contact.html">Demander un devis</a>
-              <a class="linkBtn" href="confier-mon-bien.html">Confier mon bien</a>
+              <a class="linkBtn primary" href="confier-mon-bien.html">Confier mon bien</a>
+              <a class="linkBtn" href="contact.html">Nous contacter</a>
             </div>
           </div>
         </article>
 
-        <!-- 2 -->
         <article class="svc reveal">
           <div class="svcMedia">
-            <div class="svcFigure" aria-label="Image entrées et sorties">
-              <img src="Illustration-Entrees-Sorties-CE-min.webp" alt="Entrées et sorties" loading="lazy" onerror="this.style.display='none'; this.parentNode.querySelector('.fallback').style.display='grid';">
-              <div class="svcBadge"><span class="bDot" aria-hidden="true"></span>Opérationnel</div>
-              <div class="fallback" style="display:none;position:absolute;inset:0;place-items:center;color:rgba(13,15,22,.55);font-weight:900;font-size:12px;letter-spacing:.6px;text-transform:uppercase;background:rgba(255,255,255,.65);">
-                IMAGE — Entrées / Sorties
-              </div>
-            </div>
+            <figure>
+              <!-- <img src="images/checkin.webp" alt="Entrées et sorties"> -->
+              <div class="ph">IMAGE — Entrées / Sorties</div>
+            </figure>
           </div>
           <div class="svcBody">
-            <div class="pill"><span class="pDot" aria-hidden="true"></span>Opérationnel</div>
+            <div class="pill"><span class="pDot" aria-hidden="true"></span>Gagnez du temps</div>
             <h3>Entrées & sorties</h3>
-            <p>
-              Accueil, remise des clés, contrôles, coordination : on gère la logistique pour une arrivée fluide
-              et un départ sans stress.
-            </p>
+            <p>Accueil, remise des clés, contrôles, coordination : tout est géré.</p>
             <div class="svcList">
-              <span class="chip"><i>✓</i>Procédure fiable</span>
-              <span class="chip"><i>✓</i>Contrôle logement</span>
+              <span class="chip"><i>✓</i>Check-in/out</span>
+              <span class="chip"><i>✓</i>Contrôle</span>
               <span class="chip"><i>✓</i>Coordination</span>
             </div>
             <div class="svcActions">
-              <a class="linkBtn primary" href="contact.html">Parler à Gamloc</a>
-              <a class="linkBtn" href="confier-mon-bien.html">Voir les conditions</a>
+              <a class="linkBtn primary" href="confier-mon-bien.html">Confier mon bien</a>
+              <a class="linkBtn" href="contact.html">Parler du logement</a>
             </div>
           </div>
         </article>
 
-        <!-- 3 -->
         <article class="svc reveal">
           <div class="svcMedia">
-            <div class="svcFigure" aria-label="Image ménage et linge">
-              <img src="Illustration-Nettoyage-et-gestion-du-linge-OF-CE-min.webp" alt="Ménage et linge" loading="lazy" onerror="this.style.display='none'; this.parentNode.querySelector('.fallback').style.display='grid';">
-              <div class="svcBadge"><span class="bDot" aria-hidden="true"></span>Standard premium</div>
-              <div class="fallback" style="display:none;position:absolute;inset:0;place-items:center;color:rgba(13,15,22,.55);font-weight:900;font-size:12px;letter-spacing:.6px;text-transform:uppercase;background:rgba(255,255,255,.65);">
-                IMAGE — Ménage / Linge
-              </div>
-            </div>
+            <figure>
+              <!-- <img src="images/menage.webp" alt="Ménage et linge"> -->
+              <div class="ph">IMAGE — Ménage / Linge</div>
+            </figure>
           </div>
           <div class="svcBody">
-            <div class="pill"><span class="pDot" aria-hidden="true"></span>Standard premium</div>
+            <div class="pill"><span class="pDot" aria-hidden="true"></span>Gagnez du temps</div>
             <h3>Ménage & linge</h3>
-            <p>
-              Propreté constante, linge, réassort et finitions : ce sont les détails qui font les 5 étoiles.
-            </p>
+            <p>Standard hôtelier, linge, réassort et finitions : les 5 étoiles.</p>
             <div class="svcList">
-              <span class="chip"><i>✓</i>Standard hôtelier</span>
+              <span class="chip"><i>✓</i>Propreté</span>
+              <span class="chip"><i>✓</i>Linge</span>
               <span class="chip"><i>✓</i>Réassort</span>
-              <span class="chip"><i>✓</i>Finitions</span>
             </div>
             <div class="svcActions">
-              <a class="linkBtn primary" href="contact.html">Estimation</a>
+              <a class="linkBtn primary" href="confier-mon-bien.html">Confier mon bien</a>
               <a class="linkBtn" href="avis.html">Voir les avis</a>
             </div>
           </div>
         </article>
 
-        <!-- 4 -->
         <article class="svc reveal">
           <div class="svcMedia">
-            <div class="svcFigure" aria-label="Image optimisation">
-              <img src="illustration-Creation-dune-annonce-optimisee-OF-CE-min.webp" alt="Annonce et optimisation" loading="lazy" onerror="this.style.display='none'; this.parentNode.querySelector('.fallback').style.display='grid';">
-              <div class="svcBadge"><span class="bDot" aria-hidden="true"></span>Performance</div>
-              <div class="fallback" style="display:none;position:absolute;inset:0;place-items:center;color:rgba(13,15,22,.55);font-weight:900;font-size:12px;letter-spacing:.6px;text-transform:uppercase;background:rgba(255,255,255,.65);">
-                IMAGE — Optimisation
-              </div>
-            </div>
+            <figure>
+              <!-- <img src="images/maintenance.webp" alt="Maintenance"> -->
+              <div class="ph">IMAGE — Maintenance</div>
+            </figure>
           </div>
           <div class="svcBody">
-            <div class="pill"><span class="pDot" aria-hidden="true"></span>Performance</div>
-            <h3>Annonce, prix & calendrier</h3>
-            <p>
-              Optimisation de l’annonce, tarification dynamique et gestion du calendrier pour améliorer la visibilité
-              et augmenter la rentabilité.
-            </p>
+            <div class="pill"><span class="pDot" aria-hidden="true"></span>Gagnez du temps</div>
+            <h3>Maintenance</h3>
+            <p>Gestion des petits incidents et interventions rapides.</p>
             <div class="svcList">
-              <span class="chip"><i>✓</i>Tarifs ajustés</span>
-              <span class="chip"><i>✓</i>Calendrier maîtrisé</span>
-              <span class="chip"><i>✓</i>Visibilité</span>
+              <span class="chip"><i>✓</i>Petits bobos</span>
+              <span class="chip"><i>✓</i>Réactivité</span>
+              <span class="chip"><i>✓</i>Suivi</span>
             </div>
             <div class="svcActions">
-              <a class="linkBtn primary" href="contact.html">Demander un devis</a>
-              <a class="linkBtn" href="confier-mon-bien.html">Confier mon bien</a>
+              <a class="linkBtn primary" href="confier-mon-bien.html">Confier mon bien</a>
+              <a class="linkBtn" href="contact.html">Poser une question</a>
             </div>
           </div>
         </article>
-      </div>
-    </section>
 
-    <!-- FAQ -->
-    <section class="wrap faqSection reveal" aria-label="FAQ">
-      <div class="faqHead">
-        <div>
-          <h2>FAQ</h2>
-          <p>Questions fréquemment posées (contenu identique à tes captures).</p>
-        </div>
-      </div>
-
-      <div class="faqGrid" id="faq">
-        <details class="faqItem" data-faq>
-          <summary>
-            <div class="faqIcon" aria-hidden="true"><span>+</span></div>
-            <div class="faqQ">Est-ce que je peux bénéficier de votre service ?</div>
-            <div class="faqChevron" aria-hidden="true">⌄</div>
-          </summary>
-          <div class="faqFill" aria-hidden="true"></div>
-          <div class="faqA">
-            N’hésitez pas à nous contacter, afin de nous rencontrer et de fixer une visite.
-            C’est la manière la plus efficace de vérifier si votre logement répond à nos critères
-            d’éligibilité. Vous trouverez nos coordonnées de contact en bas de cette page, alors à bientôt !
+        <!-- ===== GAGNEZ DE L’ARGENT (index) ===== -->
+        <article class="svc reveal">
+          <div class="svcMedia">
+            <figure>
+              <!-- <img src="images/annonce.webp" alt="Création d’annonce optimisée"> -->
+              <div class="ph">IMAGE — Annonce optimisée</div>
+            </figure>
           </div>
-        </details>
-
-        <details class="faqItem" data-faq>
-          <summary>
-            <div class="faqIcon" aria-hidden="true"><span>+</span></div>
-            <div class="faqQ">De quelle manière mon bien est-il entretenu ?</div>
-            <div class="faqChevron" aria-hidden="true">⌄</div>
-          </summary>
-          <div class="faqFill" aria-hidden="true"></div>
-          <div class="faqA">
-            De manière fréquente, des employés d’entretien sont appelés pour effectuer une vérification des lieux,
-            vérifier que tout est en ordre et garantir que le logement soit dans un état impeccable.
-            C’est l’assurance pour vous d’un bien conservé en excellent état, avec des profits constants à court
-            et à long terme.
+          <div class="svcBody">
+            <div class="pill"><span class="pDot" aria-hidden="true"></span>Gagnez de l’argent</div>
+            <h3>Création d’une annonce optimisée</h3>
+            <p>Présentation, titres, photos : plus de clics → plus de réservations.</p>
+            <div class="svcList">
+              <span class="chip"><i>✓</i>Listing</span>
+              <span class="chip"><i>✓</i>Photos</span>
+              <span class="chip"><i>✓</i>Conversion</span>
+            </div>
+            <div class="svcActions">
+              <a class="linkBtn primary" href="confier-mon-bien.html">Confier mon bien</a>
+              <a class="linkBtn" href="contact.html">Demander une estimation</a>
+            </div>
           </div>
-        </details>
+        </article>
 
-        <details class="faqItem" data-faq>
-          <summary>
-            <div class="faqIcon" aria-hidden="true"><span>+</span></div>
-            <div class="faqQ">Est-ce que vous êtes une agence immobilière ?</div>
-            <div class="faqChevron" aria-hidden="true">⌄</div>
-          </summary>
-          <div class="faqFill" aria-hidden="true"></div>
-          <div class="faqA">
-            Non ! Il n’y a pas de frais d’agence ni de commissions avec nous. La gestion locative est notre
-            responsabilité ; nous louons votre bien afin de le mettre à disposition de nos voyageurs et clientèle
-            professionnels. Que vous ayez loué ou non votre bien, vous recevrez le paiement de votre loyer dans les
-            délais impartis.
+        <article class="svc reveal">
+          <div class="svcMedia">
+            <figure>
+              <!-- <img src="images/referencement.webp" alt="Boost référencement"> -->
+              <div class="ph">IMAGE — Référencement</div>
+            </figure>
           </div>
-        </details>
+          <div class="svcBody">
+            <div class="pill"><span class="pDot" aria-hidden="true"></span>Gagnez de l’argent</div>
+            <h3>Boost de votre référencement</h3>
+            <p>Optimisation Airbnb/Booking pour améliorer la visibilité.</p>
+            <div class="svcList">
+              <span class="chip"><i>✓</i>Visibilité</span>
+              <span class="chip"><i>✓</i>Algorithme</span>
+              <span class="chip"><i>✓</i>Position</span>
+            </div>
+            <div class="svcActions">
+              <a class="linkBtn primary" href="confier-mon-bien.html">Confier mon bien</a>
+              <a class="linkBtn" href="contact.html">Parler perf</a>
+            </div>
+          </div>
+        </article>
 
-        <details class="faqItem" data-faq>
-          <summary>
-            <div class="faqIcon" aria-hidden="true"><span>+</span></div>
-            <div class="faqQ">De quelle manière mes loyers sont assurés ?</div>
-            <div class="faqChevron" aria-hidden="true">⌄</div>
-          </summary>
-          <div class="faqFill" aria-hidden="true"></div>
-          <div class="faqA">
-            Payer votre loyer est notre priorité absolue et notre premier engagement. En régularisant vos loyers,
-            nous garantissons la pérennité de l’entreprise. Alors rassurez-vous, vous venez de trouver votre
-            locataire idéal !
+        <article class="svc reveal">
+          <div class="svcMedia">
+            <figure>
+              <!-- <img src="images/prix.webp" alt="Gestion dynamique des prix"> -->
+              <div class="ph">IMAGE — Prix & Calendrier</div>
+            </figure>
           </div>
-        </details>
+          <div class="svcBody">
+            <div class="pill"><span class="pDot" aria-hidden="true"></span>Gagnez de l’argent</div>
+            <h3>Gestion dynamique des prix & calendrier</h3>
+            <p>Tarifs ajustés selon la demande, saison, événements + règles de séjour.</p>
+            <div class="svcList">
+              <span class="chip"><i>✓</i>Tarifs</span>
+              <span class="chip"><i>✓</i>Calendrier</span>
+              <span class="chip"><i>✓</i>Règles</span>
+            </div>
+            <div class="svcActions">
+              <a class="linkBtn primary" href="confier-mon-bien.html">Confier mon bien</a>
+              <a class="linkBtn" href="contact.html">Voir la rentabilité</a>
+            </div>
+          </div>
+        </article>
 
-        <details class="faqItem" data-faq>
-          <summary>
-            <div class="faqIcon" aria-hidden="true"><span>+</span></div>
-            <div class="faqQ">Quelles sont les distinctions entre un contrat de location traditionnel et le vôtre ?</div>
-            <div class="faqChevron" aria-hidden="true">⌄</div>
-          </summary>
-          <div class="faqFill" aria-hidden="true"></div>
-          <div class="faqA">
-            Comme vous le savez, lors de la location d’un bien immobilier à un particulier, vous vous engagez pour
-            une période temporaire. Une période de préavis de quelques mois est requise pour récupérer votre bien.
-            Notre contrat de location est un contrat exceptionnel entre le propriétaire et notre entreprise.
-            Notre contrat offre la possibilité au locataire et au propriétaire de s’en décharger à tout moment,
-            en respectant un délai de préavis de seulement quelques semaines. Après avoir terminé les périodes de
-            trêve hivernale, voici un bail beaucoup plus souple qui assure une plus grande sécurité aux propriétaires.
+        <!-- ===== “Gestion complète” (tes cartes index) ===== -->
+        <article class="svc reveal">
+          <div class="svcMedia">
+            <figure>
+              <!-- <img src="images/airbnb-booking.webp" alt="Gestion Airbnb & Booking"> -->
+              <div class="ph">IMAGE — Airbnb & Booking</div>
+            </figure>
           </div>
-        </details>
+          <div class="svcBody">
+            <div class="pill"><span class="pDot" aria-hidden="true"></span>Gestion complète</div>
+            <h3>Gestion Airbnb & Booking</h3>
+            <p>Calendriers, messages, arrivée/départ, et expérience voyageurs maîtrisée.</p>
+            <div class="svcList">
+              <span class="chip"><i>✓</i>Plateformes</span>
+              <span class="chip"><i>✓</i>Calendrier</span>
+              <span class="chip"><i>✓</i>Voyageurs</span>
+            </div>
+            <div class="svcActions">
+              <a class="linkBtn primary" href="confier-mon-bien.html">Confier mon bien</a>
+              <a class="linkBtn" href="contact.html">Nous contacter</a>
+            </div>
+          </div>
+        </article>
 
-        <details class="faqItem" data-faq>
-          <summary>
-            <div class="faqIcon" aria-hidden="true"><span>+</span></div>
-            <div class="faqQ">Vais-je perdre mes avantages fiscaux LMNP si je vous loue mon logement via votre bail dérogatoire ?</div>
-            <div class="faqChevron" aria-hidden="true">⌄</div>
-          </summary>
-          <div class="faqFill" aria-hidden="true"></div>
-          <div class="faqA">
-            Et bien non ! Notre bail ne fait pas échec, pour le propriétaire, au bénéfice du régime du loueur en
-            meublé non professionnel de l’article 155 du Code général des impôts. Vous garderez vos avantages LMNP.
-          </div>
-        </details>
       </div>
     </section>
 
@@ -965,7 +770,7 @@
   </main>
 
   <script>
-    // ===== Mobile menu =====
+    // Mobile menu
     const menuBtn = document.getElementById("menuBtn");
     const overlay = document.getElementById("mobileOverlay");
     const menuClose = document.getElementById("menuClose");
@@ -987,10 +792,8 @@
     overlay?.addEventListener("click", (e)=>{ if(e.target === overlay) closeMenu(); });
     window.addEventListener("keydown", (e)=>{ if(e.key === "Escape") closeMenu(); });
 
-    // ===== Reveal on scroll =====
+    // Reveal
     const revealEls = document.querySelectorAll(".reveal");
-    const faqItems = document.querySelectorAll(".faqItem");
-
     const io = new IntersectionObserver((entries)=>{
       entries.forEach(ent=>{
         if(ent.isIntersecting){
@@ -999,36 +802,7 @@
         }
       });
     }, {threshold: 0.12});
-
     revealEls.forEach(el=>io.observe(el));
-
-    const ioFaq = new IntersectionObserver((entries)=>{
-      entries.forEach(ent=>{
-        if(ent.isIntersecting){
-          ent.target.classList.add("is-in");
-          ioFaq.unobserve(ent.target);
-        }
-      });
-    }, {threshold: 0.08});
-
-    faqItems.forEach(el=>ioFaq.observe(el));
-
-    // ===== FAQ behavior: one open at a time + plus/minus =====
-    const faqDetails = document.querySelectorAll("[data-faq]");
-    faqDetails.forEach(d => {
-      d.addEventListener("toggle", () => {
-        // plus/minus icon
-        const icon = d.querySelector(".faqIcon span");
-        if(icon) icon.textContent = d.open ? "−" : "+";
-
-        // close others
-        if(d.open){
-          faqDetails.forEach(other => {
-            if(other !== d) other.open = false;
-          });
-        }
-      });
-    });
   </script>
 </body>
 </html>
