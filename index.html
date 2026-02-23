@@ -1,10 +1,11 @@
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Gamloc Immo — Entreprise de Gestion Locative Airbnb à Nantes</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800;900&display=swap" rel="stylesheet">
 
 <style>
 :root{
@@ -37,6 +38,7 @@ body::after{
   filter:blur(190px);opacity:.22;z-index:-1;
 }
 
+
 header{
   position:fixed;top:0;left:0;width:100%;
   background:var(--headerBlue);
@@ -58,7 +60,7 @@ header::after{
 }
 .logo a{
   text-decoration:none;
-  color:var(--gold2);
+  color:#fff;
   font-weight:900;
   letter-spacing:2px;
   font-size:16px;
@@ -77,6 +79,7 @@ header::after{
 }
 .navlinks a{
   text-decoration:none;color:white;font-size:14px;position:relative;opacity:.96;
+  font-weight:900; 
 }
 .navlinks a::after{
   content:"";position:absolute;left:0;bottom:-8px;height:2px;width:0%;
@@ -85,7 +88,7 @@ header::after{
 }
 .navlinks a:hover::after{width:100%;}
 
-
+/* menu mobile */
 .menuBtn{
   display:none;
   width:46px;height:46px;
@@ -113,7 +116,6 @@ header::after{
 body.menu-open .menuIcon span:nth-child(1){ top:7px; transform: rotate(45deg); }
 body.menu-open .menuIcon span:nth-child(2){ opacity:0; }
 body.menu-open .menuIcon span:nth-child(3){ top:7px; transform: rotate(-45deg); }
-
 
 .mobileOverlay{
   position:fixed;inset:0;
@@ -146,7 +148,6 @@ body.menu-open .mobilePanel{
   transform: translateX(0);
   opacity:1;
 }
-
 .mobileTop{
   display:flex;align-items:center;justify-content:space-between;gap:12px;
   padding:6px 4px 12px 4px;
@@ -175,7 +176,7 @@ body.menu-open .mobilePanel{
   border-radius:16px;
   text-decoration:none;
   color:white;
-  font-weight:850;
+  font-weight:900;
   border:1px solid rgba(255,255,255,.16);
   background:rgba(255,255,255,.06);
   transform: translateY(6px);
@@ -184,7 +185,6 @@ body.menu-open .mobilePanel{
 }
 .mobileLinks a:hover{ background:rgba(255,255,255,.12); border-color:rgba(212,175,55,.35); }
 .mobileLinks a .arrow{ opacity:.85; }
-
 body.menu-open .mobileLinks a{ opacity:1; transform: translateY(0); }
 body.menu-open .mobileLinks li:nth-child(1) a{ transition-delay:.04s; }
 body.menu-open .mobileLinks li:nth-child(2) a{ transition-delay:.07s; }
@@ -203,27 +203,13 @@ body.menu-open .mobileLinks li:nth-child(5) a{ transition-delay:.16s; }
   line-height:1.55;
 }
 
-
+/* ===== HERO ===== */
 .hero{
   padding-top:132px;
   max-width:1200px;margin:auto;
   display:grid;grid-template-columns:1.15fr 1fr;
   gap:56px;align-items:center;
   padding-left:20px;padding-right:20px;
-}
-.badge{
-  display:inline-flex;align-items:center;gap:10px;
-  padding:8px 14px;border-radius:999px;
-  border:1px solid rgba(212,175,55,.45);
-  background:linear-gradient(90deg, rgba(212,175,55,.12), rgba(14,74,166,.10));
-  color:var(--blue2);
-  font-size:12px;
-  margin-bottom:18px;
-}
-.badge .dot{
-  width:8px;height:8px;border-radius:999px;
-  background:linear-gradient(180deg,var(--gold2),var(--gold));
-  box-shadow:0 0 18px rgba(212,175,55,.35);
 }
 h1{
   font-size:58px;
@@ -265,6 +251,7 @@ h1{
   background:#fff;
 }
 
+/* sections/cards */
 .section{max-width:1200px;margin:110px auto;padding:0 20px;}
 .section h2{font-size:38px;margin-bottom:44px;text-align:center;letter-spacing:.2px;color:var(--blue2);}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:28px;}
@@ -287,6 +274,23 @@ h1{
   -webkit-background-clip:text;background-clip:text;color:transparent;
 }
 .card p{color:var(--muted);font-size:14px;line-height:1.65;}
+
+
+.cardMedia{
+  width:100%;
+  height:170px;
+  border-radius:16px;
+  overflow:hidden;
+  border:1px solid var(--stroke);
+  background:#fff;
+  margin-bottom:16px;
+}
+.cardMedia img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
 
 .apart img{
   width:100%;height:230px;object-fit:cover;
@@ -316,7 +320,6 @@ h1{
 }
 .reviewsTop h2{font-size:42px;margin:0 0 10px 0;color:#fff;}
 .reviewsTop p{color:rgba(255,255,255,.78);line-height:1.75;max-width:62ch;}
-
 .ctaRow{margin-top:18px;display:flex;gap:12px;flex-wrap:wrap;}
 .smallBtn{
   display:inline-flex;align-items:center;gap:10px;
@@ -332,12 +335,6 @@ h1{
   border-color:rgba(212,175,55,.55);
   background:linear-gradient(135deg, rgba(212,175,55,.22), rgba(14,74,166,.18));
 }
-
-.airbnbLogo{
-  width:16px;height:16px;display:inline-block;
-  filter: drop-shadow(0 0 10px rgba(212,175,55,.25));
-}
-
 .ratingBox{
   justify-self:end;width:min(420px, 100%);
   border-radius:18px;border:1px solid rgba(255,255,255,.16);
@@ -352,7 +349,6 @@ h1{
 }
 .stars{color:var(--gold2);font-weight:900;}
 .rateMeta{color:rgba(255,255,255,.75);font-size:13px;line-height:1.5;text-align:right;}
-
 .avatarRow{display:flex;align-items:center;margin-top:14px;flex-wrap:wrap;}
 .avatar{
   width:34px;height:34px;border-radius:999px;overflow:hidden;
@@ -363,7 +359,6 @@ h1{
 .avatar img{width:100%;height:100%;object-fit:cover;display:block;}
 .avatar:first-child{margin-left:0;}
 .avatarRow span{margin-left:10px;color:rgba(255,255,255,.80);font-size:13px;}
-
 .reviewsBottom{
   padding:28px;
   background:
@@ -383,7 +378,6 @@ h1{
 }
 .reviewsTitle h3{font-size:28px;margin-bottom:8px;color:#111;}
 .reviewsTitle p{color:rgba(0,0,0,.72);line-height:1.6;font-weight:650;font-size:13px;}
-
 .reviewsCard{
   border-radius:18px;background:rgba(255,255,255,.16);
   border:1px solid rgba(255,255,255,.22);
@@ -420,186 +414,30 @@ h1{
   -webkit-background-clip:text;background-clip:text;color:transparent;
   font-weight:900;
 }
-
 footer{
   margin-top:110px;padding:44px 20px;text-align:center;
   border-top:1px solid var(--stroke);
   color:#6b7280;font-size:14px;
 }
 
+.takeCare{max-width:1200px;margin:110px auto 0;padding:0 20px;}
+.takeCareTitle{text-align:center;font-size:44px;letter-spacing:-.5px;color:var(--blue2);margin:0 0 32px 0;}
+.takeCareTitle em{font-family:"Georgia",serif;font-style:italic;font-weight:500;}
+.tcBlock{display:grid;grid-template-columns:1fr 1.35fr;gap:34px;align-items:start;margin-top:26px;position:relative;}
+.tcBlock.rightLead{grid-template-columns:1.35fr 1fr;}
+.tcLeft{position:relative;padding:10px 0;}
+.tcHeading{font-size:44px;line-height:1.04;color:#0d0f16;margin:0 0 10px 0;}
+.tcDesc{color:var(--muted);line-height:1.7;max-width:44ch;margin-bottom:14px;}
+.tcCards{display:grid;gap:16px;padding:6px 0;}
+.tcCard{display:grid;grid-template-columns:260px 1fr;gap:18px;padding:22px;border-radius:18px;border:1px solid rgba(10,18,40,.10);background:rgba(255,255,255,.68);box-shadow:0 14px 34px rgba(3,7,18,.08);}
+.tcThumb{height:160px;border-radius:14px;border:1px solid rgba(10,18,40,.10);overflow:hidden;}
+.tcThumb img{width:100%;height:100%;object-fit:cover;display:block;}
+.tcBody h4{font-size:14px;margin:0 0 8px 0;color:#0d0f16;}
+.tcBody p{margin:0 0 10px 0;color:var(--muted);font-size:13px;line-height:1.6;}
+.tcMore{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-weight:900;font-size:12px;color:var(--blue2);}
+.tcMore:hover{text-decoration:underline;}
+.tcDivider{margin:50px 0 0 0;}
 
-.takeCare{
-  max-width:1200px;
-  margin:110px auto 0;
-  padding:0 20px;
-}
-.takeCareTitle{
-  text-align:center;
-  font-size:44px;
-  letter-spacing:-.5px;
-  color:var(--blue2);
-  margin:0 0 32px 0;
-}
-.takeCareTitle em{
-  font-family: "Georgia", serif;
-  font-style: italic;
-  font-weight: 500;
-}
-
-.tcBlock{
-  display:grid;
-  grid-template-columns: 1fr 1.35fr;
-  gap:34px;
-  align-items:start;
-  margin-top:26px;
-  position:relative;
-}
-.tcBlock.rightLead{
-  grid-template-columns: 1.35fr 1fr;
-}
-
-.tcLeft{
-  position:relative;
-  padding:10px 0;
-}
-.tcKicker{
-  display:inline-flex;align-items:center;gap:10px;
-  padding:7px 12px;
-  border:1px solid rgba(14,74,166,.18);
-  background:rgba(14,74,166,.05);
-  border-radius:999px;
-  font-weight:800;
-  font-size:12px;
-  color:var(--blue2);
-  margin-bottom:14px;
-}
-.tcKicker .mini{
-  width:10px;height:10px;border-radius:999px;
-  background:linear-gradient(180deg,var(--gold2),var(--gold));
-  box-shadow:0 0 16px rgba(212,175,55,.25);
-}
-.tcHeading{
-  font-size:44px;
-  line-height:1.04;
-  color:#0d0f16;
-  margin:0 0 10px 0;
-}
-.tcDesc{
-  color:var(--muted);
-  line-height:1.7;
-  max-width:44ch;
-  margin-bottom:14px;
-}
-
-.tcArrow{
-  position:absolute;
-  left:0;
-  bottom:-10px;
-  width:180px;
-  height:auto;
-  opacity:.95;
-  pointer-events:none;
-}
-.tcBlock.rightLead .tcArrow{
-  left:auto;
-  right:0;
-  transform: scaleX(-1);
-}
-
-/* cartes */
-.tcCards{
-  display:grid;
-  gap:16px;
-  padding:6px 0;
-}
-.tcCard{
-  display:grid;
-  grid-template-columns: 190px 1fr;
-  gap:18px;
-  padding:18px;
-  border-radius:18px;
-  border:1px solid rgba(10,18,40,.10);
-  background:rgba(255,255,255,.68);
-  box-shadow: 0 14px 34px rgba(3,7,18,.08);
-}
-.tcThumb{
-  height:112px;
-  border-radius:14px;
-  border:1px solid rgba(10,18,40,.10);
-  background:linear-gradient(180deg, rgba(14,74,166,.06), rgba(212,175,55,.05));
-  display:flex;
-  align-items:flex-end;
-  justify-content:flex-start;
-  padding:10px;
-  color:rgba(13,15,22,.55);
-  font-weight:800;
-  font-size:11px;
-}
-.tcBody h4{
-  font-size:14px;
-  margin:0 0 8px 0;
-  color:#0d0f16;
-}
-.tcBody p{
-  margin:0 0 10px 0;
-  color:var(--muted);
-  font-size:13px;
-  line-height:1.6;
-}
-.tcMore{
-  display:inline-flex;
-  align-items:center;
-  gap:8px;
-  text-decoration:none;
-  font-weight:900;
-  font-size:12px;
-  color:var(--blue2);
-}
-.tcMore:hover{ text-decoration:underline; }
-
-.tcDivider{
-  margin:50px 0 0 0;
-}
-
-.tcCard{
-  grid-template-columns: 260px 1fr; 
-  padding:22px;                    
-}
-
-.tcThumb{
-  height:160px;                     
-  overflow:hidden;
-}
-
-.tcThumb img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  display:block;
-}
-
-
-@media(max-width:980px){
-  .takeCareTitle{font-size:36px;}
-  .tcBlock, .tcBlock.rightLead{
-    grid-template-columns:1fr;
-    gap:18px;
-  }
-  .tcHeading{font-size:36px;}
-  .tcArrow{
-    position:relative;
-    left:auto;right:auto;
-    margin-top:10px;
-    width:160px;
-  }
-  .tcBlock.rightLead .tcArrow{
-    transform:none;
-  }
-  .tcCard{
-    grid-template-columns: 1fr;
-  }
-  .tcThumb{height:140px;}
-}
 
 @media(max-width:980px){
   .hero{grid-template-columns:1fr;gap:26px;padding-top:120px;}
@@ -608,6 +446,10 @@ footer{
   .ratingBox{justify-self:start;}
   .reviewsBottomGrid{grid-template-columns:1fr;}
   .section{margin:80px auto;}
+  .tcBlock, .tcBlock.rightLead{grid-template-columns:1fr;gap:18px;}
+  .tcHeading{font-size:36px;}
+  .tcCard{grid-template-columns:1fr;}
+  .tcThumb{height:140px;}
 }
 @media(max-width:820px){
   .navlinks{display:none;}
@@ -626,15 +468,6 @@ footer{
   .reviewsBottom{padding:16px;}
   .card{padding:22px;}
   .apart img{height:200px;}
-}
-
-@media (max-width: 980px){
-  .tcBlock, .tcBlock.rightLead{
-    display:flex;
-    flex-direction:column;
-  }
-  .tcBlock.rightLead .tcLeft{ order: 0; }
-  .tcBlock.rightLead .tcCards{ order: 1; }
 }
 </style>
 </head>
@@ -796,35 +629,27 @@ footer{
   </div>
 </section>
 
+<!-- ON S'OCCUPE DE TOUT (tes images webp déjà ok) -->
 <section class="takeCare" aria-label="On s’occupe de tout">
   <h2 class="takeCareTitle">On s’occupe <em>de tout</em></h2>
 
-
   <div class="tcBlock">
     <div class="tcLeft">
-      
       <h3 class="tcHeading">Gagnez du<br>temps</h3>
       <p class="tcDesc">
         Ne perdez plus de temps avec la gestion quotidienne : messages, entrées et sorties,
         ménage, linge, consommables, et relation voyageurs.
       </p>
-
-    
-  
-        <path d="M10 90 C65 150, 140 150, 200 88" stroke="rgba(212,175,55,.95)" stroke-width="10" stroke-linecap="round"/>
-        <path d="M195 88 L168 78" stroke="rgba(212,175,55,.95)" stroke-width="10" stroke-linecap="round"/>
-        <path d="M195 88 L176 110" stroke="rgba(212,175,55,.95)" stroke-width="10" stroke-linecap="round"/>
-      </svg>
     </div>
 
     <div class="tcCards">
       <div class="tcCard">
-            <div class="tcThumb">
-  <picture>
-    <source srcset="Illustration-Communication-avec-les-voyageurs-CE.webp" type="image/webp">
-    <img src="Illustration-Communication-avec-les-voyageurs-CE.webp" alt="" loading="lazy">
-  </picture>
-</div>
+        <div class="tcThumb">
+          <picture>
+            <source srcset="Illustration-Communication-avec-les-voyageurs-CE.webp" type="image/webp">
+            <img src="Illustration-Communication-avec-les-voyageurs-CE.webp" alt="" loading="lazy">
+          </picture>
+        </div>
         <div class="tcBody">
           <h4>Communication avec les voyageurs</h4>
           <p>Réponses rapides, instructions claires, suivi pendant le séjour.</p>
@@ -834,12 +659,11 @@ footer{
 
       <div class="tcCard">
         <div class="tcThumb">
-  <picture>
-    <source srcset="Illustration-Entrees-Sorties-CE-min.webp" type="image/webp">
-    <img src="Illustration-Entrees-Sorties-CE-min.webp" alt="" loading="lazy">
-  </picture>
-</div>
-
+          <picture>
+            <source srcset="Illustration-Entrees-Sorties-CE-min.webp" type="image/webp">
+            <img src="Illustration-Entrees-Sorties-CE-min.webp" alt="" loading="lazy">
+          </picture>
+        </div>
         <div class="tcBody">
           <h4>Entrées et sorties</h4>
           <p>Accueil, remise des clés, contrôle du logement, coordination.</p>
@@ -848,29 +672,29 @@ footer{
       </div>
 
       <div class="tcCard">
-            <div class="tcThumb">
-  <picture>
-    <source srcset="Illustration-Nettoyage-et-gestion-du-linge-OF-CE-min.webp" type="image/webp">
-    <img src="Illustration-Nettoyage-et-gestion-du-linge-OF-CE-min.webp" alt="" loading="lazy">
-  </picture>
-</div>
+        <div class="tcThumb">
+          <picture>
+            <source srcset="Illustration-Nettoyage-et-gestion-du-linge-OF-CE-min.webp" type="image/webp">
+            <img src="Illustration-Nettoyage-et-gestion-du-linge-OF-CE-min.webp" alt="" loading="lazy">
+          </picture>
+        </div>
         <div class="tcBody">
           <h4>Ménage & linge</h4>
-          <p>Standard hôtelier, linge fourni, réassort et finitions.</p>
+          <p>Ménage après chaque Voyageur, linge fourni, réassort et finitions.</p>
           <a class="tcMore" href="services.html">En savoir plus →</a>
         </div>
       </div>
 
       <div class="tcCard">
-          <div class="tcThumb">
-  <picture>
-    <source srcset="Illustration-Maintenance-OF-CE-min.webp" type="image/webp">
-    <img src="Illustration-Maintenance-OF-CE-min.webp" alt="" loading="lazy">
-  </picture>
-</div>
+        <div class="tcThumb">
+          <picture>
+            <source srcset="Illustration-Maintenance-OF-CE-min.webp" type="image/webp">
+            <img src="Illustration-Maintenance-OF-CE-min.webp" alt="" loading="lazy">
+          </picture>
+        </div>
         <div class="tcBody">
           <h4>Maintenance</h4>
-          <p>Gestion des petits incidents, fuites, bobos, interventions rapides.</p>
+          <p>Gestion des petits incidents, fuites, interventions rapides.</p>
           <a class="tcMore" href="services.html">En savoir plus →</a>
         </div>
       </div>
@@ -879,16 +703,15 @@ footer{
 
   <div class="tcDivider"></div>
 
-
   <div class="tcBlock rightLead">
     <div class="tcCards">
       <div class="tcCard">
-         <div class="tcThumb">
-  <picture>
-    <source srcset="illustration-Creation-dune-annonce-optimisee-OF-CE-min.webp" type="image/webp">
-    <img src="illustration-Creation-dune-annonce-optimisee-OF-CE-min.webp" alt="" loading="lazy">
-  </picture>
-</div>
+        <div class="tcThumb">
+          <picture>
+            <source srcset="illustration-Creation-dune-annonce-optimisee-OF-CE-min.webp" type="image/webp">
+            <img src="illustration-Creation-dune-annonce-optimisee-OF-CE-min.webp" alt="" loading="lazy">
+          </picture>
+        </div>
         <div class="tcBody">
           <h4>Création d’une annonce optimisée</h4>
           <p>Présentation, photos, titres : plus de clics → plus de réservations.</p>
@@ -897,12 +720,12 @@ footer{
       </div>
 
       <div class="tcCard">
-         <div class="tcThumb">
-  <picture>
-    <source srcset="Illustration-Boost-de-votre-referencemen-OF-CE-min.webp" type="image/webp">
-    <img src="Illustration-Boost-de-votre-referencemen-OF-CE-min.webp" alt="" loading="lazy">
-  </picture>
-</div>
+        <div class="tcThumb">
+          <picture>
+            <source srcset="Illustration-Boost-de-votre-referencemen-OF-CE-min.webp" type="image/webp">
+            <img src="Illustration-Boost-de-votre-referencemen-OF-CE-min.webp" alt="" loading="lazy">
+          </picture>
+        </div>
         <div class="tcBody">
           <h4>Boost de votre référencement</h4>
           <p>Optimisation Airbnb/Booking pour améliorer la visibilité de l’annonce.</p>
@@ -911,12 +734,12 @@ footer{
       </div>
 
       <div class="tcCard">
-           <div class="tcThumb">
-  <picture>
-    <source srcset="Illustration-Gestion-dynamique-des-prix-et-calendrier-OF-CE-min.webp" type="image/webp">
-    <img src="Illustration-Gestion-dynamique-des-prix-et-calendrier-OF-CE-min.webp" alt="" loading="lazy">
-  </picture>
-</div>
+        <div class="tcThumb">
+          <picture>
+            <source srcset="Illustration-Gestion-dynamique-des-prix-et-calendrier-OF-CE-min.webp" type="image/webp">
+            <img src="Illustration-Gestion-dynamique-des-prix-et-calendrier-OF-CE-min.webp" alt="" loading="lazy">
+          </picture>
+        </div>
         <div class="tcBody">
           <h4>Gestion dynamique des prix & calendrier</h4>
           <p>Tarifs ajustés selon la demande, saison, événements + règles de séjour.</p>
@@ -926,36 +749,48 @@ footer{
     </div>
 
     <div class="tcLeft">
- 
       <h3 class="tcHeading">Gagnez de<br>l’argent</h3>
       <p class="tcDesc">
         Optimisation, prix, calendrier : une stratégie qui améliore la visibilité,
         les réservations et la rentabilité.
       </p>
-
-    
-        <path d="M10 90 C65 150, 140 150, 200 88" stroke="rgba(212,175,55,.95)" stroke-width="10" stroke-linecap="round"/>
-        <path d="M195 88 L168 78" stroke="rgba(212,175,55,.95)" stroke-width="10" stroke-linecap="round"/>
-        <path d="M195 88 L176 110" stroke="rgba(212,175,55,.95)" stroke-width="10" stroke-linecap="round"/>
-      </svg>
     </div>
   </div>
 </section>
+
 
 <section class="section">
   <h2>Une gestion complète</h2>
   <div class="grid">
     <a class="card" href="services.html">
+      <div class="cardMedia">
+        <picture>
+          <source srcset="1444x920_the-airbnb-app-and-booking-com-app-are-being-displayed-on-a-smartphone-screen-on-november-28-2024-yassine-mahjoub-sipa-mahjoubyassine-by2f0830-credit-yassine-mahjoub-sipa-2411281412.webp" type="image/webp">
+          <img src="gestion-airbnb.webp" alt="Gestion Airbnb & Booking" loading="lazy">
+        </picture>
+      </div>
       <h3>Gestion Airbnb & Booking</h3>
       <p>Calendriers, messages, arrivée/départ, et expérience voyageurs maîtrisée.</p>
     </a>
 
     <a class="card" href="services.html">
+      <div class="cardMedia">
+        <picture>
+          <source srcset="Illustration-Nettoyage-et-gestion-du-linge-OF-CE-min.webp" type="image/webp">
+          <img src="Illustration-Nettoyage-et-gestion-du-linge-OF-CE-min.webp" alt="Ménage professionnel" loading="lazy">
+        </picture>
+      </div>
       <h3>Ménage professionnel</h3>
-      <p>Standard hôtelier : propreté constante, linge, réassort et finitions.</p>
+      <p>Propreté constante, linge, réassort et finitions.</p>
     </a>
 
     <a class="card" href="services.html">
+      <div class="cardMedia">
+        <picture>
+          <source srcset="illustration-Creation-dune-annonce-optimisee-OF-CE-min.webp" type="image/webp">
+          <img src="optimisation-prix.webp" alt="Optimisation & prix" loading="lazy">
+        </picture>
+      </div>
       <h3>Optimisation & prix</h3>
       <p>Stratégie tarifaire + présentation : plus de réservations, meilleurs revenus.</p>
     </a>
@@ -988,21 +823,40 @@ footer{
   </div>
 </section>
 
+
 <section class="section">
   <h2>Propriétaire ?</h2>
 
   <div class="grid">
     <a class="card" href="confier-mon-bien.html">
+      <div class="cardMedia">
+        <picture>
+          <source srcset="nouveau-proprietaire-a-quel-moment-avez-vous-les-cles-de-chez-vous-3d62275f6db87762551edec4df24c95a.jpeg" type="image/webp">
+          <img src="confier-bien.webp" alt="Confier mon bien" loading="lazy">
+        </picture>
+      </div>
       <h3>Confier mon bien</h3>
       <p>On gère l’opérationnel. Vous gardez la performance et la tranquillité.</p>
     </a>
 
     <a class="card" href="https://www.airbnb.fr/users/profile/1470707298093313243?previous_page_name=PdpHomeMarketplace">
+      <div class="cardMedia">
+        <picture>
+          <source srcset="icon-256x256.png" type="image/webp">
+          <img src="avis.webp" alt="Nos avis" loading="lazy">
+        </picture>
+      </div>
       <h3>Nos avis</h3>
       <p>Qualité constante, communication rapide, expérience premium.</p>
     </a>
 
     <a class="card" href="contact.html">
+      <div class="cardMedia">
+        <picture>
+          <source srcset="7783981-prise-de-contact-client-avec-un-agent-marketing-vectoriel.jpg" type="image/webp">
+          <img src="contact.webp" alt="Contact" loading="lazy">
+        </picture>
+      </div>
       <h3>Contact</h3>
       <p>Une question, un devis, une demande ? On répond rapidement.</p>
     </a>
