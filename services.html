@@ -34,15 +34,16 @@
     .wrap{max-width:1200px;margin:0 auto;padding:0 20px;}
     .sr-only{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;}
 
+    /* subtle glow */
     body::before{
       content:"";position:fixed;top:-220px;left:-220px;width:720px;height:720px;
       background:radial-gradient(circle, rgba(244,191,19,.30), transparent 68%);
-      filter:blur(170px);opacity:.16;z-index:-1;
+      filter:blur(170px);opacity:.18;z-index:-1;
     }
     body::after{
       content:"";position:fixed;bottom:-240px;right:-240px;width:680px;height:680px;
       background:radial-gradient(circle, rgba(14,74,166,.28), transparent 68%);
-      filter:blur(190px);opacity:.16;z-index:-1;
+      filter:blur(190px);opacity:.18;z-index:-1;
     }
 
     /* ===== Header ===== */
@@ -55,7 +56,7 @@
     }
     header::after{
       content:"";position:absolute;bottom:0;left:50%;transform:translateX(-50%);
-      width:min(820px, 84%);
+      width:min(920px, 92%);
       height:1px;
       background:linear-gradient(90deg, transparent, var(--yellow), rgba(255,255,255,.65), transparent);
       opacity:.85;
@@ -95,7 +96,7 @@
     .navlinks a.active::after{width:100%;}
     .navlinks a.active{opacity:1;}
 
-    /* Mobile menu btn */
+    /* Mobile menu button */
     .menuBtn{
       display:none;
       width:46px;height:46px;
@@ -115,6 +116,7 @@
     .menuIcon span:nth-child(1){ top:0; }
     .menuIcon span:nth-child(2){ top:7px; opacity:.95; }
     .menuIcon span:nth-child(3){ top:14px; }
+
     body.menu-open .menuIcon span:nth-child(1){ top:7px; transform: rotate(45deg); }
     body.menu-open .menuIcon span:nth-child(2){ opacity:0; }
     body.menu-open .menuIcon span:nth-child(3){ top:7px; transform: rotate(-45deg); }
@@ -166,13 +168,13 @@
       transform: translateY(6px);opacity:0;
       transition: opacity .25s ease, transform .25s ease, background .18s ease, border-color .18s ease;
     }
-    .mobileLinks a:hover{ background:rgba(255,255,255,.12); border-color:rgba(244,191,19,.35); }
     body.menu-open .mobileLinks a{opacity:1;transform: translateY(0);}
     body.menu-open .mobileLinks li:nth-child(1) a{ transition-delay:.04s; }
     body.menu-open .mobileLinks li:nth-child(2) a{ transition-delay:.07s; }
     body.menu-open .mobileLinks li:nth-child(3) a{ transition-delay:.10s; }
     body.menu-open .mobileLinks li:nth-child(4) a{ transition-delay:.13s; }
     body.menu-open .mobileLinks li:nth-child(5) a{ transition-delay:.16s; }
+
     .mobileHint{
       margin-top:14px;
       padding:12px 14px;border-radius:16px;
@@ -182,15 +184,18 @@
       font-size:12px;line-height:1.55;
     }
 
-    /* ===== Page top / Hero ===== */
+    /* ===== Page top ===== */
     .pageTop{padding-top:126px;}
+
+    /* ===== HERO (centered properly on desktop) ===== */
     .hero{
-      padding:42px 0 18px;
+      padding:46px 0 18px;
       display:grid;
       grid-template-columns: 1.15fr 1fr;
       gap:34px;
       align-items:center;
     }
+    .heroLeft{max-width:600px;} /* ✅ fixes the “all left” feel */
     .kicker{
       display:inline-flex;align-items:center;gap:10px;
       padding:8px 14px;border-radius:999px;
@@ -217,7 +222,7 @@
       line-height:1.85;
       max-width:62ch;
       font-size:15px;
-      font-weight:650;
+      font-weight:600;
       margin-bottom:18px;
     }
     .hl{
@@ -229,7 +234,7 @@
     }
     .ctaRow{display:flex;gap:12px;flex-wrap:wrap;}
     .btn{
-      display:inline-flex;align-items:center;gap:10px;
+      display:inline-flex;align-items:center;justify-content:center;gap:10px;
       padding:14px 18px;border-radius:999px;
       border:1px solid rgba(10,18,40,.12);
       font-weight:900;font-size:13px;
@@ -263,6 +268,8 @@
       min-height:260px;
       display:grid;
       place-items:center;
+      max-width:520px;     /* ✅ keeps nice balance */
+      justify-self:end;    /* ✅ aligns card neatly */
     }
     .heroCard::after{
       content:"";
@@ -299,41 +306,40 @@
       opacity:.9;
     }
 
-    /* ===== Services ===== */
-    .section{margin:70px 0;}
+    /* ===== Sections ===== */
+    .section{margin:76px 0;}
     .sectionTitle{
       text-align:center;
       font-size:40px;
       letter-spacing:-.7px;
       color:var(--blue2);
-      margin-bottom:18px;
+      margin-bottom:14px;
       font-weight:900;
     }
     .sectionSub{
       text-align:center;
       color:var(--muted);
-      max-width:80ch;
+      max-width:78ch;
       margin:0 auto 34px;
       line-height:1.85;
       font-size:15px;
-      font-weight:650;
+      font-weight:600;
     }
 
+    /* ===== Services (proper image format) ===== */
     .svcGrid{display:grid;grid-template-columns:1fr;gap:18px;}
 
     .svc{
       border-radius:28px;
       border:1px solid rgba(10,18,40,.10);
-      background:rgba(255,255,255,.76);
+      background:rgba(255,255,255,.78);
       box-shadow: var(--softShadow);
       overflow:hidden;
       display:grid;
-      grid-template-columns: 1.08fr 1fr;
-      min-height:320px; /* plus grand & “premium” */
-      position:relative;
-      isolation:isolate;
+      grid-template-columns: 1.05fr 1fr;
+      min-height:320px;
     }
-    .svc:nth-child(even){grid-template-columns: 1fr 1.08fr;}
+    .svc:nth-child(even){grid-template-columns: 1fr 1.05fr;}
 
     .svcMedia{
       position:relative;
@@ -345,48 +351,42 @@
       display:grid;
       place-items:center;
       padding:18px;
-      min-height:320px;
     }
     .svc:nth-child(even) .svcMedia{border-right:none;border-left:1px solid rgba(10,18,40,.08);}
 
-    /* ✅ BON FORMAT IMAGE (WEBP OK) */
-    .mediaFrame{
+    /* ✅ correct “format” = fixed ratio container + cover image */
+    .svcFigure{
       width:100%;
-      height:100%;
       border-radius:20px;
       overflow:hidden;
       border:1px solid rgba(10,18,40,.10);
       box-shadow: 0 18px 44px rgba(3,7,18,.12);
       background:#fff;
-      aspect-ratio: 16 / 10; /* rend cohérent sur desktop */
+      aspect-ratio: 16 / 10;   /* ✅ change if you want (16/9, 4/3, etc.) */
+      position:relative;
     }
-    .mediaFrame img{
-      width:100%;
-      height:100%;
+    .svcFigure img{
+      position:absolute;inset:0;
+      width:100%;height:100%;
+      object-fit:cover;
       display:block;
-      object-fit:cover;        /* IMPORTANT */
-      object-position:center;
-      background:#fff;
-      transform: scale(1.02);
-      transition: transform .6s var(--ease), filter .6s var(--ease);
     }
-    .svc:hover .mediaFrame img{ transform: scale(1.06); filter: saturate(1.06) contrast(1.02); }
-
-    /* fallback placeholder */
-    .ph{
-      width:100%;
-      height:100%;
-      min-height:240px;
-      border-radius:20px;
-      border:1px dashed rgba(10,18,40,.18);
-      background:rgba(255,255,255,.55);
-      display:grid;
-      place-items:center;
-      color:rgba(13,15,22,.55);
+    .svcBadge{
+      position:absolute;left:14px;top:14px;
+      display:inline-flex;align-items:center;gap:10px;
+      padding:8px 12px;border-radius:999px;
+      background:rgba(255,255,255,.82);
+      border:1px solid rgba(10,18,40,.10);
       font-weight:900;
       font-size:12px;
-      letter-spacing:.6px;
-      text-transform:uppercase;
+      color:var(--blue2);
+      box-shadow: 0 10px 24px rgba(3,7,18,.08);
+      backdrop-filter: blur(8px);
+    }
+    .svcBadge .bDot{
+      width:9px;height:9px;border-radius:999px;
+      background:linear-gradient(180deg,var(--yellow2),var(--yellow));
+      box-shadow:0 0 14px rgba(244,191,19,.25);
     }
 
     .svcBody{
@@ -418,22 +418,22 @@
     .svcBody p{
       color:var(--muted);
       line-height:1.9;
-      font-weight:650;
+      font-weight:600;
       margin-bottom:14px;
-      max-width:66ch;
+      max-width:68ch;
     }
     .svcList{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:14px;}
     .chip{
       display:inline-flex;align-items:center;gap:8px;
-      padding:8px 10px;border-radius:999px;
+      padding:9px 11px;border-radius:999px;
       border:1px solid rgba(10,18,40,.10);
-      background:rgba(255,255,255,.72);
+      background:rgba(255,255,255,.75);
       font-size:12px;
       font-weight:900;
       color:rgba(13,15,22,.78);
     }
     .chip i{
-      width:18px;height:18px;border-radius:999px;
+      width:20px;height:20px;border-radius:999px;
       display:inline-grid;place-items:center;
       background:rgba(244,191,19,.20);
       border:1px solid rgba(244,191,19,.35);
@@ -443,7 +443,6 @@
       line-height:1;
       font-size:12px;
     }
-
     .svcActions{display:flex;gap:10px;flex-wrap:wrap;margin-top:4px;}
     .linkBtn{
       display:inline-flex;align-items:center;gap:10px;
@@ -460,178 +459,159 @@
       color:var(--blue2);
     }
 
-    /* ===== FAQ (nouveau style “conciergerie premium”, plus sophistiqué) ===== */
+    /* ===== FAQ (more “conciergelite-like”: clean, premium, fluid) ===== */
     .faqSection{
-      margin:90px 0 100px;
-      border-radius:34px;
+      margin:88px 0 106px;
+      border-radius:30px;
       border:1px solid rgba(10,18,40,.10);
       background:
-        radial-gradient(1100px 520px at 10% 0%, rgba(244,191,19,.12), transparent 62%),
-        radial-gradient(1100px 520px at 90% 0%, rgba(14,74,166,.12), transparent 62%),
-        linear-gradient(180deg, rgba(255,255,255,.80), rgba(255,255,255,.66));
+        radial-gradient(1200px 520px at 12% 0%, rgba(244,191,19,.10), transparent 60%),
+        radial-gradient(1200px 520px at 92% 0%, rgba(14,74,166,.10), transparent 60%),
+        linear-gradient(180deg, rgba(255,255,255,.80), rgba(255,255,255,.70));
       box-shadow: var(--softShadow);
       overflow:hidden;
-      position:relative;
-    }
-    .faqSection::before{
-      content:"";
-      position:absolute;inset:-2px;
-      background:linear-gradient(120deg, rgba(244,191,19,.25), rgba(14,74,166,.18), rgba(244,191,19,.18));
-      opacity:.22;
-      filter: blur(40px);
-      pointer-events:none;
     }
 
     .faqHead{
-      position:relative;
-      padding:28px 24px 18px;
+      padding:26px 24px;
       border-bottom:1px solid rgba(10,18,40,.08);
-      display:grid;
-      grid-template-columns: 1.1fr 1fr;
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-end;
       gap:18px;
-      align-items:end;
+      flex-wrap:wrap;
     }
     .faqHead h2{
-      font-size:44px;
-      letter-spacing:-.9px;
+      font-size:42px;
+      letter-spacing:-.8px;
       color:var(--blue2);
       font-weight:900;
-      line-height:1.02;
+      line-height:1.05;
     }
     .faqHead p{
       color:var(--muted);
-      line-height:1.85;
+      line-height:1.75;
       font-weight:650;
-      max-width:78ch;
-      justify-self:end;
-      text-align:right;
+      max-width:70ch;
+      padding-bottom:4px;
     }
 
-    .faqList{
-      position:relative;
-      padding:16px 16px 22px;
+    .faqGrid{
       display:grid;
+      grid-template-columns: 1fr;
       gap:12px;
+      padding:16px;
     }
 
-    .faqItem{
+    /* item container */
+    details.faqItem{
       border-radius:22px;
       border:1px solid rgba(10,18,40,.10);
-      background:rgba(255,255,255,.84);
-      box-shadow: 0 14px 30px rgba(3,7,18,.06);
+      background:rgba(255,255,255,.82);
+      box-shadow: 0 10px 26px rgba(3,7,18,.06);
       overflow:hidden;
-      transform: translateY(10px);
+      transform: translateY(8px);
       opacity:0;
-      transition: transform .7s var(--ease), opacity .7s var(--ease), border-color .25s var(--ease), box-shadow .25s var(--ease);
-      position:relative;
+      transition: transform .6s var(--ease), opacity .6s var(--ease), box-shadow .18s var(--ease);
     }
-    .faqItem.is-in{transform: translateY(0);opacity:1;}
-    .faqItem:hover{
-      border-color: rgba(244,191,19,.30);
-      box-shadow: 0 18px 44px rgba(3,7,18,.08);
-    }
+    details.faqItem.is-in{transform: translateY(0);opacity:1;}
+    details.faqItem[open]{box-shadow: 0 18px 40px rgba(3,7,18,.09);}
 
-    .faqBtn{
-      width:100%;
-      border:none;
-      background:transparent;
+    /* summary row */
+    details.faqItem summary{
+      list-style:none;
       cursor:pointer;
-      text-align:left;
       padding:18px 18px;
       display:grid;
-      grid-template-columns: 1fr 52px;
-      gap:12px;
+      grid-template-columns: 52px 1fr 44px;
+      gap:14px;
       align-items:center;
+      user-select:none;
     }
+    details.faqItem summary::-webkit-details-marker{display:none;}
 
-    .faqTitle{
-      display:flex;
-      align-items:center;
-      gap:12px;
-      font-weight:900;
-      color:#0d0f16;
-      letter-spacing:-.2px;
-      font-size:16px;
-    }
-
-    /* petite barre premium à gauche */
-    .faqTitle::before{
-      content:"";
-      width:10px;height:10px;border-radius:999px;
-      background:linear-gradient(180deg,var(--yellow2),var(--yellow));
-      box-shadow:0 0 18px rgba(244,191,19,.22);
-      flex:0 0 auto;
-    }
-
-    .faqMeta{
-      font-size:12px;
-      font-weight:900;
-      color:rgba(13,15,22,.55);
-      margin-top:3px;
-    }
-
-    /* bouton rond + rotation */
-    .faqToggle{
+    .faqIcon{
       width:52px;height:52px;border-radius:18px;
       display:grid;place-items:center;
-      background:linear-gradient(180deg, rgba(19,42,175,.10), rgba(19,42,175,.05));
-      border:1px solid rgba(19,42,175,.16);
+      background:
+        radial-gradient(120px 120px at 30% 30%, rgba(244,191,19,.35), transparent 60%),
+        linear-gradient(180deg, rgba(19,42,175,.12), rgba(19,42,175,.06));
+      border:1px solid rgba(19,42,175,.18);
       position:relative;
       overflow:hidden;
-      transition: transform .5s var(--ease), background .25s var(--ease), border-color .25s var(--ease);
     }
-    .faqToggle::after{
+    .faqIcon::after{
       content:"";
       position:absolute;inset:-40%;
-      background:radial-gradient(circle, rgba(244,191,19,.34), transparent 60%);
-      filter: blur(16px);
+      background:radial-gradient(circle, rgba(244,191,19,.35), transparent 60%);
+      filter: blur(18px);
       opacity:.55;
-      transform: translateX(-18px);
+      transform: translateX(-16px);
       transition: transform .55s var(--ease);
     }
-    .faqIcon{
+    details.faqItem[open] .faqIcon::after{transform: translateX(16px);}
+    .faqIcon span{
       position:relative;z-index:1;
-      width:18px;height:18px;
-      border-radius:999px;
-      border:2px solid rgba(13,15,22,.65);
+      width:22px;height:22px;border-radius:999px;
+      border:2px solid rgba(13,15,22,.70);
       display:grid;place-items:center;
       font-weight:900;
       font-size:14px;
       line-height:1;
       color:rgba(13,15,22,.75);
-      background:rgba(255,255,255,.50);
+      transition: transform .35s var(--ease);
     }
+    details.faqItem[open] .faqIcon span{transform: rotate(90deg);}
 
-    .faqPanel{
-      max-height:0;
-      overflow:hidden;
-      transition: max-height .6s var(--ease);
+    .faqQ{
+      font-size:16px;
+      font-weight:900;
+      letter-spacing:-.2px;
+      color:var(--blue2);
+      line-height:1.35;
     }
-    .faqInner{
-      padding:0 18px 18px 18px;
-      color:rgba(13,15,22,.78);
+    .faqChevron{
+      width:44px;height:44px;border-radius:16px;
+      display:grid;place-items:center;
+      background:rgba(244,191,19,.14);
+      border:1px solid rgba(244,191,19,.28);
+      transition: transform .45s var(--ease), background .2s var(--ease);
+      font-weight:900;
+      color:#0b0d12;
+    }
+    details.faqItem[open] .faqChevron{transform: rotate(180deg); background:rgba(244,191,19,.22);}
+
+    /* animated content */
+    .faqA{
+      padding:0 18px 18px 84px;
+      color:rgba(13,15,22,.80);
       line-height:1.95;
       font-weight:650;
       font-size:15px;
     }
-    .faqInner p{margin-top:12px;}
-    .faqInner p:first-child{margin-top:0;}
 
-    /* état ouvert */
-    .faqItem[aria-expanded="true"] .faqToggle{
-      transform: rotate(180deg);
-      border-color: rgba(244,191,19,.35);
-      background:linear-gradient(180deg, rgba(244,191,19,.18), rgba(19,42,175,.06));
+    /* nice divider line that “fills” when open */
+    .faqFill{
+      height:2px;
+      margin:0 18px 0 84px;
+      background:linear-gradient(90deg, rgba(244,191,19,.95), rgba(14,74,166,.35));
+      transform: scaleX(0);
+      transform-origin:left;
+      transition: transform .55s var(--ease);
+      opacity:.85;
     }
-    .faqItem[aria-expanded="true"] .faqToggle::after{transform: translateX(18px);}
-    .faqItem[aria-expanded="true"] .faqIcon{content:"";}
+    details.faqItem[open] .faqFill{transform: scaleX(1);}
 
-    /* reveal */
-    .reveal{opacity:0;transform: translateY(14px);transition: opacity .7s var(--ease), transform .7s var(--ease);}
+    /* ===== Reveal animation ===== */
+    .reveal{
+      opacity:0;
+      transform: translateY(14px);
+      transition: opacity .7s var(--ease), transform .7s var(--ease);
+    }
     .reveal.in{opacity:1;transform: translateY(0);}
 
     footer{
-      margin-top:80px;
+      margin-top:70px;
       padding:44px 20px;
       text-align:center;
       border-top:1px solid var(--stroke);
@@ -643,33 +623,31 @@
     /* ===== Responsive ===== */
     @media(max-width:980px){
       .hero{grid-template-columns:1fr;gap:18px;}
+      .heroLeft{max-width:none;}
       h1{font-size:42px;}
-      .heroCard{min-height:220px;}
+      .heroCard{min-height:220px;justify-self:stretch;max-width:none;}
       .sectionTitle{font-size:34px;}
-      .svc{grid-template-columns:1fr;min-height:auto;}
+      .faqHead h2{font-size:34px;}
+      .svc{grid-template-columns:1fr;min-height:unset;}
       .svc:nth-child(even){grid-template-columns:1fr;}
-      .svcMedia{border-right:none;border-left:none;border-bottom:1px solid rgba(10,18,40,.08);min-height:auto;}
+      .svcMedia{border-right:none;border-left:none;border-bottom:1px solid rgba(10,18,40,.08);}
       .svc:nth-child(even) .svcMedia{border-left:none;border-bottom:1px solid rgba(10,18,40,.08);}
-      .mediaFrame{aspect-ratio: 16 / 9;}
-      .faqHead{grid-template-columns:1fr;}
-      .faqHead p{text-align:left;justify-self:start;}
-      .faqHead h2{font-size:36px;}
+      .faqA{padding-left:18px;}
+      .faqFill{margin-left:18px;}
     }
     @media(max-width:820px){
       .navlinks{display:none;}
       .menuBtn{display:inline-block;}
       .nav{padding:12px 14px;}
-      header::after{width:86%;}
+      header::after{width:90%;}
     }
     @media(max-width:560px){
       .wrap{padding:0 14px;}
-      .btn{width:100%;justify-content:center;}
+      .btn{width:100%;}
       .ctaRow{gap:10px;}
-      .svcBody{padding:20px 16px;}
-      .svcBody h3{font-size:24px;}
-      .faqBtn{grid-template-columns:1fr 52px;}
-      .faqTitle{font-size:15px;}
-      .faqInner{font-size:14px;}
+      details.faqItem summary{grid-template-columns: 52px 1fr 44px;}
+      .faqQ{font-size:15px;}
+      .faqA{font-size:14px;}
     }
   </style>
 </head>
@@ -720,11 +698,11 @@
 
   <main class="pageTop">
     <section class="wrap hero">
-      <div class="reveal">
+      <div class="heroLeft reveal">
         <div class="kicker"><span class="dot" aria-hidden="true"></span>Nos services</div>
         <h1>Une gestion locative premium,<br>simple et performante</h1>
         <p class="lead">
-          On prend en charge la partie opérationnelle (voyageurs, ménage, check-in/out) et la partie performance
+          On prend en charge l’opérationnel (voyageurs, ménage, check-in/out) et la performance
           (annonce, prix, calendrier) pour améliorer vos <span class="hl">avis</span> et vos <span class="hl">revenus</span>.
         </p>
         <div class="ctaRow">
@@ -757,21 +735,22 @@
     <section class="wrap section">
       <h2 class="sectionTitle reveal">Nos services</h2>
       <p class="sectionSub reveal">
-        
+        Remplace simplement les <b>src=""</b> des images par tes fichiers (les <code>.webp</code> fonctionnent).
+        Le format est géré automatiquement (ratio + cover).
+      </p>
 
       <div class="svcGrid">
-
         <!-- 1 -->
         <article class="svc reveal">
           <div class="svcMedia">
-            <div class="mediaFrame">
-              <!-- ✅ WEBP + fallback (optionnel) -->
-              <picture>
-                <source srcset="Illustration-Communication-avec-les-voyageurs-CE.webp" type="image/webp">
-                <img src="images/communication.jpg" alt="Communication voyageurs">
-              </picture>
+            <div class="svcFigure" aria-label="Image communication voyageurs">
+              <!-- ✅ METS TON IMAGE ICI -->
+              <img src="images/communication.webp" alt="Communication voyageurs" loading="lazy" onerror="this.style.display='none'; this.parentNode.querySelector('.fallback').style.display='grid';">
+              <div class="svcBadge"><span class="bDot" aria-hidden="true"></span>Expérience voyageurs</div>
+              <div class="fallback" style="display:none;position:absolute;inset:0;place-items:center;color:rgba(13,15,22,.55);font-weight:900;font-size:12px;letter-spacing:.6px;text-transform:uppercase;background:rgba(255,255,255,.65);">
+                IMAGE — Communication
+              </div>
             </div>
-            
           </div>
           <div class="svcBody">
             <div class="pill"><span class="pDot" aria-hidden="true"></span>Expérience voyageurs</div>
@@ -795,11 +774,12 @@
         <!-- 2 -->
         <article class="svc reveal">
           <div class="svcMedia">
-            <div class="mediaFrame">
-              <picture>
-                <source srcset="images/checkin.webp" type="image/webp">
-                <img src="images/checkin.jpg" alt="Entrées et sorties">
-              </picture>
+            <div class="svcFigure" aria-label="Image entrées et sorties">
+              <img src="images/checkin.webp" alt="Entrées et sorties" loading="lazy" onerror="this.style.display='none'; this.parentNode.querySelector('.fallback').style.display='grid';">
+              <div class="svcBadge"><span class="bDot" aria-hidden="true"></span>Opérationnel</div>
+              <div class="fallback" style="display:none;position:absolute;inset:0;place-items:center;color:rgba(13,15,22,.55);font-weight:900;font-size:12px;letter-spacing:.6px;text-transform:uppercase;background:rgba(255,255,255,.65);">
+                IMAGE — Entrées / Sorties
+              </div>
             </div>
           </div>
           <div class="svcBody">
@@ -824,11 +804,12 @@
         <!-- 3 -->
         <article class="svc reveal">
           <div class="svcMedia">
-            <div class="mediaFrame">
-              <picture>
-                <source srcset="images/menage.webp" type="image/webp">
-                <img src="images/menage.jpg" alt="Ménage et linge">
-              </picture>
+            <div class="svcFigure" aria-label="Image ménage et linge">
+              <img src="images/menage.webp" alt="Ménage et linge" loading="lazy" onerror="this.style.display='none'; this.parentNode.querySelector('.fallback').style.display='grid';">
+              <div class="svcBadge"><span class="bDot" aria-hidden="true"></span>Standard premium</div>
+              <div class="fallback" style="display:none;position:absolute;inset:0;place-items:center;color:rgba(13,15,22,.55);font-weight:900;font-size:12px;letter-spacing:.6px;text-transform:uppercase;background:rgba(255,255,255,.65);">
+                IMAGE — Ménage / Linge
+              </div>
             </div>
           </div>
           <div class="svcBody">
@@ -852,11 +833,12 @@
         <!-- 4 -->
         <article class="svc reveal">
           <div class="svcMedia">
-            <div class="mediaFrame">
-              <picture>
-                <source srcset="images/optimisation.webp" type="image/webp">
-                <img src="images/optimisation.jpg" alt="Annonce et optimisation">
-              </picture>
+            <div class="svcFigure" aria-label="Image optimisation">
+              <img src="images/optimisation.webp" alt="Annonce et optimisation" loading="lazy" onerror="this.style.display='none'; this.parentNode.querySelector('.fallback').style.display='grid';">
+              <div class="svcBadge"><span class="bDot" aria-hidden="true"></span>Performance</div>
+              <div class="fallback" style="display:none;position:absolute;inset:0;place-items:center;color:rgba(13,15,22,.55);font-weight:900;font-size:12px;letter-spacing:.6px;text-transform:uppercase;background:rgba(255,255,255,.65);">
+                IMAGE — Optimisation
+              </div>
             </div>
           </div>
           <div class="svcBody">
@@ -872,149 +854,111 @@
               <span class="chip"><i>✓</i>Visibilité</span>
             </div>
             <div class="svcActions">
-              <a class="linkBtn primary" href="contact.html">Demander une estimation</a>
+              <a class="linkBtn primary" href="contact.html">Demander un devis</a>
               <a class="linkBtn" href="confier-mon-bien.html">Confier mon bien</a>
             </div>
           </div>
         </article>
-
       </div>
     </section>
 
-    <!-- FAQ (nouveau style) -->
+    <!-- FAQ -->
     <section class="wrap faqSection reveal" aria-label="FAQ">
       <div class="faqHead">
-        <h2>FAQ</h2>
-        <p>
-          Vos questions les plus fréquentes — réponses claires, et ouverture fluide (style premium).
-        </p>
+        <div>
+          <h2>FAQ</h2>
+          <p>Questions fréquemment posées (contenu identique à tes captures).</p>
+        </div>
       </div>
 
-      <div class="faqList" id="faq">
-        <!-- 1 -->
-        <div class="faqItem" aria-expanded="false">
-          <button class="faqBtn" type="button">
-            <div>
-              <div class="faqTitle">Est-ce que je peux bénéficier de votre service ?</div>
-              <div class="faqMeta">Éligibilité • Visite • Mise en place</div>
-            </div>
-            <div class="faqToggle" aria-hidden="true"><div class="faqIcon">+</div></div>
-          </button>
-          <div class="faqPanel">
-            <div class="faqInner">
-              <p>
-                N’hésitez pas à nous contacter, afin de nous rencontrer et de fixer une visite.
-                C’est la manière la plus efficace de vérifier si votre logement répond à nos critères
-                d’éligibilité. Vous trouverez nos coordonnées de contact en bas de cette page, alors à bientôt !
-              </p>
-            </div>
+      <div class="faqGrid" id="faq">
+        <details class="faqItem" data-faq>
+          <summary>
+            <div class="faqIcon" aria-hidden="true"><span>+</span></div>
+            <div class="faqQ">Est-ce que je peux bénéficier de votre service ?</div>
+            <div class="faqChevron" aria-hidden="true">⌄</div>
+          </summary>
+          <div class="faqFill" aria-hidden="true"></div>
+          <div class="faqA">
+            N’hésitez pas à nous contacter, afin de nous rencontrer et de fixer une visite.
+            C’est la manière la plus efficace de vérifier si votre logement répond à nos critères
+            d’éligibilité. Vous trouverez nos coordonnées de contact en bas de cette page, alors à bientôt !
           </div>
-        </div>
+        </details>
 
-        <!-- 2 -->
-        <div class="faqItem" aria-expanded="false">
-          <button class="faqBtn" type="button">
-            <div>
-              <div class="faqTitle">De quelle manière mon bien est-il entretenu ?</div>
-              <div class="faqMeta">Contrôles réguliers • Qualité • Long terme</div>
-            </div>
-            <div class="faqToggle" aria-hidden="true"><div class="faqIcon">+</div></div>
-          </button>
-          <div class="faqPanel">
-            <div class="faqInner">
-              <p>
-                De manière fréquente, des employés d’entretien sont appelés pour effectuer une vérification des lieux,
-                vérifier que tout est en ordre et garantir que le logement soit dans un état impeccable.
-                C’est l’assurance pour vous d’un bien conservé en excellent état, avec des profits constants à court
-                et à long terme.
-              </p>
-            </div>
+        <details class="faqItem" data-faq>
+          <summary>
+            <div class="faqIcon" aria-hidden="true"><span>+</span></div>
+            <div class="faqQ">De quelle manière mon bien est-il entretenu ?</div>
+            <div class="faqChevron" aria-hidden="true">⌄</div>
+          </summary>
+          <div class="faqFill" aria-hidden="true"></div>
+          <div class="faqA">
+            De manière fréquente, des employés d’entretien sont appelés pour effectuer une vérification des lieux,
+            vérifier que tout est en ordre et garantir que le logement soit dans un état impeccable.
+            C’est l’assurance pour vous d’un bien conservé en excellent état, avec des profits constants à court
+            et à long terme.
           </div>
-        </div>
+        </details>
 
-        <!-- 3 -->
-        <div class="faqItem" aria-expanded="false">
-          <button class="faqBtn" type="button">
-            <div>
-              <div class="faqTitle">Est-ce que vous êtes une agence immobilière ?</div>
-              <div class="faqMeta">Pas de frais d’agence • Pas de commission</div>
-            </div>
-            <div class="faqToggle" aria-hidden="true"><div class="faqIcon">+</div></div>
-          </button>
-          <div class="faqPanel">
-            <div class="faqInner">
-              <p>
-                Non ! Il n’y a pas de frais d’agence ni de commissions avec nous. La gestion locative est notre
-                responsabilité ; nous louons votre bien afin de le mettre à disposition de nos voyageurs et clientèle
-                professionnels. Que vous ayez loué ou non votre bien, vous recevrez le paiement de votre loyer dans les
-                délais impartis.
-              </p>
-            </div>
+        <details class="faqItem" data-faq>
+          <summary>
+            <div class="faqIcon" aria-hidden="true"><span>+</span></div>
+            <div class="faqQ">Est-ce que vous êtes une agence immobilière ?</div>
+            <div class="faqChevron" aria-hidden="true">⌄</div>
+          </summary>
+          <div class="faqFill" aria-hidden="true"></div>
+          <div class="faqA">
+            Non ! Il n’y a pas de frais d’agence ni de commissions avec nous. La gestion locative est notre
+            responsabilité ; nous louons votre bien afin de le mettre à disposition de nos voyageurs et clientèle
+            professionnels. Que vous ayez loué ou non votre bien, vous recevrez le paiement de votre loyer dans les
+            délais impartis.
           </div>
-        </div>
+        </details>
 
-        <!-- 4 -->
-        <div class="faqItem" aria-expanded="false">
-          <button class="faqBtn" type="button">
-            <div>
-              <div class="faqTitle">De quelle manière mes loyers sont assurés ?</div>
-              <div class="faqMeta">Engagement • Régularité • Sécurité</div>
-            </div>
-            <div class="faqToggle" aria-hidden="true"><div class="faqIcon">+</div></div>
-          </button>
-          <div class="faqPanel">
-            <div class="faqInner">
-              <p>
-                Payer votre loyer est notre priorité absolue et notre premier engagement. En régularisant vos loyers,
-                nous garantissons la pérennité de l’entreprise. Alors rassurez-vous, vous venez de trouver votre
-                locataire idéal !
-              </p>
-            </div>
+        <details class="faqItem" data-faq>
+          <summary>
+            <div class="faqIcon" aria-hidden="true"><span>+</span></div>
+            <div class="faqQ">De quelle manière mes loyers sont assurés ?</div>
+            <div class="faqChevron" aria-hidden="true">⌄</div>
+          </summary>
+          <div class="faqFill" aria-hidden="true"></div>
+          <div class="faqA">
+            Payer votre loyer est notre priorité absolue et notre premier engagement. En régularisant vos loyers,
+            nous garantissons la pérennité de l’entreprise. Alors rassurez-vous, vous venez de trouver votre
+            locataire idéal !
           </div>
-        </div>
+        </details>
 
-        <!-- 5 -->
-        <div class="faqItem" aria-expanded="false">
-          <button class="faqBtn" type="button">
-            <div>
-              <div class="faqTitle">Quelles sont les distinctions entre un contrat de location traditionnel et le vôtre ?</div>
-              <div class="faqMeta">Bail souple • Préavis court • Sécurité</div>
-            </div>
-            <div class="faqToggle" aria-hidden="true"><div class="faqIcon">+</div></div>
-          </button>
-          <div class="faqPanel">
-            <div class="faqInner">
-              <p>
-                Comme vous le savez, lors de la location d’un bien immobilier à un particulier, vous vous engagez pour
-                une période temporaire. Une période de préavis de quelques mois est requise pour récupérer votre bien.
-                Notre contrat de location est un contrat exceptionnel entre le propriétaire et notre entreprise.
-                Notre contrat offre la possibilité au locataire et au propriétaire de s’en décharger à tout moment,
-                en respectant un délai de préavis de seulement quelques semaines. Après avoir terminé les périodes de
-                trêve hivernale, voici un bail beaucoup plus souple qui assure une plus grande sécurité aux propriétaires.
-              </p>
-            </div>
+        <details class="faqItem" data-faq>
+          <summary>
+            <div class="faqIcon" aria-hidden="true"><span>+</span></div>
+            <div class="faqQ">Quelles sont les distinctions entre un contrat de location traditionnel et le vôtre ?</div>
+            <div class="faqChevron" aria-hidden="true">⌄</div>
+          </summary>
+          <div class="faqFill" aria-hidden="true"></div>
+          <div class="faqA">
+            Comme vous le savez, lors de la location d’un bien immobilier à un particulier, vous vous engagez pour
+            une période temporaire. Une période de préavis de quelques mois est requise pour récupérer votre bien.
+            Notre contrat de location est un contrat exceptionnel entre le propriétaire et notre entreprise.
+            Notre contrat offre la possibilité au locataire et au propriétaire de s’en décharger à tout moment,
+            en respectant un délai de préavis de seulement quelques semaines. Après avoir terminé les périodes de
+            trêve hivernale, voici un bail beaucoup plus souple qui assure une plus grande sécurité aux propriétaires.
           </div>
-        </div>
+        </details>
 
-        <!-- 6 -->
-        <div class="faqItem" aria-expanded="false">
-          <button class="faqBtn" type="button">
-            <div>
-              <div class="faqTitle">Vais-je perdre mes avantages fiscaux LMNP si je vous loue mon logement via votre bail dérogatoire ?</div>
-              <div class="faqMeta">LMNP • Fiscalité • Régime conservé</div>
-            </div>
-            <div class="faqToggle" aria-hidden="true"><div class="faqIcon">+</div></div>
-          </button>
-          <div class="faqPanel">
-            <div class="faqInner">
-              <p>
-                Et bien non ! Notre bail ne fait pas échec, pour le propriétaire, au bénéfice du régime du loueur en
-                meublé non professionnel de l’article 155 du Code général des impôts. Vous garderez vos avantages LMNP.
-              </p>
-            </div>
+        <details class="faqItem" data-faq>
+          <summary>
+            <div class="faqIcon" aria-hidden="true"><span>+</span></div>
+            <div class="faqQ">Vais-je perdre mes avantages fiscaux LMNP si je vous loue mon logement via votre bail dérogatoire ?</div>
+            <div class="faqChevron" aria-hidden="true">⌄</div>
+          </summary>
+          <div class="faqFill" aria-hidden="true"></div>
+          <div class="faqA">
+            Et bien non ! Notre bail ne fait pas échec, pour le propriétaire, au bénéfice du régime du loueur en
+            meublé non professionnel de l’article 155 du Code général des impôts. Vous garderez vos avantages LMNP.
           </div>
-        </div>
-
+        </details>
       </div>
     </section>
 
@@ -1022,7 +966,7 @@
   </main>
 
   <script>
-    // ===== Menu mobile =====
+    // ===== Mobile menu =====
     const menuBtn = document.getElementById("menuBtn");
     const overlay = document.getElementById("mobileOverlay");
     const menuClose = document.getElementById("menuClose");
@@ -1056,6 +1000,7 @@
         }
       });
     }, {threshold: 0.12});
+
     revealEls.forEach(el=>io.observe(el));
 
     const ioFaq = new IntersectionObserver((entries)=>{
@@ -1066,47 +1011,22 @@
         }
       });
     }, {threshold: 0.08});
+
     faqItems.forEach(el=>ioFaq.observe(el));
 
-    // ===== FAQ accordion (smooth + premium) =====
-    function setPanelHeight(item, open){
-      const panel = item.querySelector(".faqPanel");
-      const icon = item.querySelector(".faqIcon");
-      if(!panel) return;
+    // ===== FAQ behavior: one open at a time + plus/minus =====
+    const faqDetails = document.querySelectorAll("[data-faq]");
+    faqDetails.forEach(d => {
+      d.addEventListener("toggle", () => {
+        // plus/minus icon
+        const icon = d.querySelector(".faqIcon span");
+        if(icon) icon.textContent = d.open ? "−" : "+";
 
-      if(open){
-        panel.style.maxHeight = panel.scrollHeight + "px";
-        item.setAttribute("aria-expanded","true");
-        if(icon) icon.textContent = "−";
-      }else{
-        panel.style.maxHeight = "0px";
-        item.setAttribute("aria-expanded","false");
-        if(icon) icon.textContent = "+";
-      }
-    }
-
-    faqItems.forEach(item=>{
-      const btn = item.querySelector(".faqBtn");
-      const panel = item.querySelector(".faqPanel");
-      if(panel) panel.style.maxHeight = "0px";
-
-      btn?.addEventListener("click", ()=>{
-        const isOpen = item.getAttribute("aria-expanded") === "true";
-
-        // ferme les autres
-        faqItems.forEach(other=>{
-          if(other !== item) setPanelHeight(other, false);
-        });
-
-        setPanelHeight(item, !isOpen);
-      });
-    });
-
-    window.addEventListener("resize", ()=>{
-      faqItems.forEach(item=>{
-        if(item.getAttribute("aria-expanded") === "true"){
-          const panel = item.querySelector(".faqPanel");
-          if(panel) panel.style.maxHeight = panel.scrollHeight + "px";
+        // close others
+        if(d.open){
+          faqDetails.forEach(other => {
+            if(other !== d) other.open = false;
+          });
         }
       });
     });
