@@ -272,16 +272,10 @@ body.menu-open .mobileLinks li:nth-child(5) a{ transition-delay:.16s; }
   pointer-events:none;
   z-index:-1;
 }
-.heroInner{
-  max-width:900px;
-  margin:0 auto;
-}
+.heroInner{max-width:900px;margin:0 auto;}
 .hero h1{
-  font-size:62px;
-  line-height:1.04;
-  margin:0 0 14px 0;
-  color:var(--blue2);
-  letter-spacing:-.9px;
+  font-size:62px;line-height:1.04;margin:0 0 14px 0;
+  color:var(--blue2);letter-spacing:-.9px;
 }
 .hero p{
   color:var(--muted);
@@ -332,6 +326,8 @@ body.menu-open .mobileLinks li:nth-child(5) a{ transition-delay:.16s; }
   touch-action: pan-y;
   user-select:none;
   -webkit-user-select:none;
+  -webkit-tap-highlight-color: transparent;
+
   cursor: grab;
 }
 .pillMarquee.grabbing{ cursor: grabbing; }
@@ -351,30 +347,20 @@ body.menu-open .mobileLinks li:nth-child(5) a{ transition-delay:.16s; }
   background:linear-gradient(270deg, rgba(255,255,255,.92), rgba(255,255,255,0));
 }
 .pillTrack{
-  display:flex;
-  align-items:center;
-  gap:10px;
+  display:flex;align-items:center;gap:10px;
   padding:10px 16px;
   width:max-content;
   will-change: transform;
   transform: translateX(0);
 }
-.pillSet{
-  display:flex;
-  align-items:center;
-  gap:10px;
-}
+.pillSet{display:flex;align-items:center;gap:10px;}
 .pill{
-  display:inline-flex;
-  align-items:center;
-  gap:10px;
-  padding:10px 14px;
-  border-radius:999px;
+  display:inline-flex;align-items:center;gap:10px;
+  padding:10px 14px;border-radius:999px;
   border:1px solid rgba(14,74,166,.16);
   background: rgba(14,74,166,.06);
   color: var(--blue2);
-  font-weight:900;
-  font-size:13px;
+  font-weight:900;font-size:13px;
   text-decoration:none;
   white-space:nowrap;
   transition: transform .18s var(--ease), background .18s var(--ease), border-color .18s var(--ease);
@@ -394,10 +380,6 @@ body.menu-open .mobileLinks li:nth-child(5) a{ transition-delay:.16s; }
   line-height:1;
   display:inline-flex;
   transform: translateY(-.5px);
-}
-
-@media (prefers-reduced-motion: reduce){
-  .pillTrack{ transition:none !important; }
 }
 
 .heroVisual{
@@ -424,6 +406,7 @@ body.menu-open .mobileLinks li:nth-child(5) a{ transition-delay:.16s; }
   object-fit:cover;
 }
 
+/* ===== SECTIONS ===== */
 .section{max-width:1200px;margin:110px auto;padding:0 20px;}
 .section h2{
   font-size:40px;
@@ -789,11 +772,12 @@ footer{margin-top:110px;padding:44px 20px;text-align:center;border-top:1px solid
     <div class="pillMarquee anim" id="pillMarquee" style="--y:16px;--d:170ms;" aria-label="Accès rapides vers nos avantages">
       <div class="pillTrack" id="pillTrack">
         <div class="pillSet" id="pillSet">
-          <a class="pill" href="services.html#serenite"><span class="pillDot"></span><span class="pillEmoji">🧘‍♂️</span>Sérénité</a>
-          <a class="pill" href="services.html#cadre-juridique"><span class="pillDot"></span><span class="pillEmoji">📝</span>Bail encadré</a>
+          <!-- ✅ Emojis “design classique” -->
+          <a class="pill" href="services.html#serenite"><span class="pillDot"></span><span class="pillEmoji">🧘</span>Sérénité</a>
+          <a class="pill" href="services.html#cadre-juridique"><span class="pillDot"></span><span class="pillEmoji">⚖️</span>Bail encadré</a>
           <a class="pill" href="services.html#protection-bien"><span class="pillDot"></span><span class="pillEmoji">🛡️</span>Bien protégé</a>
-          <a class="pill" href="services.html#flexibilite"><span class="pillDot"></span><span class="pillEmoji">🗓️</span>Flexibilité</a>
-          <a class="pill" href="services.html#entretien"><span class="pillDot"></span><span class="pillEmoji">🧼</span>Entretien</a>
+          <a class="pill" href="services.html#flexibilite"><span class="pillDot"></span><span class="pillEmoji">🔄</span>Flexibilité</a>
+          <a class="pill" href="services.html#entretien"><span class="pillDot"></span><span class="pillEmoji">🧰</span>Entretien</a>
           <a class="pill" href="services.html#loyer-garanti"><span class="pillDot"></span><span class="pillEmoji">💶</span>Loyer garanti</a>
         </div>
       </div>
@@ -986,7 +970,7 @@ footer{margin-top:110px;padding:44px 20px;text-align:center;border-top:1px solid
         </div>
         <div class="tcBody">
           <h4>Annonce & positionnement</h4>
-          <p>Titres, photos, infos : plus de demandes, moins de creux.</p>
+          <p>Titres, photos, infos : plus de demandes → moins de creux.</p>
           <a class="tcMore" href="services.html">En savoir plus →</a>
         </div>
       </div>
@@ -1014,7 +998,7 @@ footer{margin-top:110px;padding:44px 20px;text-align:center;border-top:1px solid
         </div>
         <div class="tcBody">
           <h4>Loyer garanti</h4>
-          <p>Quoi qu’il arrive, vous recevez votre loyer : on prend le risque.</p>
+          <p>Quoi qu’il arrive, votre loyer tombe : on prend le risque.</p>
           <a class="tcMore" href="services.html">En savoir plus →</a>
         </div>
       </div>
@@ -1248,7 +1232,7 @@ const ioCount = new IntersectionObserver((entries)=>{
 },{threshold:0.45});
 counts.forEach(el=>ioCount.observe(el));
 
-/* ✅ Pastilles tactiles + inertie + boucle parfaite (JS) */
+/* ✅ Pastilles tactiles (mobile OK) + inertie + boucle parfaite */
 (function(){
   const marquee = document.getElementById("pillMarquee");
   const track = document.getElementById("pillTrack");
@@ -1276,15 +1260,19 @@ counts.forEach(el=>ioCount.observe(el));
   refresh();
   window.addEventListener("resize", refresh, {passive:true});
 
-  let x = 0;                 // translateX
-  let v = -55;               // px/sec (auto)
+  let x = 0;
+  let v = -55;
   let last = performance.now();
 
   let isDown = false;
-  let startX = 0;
+  let startX = 0, startY = 0;
   let startOffset = 0;
+
   let lastMoveT = 0;
   let lastMoveX = 0;
+
+  let gestureLocked = false;
+  let lock = null; // "x" or "y"
 
   function setX(val){
     x = val;
@@ -1297,33 +1285,48 @@ counts.forEach(el=>ioCount.observe(el));
 
   marquee.addEventListener("pointerdown", (e)=>{
     isDown = true;
+    gestureLocked = false;
+    lock = null;
+
     marquee.classList.add("grabbing");
     marquee.setPointerCapture(e.pointerId);
 
     startX = e.clientX;
+    startY = e.clientY;
     startOffset = x;
 
     lastMoveT = performance.now();
     lastMoveX = e.clientX;
 
-    v *= 0.2; // amorti
+    v *= 0.2;
   });
 
   marquee.addEventListener("pointermove", (e)=>{
     if(!isDown) return;
 
     const dx = e.clientX - startX;
-    setX(startOffset + dx);
+    const dy = e.clientY - startY;
 
-    const now = performance.now();
-    const dt = Math.max(0.001, (now - lastMoveT)/1000);
-    const vx = (e.clientX - lastMoveX) / dt;
+    if(!gestureLocked){
+      if(Math.abs(dx) + Math.abs(dy) > 8){
+        lock = Math.abs(dx) > Math.abs(dy) ? "x" : "y";
+        gestureLocked = true;
+      }
+    }
 
-    v = vx;
+    if(lock === "x"){
+      e.preventDefault();
+      setX(startOffset + dx);
 
-    lastMoveT = now;
-    lastMoveX = e.clientX;
-  });
+      const now = performance.now();
+      const dt = Math.max(0.001, (now - lastMoveT)/1000);
+      const vx = (e.clientX - lastMoveX) / dt;
+
+      v = vx;
+      lastMoveT = now;
+      lastMoveX = e.clientX;
+    }
+  }, {passive:false});
 
   function endDrag(){
     if(!isDown) return;
@@ -1339,10 +1342,8 @@ counts.forEach(el=>ioCount.observe(el));
   marquee.addEventListener("pointercancel", endDrag);
   marquee.addEventListener("lostpointercapture", endDrag);
 
-  // Empêche le "drag ghost" images/links sur desktop
   marquee.addEventListener("dragstart", (e)=> e.preventDefault());
 
-  // Auto loop + friction
   function loop(now){
     const dt = (now - last) / 1000;
     last = now;
@@ -1350,7 +1351,6 @@ counts.forEach(el=>ioCount.observe(el));
     if(!isDown){
       setX(x + v * dt);
 
-      // friction vers vitesse auto
       const auto = -55;
       const blend = 0.985;
       v = v * blend + auto * (1 - blend);
