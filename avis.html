@@ -272,7 +272,10 @@ body.menu-open .mobileLinks li:nth-child(5) a{ transition-delay:.16s; }
   pointer-events:none;
   z-index:-1;
 }
-.heroInner{ max-width:900px; margin:0 auto; }
+.heroInner{
+  max-width:900px;
+  margin:0 auto;
+}
 .hero h1{
   font-size:62px;
   line-height:1.04;
@@ -287,7 +290,6 @@ body.menu-open .mobileLinks li:nth-child(5) a{ transition-delay:.16s; }
   line-height:1.85;
   font-weight:600;
 }
-
 .actions{
   display:flex;
   gap:12px;
@@ -316,31 +318,7 @@ body.menu-open .mobileLinks li:nth-child(5) a{ transition-delay:.16s; }
 }
 .btn-outline:hover{background:rgba(14,74,166,.09);transform:translateY(-2px);}
 
-.heroVisual{
-  margin:28px auto 0;
-  max-width:980px;
-  border-radius:26px;
-  border:1px solid rgba(10,18,40,.10);
-  background:
-    radial-gradient(900px 420px at 20% 20%, rgba(244,191,19,.10), transparent 55%),
-    radial-gradient(900px 420px at 90% 0%, rgba(14,74,166,.10), transparent 55%),
-    linear-gradient(180deg, rgba(255,255,255,.82), rgba(255,255,255,.70));
-  box-shadow: var(--softShadow);
-  overflow:hidden;
-  padding:14px;
-  will-change: transform;
-}
-.heroVisual img{
-  width:100%;
-  height:auto;
-  display:block;
-  border-radius:18px;
-  border:1px solid rgba(10,18,40,.10);
-  background:#fff;
-  object-fit:cover;
-}
-
-/* ===== MENU QUI TOURNE (pastilles) — version anti-bug (JS) ===== */
+/* ===== MENU PASTILLES (tactile + inertie) ===== */
 .pillMarquee{
   margin:14px auto 6px;
   max-width:980px;
@@ -350,7 +328,14 @@ body.menu-open .mobileLinks li:nth-child(5) a{ transition-delay:.16s; }
   background: rgba(255,255,255,.65);
   box-shadow: 0 12px 28px rgba(3,7,18,.06);
   overflow:hidden;
+
+  touch-action: pan-y;
+  user-select:none;
+  -webkit-user-select:none;
+  cursor: grab;
 }
+.pillMarquee.grabbing{ cursor: grabbing; }
+
 .pillMarquee::before,
 .pillMarquee::after{
   content:"";
@@ -404,8 +389,41 @@ body.menu-open .mobileLinks li:nth-child(5) a{ transition-delay:.16s; }
   background: linear-gradient(180deg,var(--yellow2),var(--yellow));
   box-shadow:0 0 12px rgba(244,191,19,.22);
 }
+.pillEmoji{
+  font-size:14px;
+  line-height:1;
+  display:inline-flex;
+  transform: translateY(-.5px);
+}
 
-/* ===== SECTIONS ===== */
+@media (prefers-reduced-motion: reduce){
+  .pillTrack{ transition:none !important; }
+}
+
+.heroVisual{
+  margin:28px auto 0;
+  max-width:980px;
+  border-radius:26px;
+  border:1px solid rgba(10,18,40,.10);
+  background:
+    radial-gradient(900px 420px at 20% 20%, rgba(244,191,19,.10), transparent 55%),
+    radial-gradient(900px 420px at 90% 0%, rgba(14,74,166,.10), transparent 55%),
+    linear-gradient(180deg, rgba(255,255,255,.82), rgba(255,255,255,.70));
+  box-shadow: var(--softShadow);
+  overflow:hidden;
+  padding:14px;
+  will-change: transform;
+}
+.heroVisual img{
+  width:100%;
+  height:auto;
+  display:block;
+  border-radius:18px;
+  border:1px solid rgba(10,18,40,.10);
+  background:#fff;
+  object-fit:cover;
+}
+
 .section{max-width:1200px;margin:110px auto;padding:0 20px;}
 .section h2{
   font-size:40px;
@@ -556,7 +574,7 @@ body.menu-open .mobileLinks li:nth-child(5) a{ transition-delay:.16s; }
   font-weight:600;
 }
 
-/* ===== BANDEAU AVIS ===== */
+/* ===== Avis ===== */
 .reviewsBand{margin:110px auto 0;max-width:1200px;padding:0 20px;}
 .reviewsWrap{border-radius:26px;overflow:hidden;border:1px solid rgba(244,191,19,.30);box-shadow:0 0 26px rgba(244,191,19,.08), 0 0 22px rgba(14,74,166,.06);}
 .reviewsTop{
@@ -629,7 +647,7 @@ body.menu-open .mobileLinks li:nth-child(5) a{ transition-delay:.16s; }
 .reviewText{color:rgba(0,0,0,.76);font-weight:650;font-size:13px;line-height:1.6;}
 .reviewStars{color:#111;font-weight:900;}
 
-/* ===== "On s'occupe de tout" ===== */
+/* ===== TakeCare ===== */
 .takeCare{max-width:1200px;margin:110px auto 0;padding:0 20px;}
 .takeCareTitle{text-align:center;font-size:44px;letter-spacing:-.5px;color:var(--blue2);margin:0 0 32px 0;font-weight:900;}
 .takeCareTitle em{font-family:"Georgia",serif;font-style:italic;font-weight:500;}
@@ -661,13 +679,11 @@ body.menu-open .mobileLinks li:nth-child(5) a{ transition-delay:.16s; }
 .tcMore:hover{text-decoration:underline;}
 .tcDivider{margin:50px 0 0 0;}
 
-/* ===== SUPERHOST ===== */
 .superhost{max-width:1200px;margin:90px auto 0;padding:0 20px;text-align:center;font-size:18px;color:#334155;font-weight:650;}
 .superhost span{background:linear-gradient(90deg,var(--blue2),var(--yellow));-webkit-background-clip:text;background-clip:text;color:transparent;font-weight:900;}
 
 footer{margin-top:110px;padding:44px 20px;text-align:center;border-top:1px solid var(--stroke);color:#6b7280;font-size:14px;font-weight:650;}
 
-/* ===== Responsive ===== */
 @media(max-width:980px){
   .reviewsTop{grid-template-columns:1fr;}
   .ratingBox{justify-self:start;}
@@ -769,16 +785,16 @@ footer{margin-top:110px;padding:44px 20px;text-align:center;border-top:1px solid
       communication voyageurs et standards premium — pour <b>maximiser vos avis</b> et garantir une <b>activité régulière</b>.
     </p>
 
-    <!-- ✅ Pastilles qui tournent (liens vers services.html#...) -->
+    <!-- ✅ Pastilles tactiles (drag + change sens + inertie) -->
     <div class="pillMarquee anim" id="pillMarquee" style="--y:16px;--d:170ms;" aria-label="Accès rapides vers nos avantages">
       <div class="pillTrack" id="pillTrack">
         <div class="pillSet" id="pillSet">
-          <a class="pill" href="services.html#serenite"><span class="pillDot"></span>Sérénité</a>
-          <a class="pill" href="services.html#cadre-juridique"><span class="pillDot"></span>Bail encadré</a>
-          <a class="pill" href="services.html#protection-bien"><span class="pillDot"></span>Bien protégé</a>
-          <a class="pill" href="services.html#flexibilite"><span class="pillDot"></span>Flexibilité</a>
-          <a class="pill" href="services.html#entretien"><span class="pillDot"></span>Entretien</a>
-          <a class="pill" href="services.html#loyer-garanti"><span class="pillDot"></span>Loyer garanti</a>
+          <a class="pill" href="services.html#serenite"><span class="pillDot"></span><span class="pillEmoji">🧘‍♂️</span>Sérénité</a>
+          <a class="pill" href="services.html#cadre-juridique"><span class="pillDot"></span><span class="pillEmoji">📝</span>Bail encadré</a>
+          <a class="pill" href="services.html#protection-bien"><span class="pillDot"></span><span class="pillEmoji">🛡️</span>Bien protégé</a>
+          <a class="pill" href="services.html#flexibilite"><span class="pillDot"></span><span class="pillEmoji">🗓️</span>Flexibilité</a>
+          <a class="pill" href="services.html#entretien"><span class="pillDot"></span><span class="pillEmoji">🧼</span>Entretien</a>
+          <a class="pill" href="services.html#loyer-garanti"><span class="pillDot"></span><span class="pillEmoji">💶</span>Loyer garanti</a>
         </div>
       </div>
     </div>
@@ -1232,52 +1248,112 @@ const ioCount = new IntersectionObserver((entries)=>{
 },{threshold:0.45});
 counts.forEach(el=>ioCount.observe(el));
 
-/* ✅ Marquee anti-bug (boucle parfaite en JS) */
+/* ✅ Pastilles tactiles + inertie + boucle parfaite (JS) */
 (function(){
   const marquee = document.getElementById("pillMarquee");
   const track = document.getElementById("pillTrack");
   const set = document.getElementById("pillSet");
   if(!marquee || !track || !set) return;
 
-  let paused = false;
-  marquee.addEventListener("mouseenter", ()=> paused = true);
-  marquee.addEventListener("mouseleave", ()=> paused = false);
-
-  function build(){
-    // reset
+  function rebuild(){
     track.style.transform = "translateX(0px)";
-    // remove old clones
     [...track.querySelectorAll(".pillSet")].forEach((n, i)=>{ if(i>0) n.remove(); });
 
-    const setWidth = set.getBoundingClientRect().width;
-    const need = Math.ceil((marquee.getBoundingClientRect().width * 2) / setWidth) + 1;
+    const baseW = set.getBoundingClientRect().width;
+    const viewW = marquee.getBoundingClientRect().width;
 
+    const need = Math.ceil((viewW * 2) / baseW) + 2;
     for(let i=1;i<need;i++){
       const clone = set.cloneNode(true);
       clone.removeAttribute("id");
       track.appendChild(clone);
     }
-
-    return setWidth;
+    return baseW;
   }
 
   let baseWidth = 0;
-  function refresh(){ baseWidth = build(); }
+  function refresh(){ baseWidth = rebuild(); }
   refresh();
   window.addEventListener("resize", refresh, {passive:true});
 
-  let x = 0;
+  let x = 0;                 // translateX
+  let v = -55;               // px/sec (auto)
   let last = performance.now();
-  const speed = 55; // px/s
 
+  let isDown = false;
+  let startX = 0;
+  let startOffset = 0;
+  let lastMoveT = 0;
+  let lastMoveX = 0;
+
+  function setX(val){
+    x = val;
+    if(baseWidth > 0){
+      while(x <= -baseWidth) x += baseWidth;
+      while(x > 0) x -= baseWidth;
+    }
+    track.style.transform = `translateX(${x}px)`;
+  }
+
+  marquee.addEventListener("pointerdown", (e)=>{
+    isDown = true;
+    marquee.classList.add("grabbing");
+    marquee.setPointerCapture(e.pointerId);
+
+    startX = e.clientX;
+    startOffset = x;
+
+    lastMoveT = performance.now();
+    lastMoveX = e.clientX;
+
+    v *= 0.2; // amorti
+  });
+
+  marquee.addEventListener("pointermove", (e)=>{
+    if(!isDown) return;
+
+    const dx = e.clientX - startX;
+    setX(startOffset + dx);
+
+    const now = performance.now();
+    const dt = Math.max(0.001, (now - lastMoveT)/1000);
+    const vx = (e.clientX - lastMoveX) / dt;
+
+    v = vx;
+
+    lastMoveT = now;
+    lastMoveX = e.clientX;
+  });
+
+  function endDrag(){
+    if(!isDown) return;
+    isDown = false;
+    marquee.classList.remove("grabbing");
+
+    const max = 1200;
+    if(v > max) v = max;
+    if(v < -max) v = -max;
+  }
+
+  marquee.addEventListener("pointerup", endDrag);
+  marquee.addEventListener("pointercancel", endDrag);
+  marquee.addEventListener("lostpointercapture", endDrag);
+
+  // Empêche le "drag ghost" images/links sur desktop
+  marquee.addEventListener("dragstart", (e)=> e.preventDefault());
+
+  // Auto loop + friction
   function loop(now){
     const dt = (now - last) / 1000;
     last = now;
 
-    if(!paused){
-      x -= speed * dt;
-      if(baseWidth > 0 && (-x) >= baseWidth) x += baseWidth; // boucle au 1er set
-      track.style.transform = `translateX(${x}px)`;
+    if(!isDown){
+      setX(x + v * dt);
+
+      // friction vers vitesse auto
+      const auto = -55;
+      const blend = 0.985;
+      v = v * blend + auto * (1 - blend);
     }
     requestAnimationFrame(loop);
   }
