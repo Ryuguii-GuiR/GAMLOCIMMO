@@ -21,7 +21,6 @@
 
   --blue:#0e4aa6;
   --blue2:#0b2b6b;
-  --headerBlue: rgb(19, 42, 175);
 
   --shadow: 0 18px 60px rgba(3,7,18,.18);
   --soft: 0 14px 34px rgba(3,7,18,.08);
@@ -74,9 +73,7 @@ header.is-scrolled{
   border-bottom:1px solid rgba(244,191,19,.35);
   box-shadow: 0 18px 50px rgba(3,7,18,.18);
 }
-header.is-hide{
-  transform: translateY(-110%);
-}
+header.is-hide{ transform: translateY(-110%); }
 
 .nav{
   max-width:1200px;margin:auto;
@@ -84,10 +81,7 @@ header.is-hide{
   padding:14px 20px;gap:18px;
 }
 
-.brand{
-  display:flex;align-items:center;gap:10px;
-  text-decoration:none;
-}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;}
 .brandMark{
   width:10px;height:10px;border-radius:999px;
   background:linear-gradient(180deg,var(--yellow2),var(--yellow));
@@ -95,22 +89,15 @@ header.is-hide{
   flex:0 0 auto;
 }
 .brandText{
-  font-weight:900;
-  letter-spacing:2px;
-  font-size:15px;
+  font-weight:900;letter-spacing:2px;font-size:15px;
   transition: color .35s var(--ease), opacity .35s var(--ease);
 }
 header.is-top .brandText{color:var(--blue2);}
 header.is-scrolled .brandText{color:#fff;}
 
-.navlinks{
-  display:flex;gap:26px;list-style:none;flex-wrap:wrap;justify-content:flex-end;
-}
+.navlinks{display:flex;gap:26px;list-style:none;flex-wrap:wrap;justify-content:flex-end;}
 .navlinks a{
-  text-decoration:none;
-  font-size:14px;
-  position:relative;
-  font-weight:900;
+  text-decoration:none;font-size:14px;position:relative;font-weight:900;
   transition: color .35s var(--ease), opacity .35s var(--ease);
   opacity:.95;
 }
@@ -232,27 +219,19 @@ body.menu-open .mobileLinks li:nth-child(5) a{transition-delay:.16s;}
 }
 
 .heroInner{
-  position:relative;
-  z-index:1;
-  display:grid;
-  grid-template-columns: 1fr;
-  gap:18px;
-  text-align:center;
-  align-items:center;
-  justify-items:center;
+  position:relative;z-index:1;
+  display:grid;grid-template-columns: 1fr;
+  gap:18px;text-align:center;
+  align-items:center;justify-items:center;
 }
 
 .heroKicker{
-  display:inline-flex;
-  align-items:center;
-  gap:10px;
-  padding:8px 14px;
-  border-radius:999px;
+  display:inline-flex;align-items:center;gap:10px;
+  padding:8px 14px;border-radius:999px;
   border:1px solid rgba(244,191,19,.35);
   background:rgba(255,255,255,.55);
   color:var(--blue2);
-  font-weight:900;
-  font-size:12px;
+  font-weight:900;font-size:12px;
 }
 .heroKicker .dot{
   width:10px;height:10px;border-radius:999px;
@@ -261,16 +240,12 @@ body.menu-open .mobileLinks li:nth-child(5) a{transition-delay:.16s;}
 }
 
 .heroTitle{
-  font-size:56px;
-  line-height:1.03;
-  letter-spacing:-.8px;
-  color:var(--blue2);
+  font-size:56px;line-height:1.03;
+  letter-spacing:-.8px;color:var(--blue2);
 }
 .heroText{
-  color:var(--muted);
-  max-width:70ch;
-  line-height:1.8;
-  font-weight:600;
+  color:var(--muted);max-width:70ch;
+  line-height:1.8;font-weight:600;
 }
 
 .heroActions{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;}
@@ -294,60 +269,47 @@ body.menu-open .mobileLinks li:nth-child(5) a{transition-delay:.16s;}
 .btnGhost:hover{transform:translateY(-2px);background:rgba(14,74,166,.10);}
 
 .heroMedia{
-  margin-top:18px;
-  border-radius:26px;
+  margin-top:18px;border-radius:26px;
   border:1px solid rgba(10,18,40,.10);
   background:rgba(255,255,255,.72);
   box-shadow: var(--soft);
   overflow:hidden;
 }
 .heroMedia img{
-  width:100%;
-  height:360px;
-  object-fit:cover;
-  display:block;
+  width:100%;height:360px;
+  object-fit:cover;display:block;
 }
 
 /* =========================
    COUNT UP (stats)
 ========================= */
 .stats{
-  margin-top:28px;
-  display:grid;
+  margin-top:28px;display:grid;
   grid-template-columns:repeat(3, 1fr);
-  gap:12px;
-  width:100%;
+  gap:12px;width:100%;
 }
 .stat{
-  border-radius:18px;
-  border:1px solid rgba(10,18,40,.10);
+  border-radius:18px;border:1px solid rgba(10,18,40,.10);
   background:rgba(255,255,255,.70);
-  padding:16px;
-  text-align:left;
+  padding:16px;text-align:left;
   box-shadow: 0 12px 26px rgba(3,7,18,.06);
 }
 .statTop{display:flex;justify-content:space-between;align-items:baseline;gap:10px;}
 .statNum{
-  font-size:34px;
-  font-weight:900;
-  letter-spacing:-.8px;
-  color:var(--blue2);
+  font-size:34px;font-weight:900;
+  letter-spacing:-.8px;color:var(--blue2);
 }
 .statLabel{
   color:rgba(13,15,22,.62);
-  font-weight:800;
-  font-size:12px;
+  font-weight:800;font-size:12px;
 }
 .statHint{
-  margin-top:6px;
-  color:rgba(13,15,22,.70);
-  font-weight:650;
-  font-size:13px;
-  line-height:1.55;
+  margin-top:6px;color:rgba(13,15,22,.70);
+  font-weight:650;font-size:13px;line-height:1.55;
 }
 
 /* =========================
-   REVIEWS BAND (identique) + count sur éléments existants
+   REVIEWS BAND (identique) + étoiles alignées
 ========================= */
 .reviewsBand{margin:80px auto 0;max-width:1200px;padding:0 20px;}
 .reviewsWrap{border-radius:26px;overflow:hidden;border:1px solid rgba(244,191,19,.30);box-shadow:0 0 26px rgba(244,191,19,.08), 0 0 22px rgba(14,74,166,.06);}
@@ -390,7 +352,17 @@ body.menu-open .mobileLinks li:nth-child(5) a{transition-delay:.16s;}
   -webkit-background-clip:text;background-clip:text;color:transparent;
 }
 .bigRate .count{font:inherit;color:inherit;}
-.stars{color:var(--yellow2);font-weight:900;}
+.stars{
+  display:inline-flex;
+  gap:6px;
+  white-space:nowrap;
+  flex-wrap:nowrap;
+  align-items:center;
+  color:var(--yellow2);
+  font-weight:900;
+  line-height:1;
+}
+.stars span{display:inline-block;line-height:1;}
 .rateMeta{color:rgba(255,255,255,.75);font-size:13px;line-height:1.5;text-align:right;font-weight:650;}
 .avatarRow{display:flex;align-items:center;margin-top:14px;flex-wrap:wrap;}
 .avatar{
@@ -427,27 +399,21 @@ body.menu-open .mobileLinks li:nth-child(5) a{transition-delay:.16s;}
 ========================= */
 .section{margin:90px auto 0;}
 .sectionTitle{
-  text-align:center;
-  font-size:40px;
-  letter-spacing:-.7px;
-  color:var(--blue2);
+  text-align:center;font-size:40px;
+  letter-spacing:-.7px;color:var(--blue2);
   margin-bottom:12px;
 }
 .sectionSub{
-  text-align:center;
-  color:var(--muted);
-  max-width:72ch;
-  margin:0 auto 34px;
-  line-height:1.85;
-  font-weight:600;
+  text-align:center;color:var(--muted);
+  max-width:72ch;margin:0 auto 34px;
+  line-height:1.85;font-weight:600;
 }
 
 /* Cards global + media */
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:22px;}
 .card{
   display:block;text-decoration:none;color:var(--text);
-  border-radius:22px;
-  border:1px solid rgba(10,18,40,.10);
+  border-radius:22px;border:1px solid rgba(10,18,40,.10);
   background:rgba(255,255,255,.74);
   box-shadow: var(--soft);
   overflow:hidden;
@@ -460,83 +426,50 @@ body.menu-open .mobileLinks li:nth-child(5) a{transition-delay:.16s;}
   box-shadow: 0 22px 52px rgba(3,7,18,.12);
 }
 .cardBody{padding:18px 18px 18px;}
-.card h3{
-  font-size:18px;
-  letter-spacing:-.2px;
-  color:var(--blue2);
-  margin-bottom:8px;
-}
-.card p{
-  color:var(--muted);
-  font-size:14px;
-  line-height:1.7;
-  font-weight:600;
-}
+.card h3{font-size:18px;letter-spacing:-.2px;color:var(--blue2);margin-bottom:8px;}
+.card p{color:var(--muted);font-size:14px;line-height:1.7;font-weight:600;}
 
 .cardMedia{
-  width:100%;
-  height:190px;
-  background:#fff;
-  border-bottom:1px solid rgba(10,18,40,.08);
+  width:100%;height:190px;
+  background:#fff;border-bottom:1px solid rgba(10,18,40,.08);
 }
-.cardMedia img{
-  width:100%;height:100%;
-  object-fit:cover;display:block;
-}
+.cardMedia img{width:100%;height:100%;object-fit:cover;display:block;}
 
 /* =========================
-   ON S'OCCUPE DE TOUT + PASTILLES EMOJI
+   ON S'OCCUPE DE TOUT + PASTILLES (ICÔNES DESIGN)
 ========================= */
 .takeCare{margin:90px auto 0;}
 .takeCareTitle{
-  text-align:center;
-  font-size:44px;
-  letter-spacing:-.6px;
-  color:var(--blue2);
+  text-align:center;font-size:44px;
+  letter-spacing:-.6px;color:var(--blue2);
   margin:0 0 28px 0;
 }
 .tcBlock{
-  display:grid;
-  grid-template-columns:1fr 1.35fr;
-  gap:30px;
-  align-items:start;
-  margin-top:22px;
+  display:grid;grid-template-columns:1fr 1.35fr;
+  gap:30px;align-items:start;margin-top:22px;
 }
 .tcBlock.rightLead{grid-template-columns:1.35fr 1fr;}
 
-.tcHead{
-  display:flex;align-items:center;gap:12px;
-  margin-bottom:10px;
-}
+.tcHead{display:flex;align-items:center;gap:12px;margin-bottom:10px;}
 .tcDot{
   width:38px;height:38px;border-radius:999px;
   background:linear-gradient(180deg,var(--yellow2),var(--yellow));
   display:grid;place-items:center;
   box-shadow:0 14px 30px rgba(244,191,19,.18);
   border:1px solid rgba(244,191,19,.35);
-  font-weight:900;
 }
-.tcDot span{font-size:16px;line-height:1;}
-.tcHeading{
-  font-size:44px;
-  line-height:1.04;
-  color:#0d0f16;
-  margin:0;
+.tcDot .ico{
+  width:18px;height:18px;display:block;
+  color:#111;
 }
-.tcDesc{
-  color:var(--muted);
-  line-height:1.75;
-  max-width:48ch;
-  font-weight:600;
-}
+.tcDot .ico svg{width:100%;height:100%;display:block;}
+.tcHeading{font-size:44px;line-height:1.04;color:#0d0f16;margin:0;}
+.tcDesc{color:var(--muted);line-height:1.75;max-width:48ch;font-weight:600;}
 
 .tcCards{display:grid;gap:14px;padding:6px 0;}
 .tcCard{
-  display:grid;
-  grid-template-columns:260px 1fr;
-  gap:18px;
-  padding:20px;
-  border-radius:18px;
+  display:grid;grid-template-columns:260px 1fr;
+  gap:18px;padding:20px;border-radius:18px;
   border:1px solid rgba(10,18,40,.10);
   background:rgba(255,255,255,.72);
   box-shadow: var(--soft);
@@ -556,28 +489,18 @@ body.menu-open .mobileLinks li:nth-child(5) a{transition-delay:.16s;}
 .tcBody p{margin:0 0 10px 0;color:var(--muted);font-size:13px;line-height:1.6;font-weight:600;}
 .tcMore{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-weight:900;font-size:12px;color:var(--blue2);}
 .tcMore:hover{text-decoration:underline;}
-
 .tcDivider{margin:44px 0 0 0;}
 
 /* =========================
-   APPARTEMENTS (design premium)
+   APPARTEMENTS (icônes design)
 ========================= */
 .apTag{
   display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;
   color:rgba(13,15,22,.68);
-  font-size:13px;
-  font-weight:800;
+  font-size:13px;font-weight:800;
 }
-.apTitle{
-  font-size:20px;
-  color:var(--blue2);
-  letter-spacing:-.3px;
-  margin:2px 0 8px;
-}
-.apMeta{
-  margin-top:10px;
-  display:flex;gap:10px;flex-wrap:wrap;
-}
+.apTitle{font-size:20px;color:var(--blue2);letter-spacing:-.3px;margin:2px 0 8px;}
+.apMeta{margin-top:10px;display:flex;gap:10px;flex-wrap:wrap;}
 .pill{
   display:inline-flex;align-items:center;gap:8px;
   padding:8px 10px;border-radius:999px;
@@ -586,82 +509,57 @@ body.menu-open .mobileLinks li:nth-child(5) a{transition-delay:.16s;}
   font-weight:900;font-size:12px;color:rgba(13,15,22,.75);
 }
 .pill i{
-  width:18px;height:18px;border-radius:999px;display:grid;place-items:center;
+  width:18px;height:18px;border-radius:999px;
+  display:grid;place-items:center;
   background:rgba(244,191,19,.20);
   border:1px solid rgba(244,191,19,.35);
-  font-style:normal;
-  font-size:12px;
-  color:#111;
+  font-style:normal;color:#111;
 }
+.pill i svg{width:12px;height:12px;display:block;}
 
 /* =========================
    SUPERHOST BANDEAU (simpliste)
 ========================= */
-.superhostBand{
-  max-width:1200px;margin:70px auto 0;padding:0 20px;
-}
+.superhostBand{max-width:1200px;margin:70px auto 0;padding:0 20px;}
 .superhostCard{
-  border-radius:22px;
-  border:1px solid rgba(10,18,40,.10);
+  border-radius:22px;border:1px solid rgba(10,18,40,.10);
   background:rgba(255,255,255,.74);
   box-shadow: var(--soft);
   padding:16px 16px;
-  display:flex;
-  align-items:center;
-  gap:12px;
-  flex-wrap:wrap;
+  display:flex;align-items:center;gap:12px;flex-wrap:wrap;
 }
 .superMini{
   width:34px;height:34px;border-radius:10px;overflow:hidden;
   border:1px solid rgba(10,18,40,.10);
-  background:#fff;
-  flex:0 0 auto;
+  background:#fff;flex:0 0 auto;
 }
 .superMini img{width:100%;height:100%;object-fit:cover;display:block;}
-.superTxt{
-  font-weight:900;
-  color:#0d0f16;
-  line-height:1.25;
-}
+.superTxt{font-weight:900;color:#0d0f16;line-height:1.25;}
 .superTxt span{
-  display:block;
-  color:rgba(13,15,22,.65);
-  font-weight:700;
-  font-size:13px;
-  margin-top:4px;
+  display:block;color:rgba(13,15,22,.65);
+  font-weight:700;font-size:13px;margin-top:4px;
 }
 
 /* =========================
-   REVEAL ANIMATIONS (vol + fondu) + reverse on scroll
+   REVEAL ANIMATIONS + reverse on scroll
 ========================= */
 .reveal{
-  opacity:0;
-  transform: translateY(18px);
+  opacity:0;transform: translateY(18px);
   filter: blur(2px);
   transition: opacity .8s var(--ease), transform .8s var(--ease), filter .8s var(--ease);
 }
-.reveal.in{
-  opacity:1;
-  transform: translateY(0);
-  filter: blur(0);
-}
+.reveal.in{opacity:1;transform: translateY(0);filter: blur(0);}
 .flyL{
-  opacity:0;
-  transform: translateX(-20px) translateY(12px);
+  opacity:0;transform: translateX(-20px) translateY(12px);
   filter: blur(2px);
   transition: opacity .85s var(--ease), transform .85s var(--ease), filter .85s var(--ease);
 }
 .flyR{
-  opacity:0;
-  transform: translateX(20px) translateY(12px);
+  opacity:0;transform: translateX(20px) translateY(12px);
   filter: blur(2px);
   transition: opacity .85s var(--ease), transform .85s var(--ease), filter .85s var(--ease);
 }
-.flyL.in,.flyR.in{
-  opacity:1;
-  transform: translateX(0) translateY(0);
-  filter: blur(0);
-}
+.flyL.in,.flyR.in{opacity:1;transform: translateX(0) translateY(0);filter: blur(0);}
 
 /* footer */
 footer{
@@ -805,7 +703,7 @@ footer{
 
 </main>
 
-<!-- BANDEAU AVIS AIRBNB (identique) -->
+<!-- BANDEAU AVIS AIRBNB -->
 <section class="reviewsBand reveal" aria-label="Avis voyageurs">
   <div class="reviewsWrap">
 
@@ -832,7 +730,9 @@ footer{
         <div class="ratingMain">
           <div>
             <div class="bigRate"><span class="count" data-to="4.9">0</span></div>
-            <div class="stars" aria-label="5 étoiles">★ ★ ★ ★ ★</div>
+            <div class="stars" aria-label="5 étoiles">
+              <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+            </div>
           </div>
           <div class="rateMeta">
             <div><b>Note moyenne Airbnb</b></div>
@@ -905,7 +805,15 @@ footer{
     <div class="tcBlock">
       <div class="tcLeft flyL">
         <div class="tcHead">
-          <div class="tcDot" aria-hidden="true"><span>🕒</span></div>
+          <div class="tcDot" aria-hidden="true">
+            <span class="ico" aria-hidden="true">
+              <!-- Clock (design) -->
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 22a10 10 0 1 0-10-10 10 10 0 0 0 10 10Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M12 6v6l4 2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+          </div>
           <h3 class="tcHeading">Gagnez du<br>temps</h3>
         </div>
         <p class="tcDesc">
@@ -1022,7 +930,17 @@ footer{
 
       <div class="tcLeft flyR">
         <div class="tcHead">
-          <div class="tcDot" aria-hidden="true"><span>€</span></div>
+          <div class="tcDot" aria-hidden="true">
+            <span class="ico" aria-hidden="true">
+              <!-- Euro (design) -->
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M19 6.5C17.6 5.3 15.8 4.6 13.8 4.6C10.3 4.6 7.4 6.7 6.4 9.9H4.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M4.5 12h9.2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M4.5 14.1h8.6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M19 17.5c-1.4 1.2-3.2 1.9-5.2 1.9c-3.5 0-6.4-2.1-7.4-5.3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+          </div>
           <h3 class="tcHeading">Gagnez de<br>l’argent</h3>
         </div>
         <p class="tcDesc">
@@ -1052,9 +970,39 @@ footer{
           <p>Confort premium, emplacement stratégique, séjour fluide.</p>
 
           <div class="apMeta">
-            <span class="pill"><i>👤</i>4 voyageurs</span>
-            <span class="pill"><i>🛏️</i>1 chambre</span>
-            <span class="pill"><i>📍</i>Bouffay</span>
+            <span class="pill">
+              <i aria-hidden="true">
+                <!-- user -->
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M20 21a8 8 0 1 0-16 0" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                  <path d="M12 11a4 4 0 1 0-4-4a4 4 0 0 0 4 4Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </i>
+              4 voyageurs
+            </span>
+            <span class="pill">
+              <i aria-hidden="true">
+                <!-- bed -->
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M3 10v8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                  <path d="M21 10v8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                  <path d="M3 14h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                  <path d="M4 10h16a1 1 0 0 1 1 1v3H3v-3a1 1 0 0 1 1-1Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                  <path d="M7 10V8a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+              </i>
+              1 chambre
+            </span>
+            <span class="pill">
+              <i aria-hidden="true">
+                <!-- pin -->
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12 22s7-4.5 7-12a7 7 0 1 0-14 0c0 7.5 7 12 7 12Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M12 11a2 2 0 1 0-2-2a2 2 0 0 0 2 2Z" stroke="currentColor" stroke-width="2"/>
+                </svg>
+              </i>
+              Bouffay
+            </span>
           </div>
         </div>
       </a>
@@ -1072,9 +1020,38 @@ footer{
           <p>Design moderne, calme, parfait pour courts séjours.</p>
 
           <div class="apMeta">
-            <span class="pill"><i>👤</i>4 voyageurs</span>
-            <span class="pill"><i>🛋️</i>Studio</span>
-            <span class="pill"><i>🌿</i>Calme</span>
+            <span class="pill">
+              <i aria-hidden="true">
+                <!-- user -->
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M20 21a8 8 0 1 0-16 0" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                  <path d="M12 11a4 4 0 1 0-4-4a4 4 0 0 0 4 4Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </i>
+              4 voyageurs
+            </span>
+            <span class="pill">
+              <i aria-hidden="true">
+                <!-- sofa -->
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M5 12v-2a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                  <path d="M4 12h16a1 1 0 0 1 1 1v4H3v-4a1 1 0 0 1 1-1Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                  <path d="M6 17v2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                  <path d="M18 17v2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+              </i>
+              Studio
+            </span>
+            <span class="pill">
+              <i aria-hidden="true">
+                <!-- leaf -->
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M21 3s-6 0-10 4S7 17 7 17s6 0 10-4 4-10 4-10Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M7 17l-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+              </i>
+              Calme
+            </span>
           </div>
         </div>
       </a>
@@ -1099,9 +1076,7 @@ footer{
 <footer>Gamloc Immo — Gestion locative courte durée à Nantes</footer>
 
 <script>
-/* =========================
-   MENU MOBILE
-========================= */
+/* MENU MOBILE */
 const menuBtn = document.getElementById("menuBtn");
 const overlay = document.getElementById("mobileOverlay");
 const menuClose = document.getElementById("menuClose");
@@ -1123,9 +1098,7 @@ menuClose?.addEventListener("click", closeMenu);
 overlay?.addEventListener("click", (e)=>{ if(e.target === overlay) closeMenu(); });
 window.addEventListener("keydown", (e)=>{ if(e.key === "Escape") closeMenu(); });
 
-/* =========================
-   NAV INTERACTIVE (fondue en haut / bleue au scroll + hide/show)
-========================= */
+/* NAV (fondue en haut / bleue au scroll + hide/show) */
 const header = document.getElementById("siteHeader");
 let lastY = window.scrollY;
 
@@ -1140,20 +1113,15 @@ function updateHeader(){
     header.classList.add("is-scrolled");
   }
 
-  if(y > 220 && y > lastY + 8){
-    header.classList.add("is-hide");
-  }else if(y < lastY - 8){
-    header.classList.remove("is-hide");
-  }
+  if(y > 220 && y > lastY + 8) header.classList.add("is-hide");
+  else if(y < lastY - 8) header.classList.remove("is-hide");
 
   lastY = y;
 }
 updateHeader();
 window.addEventListener("scroll", updateHeader, {passive:true});
 
-/* =========================
-   REVEAL ANIMS (reverse on scroll)
-========================= */
+/* REVEAL (reverse on scroll) */
 const toReveal = document.querySelectorAll(".reveal, .flyL, .flyR");
 const io = new IntersectionObserver((entries)=>{
   entries.forEach(ent=>{
@@ -1163,14 +1131,12 @@ const io = new IntersectionObserver((entries)=>{
 },{threshold:0.12});
 toReveal.forEach(el=>io.observe(el));
 
-/* =========================
-   COUNT UP (plus lent + 1 seule fois, reste statique ensuite)
-========================= */
+/* COUNT UP (plus lent + 1 seule fois, reste statique) */
 function animateCount(el){
   const to = parseFloat(el.dataset.to || "0");
   const suffix = el.dataset.suffix || "";
   const isFloat = String(to).includes(".");
-  const duration = 2600; // plus lent
+  const duration = 2600;
   const start = performance.now();
   const from = 0;
 
@@ -1178,9 +1144,7 @@ function animateCount(el){
     const t = Math.min(1, (now - start)/duration);
     const eased = 1 - Math.pow(1 - t, 3);
     const val = from + (to - from)*eased;
-
     el.textContent = (isFloat ? val.toFixed(1) : Math.round(val)) + suffix;
-
     if(t < 1) requestAnimationFrame(tick);
   }
   requestAnimationFrame(tick);
@@ -1194,7 +1158,7 @@ const ioCount = new IntersectionObserver((entries)=>{
       if(el.dataset.done === "1") return;
       el.dataset.done = "1";
       animateCount(el);
-      ioCount.unobserve(el); // ne relance plus jamais
+      ioCount.unobserve(el);
     }
   });
 },{threshold:0.35});
