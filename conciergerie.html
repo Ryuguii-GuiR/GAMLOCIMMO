@@ -395,7 +395,7 @@ body.menu-open .mobileLinks li:nth-child(5) a{transition-delay:.16s;}
 .reviewStars{color:#111;font-weight:900;}
 
 /* =========================
-   SECTIONS
+   SECTIONS + cards (utilisés par "gestion complète" + "propriétaire")
 ========================= */
 .section{margin:90px auto 0;}
 .sectionTitle{
@@ -409,7 +409,6 @@ body.menu-open .mobileLinks li:nth-child(5) a{transition-delay:.16s;}
   line-height:1.85;font-weight:600;
 }
 
-/* Cards global + media */
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:22px;}
 .card{
   display:block;text-decoration:none;color:var(--text);
@@ -428,10 +427,9 @@ body.menu-open .mobileLinks li:nth-child(5) a{transition-delay:.16s;}
 .cardBody{padding:18px 18px 18px;}
 .card h3{font-size:18px;letter-spacing:-.2px;color:var(--blue2);margin-bottom:8px;}
 .card p{color:var(--muted);font-size:14px;line-height:1.7;font-weight:600;}
-
 .cardMedia{
-  width:100%;height:190px;
-  background:#fff;border-bottom:1px solid rgba(10,18,40,.08);
+  width:100%;height:190px;background:#fff;
+  border-bottom:1px solid rgba(10,18,40,.08);
 }
 .cardMedia img{width:100%;height:100%;object-fit:cover;display:block;}
 
@@ -458,10 +456,7 @@ body.menu-open .mobileLinks li:nth-child(5) a{transition-delay:.16s;}
   box-shadow:0 14px 30px rgba(244,191,19,.18);
   border:1px solid rgba(244,191,19,.35);
 }
-.tcDot .ico{
-  width:18px;height:18px;display:block;
-  color:#111;
-}
+.tcDot .ico{width:18px;height:18px;display:block;color:#111;}
 .tcDot .ico svg{width:100%;height:100%;display:block;}
 .tcHeading{font-size:44px;line-height:1.04;color:#0d0f16;margin:0;}
 .tcDesc{color:var(--muted);line-height:1.75;max-width:48ch;font-weight:600;}
@@ -492,33 +487,7 @@ body.menu-open .mobileLinks li:nth-child(5) a{transition-delay:.16s;}
 .tcDivider{margin:44px 0 0 0;}
 
 /* =========================
-   APPARTEMENTS (icônes design)
-========================= */
-.apTag{
-  display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;
-  color:rgba(13,15,22,.68);
-  font-size:13px;font-weight:800;
-}
-.apTitle{font-size:20px;color:var(--blue2);letter-spacing:-.3px;margin:2px 0 8px;}
-.apMeta{margin-top:10px;display:flex;gap:10px;flex-wrap:wrap;}
-.pill{
-  display:inline-flex;align-items:center;gap:8px;
-  padding:8px 10px;border-radius:999px;
-  border:1px solid rgba(10,18,40,.10);
-  background:rgba(255,255,255,.75);
-  font-weight:900;font-size:12px;color:rgba(13,15,22,.75);
-}
-.pill i{
-  width:18px;height:18px;border-radius:999px;
-  display:grid;place-items:center;
-  background:rgba(244,191,19,.20);
-  border:1px solid rgba(244,191,19,.35);
-  font-style:normal;color:#111;
-}
-.pill i svg{width:12px;height:12px;display:block;}
-
-/* =========================
-   SUPERHOST BANDEAU (simpliste)
+   SUPERHOST (simpliste)
 ========================= */
 .superhostBand{max-width:1200px;margin:70px auto 0;padding:0 20px;}
 .superhostCard{
@@ -541,7 +510,7 @@ body.menu-open .mobileLinks li:nth-child(5) a{transition-delay:.16s;}
 }
 
 /* =========================
-   REVEAL ANIMATIONS + reverse on scroll
+   REVEAL + reverse
 ========================= */
 .reveal{
   opacity:0;transform: translateY(18px);
@@ -648,7 +617,6 @@ footer{
 </div>
 
 <main class="wrap hero">
-
   <section class="heroBand">
     <div class="heroInner">
       <div class="heroKicker reveal">
@@ -700,7 +668,6 @@ footer{
   <div class="heroMedia reveal">
     <img src="1e5b38bc-3ac0-46e2-a97c-a5ac7e106f7d.png" alt="Appartement premium">
   </div>
-
 </main>
 
 <!-- BANDEAU AVIS AIRBNB -->
@@ -951,108 +918,129 @@ footer{
     </div>
   </section>
 
-  <!-- APPARTEMENTS -->
+  <!-- ✅ UNE GESTION COMPLÈTE (remise) -->
+  <section class="section">
+    <h2 class="sectionTitle reveal">Une gestion complète</h2>
+
+    <div class="grid">
+      <a class="card reveal" href="services.html">
+        <div class="cardMedia">
+          <picture>
+            <source srcset="1444x920_the-airbnb-app-and-booking-com-app-are-being-displayed-on-a-smartphone-screen-on-november-28-2024-yassine-mahjoub-sipa-mahjoubyassine-by2f0830-credit-yassine-mahjoub-sipa-2411281412.webp" type="image/webp">
+            <img src="gestion-airbnb.webp" alt="Gestion Airbnb & Booking" loading="lazy">
+          </picture>
+        </div>
+        <div class="cardBody">
+          <h3>Gestion Airbnb & Booking</h3>
+          <p>Calendriers, messages, arrivée/départ, et expérience voyageurs maîtrisée.</p>
+        </div>
+      </a>
+
+      <a class="card reveal" href="services.html">
+        <div class="cardMedia">
+          <picture>
+            <source srcset="Illustration-Nettoyage-et-gestion-du-linge-OF-CE-min.webp" type="image/webp">
+            <img src="Illustration-Nettoyage-et-gestion-du-linge-OF-CE-min.webp" alt="Ménage professionnel" loading="lazy">
+          </picture>
+        </div>
+        <div class="cardBody">
+          <h3>Ménage professionnel</h3>
+          <p>Propreté constante, linge, réassort et finitions.</p>
+        </div>
+      </a>
+
+      <a class="card reveal" href="services.html">
+        <div class="cardMedia">
+          <picture>
+            <source srcset="illustration-Creation-dune-annonce-optimisee-OF-CE-min.webp" type="image/webp">
+            <img src="optimisation-prix.webp" alt="Optimisation & prix" loading="lazy">
+          </picture>
+        </div>
+        <div class="cardBody">
+          <h3>Optimisation & prix</h3>
+          <p>Stratégie tarifaire + présentation : plus de réservations, meilleurs revenus.</p>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- APPARTEMENTS (comme tu avais) -->
   <section class="section">
     <h2 class="sectionTitle reveal">Nos appartements à Nantes</h2>
     <p class="sectionSub reveal">Deux logements, une même exigence : propreté, fluidité, expérience premium.</p>
 
     <div class="grid">
       <a class="card reveal" href="appartement-centre-ville.html">
-        <div class="cardMedia">
-          <img src="app2img1.avif" alt="Le Nid du Bouffay">
-        </div>
+        <div class="cardMedia"><img src="app2img1.avif" alt="Le Nid du Bouffay"></div>
         <div class="cardBody">
-          <div class="apTag">
-            <span>Hyper centre</span>
-            <span>⭐ 4,9</span>
-          </div>
+          <div class="apTag"><span>Hyper centre</span><span>⭐ 4,9</span></div>
           <div class="apTitle">Le Nid du Bouffay</div>
           <p>Confort premium, emplacement stratégique, séjour fluide.</p>
-
           <div class="apMeta">
-            <span class="pill">
-              <i aria-hidden="true">
-                <!-- user -->
-                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M20 21a8 8 0 1 0-16 0" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                  <path d="M12 11a4 4 0 1 0-4-4a4 4 0 0 0 4 4Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-              </i>
-              4 voyageurs
-            </span>
-            <span class="pill">
-              <i aria-hidden="true">
-                <!-- bed -->
-                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M3 10v8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                  <path d="M21 10v8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                  <path d="M3 14h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                  <path d="M4 10h16a1 1 0 0 1 1 1v3H3v-3a1 1 0 0 1 1-1Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
-                  <path d="M7 10V8a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                </svg>
-              </i>
-              1 chambre
-            </span>
-            <span class="pill">
-              <i aria-hidden="true">
-                <!-- pin -->
-                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M12 22s7-4.5 7-12a7 7 0 1 0-14 0c0 7.5 7 12 7 12Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                  <path d="M12 11a2 2 0 1 0-2-2a2 2 0 0 0 2 2Z" stroke="currentColor" stroke-width="2"/>
-                </svg>
-              </i>
-              Bouffay
-            </span>
+            <span class="pill"><i aria-hidden="true">👤</i>4 voyageurs</span>
+            <span class="pill"><i aria-hidden="true">🛏️</i>1 chambre</span>
+            <span class="pill"><i aria-hidden="true">📍</i>Bouffay</span>
           </div>
         </div>
       </a>
 
       <a class="card reveal" href="studio-ile-de-nantes.html">
-        <div class="cardMedia">
-          <img src="app1img1.avif" alt="Cocon de Chevert">
-        </div>
+        <div class="cardMedia"><img src="app1img1.avif" alt="Cocon de Chevert"></div>
         <div class="cardBody">
-          <div class="apTag">
-            <span>Île de Nantes</span>
-            <span>⭐ 4,9</span>
-          </div>
+          <div class="apTag"><span>Île de Nantes</span><span>⭐ 4,9</span></div>
           <div class="apTitle">Cocon de Chevert</div>
           <p>Design moderne, calme, parfait pour courts séjours.</p>
-
           <div class="apMeta">
-            <span class="pill">
-              <i aria-hidden="true">
-                <!-- user -->
-                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M20 21a8 8 0 1 0-16 0" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                  <path d="M12 11a4 4 0 1 0-4-4a4 4 0 0 0 4 4Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-              </i>
-              4 voyageurs
-            </span>
-            <span class="pill">
-              <i aria-hidden="true">
-                <!-- sofa -->
-                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M5 12v-2a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                  <path d="M4 12h16a1 1 0 0 1 1 1v4H3v-4a1 1 0 0 1 1-1Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
-                  <path d="M6 17v2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                  <path d="M18 17v2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                </svg>
-              </i>
-              Studio
-            </span>
-            <span class="pill">
-              <i aria-hidden="true">
-                <!-- leaf -->
-                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M21 3s-6 0-10 4S7 17 7 17s6 0 10-4 4-10 4-10Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                  <path d="M7 17l-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                </svg>
-              </i>
-              Calme
-            </span>
+            <span class="pill"><i aria-hidden="true">👤</i>4 voyageurs</span>
+            <span class="pill"><i aria-hidden="true">🛋️</i>Studio</span>
+            <span class="pill"><i aria-hidden="true">🌿</i>Calme</span>
           </div>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- ✅ PROPRIÉTAIRE ? (remise) -->
+  <section class="section">
+    <h2 class="sectionTitle reveal">Propriétaire ?</h2>
+
+    <div class="grid">
+      <a class="card reveal" href="confier-mon-bien.html">
+        <div class="cardMedia">
+          <picture>
+            <source srcset="nouveau-proprietaire-a-quel-moment-avez-vous-les-cles-de-chez-vous-3d62275f6db87762551edec4df24c95a.jpeg" type="image/webp">
+            <img src="confier-bien.webp" alt="Confier mon bien" loading="lazy">
+          </picture>
+        </div>
+        <div class="cardBody">
+          <h3>Confier mon bien</h3>
+          <p>On gère l’opérationnel. Vous gardez la performance et la tranquillité.</p>
+        </div>
+      </a>
+
+      <a class="card reveal" href="https://www.airbnb.fr/users/profile/1470707298093313243?previous_page_name=PdpHomeMarketplace">
+        <div class="cardMedia">
+          <picture>
+            <source srcset="icon-256x256.png" type="image/webp">
+            <img src="avis.webp" alt="Nos avis" loading="lazy">
+          </picture>
+        </div>
+        <div class="cardBody">
+          <h3>Nos avis</h3>
+          <p>Qualité constante, communication rapide, expérience premium.</p>
+        </div>
+      </a>
+
+      <a class="card reveal" href="contact.html">
+        <div class="cardMedia">
+          <picture>
+            <source srcset="7783981-prise-de-contact-client-avec-un-agent-marketing-vectoriel.jpg" type="image/webp">
+            <img src="contact.webp" alt="Contact" loading="lazy">
+          </picture>
+        </div>
+        <div class="cardBody">
+          <h3>Contact</h3>
+          <p>Une question, un devis, une demande ? On répond rapidement.</p>
         </div>
       </a>
     </div>
@@ -1062,7 +1050,7 @@ footer{
   <section class="superhostBand">
     <div class="superhostCard reveal">
       <div class="superMini">
-        <img src="images (1).png" alt="Superhôte Airbnb">
+        <img src="AIRBNB.png" alt="Superhôte Airbnb">
       </div>
       <div class="superTxt">
         ⭐ Statut Superhôte Airbnb
@@ -1098,30 +1086,21 @@ menuClose?.addEventListener("click", closeMenu);
 overlay?.addEventListener("click", (e)=>{ if(e.target === overlay) closeMenu(); });
 window.addEventListener("keydown", (e)=>{ if(e.key === "Escape") closeMenu(); });
 
-/* NAV (fondue en haut / bleue au scroll + hide/show) */
+/* NAV */
 const header = document.getElementById("siteHeader");
 let lastY = window.scrollY;
-
 function updateHeader(){
   const y = window.scrollY;
-
-  if(y < 40){
-    header.classList.add("is-top");
-    header.classList.remove("is-scrolled");
-  }else{
-    header.classList.remove("is-top");
-    header.classList.add("is-scrolled");
-  }
-
+  if(y < 40){ header.classList.add("is-top"); header.classList.remove("is-scrolled"); }
+  else{ header.classList.remove("is-top"); header.classList.add("is-scrolled"); }
   if(y > 220 && y > lastY + 8) header.classList.add("is-hide");
   else if(y < lastY - 8) header.classList.remove("is-hide");
-
   lastY = y;
 }
 updateHeader();
 window.addEventListener("scroll", updateHeader, {passive:true});
 
-/* REVEAL (reverse on scroll) */
+/* REVEAL reverse */
 const toReveal = document.querySelectorAll(".reveal, .flyL, .flyR");
 const io = new IntersectionObserver((entries)=>{
   entries.forEach(ent=>{
@@ -1131,7 +1110,7 @@ const io = new IntersectionObserver((entries)=>{
 },{threshold:0.12});
 toReveal.forEach(el=>io.observe(el));
 
-/* COUNT UP (plus lent + 1 seule fois, reste statique) */
+/* COUNT UP (lent + une seule fois) */
 function animateCount(el){
   const to = parseFloat(el.dataset.to || "0");
   const suffix = el.dataset.suffix || "";
