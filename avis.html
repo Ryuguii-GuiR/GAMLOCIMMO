@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Gamloc Immo — Gestion Locative à Nantes (Loyer garanti & gestion complète)</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gamloc Immo — Entreprise de Gestion Locative Airbnb à Nantes</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800;900&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
 
@@ -19,6 +19,7 @@
 
   --blue:#0e4aa6;
   --blue2:#0b2b6b;
+  --headerBlue: rgb(19, 42, 175);
 
   --shadow: 0 18px 60px rgba(3,7,18,.18);
   --softShadow: 0 14px 34px rgba(3,7,18,.08);
@@ -40,6 +41,7 @@ body::after{
   filter:blur(190px);opacity:.20;z-index:-1;
 }
 
+
 .anim{
   opacity:0;
   transform: translate3d(var(--x,0px), var(--y,18px), 0) scale(.985);
@@ -57,6 +59,7 @@ body::after{
   filter: blur(0);
 }
 
+
 .accent{
   font-family:"DM Serif Display", Georgia, serif;
   font-style: italic;
@@ -64,7 +67,7 @@ body::after{
   letter-spacing:-.2px;
 }
 
-/* Header */
+
 header{
   position:fixed;top:0;left:0;width:100%;
   background: rgba(255,255,255,.72);
@@ -94,6 +97,7 @@ header.scrolled::after{ opacity:.9; }
   display:flex;justify-content:space-between;align-items:center;
   padding:14px 20px;gap:18px;
 }
+
 .logo a{
   text-decoration:none;
   color: var(--blue2);
@@ -134,7 +138,7 @@ header.scrolled .navlinks a{ color:#fff; }
 }
 .navlinks a:hover::after{width:100%;}
 
-/* mobile menu */
+/* menu mobile */
 .menuBtn{
   display:none;
   width:46px;height:46px;
@@ -237,9 +241,6 @@ body.menu-open .mobileLinks li:nth-child(2) a{ transition-delay:.07s; }
 body.menu-open .mobileLinks li:nth-child(3) a{ transition-delay:.10s; }
 body.menu-open .mobileLinks li:nth-child(4) a{ transition-delay:.13s; }
 body.menu-open .mobileLinks li:nth-child(5) a{ transition-delay:.16s; }
-body.menu-open .mobileLinks li:nth-child(6) a{ transition-delay:.19s; }
-body.menu-open .mobileLinks li:nth-child(7) a{ transition-delay:.22s; }
-
 .mobileHint{
   margin-top:14px;
   padding:12px 14px;
@@ -251,7 +252,7 @@ body.menu-open .mobileLinks li:nth-child(7) a{ transition-delay:.22s; }
   line-height:1.55;
 }
 
-/* Hero */
+
 .hero{
   padding-top:120px;
   max-width:1200px;
@@ -286,8 +287,8 @@ body.menu-open .mobileLinks li:nth-child(7) a{ transition-delay:.22s; }
 }
 .hero p{
   color:var(--muted);
-  margin:0 auto 18px auto;
-  max-width:72ch;
+  margin:0 auto 22px auto;
+  max-width:70ch;
   line-height:1.85;
   font-weight:600;
 }
@@ -296,7 +297,6 @@ body.menu-open .mobileLinks li:nth-child(7) a{ transition-delay:.22s; }
   gap:12px;
   justify-content:center;
   flex-wrap:wrap;
-  margin-top: 18px;
 }
 .actions a{
   display:inline-flex;
@@ -321,7 +321,7 @@ body.menu-open .mobileLinks li:nth-child(7) a{ transition-delay:.22s; }
 .btn-outline:hover{background:rgba(14,74,166,.09);transform:translateY(-2px);}
 
 .heroVisual{
-  margin:26px auto 0;
+  margin:28px auto 0;
   max-width:980px;
   border-radius:26px;
   border:1px solid rgba(10,18,40,.10);
@@ -344,10 +344,10 @@ body.menu-open .mobileLinks li:nth-child(7) a{ transition-delay:.22s; }
   object-fit:cover;
 }
 
-/* ===== Marquee pastilles (droite -> gauche) ===== */
+/* ===== AJOUT : pastilles défilantes (liens ancres, sans hover text) ===== */
 .pillMarquee{
   width:min(920px, 98%);
-  margin: 10px auto 0;
+  margin: 14px auto 0;
   border-radius: 22px;
   border: 1px solid rgba(10,18,40,.10);
   background:
@@ -382,12 +382,16 @@ body.menu-open .mobileLinks li:nth-child(7) a{ transition-delay:.22s; }
   will-change: transform;
   animation: pillScroll 18s linear infinite;
 }
-.pillMarquee:hover .pillTrack{ animation-play-state: paused; } /* optionnel */
+.pillMarquee:hover .pillTrack{ animation-play-state: paused; }
 @keyframes pillScroll{
   from{ transform: translateX(0); }
-  to{ transform: translateX(-50%); } /* boucle grâce à duplication */
+  to{ transform: translateX(-50%); }
 }
-.pillSet{display:flex;gap:12px;align-items:center;}
+.pillSet{
+  display:flex;
+  gap:12px;
+  align-items:center;
+}
 .pill{
   display:inline-flex;
   align-items:center;
@@ -416,7 +420,10 @@ body.menu-open .mobileLinks li:nth-child(7) a{ transition-delay:.22s; }
   background: rgba(255,255,255,.95);
 }
 
-/* Sections */
+/* offset ancres sous header fixe */
+.anchor{ scroll-margin-top: 96px; }
+
+
 .section{max-width:1200px;margin:110px auto;padding:0 20px;}
 .section h2{
   font-size:40px;
@@ -426,9 +433,11 @@ body.menu-open .mobileLinks li:nth-child(7) a{ transition-delay:.22s; }
   color:var(--blue2);
   font-weight:900;
 }
-
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:22px;}
+
 .card{
+  display:block;
+  text-decoration:none;
   background: rgba(255,255,255,.80);
   border:1px solid rgba(10,18,40,.10);
   padding:22px;
@@ -450,6 +459,7 @@ body.menu-open .mobileLinks li:nth-child(7) a{ transition-delay:.22s; }
   pointer-events:none;
 }
 .card > *{ position:relative; z-index:1; }
+
 .card:hover{
   transform: translateY(-10px);
   border-color: rgba(14,74,166,.20);
@@ -468,36 +478,118 @@ body.menu-open .mobileLinks li:nth-child(7) a{ transition-delay:.22s; }
   line-height:1.7;
   font-weight:600;
 }
-.cardIcon{
-  width:44px;height:44px;border-radius:14px;
-  display:grid;place-items:center;
+.cardMedia{
+  width:100%;
+  height:170px;
+  border-radius:16px;
+  overflow:hidden;
   border:1px solid rgba(10,18,40,.10);
-  background:rgba(255,255,255,.75);
-  margin-bottom:12px;
-  box-shadow: 0 10px 20px rgba(3,7,18,.06);
+  background:#fff;
+  margin-bottom:14px;
+}
+.cardMedia img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+  transform: scale(1);
+  transition: transform .6s var(--ease);
+}
+.card:hover .cardMedia img{ transform: scale(1.06); }
+
+
+.apartGrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:22px;}
+.aptCard{
+  display:block;
+  text-decoration:none;
+  background: rgba(255,255,255,.86);
+  border:1px solid rgba(10,18,40,.10);
+  border-radius:26px;
+  overflow:hidden;
+  box-shadow: 0 14px 34px rgba(3,7,18,.08);
+  transition: transform .35s var(--ease), box-shadow .35s var(--ease), border-color .35s var(--ease);
+  position:relative;
+}
+.aptCard:hover{
+  transform: translateY(-10px);
+  border-color: rgba(244,191,19,.25);
+  box-shadow: 0 26px 60px rgba(3,7,18,.14);
+}
+.aptCover{
+  position:relative;
+  height:240px;
+  overflow:hidden;
+  background:#fff;
+}
+.aptCover img{
+  width:100%;height:100%;object-fit:cover;display:block;
+  transform: scale(1);
+  transition: transform .7s var(--ease);
+}
+.aptCard:hover .aptCover img{ transform: scale(1.07); }
+
+.aptBadges{
+  position:absolute;left:14px;top:14px;
+  display:flex;gap:8px;flex-wrap:wrap;
+}
+.badgePill{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:8px 10px;border-radius:999px;
+  background: rgba(255,255,255,.86);
+  border:1px solid rgba(10,18,40,.10);
   font-weight:900;
-  color: var(--blue2);
+  font-size:12px;
+  color: rgba(13,15,22,.82);
+  box-shadow: 0 10px 20px rgba(3,7,18,.08);
+}
+.badgePill .dot{
+  width:8px;height:8px;border-radius:999px;
+  background: linear-gradient(180deg,var(--yellow2),var(--yellow));
 }
 
-/* Band “preuves” */
-.band{
-  max-width:1200px;margin:110px auto 0;padding:0 20px;
+.aptBody{
+  padding:18px 18px 20px 18px;
 }
-.bandWrap{
-  border-radius:26px;overflow:hidden;
-  border:1px solid rgba(244,191,19,.30);
-  box-shadow:0 0 26px rgba(244,191,19,.08), 0 0 22px rgba(14,74,166,.06);
+.aptTitle{
+  font-size:20px;
+  font-weight:900;
+  color: var(--blue2);
+  letter-spacing:-.3px;
+  margin-bottom:10px;
 }
-.bandTop{
-  padding:38px 26px;
+.aptMeta{
+  display:flex;gap:10px;flex-wrap:wrap;
+  color: rgba(13,15,22,.70);
+  font-size:13px;
+  font-weight:700;
+  margin-bottom:10px;
+}
+.metaChip{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:7px 10px;border-radius:999px;
+  border:1px solid rgba(10,18,40,.10);
+  background: rgba(255,255,255,.70);
+}
+.aptDesc{
+  color: var(--muted);
+  font-size:14px;
+  line-height:1.75;
+  font-weight:600;
+}
+
+
+.reviewsBand{margin:110px auto 0;max-width:1200px;padding:0 20px;}
+.reviewsWrap{border-radius:26px;overflow:hidden;border:1px solid rgba(244,191,19,.30);box-shadow:0 0 26px rgba(244,191,19,.08), 0 0 22px rgba(14,74,166,.06);}
+.reviewsTop{
+  padding:40px 26px;
   background:
     radial-gradient(1000px 380px at 18% 20%, rgba(14,74,166,.25), transparent 60%),
     radial-gradient(1000px 380px at 85% 0%, rgba(244,191,19,.22), transparent 60%),
     linear-gradient(180deg, rgba(6,10,22,.92), rgba(6,10,22,.78));
   display:grid;grid-template-columns:1.25fr 1fr;gap:22px;align-items:center;
 }
-.bandTop h2{font-size:42px;margin:0 0 10px 0;color:#fff;font-weight:900;letter-spacing:-.6px;}
-.bandTop p{color:rgba(255,255,255,.78);line-height:1.75;max-width:62ch;font-weight:600;}
+.reviewsTop h2{font-size:42px;margin:0 0 10px 0;color:#fff;font-weight:900;letter-spacing:-.6px;}
+.reviewsTop p{color:rgba(255,255,255,.78);line-height:1.75;max-width:62ch;font-weight:600;}
 .ctaRow{margin-top:18px;display:flex;gap:12px;flex-wrap:wrap;}
 .smallBtn{
   display:inline-flex;align-items:center;gap:10px;
@@ -513,49 +605,106 @@ body.menu-open .mobileLinks li:nth-child(7) a{ transition-delay:.22s; }
   border-color:rgba(244,191,19,.55);
   background:linear-gradient(135deg, rgba(244,191,19,.22), rgba(14,74,166,.18));
 }
-.kpiBox{
+
+.ratingBox{
   justify-self:end;width:min(420px, 100%);
   border-radius:18px;border:1px solid rgba(255,255,255,.16);
   background:rgba(255,255,255,.06);
   padding:18px;
 }
-.kpiRow{display:grid;gap:10px;}
-.kpi{
-  display:flex;justify-content:space-between;gap:12px;
-  padding:12px 12px;border-radius:14px;
-  border:1px solid rgba(255,255,255,.14);
-  background:rgba(255,255,255,.05);
+.ratingMain{display:flex;justify-content:space-between;align-items:center;gap:12px;}
+.bigRate{
+  font-size:44px;font-weight:900;letter-spacing:-1px;
+  background:linear-gradient(90deg,var(--yellow),#bcd9ff);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
 }
-.kpi b{color:#fff;}
-.kpi span{color:rgba(255,255,255,.78);font-weight:700;font-size:13px;}
-.bandBottom{
-  padding:26px;
+.stars{color:var(--yellow2);font-weight:900;}
+.rateMeta{color:rgba(255,255,255,.75);font-size:13px;line-height:1.5;text-align:right;font-weight:650;}
+.avatarRow{display:flex;align-items:center;margin-top:14px;flex-wrap:wrap;}
+.avatar{
+  width:34px;height:34px;border-radius:999px;overflow:hidden;
+  border:1px solid rgba(255,255,255,.22);
+  background:rgba(255,255,255,.12);
+  margin-left:-10px;
+}
+.avatar img{width:100%;height:100%;object-fit:cover;display:block;}
+.avatar:first-child{margin-left:0;}
+.avatarRow span{margin-left:10px;color:rgba(255,255,255,.80);font-size:13px;font-weight:700;}
+
+.reviewsBottom{
+  padding:28px;
   background:
     radial-gradient(1200px 450px at 0% 40%, rgba(14,74,166,.18), transparent 60%),
     linear-gradient(90deg, #f6c62a, #f4bf13);
 }
-.bandBottomGrid{display:grid;grid-template-columns:1.1fr 1fr 1fr;gap:18px;align-items:stretch;}
-.miniCard{
-  border-radius:18px;background:rgba(255,255,255,.16);
-  border:1px solid rgba(255,255,255,.22);
-  padding:16px;color:rgba(0,0,0,.78);font-weight:650;line-height:1.6;font-size:13px;
-}
-.miniCard h3{font-size:22px;margin-bottom:8px;color:#111;font-weight:900;letter-spacing:-.3px;}
+.reviewsBottomGrid{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:18px;align-items:stretch;}
+.reviewsTitle{padding:18px;border-radius:18px;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.22);}
+.reviewsTitle h3{font-size:28px;margin-bottom:8px;color:#111;font-weight:900;letter-spacing:-.4px;}
+.reviewsTitle p{color:rgba(0,0,0,.72);line-height:1.6;font-weight:650;font-size:13px;}
+.reviewsCard{border-radius:18px;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.22);padding:16px;}
+.reviewsCardTop{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:10px;}
+.reviewer{display:flex;align-items:center;gap:10px;color:#111;font-weight:900;}
+.pp{width:34px;height:34px;border-radius:999px;overflow:hidden;border:1px solid rgba(0,0,0,.12);background:rgba(0,0,0,.06);}
+.pp img{width:100%;height:100%;object-fit:cover;display:block;}
+.chip{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:900;padding:6px 10px;border-radius:999px;background:rgba(0,0,0,.10);color:rgba(0,0,0,.74);border:1px solid rgba(0,0,0,.12);}
+.reviewText{color:rgba(0,0,0,.76);font-weight:650;font-size:13px;line-height:1.6;}
+.reviewStars{color:#111;font-weight:900;}
 
-/* Footer */
+.superhost{max-width:1200px;margin:90px auto 0;padding:0 20px;text-align:center;font-size:18px;color:#334155;font-weight:650;}
+.superhost span{background:linear-gradient(90deg,var(--blue2),var(--yellow));-webkit-background-clip:text;background-clip:text;color:transparent;font-weight:900;}
+
 footer{margin-top:110px;padding:44px 20px;text-align:center;border-top:1px solid var(--stroke);color:#6b7280;font-size:14px;font-weight:650;}
-.footerNote{max-width:920px;margin:10px auto 0;color:#6b7280;font-size:12px;line-height:1.6;}
 
-/* anchor offset for fixed header */
-.anchor{scroll-margin-top: 96px;}
 
-/* Responsive */
+.takeCare{max-width:1200px;margin:110px auto 0;padding:0 20px;}
+.takeCareTitle{text-align:center;font-size:44px;letter-spacing:-.5px;color:var(--blue2);margin:0 0 32px 0;font-weight:900;}
+.takeCareTitle em{font-family:"Georgia",serif;font-style:italic;font-weight:500;}
+.tcBlock{display:grid;grid-template-columns:1fr 1.35fr;gap:34px;align-items:start;margin-top:26px;position:relative;}
+.tcBlock.rightLead{grid-template-columns:1.35fr 1fr;}
+.tcLeft{position:relative;padding:10px 0;}
+.tcHeading{font-size:44px;line-height:1.04;color:#0d0f16;margin:0 0 10px 0;font-weight:900;letter-spacing:-.6px;}
+.tcDesc{color:var(--muted);line-height:1.7;max-width:44ch;margin-bottom:14px;font-weight:600;}
+.tcCards{display:grid;gap:16px;padding:6px 0;}
+.tcCard{
+  display:grid;grid-template-columns:260px 1fr;gap:18px;padding:22px;
+  border-radius:18px;border:1px solid rgba(10,18,40,.10);
+  background:rgba(255,255,255,.78);
+  box-shadow:0 14px 34px rgba(3,7,18,.08);
+  transition: transform .35s var(--ease), box-shadow .35s var(--ease), border-color .35s var(--ease);
+  will-change: transform;
+}
+.tcCard:hover{
+  transform: translateY(-10px) scale(1.01);
+  border-color: rgba(244,191,19,.30);
+  box-shadow: 0 26px 60px rgba(3,7,18,.14);
+}
+.tcThumb{height:160px;border-radius:14px;border:1px solid rgba(10,18,40,.10);overflow:hidden;background:#fff;}
+.tcThumb img{width:100%;height:100%;object-fit:cover;display:block;transform:scale(1);transition:transform .7s var(--ease);}
+.tcCard:hover .tcThumb img{transform:scale(1.06);}
+.tcBody h4{font-size:14px;margin:0 0 8px 0;color:#0d0f16;font-weight:900;}
+.tcBody p{margin:0 0 10px 0;color:var(--muted);font-size:13px;line-height:1.6;font-weight:600;}
+.tcMore{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-weight:900;font-size:12px;color:var(--blue2);}
+.tcMore:hover{text-decoration:underline;}
+.tcDivider{margin:50px 0 0 0;}
+
 @media(max-width:980px){
-  .bandTop{grid-template-columns:1fr;}
-  .kpiBox{justify-self:start;}
-  .bandBottomGrid{grid-template-columns:1fr;}
+  .reviewsTop{grid-template-columns:1fr;}
+  .ratingBox{justify-self:start;}
+  .reviewsBottomGrid{grid-template-columns:1fr;}
   .section{margin:80px auto;}
+  .tcBlock, .tcBlock.rightLead{grid-template-columns:1fr;gap:18px;}
+  .tcHeading{font-size:36px;}
+  .tcCard{grid-template-columns:1fr;}
+  .tcThumb{height:140px;}
   .hero h1{font-size:44px;}
+
+  .tcBlock.rightLead{
+    grid-template-areas:
+      "lead"
+      "cards";
+  }
+  .tcBlock.rightLead .tcLeft{ grid-area: lead; }
+  .tcBlock.rightLead .tcCards{ grid-area: cards; }
 }
 @media(max-width:820px){
   .navlinks{display:none;}
@@ -567,8 +716,12 @@ footer{margin-top:110px;padding:44px 20px;text-align:center;border-top:1px solid
   .hero{padding-left:14px;padding-right:14px;}
   .section{padding:0 14px;}
   .actions a{width:100%;text-align:center;}
-  .bandTop{padding:26px 16px;}
-  .bandTop h2{font-size:32px;}
+  .reviewsTop{padding:26px 16px;}
+  .reviewsTop h2{font-size:32px;}
+  .ratingBox{padding:14px;}
+  .bigRate{font-size:38px;}
+  .reviewsBottom{padding:16px;}
+  .pill{font-size:12px;padding:11px 12px;}
 }
 </style>
 </head>
@@ -578,19 +731,21 @@ footer{margin-top:110px;padding:44px 20px;text-align:center;border-top:1px solid
 <header id="siteHeader">
   <div class="nav">
     <div class="logo">
-      <a href="#top"><span class="logoMark"></span>GAMLOC IMMO</a>
+      <a href="index.html"><span class="logoMark"></span>GAMLOC IMMO</a>
     </div>
 
     <ul class="navlinks">
-      <li><a href="#loyer-garanti">Loyer garanti</a></li>
-      <li><a href="#gestion-complete">Gestion complète</a></li>
-      <li><a href="#selection-locataire">Sélection</a></li>
-      <li><a href="#optimisation">Vacance</a></li>
-      <li><a href="#contact">Contact</a></li>
+      <li><a href="services.html">Nos Services</a></li>
+      <li><a href="confier-mon-bien.html">Confier mon bien</a></li>
+      <li><a href="appartements.html">Appartements</a></li>
+      <li><a href="faq.html">F.A.Q</a></li>
+      <li><a href="contact.html">Contact</a></li>
     </ul>
 
     <button class="menuBtn" id="menuBtn" type="button" aria-label="Ouvrir le menu" aria-expanded="false">
-      <span class="menuIcon" aria-hidden="true"><span></span><span></span><span></span></span>
+      <span class="menuIcon" aria-hidden="true">
+        <span></span><span></span><span></span>
+      </span>
     </button>
   </div>
 </header>
@@ -600,22 +755,22 @@ footer{margin-top:110px;padding:44px 20px;text-align:center;border-top:1px solid
     <div class="mobileTop">
       <div class="mobileTitle"><span class="miniDot"></span>GAMLOC IMMO</div>
       <button class="menuBtn" id="menuClose" type="button" aria-label="Fermer le menu">
-        <span class="menuIcon" aria-hidden="true"><span></span><span></span><span></span></span>
+        <span class="menuIcon" aria-hidden="true">
+          <span></span><span></span><span></span>
+        </span>
       </button>
     </div>
 
     <ul class="mobileLinks">
-      <li><a href="#loyer-garanti">Loyer garanti <span class="arrow">›</span></a></li>
-      <li><a href="#gestion-complete">Gestion complète <span class="arrow">›</span></a></li>
-      <li><a href="#selection-locataire">Sélection locataire <span class="arrow">›</span></a></li>
-      <li><a href="#assurance-impayes">Assurance impayés <span class="arrow">›</span></a></li>
-      <li><a href="#etat-des-lieux">États des lieux <span class="arrow">›</span></a></li>
-      <li><a href="#suivi-travaux">Travaux & sinistres <span class="arrow">›</span></a></li>
-      <li><a href="#contact">Contact <span class="arrow">›</span></a></li>
+      <li><a href="services.html">Nos Services <span class="arrow">›</span></a></li>
+      <li><a href="confier-mon-bien.html">Confier mon bien <span class="arrow">›</span></a></li>
+      <li><a href="appartements.html">Appartements <span class="arrow">›</span></a></li>
+      <li><a href="faq.html">F.A.Q <span class="arrow">›</span></a></li>
+      <li><a href="contact.html">Contact <span class="arrow">›</span></a></li>
     </ul>
 
     <div class="mobileHint">
-      Gestion locative à Nantes : loyers sécurisés, sélection locataires, états des lieux, suivi technique, quittances & compta.
+      Gestion locative courte durée à Nantes : optimisation, ménage, check-in/out, communication voyageurs.
     </div>
   </nav>
 </div>
@@ -624,284 +779,402 @@ footer{margin-top:110px;padding:44px 20px;text-align:center;border-top:1px solid
   <div class="heroInner">
 
     <h1 class="anim" style="--y:22px;--d:0ms;">
-      Votre <span class="accent">gestion locative</span>,<br>
-      en mode <span class="accent">zéro stress</span>
+      Profitez de vos <span class="accent">proches</span>,<br>
+      on gère vos <span class="accent">voyageurs</span>
     </h1>
 
     <p class="anim" style="--x:-18px;--d:120ms;">
-      On gère votre location longue durée à Nantes : <b>sélection des locataires</b>, bail, état des lieux,
-      <b>quittances</b>, relances, <b>sinistres</b> et suivi technique — pour des <b>revenus plus stables</b> et des risques réduits.
+      Entreprise de <b>gestion locative</b> courte durée : optimisation, ménage, check-in/out,
+      communication voyageurs et standards premium — pour <b>maximiser vos revenus</b> et vos <b>avis</b>.
     </p>
 
-    <!-- Pastilles (défilement auto droite -> gauche) -->
+    <!-- ✅ pastilles défilantes (aucun texte hover) -->
     <div class="pillMarquee anim" style="--y:14px;--d:160ms;" aria-label="Navigation rapide">
       <div class="pillTrack">
         <div class="pillSet">
-          <a class="pill" href="#loyer-garanti"><span class="dot"></span>Loyer garanti</a>
+          <a class="pill" href="#avis"><span class="dot"></span>Avis Airbnb</a>
+          <a class="pill" href="#takecare"><span class="dot"></span>On s’occupe de tout</a>
           <a class="pill" href="#gestion-complete"><span class="dot"></span>Gestion complète</a>
-          <a class="pill" href="#selection-locataire"><span class="dot"></span>Sélection locataire</a>
-          <a class="pill" href="#assurance-impayes"><span class="dot"></span>Assurance impayés</a>
-          <a class="pill" href="#etat-des-lieux"><span class="dot"></span>États des lieux</a>
-          <a class="pill" href="#suivi-travaux"><span class="dot"></span>Travaux & sinistres</a>
-          <a class="pill" href="#optimisation"><span class="dot"></span>Réduction vacance</a>
-          <a class="pill" href="#espace-proprio"><span class="dot"></span>Espace propriétaire</a>
-          <a class="pill" href="#contact"><span class="dot"></span>Contact</a>
+          <a class="pill" href="#appartements"><span class="dot"></span>Appartements</a>
+          <a class="pill" href="#proprietaire"><span class="dot"></span>Propriétaire</a>
+          <a class="pill" href="#superhost"><span class="dot"></span>Superhôte</a>
+          <a class="pill" href="#footer"><span class="dot"></span>Bas de page</a>
         </div>
 
         <div class="pillSet" aria-hidden="true">
-          <a class="pill" href="#loyer-garanti"><span class="dot"></span>Loyer garanti</a>
+          <a class="pill" href="#avis"><span class="dot"></span>Avis Airbnb</a>
+          <a class="pill" href="#takecare"><span class="dot"></span>On s’occupe de tout</a>
           <a class="pill" href="#gestion-complete"><span class="dot"></span>Gestion complète</a>
-          <a class="pill" href="#selection-locataire"><span class="dot"></span>Sélection locataire</a>
-          <a class="pill" href="#assurance-impayes"><span class="dot"></span>Assurance impayés</a>
-          <a class="pill" href="#etat-des-lieux"><span class="dot"></span>États des lieux</a>
-          <a class="pill" href="#suivi-travaux"><span class="dot"></span>Travaux & sinistres</a>
-          <a class="pill" href="#optimisation"><span class="dot"></span>Réduction vacance</a>
-          <a class="pill" href="#espace-proprio"><span class="dot"></span>Espace propriétaire</a>
-          <a class="pill" href="#contact"><span class="dot"></span>Contact</a>
+          <a class="pill" href="#appartements"><span class="dot"></span>Appartements</a>
+          <a class="pill" href="#proprietaire"><span class="dot"></span>Propriétaire</a>
+          <a class="pill" href="#superhost"><span class="dot"></span>Superhôte</a>
+          <a class="pill" href="#footer"><span class="dot"></span>Bas de page</a>
         </div>
       </div>
     </div>
 
-    <div class="actions anim" style="--y:18px;--d:220ms;">
-      <a class="btn-primary" href="#contact">Demander une estimation</a>
-      <a class="btn-outline" href="#gestion-complete">Voir ce qu’on gère</a>
+    <div class="actions anim" style="--y:18px;--d:200ms;">
+      <a class="btn-primary" href="appartements.html">Découvrir nos appartements</a>
+      <a class="btn-outline" href="confier-mon-bien.html">Confier mon bien</a>
     </div>
 
-    <div class="heroVisual anim" id="heroVisual" style="--y:18px;--d:300ms;">
-      <img src="1e5b38bc-3ac0-46e2-a97c-a5ac7e106f7d.png" alt="Gestion locative - illustration">
+    <div class="heroVisual anim" id="heroVisual" style="--y:18px;--d:280ms;">
+      <img src="1e5b38bc-3ac0-46e2-a97c-a5ac7e106f7d.png" alt="Appartement premium">
     </div>
   </div>
 </section>
 
-<!-- Bande “preuves” -->
-<section class="band anchor" id="gestion-complete" aria-label="Gestion complète">
-  <div class="bandWrap">
-    <div class="bandTop">
+<!-- ✅ Bandeau avis Airbnb conservé -->
+<section class="reviewsBand anim anchor" id="avis" style="--y:22px;--d:0ms;" aria-label="Avis voyageurs">
+  <div class="reviewsWrap">
+
+    <div class="reviewsTop">
       <div>
-        <h2 class="anim" style="--x:-18px;--d:80ms;">Gestion complète, loyers sécurisés</h2>
+        <h2 class="anim" style="--x:-18px;--d:80ms;">Des voyageurs satisfaits</h2>
         <p class="anim" style="--y:18px;--d:160ms;">
-          Vous gardez la propriété, on gère l’opérationnel : mise en location, visites, dossier, bail,
-          encaissement, quittances, relances, sinistres & suivi technique.
+          Une entreprise de <b>Gestion Locative</b> qui vise la régularité :
+          propreté impeccable, communication rapide, arrivée fluide et attention aux détails —
+          pour des avis qui boostent la réservation.
         </p>
+
         <div class="ctaRow anim" style="--y:16px;--d:240ms;">
-          <a class="smallBtn primary" href="#contact">Obtenir un devis</a>
-          <a class="smallBtn" href="#selection-locataire">Voir la sélection locataire</a>
+          <a class="smallBtn primary"
+             href="https://www.airbnb.fr/users/profile/1470707298093313243?previous_page_name=PdpHomeMarketplace"
+             target="_blank" rel="noopener">
+            Voir les avis Airbnb
+          </a>
+          <a class="smallBtn" href="confier-mon-bien.html">Demander une estimation</a>
         </div>
       </div>
 
-      <div class="kpiBox anim" style="--x:18px;--d:180ms;">
-        <div class="kpiRow">
-          <div class="kpi">
-            <b>Objectif</b>
-            <span>Stabilité & tranquillité</span>
+      <div class="ratingBox anim" style="--x:18px;--d:180ms;">
+        <div class="ratingMain">
+          <div>
+            <div class="bigRate">
+              <span class="count" data-to="4.9" data-decimals="1">0</span>
+            </div>
+            <div class="stars" aria-label="5 étoiles">★ ★ ★ ★ ★</div>
           </div>
-          <div class="kpi">
-            <b>Focus</b>
-            <span>Réduction impayés / vacance</span>
+          <div class="rateMeta">
+            <div><b>Note moyenne Airbnb</b></div>
+            <div>Basée sur des séjours récents</div>
           </div>
-          <div class="kpi">
-            <b>Suivi</b>
-            <span>Quittances & reporting</span>
-          </div>
+        </div>
+
+        <div class="avatarRow" aria-label="Voyageurs">
+          <div class="avatar"><img src="AIRBNB.png" alt="Alex"></div>
+          <div class="avatar"><img src="AIRBNB.png" alt="Sarah"></div>
+          <div class="avatar"><img src="AIRBNB.png" alt="Mohamed"></div>
+          <div class="avatar"><img src="AIRBNB.png" alt="Julie"></div>
+          <div class="avatar"><img src="AIRBNB.png" alt="Antoine"></div>
+          <span><span class="count" data-to="70" data-suffix="+">0</span> voyageurs</span>
         </div>
       </div>
     </div>
 
-    <div class="bandBottom">
-      <div class="bandBottomGrid">
-        <div class="miniCard">
-          <h3>Ce qu’on fait</h3>
-          Dossier locataire, bail, états des lieux, quittances, régularisation charges, relances,
-          coordination travaux et gestion sinistres.
+    <div class="reviewsBottom">
+      <div class="reviewsBottomGrid">
+
+        <div class="reviewsTitle">
+          <h3>Pourquoi Gamloc ?</h3>
+          <p>
+            Pour une gestion sans stress et une expérience qui se ressent dans les avis :
+            réactivité, propreté, et standards premium.
+          </p>
         </div>
-        <div class="miniCard">
-          <h3>Ce que vous gagnez</h3>
-          Du temps, des procédures carrées, et surtout une gestion qui vise la <b>stabilité</b>
-          (pas des promesses de “revenus x2”).
+
+        <div class="reviewsCard">
+          <div class="reviewsCardTop">
+            <div class="reviewer">
+              <div class="pp"><img src="AIRBNB.png" alt="Alex"></div>
+              Alex
+              <span class="chip">Airbnb</span>
+            </div>
+            <div class="reviewStars">★★★★★</div>
+          </div>
+          <div class="reviewText">
+            “Appartement impeccable, très bien situé. Check-in simple et communication au top. Je recommande.”
+          </div>
         </div>
-        <div class="miniCard">
-          <h3>Transparence</h3>
-          Documents et suivi accessibles, historique des actions, et échanges clairs.
+
+        <div class="reviewsCard">
+          <div class="reviewsCardTop">
+            <div class="reviewer">
+              <div class="pp"><img src="AIRBNB.png" alt="Sarah"></div>
+              Sarah
+              <span class="chip">Airbnb</span>
+            </div>
+            <div class="reviewStars">★★★★★</div>
+          </div>
+          <div class="reviewText">
+            “Séjour parfait : literie confortable, logement très propre, et super réactivité. On reviendra.”
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ✅ On s’occupe de tout conservé + modif "revenus constants" dans le bloc droite -->
+<section class="takeCare anchor" id="takecare" aria-label="On s’occupe de tout">
+  <h2 class="takeCareTitle anim" style="--y:22px;">On s’occupe <em>de tout</em></h2>
+
+  <div class="tcBlock">
+    <div class="tcLeft anim" style="--x:-18px;--d:80ms;">
+      <h3 class="tcHeading">Gagnez du<br>temps</h3>
+      <p class="tcDesc">
+        Ne perdez plus de temps avec la gestion quotidienne : messages, entrées et sorties,
+        ménage, linge, consommables, et relation voyageurs.
+      </p>
+    </div>
+
+    <div class="tcCards">
+      <div class="tcCard anim" style="--y:18px;--d:0ms;">
+        <div class="tcThumb">
+          <picture>
+            <source srcset="Illustration-Communication-avec-les-voyageurs-CE.webp" type="image/webp">
+            <img src="Illustration-Communication-avec-les-voyageurs-CE.webp" alt="" loading="lazy">
+          </picture>
+        </div>
+        <div class="tcBody">
+          <h4>Communication avec les voyageurs</h4>
+          <p>Réponses rapides, instructions claires, suivi pendant le séjour.</p>
+          <a class="tcMore" href="services.html">En savoir plus →</a>
+        </div>
+      </div>
+
+      <div class="tcCard anim" style="--y:18px;--d:80ms;">
+        <div class="tcThumb">
+          <picture>
+            <source srcset="Illustration-Entrees-Sorties-CE-min.webp" type="image/webp">
+            <img src="Illustration-Entrees-Sorties-CE-min.webp" alt="" loading="lazy">
+          </picture>
+        </div>
+        <div class="tcBody">
+          <h4>Entrées et sorties</h4>
+          <p>Accueil, remise des clés, contrôle du logement, coordination.</p>
+          <a class="tcMore" href="services.html">En savoir plus →</a>
+        </div>
+      </div>
+
+      <div class="tcCard anim" style="--y:18px;--d:160ms;">
+        <div class="tcThumb">
+          <picture>
+            <source srcset="Illustration-Nettoyage-et-gestion-du-linge-OF-CE-min.webp" type="image/webp">
+            <img src="Illustration-Nettoyage-et-gestion-du-linge-OF-CE-min.webp" alt="" loading="lazy">
+          </picture>
+        </div>
+        <div class="tcBody">
+          <h4>Ménage & linge</h4>
+          <p>Ménage après chaque Voyageur, linge fourni, réassort et finitions.</p>
+          <a class="tcMore" href="services.html">En savoir plus →</a>
+        </div>
+      </div>
+
+      <div class="tcCard anim" style="--y:18px;--d:240ms;">
+        <div class="tcThumb">
+          <picture>
+            <source srcset="Illustration-Maintenance-OF-CE-min.webp" type="image/webp">
+            <img src="Illustration-Maintenance-OF-CE-min.webp" alt="" loading="lazy">
+          </picture>
+        </div>
+        <div class="tcBody">
+          <h4>Maintenance</h4>
+          <p>Gestion des petits incidents, fuites, interventions rapides.</p>
+          <a class="tcMore" href="services.html">En savoir plus →</a>
         </div>
       </div>
     </div>
   </div>
+
+  <div class="tcDivider"></div>
+
+  <!-- ✅ Bloc droite : “Gagnez des revenus constants” + vignettes adaptées -->
+  <div class="tcBlock rightLead">
+    <div class="tcCards">
+      <div class="tcCard anim" style="--y:18px;--d:0ms;">
+        <div class="tcThumb">
+          <picture>
+            <source srcset="illustration-Creation-dune-annonce-optimisee-OF-CE-min.webp" type="image/webp">
+            <img src="illustration-Creation-dune-annonce-optimisee-OF-CE-min.webp" alt="" loading="lazy">
+          </picture>
+        </div>
+        <div class="tcBody">
+          <h4>Bail encadré juridiquement</h4>
+          <p>Activité légale et encadrée : un bail clair + documents pour sécuriser la location.</p>
+          <a class="tcMore" href="services.html">En savoir plus →</a>
+        </div>
+      </div>
+
+      <div class="tcCard anim" style="--y:18px;--d:80ms;">
+        <div class="tcThumb">
+          <picture>
+            <source srcset="Illustration-Boost-de-votre-referencemen-OF-CE-min.webp" type="image/webp">
+            <img src="Illustration-Boost-de-votre-referencemen-OF-CE-min.webp" alt="" loading="lazy">
+          </picture>
+        </div>
+        <div class="tcBody">
+          <h4>Bien préservé</h4>
+          <p>Règles claires + suivi : réduction des risques (dégradations) et qualité du logement maintenue.</p>
+          <a class="tcMore" href="services.html">En savoir plus →</a>
+        </div>
+      </div>
+
+      <div class="tcCard anim" style="--y:18px;--d:160ms;">
+        <div class="tcThumb">
+          <picture>
+            <source srcset="Illustration-Gestion-dynamique-des-prix-et-calendrier-OF-CE-min.webp" type="image/webp">
+            <img src="Illustration-Gestion-dynamique-des-prix-et-calendrier-OF-CE-min.webp" alt="" loading="lazy">
+          </picture>
+        </div>
+        <div class="tcBody">
+          <h4>Revenus constants</h4>
+          <p>Paiement mensuel, suivi et relances : notre engagement, c’est la régularité.</p>
+          <a class="tcMore" href="services.html">En savoir plus →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="tcLeft anim" style="--x:18px;--d:120ms;">
+      <h3 class="tcHeading">Gagnez des<br>revenus constants</h3>
+      <p class="tcDesc">
+        Une gestion rigoureuse : cadre contractuel, suivi, relances et standards —
+        pour des revenus plus réguliers et moins d’imprévus.
+      </p>
+    </div>
+  </div>
 </section>
 
-<section class="section anchor" id="loyer-garanti">
-  <h2 class="anim" style="--y:20px;">Loyer garanti</h2>
+<!-- ✅ Gestion complète conservé -->
+<section class="section anchor" id="gestion-complete">
+  <h2 class="anim" style="--y:20px;">Une gestion complète</h2>
   <div class="grid">
-    <div class="card anim" style="--y:18px;--d:0ms;">
-      <div class="cardIcon">€</div>
-      <h3>Sécurisation des encaissements</h3>
-      <p>Process de relance, suivi des paiements, et mise en place d’un cadre clair dès le bail.</p>
-    </div>
-    <div class="card anim" style="--y:18px;--d:90ms;">
-      <div class="cardIcon">🛡️</div>
-      <h3>Assurance loyers impayés</h3>
-      <p>Selon éligibilité : dossier, conditions, et accompagnement pour réduire le risque.</p>
-    </div>
-    <div class="card anim" style="--y:18px;--d:180ms;">
-      <div class="cardIcon">📄</div>
-      <h3>Quittances & documents</h3>
-      <p>Quittances, suivi administratif, et documents locatifs générés de façon régulière.</p>
-    </div>
+    <a class="card anim" style="--y:18px;--d:0ms;" href="services.html">
+      <div class="cardMedia">
+        <picture>
+          <source srcset="1444x920_the-airbnb-app-and-booking-com-app-are-being-displayed-on-a-smartphone-screen-on-november-28-2024-yassine-mahjoub-sipa-mahjoubyassine-by2f0830-credit-yassine-mahjoub-sipa-2411281412.webp" type="image/webp">
+          <img src="gestion-airbnb.webp" alt="Gestion Airbnb & Booking" loading="lazy">
+        </picture>
+      </div>
+      <h3>Gestion Airbnb & Booking</h3>
+      <p>Calendriers, messages, arrivée/départ, et expérience voyageurs maîtrisée.</p>
+    </a>
+
+    <a class="card anim" style="--y:18px;--d:90ms;" href="services.html">
+      <div class="cardMedia">
+        <picture>
+          <source srcset="Illustration-Nettoyage-et-gestion-du-linge-OF-CE-min.webp" type="image/webp">
+          <img src="Illustration-Nettoyage-et-gestion-du-linge-OF-CE-min.webp" alt="Ménage professionnel" loading="lazy">
+        </picture>
+      </div>
+      <h3>Ménage professionnel</h3>
+      <p>Propreté constante, linge, réassort et finitions.</p>
+    </a>
+
+    <a class="card anim" style="--y:18px;--d:180ms;" href="services.html">
+      <div class="cardMedia">
+        <picture>
+          <source srcset="illustration-Creation-dune-annonce-optimisee-OF-CE-min.webp" type="image/webp">
+          <img src="optimisation-prix.webp" alt="Optimisation & prix" loading="lazy">
+        </picture>
+      </div>
+      <h3>Optimisation & prix</h3>
+      <p>Stratégie tarifaire + présentation : plus de réservations, meilleurs revenus.</p>
+    </a>
   </div>
 </section>
 
-<section class="section anchor" id="selection-locataire">
-  <h2 class="anim" style="--y:20px;">Sélection locataire</h2>
+<!-- ✅ Appartements conservé -->
+<section class="section anchor" id="appartements">
+  <h2 class="anim" style="--y:20px;">Nos appartements à Nantes</h2>
+
+  <div class="apartGrid">
+    <a class="aptCard anim" style="--x:-18px;--d:0ms;" href="appartement-centre-ville.html">
+      <div class="aptCover">
+        <img src="app2img1.avif" alt="Appartement centre-ville">
+        <div class="aptBadges">
+          <span class="badgePill"><span class="dot"></span>4 voyageurs</span>
+          <span class="badgePill"><span class="dot"></span>Hyper centre</span>
+        </div>
+      </div>
+      <div class="aptBody">
+        <div class="aptTitle">Le Nid du Bouffay</div>
+        <div class="aptMeta">
+          <span class="metaChip">🛏️ 4 couchages</span>
+          <span class="metaChip">📍 Centre</span>
+        </div>
+        <div class="aptDesc">Confort premium, emplacement stratégique, séjour fluide.</div>
+      </div>
+    </a>
+
+    <a class="aptCard anim" style="--x:18px;--d:80ms;" href="studio-ile-de-nantes.html">
+      <div class="aptCover">
+        <img src="app1img1.avif" alt="Studio Île de Nantes">
+        <div class="aptBadges">
+          <span class="badgePill"><span class="dot"></span>4 voyageurs</span>
+          <span class="badgePill"><span class="dot"></span>Île de Nantes</span>
+        </div>
+      </div>
+      <div class="aptBody">
+        <div class="aptTitle">Cocon de Chevert</div>
+        <div class="aptMeta">
+          <span class="metaChip">🛏️ 4 couchages</span>
+          <span class="metaChip">🌿 Calme</span>
+        </div>
+        <div class="aptDesc">Design moderne, calme, parfait pour courts séjours.</div>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- ✅ Propriétaire conservé -->
+<section class="section anchor" id="proprietaire">
+  <h2 class="anim" style="--y:20px;">Propriétaire ?</h2>
+
   <div class="grid">
-    <div class="card anim" style="--y:18px;--d:0ms;">
-      <div class="cardIcon">🔍</div>
-      <h3>Analyse du dossier</h3>
-      <p>Vérification des pièces, cohérence des revenus, stabilité, et conformité du dossier.</p>
-    </div>
-    <div class="card anim" style="--y:18px;--d:90ms;">
-      <div class="cardIcon">📅</div>
-      <h3>Visites & prise de décision</h3>
-      <p>Organisation des visites, tri, et proposition du meilleur profil selon vos critères.</p>
-    </div>
-    <div class="card anim" style="--y:18px;--d:180ms;">
-      <div class="cardIcon">✍️</div>
-      <h3>Bail & entrée</h3>
-      <p>Rédaction/gestion du bail, signature, dépôt, et mise en route propre du contrat.</p>
-    </div>
+    <a class="card anim" style="--y:18px;--d:0ms;" href="confier-mon-bien.html">
+      <div class="cardMedia">
+        <picture>
+          <source srcset="nouveau-proprietaire-a-quel-moment-avez-vous-les-cles-de-chez-vous-3d62275f6db87762551edec4df24c95a.jpeg" type="image/webp">
+          <img src="confier-bien.webp" alt="Confier mon bien" loading="lazy">
+        </picture>
+      </div>
+      <h3>Confier mon bien</h3>
+      <p>On gère l’opérationnel. Vous gardez la performance et la tranquillité.</p>
+    </a>
+
+    <a class="card anim" style="--y:18px;--d:90ms;" href="https://www.airbnb.fr/users/profile/1470707298093313243?previous_page_name=PdpHomeMarketplace">
+      <div class="cardMedia">
+        <picture>
+          <source srcset="icon-256x256.png" type="image/webp">
+          <img src="avis.webp" alt="Nos avis" loading="lazy">
+        </picture>
+      </div>
+      <h3>Nos avis</h3>
+      <p>Qualité constante, communication rapide, expérience premium.</p>
+    </a>
+
+    <a class="card anim" style="--y:18px;--d:180ms;" href="contact.html">
+      <div class="cardMedia">
+        <picture>
+          <source srcset="7783981-prise-de-contact-client-avec-un-agent-marketing-vectoriel.jpg" type="image/webp">
+          <img src="contact.webp" alt="Contact" loading="lazy">
+        </picture>
+      </div>
+      <h3>Contact</h3>
+      <p>Une question, un devis, une demande ? On répond rapidement.</p>
+    </a>
   </div>
 </section>
 
-<section class="section anchor" id="assurance-impayes">
-  <h2 class="anim" style="--y:20px;">Assurance impayés</h2>
-  <div class="grid">
-    <div class="card anim" style="--y:18px;--d:0ms;">
-      <div class="cardIcon">✅</div>
-      <h3>Éligibilité & montage</h3>
-      <p>On prépare le dossier pour répondre aux critères d’assurance (si vous choisissez cette option).</p>
-    </div>
-    <div class="card anim" style="--y:18px;--d:90ms;">
-      <div class="cardIcon">📌</div>
-      <h3>Suivi & déclarations</h3>
-      <p>Accompagnement sur les démarches en cas d’incident, dans le cadre du contrat.</p>
-    </div>
-    <div class="card anim" style="--y:18px;--d:180ms;">
-      <div class="cardIcon">🤝</div>
-      <h3>Gestion au quotidien</h3>
-      <p>Relances, échanges, preuves : une gestion propre qui protège le propriétaire.</p>
-    </div>
-  </div>
-</section>
+<!-- ✅ Bandeau Superhôte conservé -->
+<div class="superhost anim anchor" id="superhost" style="--y:18px;">
+  ⭐ Statut <span>Superhôte Airbnb</span> — basé sur la qualité, la régularité et la satisfaction voyageurs.
+</div>
 
-<section class="section anchor" id="etat-des-lieux">
-  <h2 class="anim" style="--y:20px;">États des lieux</h2>
-  <div class="grid">
-    <div class="card anim" style="--y:18px;--d:0ms;">
-      <div class="cardIcon">🏠</div>
-      <h3>Entrée</h3>
-      <p>Constat précis, photos, inventaire si meublé, relevés et remise des infos essentielles.</p>
-    </div>
-    <div class="card anim" style="--y:18px;--d:90ms;">
-      <div class="cardIcon">🚪</div>
-      <h3>Sortie</h3>
-      <p>Comparatif, réserves, et coordination des actions (nettoyage, réparations si besoin).</p>
-    </div>
-    <div class="card anim" style="--y:18px;--d:180ms;">
-      <div class="cardIcon">🧾</div>
-      <h3>Clôture</h3>
-      <p>Documents et suivi de restitution selon l’état constaté et les règles applicables.</p>
-    </div>
-  </div>
-</section>
-
-<section class="section anchor" id="suivi-travaux">
-  <h2 class="anim" style="--y:20px;">Travaux & sinistres</h2>
-  <div class="grid">
-    <div class="card anim" style="--y:18px;--d:0ms;">
-      <div class="cardIcon">🧰</div>
-      <h3>Petites réparations</h3>
-      <p>Coordination d’interventions, suivi, et validation avec vous si nécessaire.</p>
-    </div>
-    <div class="card anim" style="--y:18px;--d:90ms;">
-      <div class="cardIcon">💧</div>
-      <h3>Sinistres</h3>
-      <p>Organisation des constats, devis, échanges et suivi des étapes de résolution.</p>
-    </div>
-    <div class="card anim" style="--y:18px;--d:180ms;">
-      <div class="cardIcon">📍</div>
-      <h3>Suivi clair</h3>
-      <p>Vous savez ce qui a été fait, pourquoi, et ce qu’il reste à faire.</p>
-    </div>
-  </div>
-</section>
-
-<section class="section anchor" id="optimisation">
-  <h2 class="anim" style="--y:20px;">Réduction de la vacance</h2>
-  <div class="grid">
-    <div class="card anim" style="--y:18px;--d:0ms;">
-      <div class="cardIcon">📣</div>
-      <h3>Annonce & diffusion</h3>
-      <p>Présentation claire, diffusion, et traitement rapide des demandes.</p>
-    </div>
-    <div class="card anim" style="--y:18px;--d:90ms;">
-      <div class="cardIcon">⏱️</div>
-      <h3>Réactivité</h3>
-      <p>Visites et décisions rapides pour limiter les périodes sans locataire.</p>
-    </div>
-    <div class="card anim" style="--y:18px;--d:180ms;">
-      <div class="cardIcon">📊</div>
-      <h3>Positionnement</h3>
-      <p>Conseils de positionnement (loyer, présentation, points bloquants) pour rester cohérent.</p>
-    </div>
-  </div>
-</section>
-
-<section class="section anchor" id="espace-proprio">
-  <h2 class="anim" style="--y:20px;">Espace propriétaire</h2>
-  <div class="grid">
-    <div class="card anim" style="--y:18px;--d:0ms;">
-      <div class="cardIcon">📁</div>
-      <h3>Documents</h3>
-      <p>Quittances, documents, historique : vous gardez une vision propre et structurée.</p>
-    </div>
-    <div class="card anim" style="--y:18px;--d:90ms;">
-      <div class="cardIcon">🗓️</div>
-      <h3>Suivi en continu</h3>
-      <p>Échanges simples, infos utiles, et décisions prises rapidement quand nécessaire.</p>
-    </div>
-    <div class="card anim" style="--y:18px;--d:180ms;">
-      <div class="cardIcon">☎️</div>
-      <h3>Interlocuteur</h3>
-      <p>Un point de contact clair : moins d’aller-retours, plus de tranquillité.</p>
-    </div>
-  </div>
-</section>
-
-<section class="section anchor" id="contact">
-  <h2 class="anim" style="--y:20px;">Contact</h2>
-  <div class="grid">
-    <div class="card anim" style="--y:18px;--d:0ms;">
-      <div class="cardIcon">📍</div>
-      <h3>Nantes & alentours</h3>
-      <p>Zone : Nantes (centre + périphérie). Dites-nous l’adresse/secteur et le type de bien.</p>
-    </div>
-    <div class="card anim" style="--y:18px;--d:90ms;">
-      <div class="cardIcon">✉️</div>
-      <h3>Demande</h3>
-      <p>Envoyez : surface, meublé/non-meublé, loyer visé, et contraintes (travaux, délais, etc.).</p>
-    </div>
-    <div class="card anim" style="--y:18px;--d:180ms;">
-      <div class="cardIcon">✅</div>
-      <h3>Réponse rapide</h3>
-      <p>On vous répond avec une approche réaliste : stabilité, conformité, et process clair.</p>
-    </div>
-  </div>
-</section>
-
-<footer>
-  Gamloc Immo — Gestion Locative à Nantes
-  <div class="footerNote">
-    Remarque : les termes “loyer garanti” / “assurance” dépendent des options choisies, de l’éligibilité du dossier et des conditions contractuelles.
-  </div>
-</footer>
+<footer class="anchor" id="footer">Gamloc Immo — SLP Airbnb à Nantes</footer>
 
 <script>
 /* MENU MOBILE */
@@ -926,7 +1199,7 @@ menuClose.addEventListener("click", closeMenu);
 overlay.addEventListener("click", (e)=>{ if(e.target === overlay) closeMenu(); });
 window.addEventListener("keydown", (e)=>{ if(e.key === "Escape") closeMenu(); });
 
-/* HEADER + parallax léger visuel */
+/* HEADER INVERSE + parallax léger sur le visuel */
 const header = document.getElementById("siteHeader");
 const heroVisual = document.getElementById("heroVisual");
 
@@ -939,6 +1212,7 @@ function onScroll(){
     if(y > 12) header.classList.add("scrolled");
     else header.classList.remove("scrolled");
 
+    // parallax léger (clean)
     if(heroVisual){
       const p = Math.min(y / 700, 1);
       heroVisual.style.transform = `translateY(${p * 10}px)`;
@@ -949,7 +1223,7 @@ function onScroll(){
 window.addEventListener("scroll", onScroll, {passive:true});
 onScroll();
 
-/* Animations “vol” au scroll */
+/* Animations "vol" au scroll */
 const animEls = document.querySelectorAll(".anim");
 const io = new IntersectionObserver((entries)=>{
   entries.forEach(ent=>{
@@ -961,7 +1235,44 @@ const io = new IntersectionObserver((entries)=>{
 },{threshold:0.12});
 animEls.forEach(el=>io.observe(el));
 
-/* Scroll ancre avec offset header (sinon ça arrive sous le header) */
+/* COUNT UP (lent) sur les stats EXISTANTES du bandeau avis Airbnb */
+function animateCount(el){
+  if(el.dataset.done === "1") return;
+
+  const to = parseFloat(el.dataset.to || "0");
+  const suffix = el.dataset.suffix || "";
+  const decimals = parseInt(el.dataset.decimals || "0", 10);
+  const isFloat = decimals > 0;
+
+  const duration = 2200;
+  const start = performance.now();
+  const from = 0;
+
+  function tick(now){
+    const t = Math.min(1, (now - start)/duration);
+    const eased = 1 - Math.pow(1 - t, 3);
+    const val = from + (to - from)*eased;
+
+    el.textContent = (isFloat ? val.toFixed(decimals) : Math.round(val)) + suffix;
+
+    if(t < 1) requestAnimationFrame(tick);
+    else el.dataset.done = "1";
+  }
+  requestAnimationFrame(tick);
+}
+
+const counts = document.querySelectorAll(".count");
+const ioCount = new IntersectionObserver((entries)=>{
+  entries.forEach(ent=>{
+    if(ent.isIntersecting){
+      animateCount(ent.target);
+      ioCount.unobserve(ent.target);
+    }
+  });
+},{threshold:0.45});
+counts.forEach(el=>ioCount.observe(el));
+
+/* ✅ Scroll ancres avec offset header (sinon ça arrive sous le header) */
 const HEADER_OFFSET = 96;
 document.querySelectorAll('a[href^="#"]').forEach(a=>{
   a.addEventListener("click", (e)=>{
