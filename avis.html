@@ -40,7 +40,7 @@ body::after{
   filter:blur(190px);opacity:.20;z-index:-1;
 }
 
-/* ================== ANIMS (vol + fondu) ================== */
+
 .anim{
   opacity:0;
   transform: translate3d(var(--x,0px), var(--y,18px), 0) scale(.985);
@@ -58,7 +58,7 @@ body::after{
   filter: blur(0);
 }
 
-/* ===== ajout : 2e police (comme "On s’occupe de tout") ===== */
+
 .accent{
   font-family:"DM Serif Display", Georgia, serif;
   font-style: italic;
@@ -66,7 +66,7 @@ body::after{
   letter-spacing:-.2px;
 }
 
-/* ================= HEADER : haut blanc / scroll bleu ================= */
+
 header{
   position:fixed;top:0;left:0;width:100%;
   background: rgba(255,255,255,.72);
@@ -251,7 +251,7 @@ body.menu-open .mobileLinks li:nth-child(5) a{ transition-delay:.16s; }
   line-height:1.55;
 }
 
-/* ================= HERO ================= */
+
 .hero{
   padding-top:120px;
   max-width:1200px;
@@ -343,7 +343,7 @@ body.menu-open .mobileLinks li:nth-child(5) a{ transition-delay:.16s; }
   object-fit:cover;
 }
 
-/* ================= Sections/cards (sobres) ================= */
+
 .section{max-width:1200px;margin:110px auto;padding:0 20px;}
 .section h2{
   font-size:40px;
@@ -417,7 +417,7 @@ body.menu-open .mobileLinks li:nth-child(5) a{ transition-delay:.16s; }
 }
 .card:hover .cardMedia img{ transform: scale(1.06); }
 
-/* ================= Cartes APPARTS ================= */
+
 .apartGrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:22px;}
 .aptCard{
   display:block;
@@ -497,7 +497,7 @@ body.menu-open .mobileLinks li:nth-child(5) a{ transition-delay:.16s; }
   font-weight:600;
 }
 
-/* ================= Reviews ================= */
+
 .reviewsBand{margin:110px auto 0;max-width:1200px;padding:0 20px;}
 .reviewsWrap{border-radius:26px;overflow:hidden;border:1px solid rgba(244,191,19,.30);box-shadow:0 0 26px rgba(244,191,19,.08), 0 0 22px rgba(14,74,166,.06);}
 .reviewsTop{
@@ -575,7 +575,7 @@ body.menu-open .mobileLinks li:nth-child(5) a{ transition-delay:.16s; }
 
 footer{margin-top:110px;padding:44px 20px;text-align:center;border-top:1px solid var(--stroke);color:#6b7280;font-size:14px;font-weight:650;}
 
-/* ===== ON S'OCCUPE DE TOUT ===== */
+
 .takeCare{max-width:1200px;margin:110px auto 0;padding:0 20px;}
 .takeCareTitle{text-align:center;font-size:44px;letter-spacing:-.5px;color:var(--blue2);margin:0 0 32px 0;font-weight:900;}
 .takeCareTitle em{font-family:"Georgia",serif;font-style:italic;font-weight:500;}
@@ -607,6 +607,135 @@ footer{margin-top:110px;padding:44px 20px;text-align:center;border-top:1px solid
 .tcMore:hover{text-decoration:underline;}
 .tcDivider{margin:50px 0 0 0;}
 
+/* =========================
+   AJOUT : TOURQUET + HOVER
+   ========================= */
+.menuHover{
+  width:min(740px, 96%);
+  margin: 14px auto 0;
+  padding: 12px 14px;
+  border-radius: 16px;
+  border: 1px solid rgba(10,18,40,.10);
+  background: rgba(255,255,255,.78);
+  box-shadow: 0 14px 34px rgba(3,7,18,.06);
+  color: rgba(13,15,22,.82);
+  font-weight:700;
+  line-height:1.55;
+  opacity:0;
+  transform: translateY(-4px);
+  transition: opacity .22s var(--ease), transform .22s var(--ease);
+}
+.menuHover.show{
+  opacity:1;
+  transform: translateY(0);
+}
+.menuHover b{
+  display:block;
+  color: var(--blue2);
+  font-weight:900;
+  margin-bottom:2px;
+}
+
+.wheelWrap{
+  margin: 18px auto 0;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+.wheel{
+  --radius: 148px;
+  --itemSize: 64px;
+  --rot: 0deg;
+
+  position:relative;
+  width: 360px;
+  height: 360px;
+  border-radius: 999px;
+  border: 1px solid rgba(10,18,40,.10);
+  background:
+    radial-gradient(420px 240px at 20% 20%, rgba(244,191,19,.10), transparent 55%),
+    radial-gradient(420px 240px at 90% 0%, rgba(14,74,166,.10), transparent 55%),
+    linear-gradient(180deg, rgba(255,255,255,.86), rgba(255,255,255,.72));
+  box-shadow: 0 14px 34px rgba(3,7,18,.08);
+  transform: rotate(var(--rot));
+  transition: transform .42s var(--ease);
+  will-change: transform;
+}
+
+.wheelCenter{
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform: translate(-50%,-50%);
+  width: 140px;
+  height: 140px;
+  border-radius: 22px;
+  border: 1px solid rgba(10,18,40,.10);
+  background:
+    radial-gradient(240px 140px at 30% 20%, rgba(244,191,19,.14), transparent 55%),
+    radial-gradient(240px 140px at 80% 10%, rgba(14,74,166,.12), transparent 55%),
+    rgba(255,255,255,.70);
+  display:grid;
+  place-items:center;
+  font-weight:900;
+  color: var(--blue2);
+  letter-spacing:1.2px;
+}
+
+.wheelItem{
+  position:absolute;
+  top:50%;
+  left:50%;
+  width: var(--itemSize);
+  height: var(--itemSize);
+  margin: calc(var(--itemSize) / -2);
+  border-radius: 18px;
+  border: 1px solid rgba(10,18,40,.10);
+  background: rgba(255,255,255,.78);
+  box-shadow: 0 12px 26px rgba(3,7,18,.08);
+  display:grid;
+  place-items:center;
+  cursor:pointer;
+  text-decoration:none;
+  color: var(--blue2);
+  font-weight: 900;
+  transition: transform .42s var(--ease), background .18s var(--ease), border-color .18s var(--ease);
+  user-select:none;
+
+  transform:
+    rotate(var(--a))
+    translate(var(--radius))
+    rotate(calc(-1 * var(--a)));
+}
+.wheelItem:hover{
+  background: rgba(255,255,255,.92);
+  border-color: rgba(244,191,19,.35);
+}
+.wheelItem span{
+  font-size: 12px;
+  letter-spacing:.3px;
+}
+
+.wheelControls{
+  margin-top: 12px;
+  display:flex;
+  gap:10px;
+  justify-content:center;
+}
+.wheelBtn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:44px;
+  height:44px;
+  border-radius: 14px;
+  border:1px solid rgba(10,18,40,.10);
+  background: rgba(255,255,255,.70);
+  cursor:pointer;
+  transition: transform .18s var(--ease), background .18s var(--ease);
+}
+.wheelBtn:hover{ transform: translateY(-1px); background: rgba(255,255,255,.86); }
+
 @media(max-width:980px){
   .reviewsTop{grid-template-columns:1fr;}
   .ratingBox{justify-self:start;}
@@ -618,7 +747,6 @@ footer{margin-top:110px;padding:44px 20px;text-align:center;border-top:1px solid
   .tcThumb{height:140px;}
   .hero h1{font-size:44px;}
 
-  /* ===== changement demandé : "Gagnez de l’argent" AU-DESSUS des vignettes sur mobile ===== */
   .tcBlock.rightLead{
     grid-template-areas:
       "lead"
@@ -626,6 +754,8 @@ footer{margin-top:110px;padding:44px 20px;text-align:center;border-top:1px solid
   }
   .tcBlock.rightLead .tcLeft{ grid-area: lead; }
   .tcBlock.rightLead .tcCards{ grid-area: cards; }
+
+  .wheel{ width: 320px; height: 320px; --radius: 132px; --itemSize: 60px; }
 }
 @media(max-width:820px){
   .navlinks{display:none;}
@@ -642,6 +772,9 @@ footer{margin-top:110px;padding:44px 20px;text-align:center;border-top:1px solid
   .ratingBox{padding:14px;}
   .bigRate{font-size:38px;}
   .reviewsBottom{padding:16px;}
+
+  .wheel{ width: 290px; height: 290px; --radius: 118px; --itemSize: 56px; }
+  .wheelCenter{ width: 128px; height: 128px; }
 }
 </style>
 </head>
@@ -697,7 +830,7 @@ footer{margin-top:110px;padding:44px 20px;text-align:center;border-top:1px solid
 
 <section class="hero">
   <div class="heroInner">
-    <!-- changement demandé : 2 polices sur "Profitez de vos proches..." -->
+    
     <h1 class="anim" style="--y:22px;--d:0ms;">
       Profitez de vos <span class="accent">proches</span>,<br>
       on gère vos <span class="accent">voyageurs</span>
@@ -707,6 +840,38 @@ footer{margin-top:110px;padding:44px 20px;text-align:center;border-top:1px solid
       Entreprise de <b>gestion locative</b> courte durée : optimisation, ménage, check-in/out,
       communication voyageurs et standards premium — pour <b>maximiser vos revenus</b> et vos <b>avis</b>.
     </p>
+
+    <!-- AJOUT : TEXTE HOVER -->
+    <div id="menuHover" class="menuHover" aria-live="polite"></div>
+
+    <!-- AJOUT : MENU TOURQUET (juste en dessous du hover) -->
+    <div class="wheelWrap anim" style="--y:18px;--d:170ms;">
+      <div class="wheel" id="wheel" style="--rot:0deg;">
+        <div class="wheelCenter">MENU</div>
+
+        <a class="wheelItem" href="services.html" style="--a:0deg" data-title="Nos Services" data-desc="Optimisation, ménage, check-in/out, communication voyageurs.">
+          <span>SERV</span>
+        </a>
+        <a class="wheelItem" href="confier-mon-bien.html" style="--a:72deg" data-title="Confier mon bien" data-desc="Estimation, accompagnement, mise en place et gestion complète.">
+          <span>BIEN</span>
+        </a>
+        <a class="wheelItem" href="appartements.html" style="--a:144deg" data-title="Appartements" data-desc="Découvrir nos logements et disponibilités à Nantes.">
+          <span>APPT</span>
+        </a>
+        <a class="wheelItem" href="faq.html" style="--a:216deg" data-title="F.A.Q" data-desc="Toutes les réponses rapides : fonctionnement, tarifs, process.">
+          <span>FAQ</span>
+        </a>
+        <a class="wheelItem" href="contact.html" style="--a:288deg" data-title="Contact" data-desc="Une question ? On vous répond rapidement.">
+          <span>CONT</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- AJOUT : CONTROLES (tourner) -->
+    <div class="wheelControls anim" style="--y:12px;--d:190ms;">
+      <button class="wheelBtn" id="wheelPrev" type="button" aria-label="Tourner à gauche">⟵</button>
+      <button class="wheelBtn" id="wheelNext" type="button" aria-label="Tourner à droite">⟶</button>
+    </div>
 
     <div class="actions anim" style="--y:18px;--d:200ms;">
       <a class="btn-primary" href="appartements.html">Découvrir nos appartements</a>
@@ -744,7 +909,7 @@ footer{margin-top:110px;padding:44px 20px;text-align:center;border-top:1px solid
       <div class="ratingBox anim" style="--x:18px;--d:180ms;">
         <div class="ratingMain">
           <div>
-            <!-- changement demandé : count up sur les stats EXISTANTES du bandeau (note) -->
+            
             <div class="bigRate">
               <span class="count" data-to="4.9" data-decimals="1">0</span>
             </div>
@@ -762,7 +927,6 @@ footer{margin-top:110px;padding:44px 20px;text-align:center;border-top:1px solid
           <div class="avatar"><img src="AIRBNB.png" alt="Mohamed"></div>
           <div class="avatar"><img src="AIRBNB.png" alt="Julie"></div>
           <div class="avatar"><img src="AIRBNB.png" alt="Antoine"></div>
-          <!-- changement demandé : count up sur "+70 voyageurs" (sans ajouter d’éléments) -->
           <span><span class="count" data-to="70" data-suffix="+">0</span> voyageurs</span>
         </div>
       </div>
@@ -1163,6 +1327,55 @@ const ioCount = new IntersectionObserver((entries)=>{
   });
 },{threshold:0.45});
 counts.forEach(el=>ioCount.observe(el));
+
+/* =========================
+   AJOUT : LOGIQUE TOURQUET
+   ========================= */
+const wheel = document.getElementById("wheel");
+const hoverBox = document.getElementById("menuHover");
+const wheelItems = wheel ? wheel.querySelectorAll(".wheelItem") : [];
+const prevBtn = document.getElementById("wheelPrev");
+const nextBtn = document.getElementById("wheelNext");
+
+let wheelRot = 0;
+const step = wheelItems.length ? (360 / wheelItems.length) : 72;
+
+function setWheelRot(){
+  if(!wheel) return;
+  wheel.style.setProperty("--rot", `${wheelRot}deg`);
+}
+
+function showHover(title, desc){
+  if(!hoverBox) return;
+  hoverBox.innerHTML = `<b>${title}</b>${desc}`;
+  hoverBox.classList.add("show");
+}
+
+function hideHover(){
+  if(!hoverBox) return;
+  hoverBox.classList.remove("show");
+  hoverBox.innerHTML = "";
+}
+
+wheelItems.forEach((it)=>{
+  const title = it.dataset.title || "Menu";
+  const desc = it.dataset.desc || "";
+  it.addEventListener("mouseenter", ()=> showHover(title, desc));
+  it.addEventListener("focus", ()=> showHover(title, desc));
+  it.addEventListener("mouseleave", hideHover);
+  it.addEventListener("blur", hideHover);
+});
+
+if(prevBtn) prevBtn.addEventListener("click", ()=>{ wheelRot += step; setWheelRot(); });
+if(nextBtn) nextBtn.addEventListener("click", ()=>{ wheelRot -= step; setWheelRot(); });
+
+if(wheel){
+  wheel.addEventListener("wheel", (e)=>{
+    e.preventDefault();
+    wheelRot += (e.deltaY > 0 ? -step : step);
+    setWheelRot();
+  }, { passive:false });
+}
 </script>
 
 </body>
