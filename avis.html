@@ -21,7 +21,6 @@
 
   --blue:#0e4aa6;
   --blue2:#0b2b6b;
-  --headerBlue: rgb(19, 42, 175);
 
   --shadow: 0 18px 60px rgba(3,7,18,.18);
   --soft: 0 14px 34px rgba(3,7,18,.08);
@@ -83,11 +82,16 @@ header.is-hide{ transform: translateY(-110%); }
   padding:14px 20px;gap:18px;
 }
 
+/* ✅ plus de logo image dans la nav */
 .brand{
   display:flex;align-items:center;gap:10px;
   text-decoration:none;
 }
-.brandLogo{ height:30px;width:auto;display:block; }
+.brandDot{
+  width:10px;height:10px;border-radius:999px;
+  background:linear-gradient(180deg,var(--yellow2),var(--yellow));
+  box-shadow:0 0 18px rgba(244,191,19,.25);
+}
 .brandText{
   font-weight:900;
   letter-spacing:2px;
@@ -217,7 +221,7 @@ body.menu-open .mobileLinks li:nth-child(5) a{transition-delay:.16s;}
 .heroBand::before{
   content:"";
   position:absolute; inset:0;
-  background-image:url("logo-pattern.png"); /* pattern logo (optionnel) */
+  background-image:url("logo-pattern.png");
   background-repeat:repeat;
   background-size:240px;
   opacity:.06;
@@ -400,7 +404,7 @@ body.menu-open .mobileLinks li:nth-child(5) a{transition-delay:.16s;}
 }
 
 /* =========================
-   ON S'OCCUPE DE TOUT + pastilles emoji (double police dans le texte)
+   ON S'OCCUPE DE TOUT + pastilles emoji CLEAN (icônes)
 ========================= */
 .takeCare{margin:90px auto 0;}
 .takeCareTitle{
@@ -410,6 +414,7 @@ body.menu-open .mobileLinks li:nth-child(5) a{transition-delay:.16s;}
   color:var(--blue2);
   margin:0 0 28px 0;
 }
+
 .tcBlock{
   display:grid;
   grid-template-columns:1fr 1.35fr;
@@ -429,14 +434,26 @@ body.menu-open .mobileLinks li:nth-child(5) a{transition-delay:.16s;}
   display:grid;place-items:center;
   box-shadow:0 14px 30px rgba(244,191,19,.18);
   border:1px solid rgba(244,191,19,.35);
-  font-weight:900;
 }
-.tcDot span{
-  font-size:16px;
-  line-height:1;
-  color:#111;
-  filter: saturate(0); /* garde l'emoji "clean" */
+.tcDot .dotIcon{
+  width:18px;height:18px;display:block;
+  background:#111;
+  -webkit-mask-repeat:no-repeat;
+  -webkit-mask-position:center;
+  -webkit-mask-size:18px;
+  mask-repeat:no-repeat;
+  mask-position:center;
+  mask-size:18px;
 }
+.ico-clock{
+  -webkit-mask-image:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23000" d="M12 22a10 10 0 1 1 10-10 10.01 10.01 0 0 1-10 10Zm0-18a8 8 0 1 0 8 8 8.01 8.01 0 0 0-8-8Zm.75 4h-1.5v5.1l4.4 2.64.75-1.23-3.65-2.19Z"/></svg>');
+  mask-image:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23000" d="M12 22a10 10 0 1 1 10-10 10.01 10.01 0 0 1-10 10Zm0-18a8 8 0 1 0 8 8 8.01 8.01 0 0 0-8-8Zm.75 4h-1.5v5.1l4.4 2.64.75-1.23-3.65-2.19Z"/></svg>');
+}
+.ico-euro{
+  -webkit-mask-image:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23000" d="M20 7.5V5.6a9.4 9.4 0 0 0-5.5-1.6 8.5 8.5 0 0 0-8 5H3v2h2.9a9.2 9.2 0 0 0 0 2H3v2h3.5a8.5 8.5 0 0 0 8 5 9.4 9.4 0 0 0 5.5-1.6v-1.9a8 8 0 0 1-5.4 2 6.3 6.3 0 0 1-5.6-3.5H14v-2H8.4a6.8 6.8 0 0 1 0-2H14V9H9a6.3 6.3 0 0 1 5.6-3.5 8 8 0 0 1 5.4 2Z"/></svg>');
+  mask-image:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23000" d="M20 7.5V5.6a9.4 9.4 0 0 0-5.5-1.6 8.5 8.5 0 0 0-8 5H3v2h2.9a9.2 9.2 0 0 0 0 2H3v2h3.5a8.5 8.5 0 0 0 8 5 9.4 9.4 0 0 0 5.5-1.6v-1.9a8 8 0 0 1-5.4 2 6.3 6.3 0 0 1-5.6-3.5H14v-2H8.4a6.8 6.8 0 0 1 0-2H14V9H9a6.3 6.3 0 0 1 5.6-3.5 8 8 0 0 1 5.4 2Z"/></svg>');
+}
+
 .tcHeading{
   font-size:44px;
   line-height:1.04;
@@ -450,7 +467,6 @@ body.menu-open .mobileLinks li:nth-child(5) a{transition-delay:.16s;}
   font-weight:600;
 }
 
-/* vignettes hover/reveal (comme avant) */
 .tcCards{display:grid;gap:14px;padding:6px 0;}
 .tcCard{
   display:grid;
@@ -477,11 +493,10 @@ body.menu-open .mobileLinks li:nth-child(5) a{transition-delay:.16s;}
 .tcBody p{margin:0 0 10px 0;color:var(--muted);font-size:13px;line-height:1.6;font-weight:600;}
 .tcMore{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-weight:900;font-size:12px;color:var(--blue2);}
 .tcMore:hover{text-decoration:underline;}
-
 .tcDivider{margin:44px 0 0 0;}
 
 /* =========================
-   APPARTEMENTS : emojis + "plus design"
+   APPARTEMENTS : icônes plus lisibles (contraste + taille)
 ========================= */
 .apTag{
   display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;
@@ -504,23 +519,22 @@ body.menu-open .mobileLinks li:nth-child(5) a{transition-delay:.16s;}
   padding:8px 10px;border-radius:999px;
   border:1px solid rgba(10,18,40,.10);
   background:rgba(255,255,255,.75);
-  font-weight:900;font-size:12px;color:rgba(13,15,22,.75);
+  font-weight:900;font-size:12px;color:rgba(13,15,22,.78);
 }
 .pill::before{
   content:"";
   width:18px;height:18px;border-radius:999px;
   display:inline-block;
-  background:rgba(244,191,19,.20);
-  border:1px solid rgba(244,191,19,.35);
+  background: rgba(13,15,22,.90); /* ✅ plus lisible */
+  border:1px solid rgba(13,15,22,.14);
   -webkit-mask-repeat:no-repeat;
   -webkit-mask-position:center;
-  -webkit-mask-size:12px;
+  -webkit-mask-size:14px; /* ✅ plus gros */
   mask-repeat:no-repeat;
   mask-position:center;
-  mask-size:12px;
+  mask-size:14px;
 }
 
-/* icons (monochrome, clean) */
 .ico-user::before{
   -webkit-mask-image:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23000" d="M12 12a4.5 4.5 0 1 0-4.5-4.5A4.5 4.5 0 0 0 12 12Zm0 2c-4.42 0-8 2.24-8 5v1h16v-1c0-2.76-3.58-5-8-5Z"/></svg>');
   mask-image:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23000" d="M12 12a4.5 4.5 0 1 0-4.5-4.5A4.5 4.5 0 0 0 12 12Zm0 2c-4.42 0-8 2.24-8 5v1h16v-1c0-2.76-3.58-5-8-5Z"/></svg>');
@@ -543,7 +557,7 @@ body.menu-open .mobileLinks li:nth-child(5) a{transition-delay:.16s;}
 }
 
 /* =========================
-   AVIS AIRBNB bandeau (inchangé visuel) + COUNT UP dedans
+   AVIS AIRBNB bandeau + COUNT UP
 ========================= */
 .reviewsBand{margin:90px auto 0;}
 .reviewsWrap{border-radius:26px;overflow:hidden;border:1px solid rgba(244,191,19,.30);box-shadow:0 0 26px rgba(244,191,19,.08), 0 0 22px rgba(14,74,166,.06);}
@@ -683,7 +697,7 @@ body.menu-open .mobileLinks li:nth-child(5) a{transition-delay:.16s;}
 }
 
 /* =========================
-   REVEAL ANIMS (vol + fondu) + REVERSE quand on remonte
+   REVEAL ANIMS + reverse
 ========================= */
 .reveal{
   opacity:0;
@@ -705,7 +719,6 @@ body.menu-open .mobileLinks li:nth-child(5) a{transition-delay:.16s;}
 }
 .flyL.in,.flyR.in{opacity:1;transform: translateX(0) translateY(0);filter: blur(0);}
 
-/* footer */
 footer{
   margin-top:90px;padding:44px 20px;text-align:center;
   border-top:1px solid rgba(10,18,40,.10);
@@ -725,7 +738,7 @@ footer{
   .ratingBox{justify-self:start;}
   .reviewsBottomGrid{grid-template-columns:1fr;}
 }
-/* IMPORTANT: sur mobile, "Gagnez de l'argent" doit repasser AU-DESSUS des vignettes */
+/* ✅ mobile : "Gagnez de l'argent" au dessus */
 @media(max-width:980px){
   .tcBlock.rightLead .tcLeft{ order:0; }
   .tcBlock.rightLead .tcCards{ order:1; }
@@ -751,7 +764,7 @@ footer{
 <header id="siteHeader" class="is-top">
   <div class="nav">
     <a href="index.html" class="brand">
-      <img src="logo-gamloc.svg" alt="Gamloc Immo" class="brandLogo">
+      <span class="brandDot" aria-hidden="true"></span>
       <span class="brandText">GAMLOC IMMO</span>
     </a>
 
@@ -860,7 +873,6 @@ footer{
             pour des avis qui boostent la réservation.
           </p>
 
-          <!-- COUNT UP dans le bandeau avis -->
           <div class="reviewsStats reveal" aria-label="Chiffres clés Airbnb">
             <div class="rStat"><strong><span class="count" data-to="4.9">0</span></strong><span>note</span></div>
             <div class="rStat"><strong><span class="count" data-to="70" data-suffix="+">0</span></strong><span>voyageurs</span></div>
@@ -952,7 +964,7 @@ footer{
     <div class="tcBlock">
       <div class="tcLeft flyL">
         <div class="tcHead">
-          <div class="tcDot" aria-hidden="true"><span>🕒</span></div>
+          <div class="tcDot" aria-hidden="true"><span class="dotIcon ico-clock"></span></div>
           <h3 class="tcHeading">Gagnez du<br>temps</h3>
         </div>
         <p class="tcDesc">
@@ -1069,7 +1081,7 @@ footer{
 
       <div class="tcLeft flyR">
         <div class="tcHead">
-          <div class="tcDot" aria-hidden="true"><span>€</span></div>
+          <div class="tcDot" aria-hidden="true"><span class="dotIcon ico-euro"></span></div>
           <h3 class="tcHeading">Gagnez de<br>l’argent</h3>
         </div>
         <p class="tcDesc">
@@ -1146,9 +1158,7 @@ footer{
 <footer>Gamloc Immo — Gestion locative courte durée à Nantes</footer>
 
 <script>
-/* =========================
-   MENU MOBILE
-========================= */
+/* MENU MOBILE */
 const menuBtn = document.getElementById("menuBtn");
 const overlay = document.getElementById("mobileOverlay");
 const menuClose = document.getElementById("menuClose");
@@ -1170,9 +1180,7 @@ menuClose?.addEventListener("click", closeMenu);
 overlay?.addEventListener("click", (e)=>{ if(e.target === overlay) closeMenu(); });
 window.addEventListener("keydown", (e)=>{ if(e.key === "Escape") closeMenu(); });
 
-/* =========================
-   NAV INTERACTIVE (fondu en haut / bleue au scroll + hide/show)
-========================= */
+/* NAV INTERACTIVE */
 const header = document.getElementById("siteHeader");
 let lastY = window.scrollY;
 
@@ -1198,35 +1206,31 @@ function updateHeader(){
 updateHeader();
 window.addEventListener("scroll", updateHeader, {passive:true});
 
-/* =========================
-   REVEAL ANIMS (avec retour arrière quand on remonte)
-========================= */
+/* REVEAL ANIMS (reverse on scroll up) */
 const toReveal = document.querySelectorAll(".reveal, .flyL, .flyR");
 const io = new IntersectionObserver((entries)=>{
   entries.forEach(ent=>{
     if(ent.isIntersecting){
       ent.target.classList.add("in");
     }else{
-      ent.target.classList.remove("in"); // ✅ revient en arrière
+      ent.target.classList.remove("in");
     }
   });
 },{threshold:0.12});
 toReveal.forEach(el=>io.observe(el));
 
-/* =========================
-   COUNT UP (plus lent + rejoue quand on revient)
-========================= */
+/* COUNT UP (plus lent + rejoue quand on revient) */
 function animateCount(el){
   const to = parseFloat(el.dataset.to || "0");
   const suffix = el.dataset.suffix || "";
   const isFloat = String(to).includes(".");
-  const duration = 2600; // ✅ plus lent
+  const duration = 2600; // plus lent
   const start = performance.now();
   const from = 0;
 
   function tick(now){
     const t = Math.min(1, (now - start)/duration);
-    const eased = 1 - Math.pow(1 - t, 3); // ease out
+    const eased = 1 - Math.pow(1 - t, 3);
     const val = from + (to - from)*eased;
     el.textContent = (isFloat ? val.toFixed(1) : Math.round(val)) + suffix;
     if(t < 1) requestAnimationFrame(tick);
@@ -1236,11 +1240,9 @@ function animateCount(el){
 
 function resetCount(el){
   const suffix = el.dataset.suffix || "";
-  // reset propre : affiche 0 (avec suffix si besoin)
-  el.textContent = "0" + (suffix && !String(suffix).startsWith("/") ? "" : "");
-  // si suffix type "/7", on veut "0/7"
-  if(suffix && String(suffix).startsWith("/")) el.textContent = "0" + suffix;
-  if(suffix && String(suffix).includes("+")) el.textContent = "0" + suffix;
+  if(String(suffix).startsWith("/")) el.textContent = "0" + suffix;
+  else if(String(suffix).includes("+")) el.textContent = "0" + suffix;
+  else el.textContent = "0";
 }
 
 const counts = document.querySelectorAll(".count");
@@ -1253,12 +1255,12 @@ const ioCount = new IntersectionObserver((entries)=>{
       el.dataset.animated = "1";
       animateCount(el);
     }else{
-      // ✅ quand on remonte : on reset, et ça rejoue au prochain scroll down
       el.dataset.animated = "0";
       resetCount(el);
     }
   });
 },{threshold:0.35});
+
 counts.forEach(el=>{
   el.dataset.animated = "0";
   resetCount(el);
