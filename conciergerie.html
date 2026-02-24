@@ -34,7 +34,6 @@
     a{color:inherit;text-decoration:none}
     img{max-width:100%;display:block}
     .container{max-width:1200px;margin:0 auto;padding:0 20px;}
-    .center{ text-align:center; }
     .sr-only{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;}
 
     body::before{
@@ -48,7 +47,7 @@
       filter:blur(190px);opacity:.18;z-index:-1;
     }
 
-    /* ===== Anim "vol" (comme index) ===== */
+    /* ===== Anim "vol" ===== */
     .anim{
       opacity:0;
       transform: translate3d(var(--x,0px), var(--y,18px), 0) scale(.985);
@@ -66,7 +65,7 @@
       filter: blur(0);
     }
 
-    /* ===== Header (même logique que index : blanc -> bleu au scroll) ===== */
+    /* ===== Header (index-like) ===== */
     header{
       position:fixed;top:0;left:0;width:100%;
       background: rgba(255,255,255,.72);
@@ -107,8 +106,7 @@
       white-space:nowrap;
       transition: color .35s var(--ease);
     }
-    header.scrolled .brand a{ color: rgba(255,255,255,.96); }
-
+    header.scrolled .brand a{ color:#fff; }
     .brandDot{
       width:10px;height:10px;border-radius:999px;
       background:linear-gradient(180deg,var(--gold2),var(--gold));
@@ -120,7 +118,7 @@
     }
     .navlinks a{
       color: var(--blue2);
-      font-size:14px;position:relative;opacity:.96;font-weight:850;
+      font-size:14px;position:relative;opacity:.96;font-weight:900;
       transition: color .35s var(--ease);
     }
     header.scrolled .navlinks a{ color:#fff; }
@@ -133,6 +131,7 @@
     .navlinks a.active::after{width:100%;}
     .navlinks a.active{opacity:1;}
 
+    /* menu mobile */
     .menuBtn{
       display:none;
       width:46px;height:46px;
@@ -160,7 +159,6 @@
     .menuIcon span:nth-child(1){ top:0; }
     .menuIcon span:nth-child(2){ top:7px; opacity:.95; }
     .menuIcon span:nth-child(3){ top:14px; }
-
     body.menu-open .menuIcon span:nth-child(1){ top:7px; transform: rotate(45deg); }
     body.menu-open .menuIcon span:nth-child(2){ opacity:0; }
     body.menu-open .menuIcon span:nth-child(3){ top:7px; transform: rotate(-45deg); }
@@ -174,7 +172,6 @@
       z-index:1400;
     }
     body.menu-open .mobileOverlay{opacity:1;pointer-events:auto;}
-
     .mobilePanel{
       position:absolute;top:0;right:0;height:100%;
       width:min(360px, 88vw);
@@ -190,7 +187,6 @@
       padding:16px;
     }
     body.menu-open .mobilePanel{transform: translateX(0);opacity:1;}
-
     .mobileTop{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:6px 4px 12px 4px;}
     .mobileTitle{
       color:rgba(255,255,255,.96);
@@ -213,6 +209,7 @@
       transition: opacity .25s ease, transform .25s ease, background .18s ease, border-color .18s ease;
     }
     .mobileLinks a:hover{ background:rgba(255,255,255,.12); border-color:rgba(244,191,19,.35); }
+    .mobileLinks a .arrow{opacity:.85;}
     body.menu-open .mobileLinks a{opacity:1;transform: translateY(0);}
     body.menu-open .mobileLinks li:nth-child(1) a{ transition-delay:.04s; }
     body.menu-open .mobileLinks li:nth-child(2) a{ transition-delay:.07s; }
@@ -231,21 +228,17 @@
 
     /* ===== Page ===== */
     main{ padding-top:126px; }
+
     .hero{
       margin:40px auto 18px;
       width:100%;
       display:grid;
-      grid-template-columns: 1.1fr 1fr;
-      gap:26px;
+      grid-template-columns: 1fr;
+      gap:18px;
       align-items:center;
       justify-items:center;
-    }
-
-    .heroText{
-      width:100%;
-      max-width:600px;
-      justify-self:center;
-      text-align:left;
+      text-align:center;
+      max-width:980px;
     }
     .kicker{
       display:inline-flex;align-items:center;gap:10px;
@@ -271,10 +264,10 @@
     .lead{
       color:var(--muted);
       line-height:1.85;
-      max-width:62ch;
+      max-width:70ch;
       font-size:15px;
       font-weight:600;
-      margin-bottom:18px;
+      margin:0 auto 18px auto;
     }
     .hl{
       background:linear-gradient(90deg, rgba(244,191,19,.35), rgba(244,191,19,.10));
@@ -283,8 +276,7 @@
       font-weight:900;
       color:#111;
     }
-
-    .ctaRow{display:flex;gap:12px;flex-wrap:wrap;}
+    .ctaRow{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;}
     .btn{
       display:inline-flex;align-items:center;justify-content:center;gap:10px;
       padding:14px 18px;border-radius:999px;
@@ -306,59 +298,6 @@
       color:var(--blue2);
     }
     .btn:hover{transform:translateY(-2px);box-shadow:0 18px 34px rgba(3,7,18,.10);}
-
-    .heroCard{
-      width:100%;
-      max-width:520px;
-      border-radius:24px;
-      border:1px solid rgba(10,18,40,.10);
-      background:
-        radial-gradient(900px 420px at 20% 20%, rgba(244,191,19,.10), transparent 55%),
-        radial-gradient(900px 420px at 90% 0%, rgba(14,74,166,.10), transparent 55%),
-        linear-gradient(180deg, rgba(255,255,255,.78), rgba(255,255,255,.66));
-      box-shadow: var(--softShadow);
-      padding:18px;
-      overflow:hidden;
-      position:relative;
-      min-height:260px;
-      display:grid;
-      place-items:center;
-      justify-self:center;
-    }
-    .heroCard::after{
-      content:"";
-      position:absolute;inset:-40%;
-      background:conic-gradient(from 180deg, rgba(244,191,19,.22), rgba(14,74,166,.14), rgba(244,191,19,.18));
-      filter: blur(40px);
-      opacity:.45;
-      animation: spin 10s linear infinite;
-    }
-    @keyframes spin{to{transform:rotate(360deg)}}
-    .heroCardInner{
-      position:relative;
-      z-index:1;
-      width:100%;
-      border-radius:18px;
-      border:1px solid rgba(10,18,40,.10);
-      background:rgba(255,255,255,.82);
-      padding:16px;
-      display:grid;
-      gap:12px;
-    }
-    .statRow{display:flex;align-items:center;justify-content:space-between;gap:12px;}
-    .stat{
-      padding:12px 12px;border-radius:16px;
-      border:1px solid rgba(10,18,40,.10);
-      background:rgba(14,74,166,.04);
-      width:100%;
-    }
-    .stat strong{display:block;font-size:18px;color:var(--blue2);font-weight:900;letter-spacing:-.2px;}
-    .stat span{display:block;font-size:12px;color:rgba(13,15,22,.62);font-weight:800;margin-top:3px;}
-    .miniLine{
-      height:10px;border-radius:999px;
-      background:linear-gradient(90deg, rgba(244,191,19,.95), rgba(14,74,166,.35));
-      opacity:.9;
-    }
 
     /* ===== “On s’occupe de tout” ===== */
     .blockTitle{
@@ -417,7 +356,7 @@
       line-height:1.85;
       font-weight:650;
       margin-bottom:14px;
-      max-width:44ch;
+      max-width:48ch;
     }
 
     .tcArrow{
@@ -465,11 +404,7 @@
       background:linear-gradient(180deg, rgba(14,74,166,.06), rgba(244,191,19,.05));
       position:relative;
     }
-    .tcThumb img{
-      width:100%;
-      height:100%;
-      object-fit:cover;
-    }
+    .tcThumb img{ width:100%; height:100%; object-fit:cover; }
 
     .tcBody h3{
       margin:0 0 6px 0;
@@ -499,7 +434,7 @@
       background:linear-gradient(90deg, transparent, rgba(10,18,40,.18), transparent);
     }
 
-    /* ===== Avantages (comme la photo : 6 vignettes) ===== */
+    /* ===== Vos avantages : vignettes AVEC images (comme "Tous nos services") ===== */
     .benefits{
       margin:56px auto 0;
       max-width:1100px;
@@ -529,66 +464,63 @@
       margin-top:22px;
       display:grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap:16px;
+      gap:18px;
     }
     .benefitCard{
       border-radius:22px;
       border:1px solid rgba(10,18,40,.10);
-      background:
-        radial-gradient(800px 260px at 10% 0%, rgba(244,191,19,.14), transparent 60%),
-        radial-gradient(800px 260px at 95% 10%, rgba(14,74,166,.12), transparent 60%),
-        linear-gradient(180deg, rgba(255,255,255,.82), rgba(255,255,255,.70));
+      background:rgba(255,255,255,.76);
       box-shadow: var(--softShadow);
-      padding:16px;
-      display:grid;
-      gap:10px;
-      transition: transform .25s var(--ease), box-shadow .25s var(--ease), border-color .25s var(--ease);
-      position:relative;
       overflow:hidden;
+      display:grid;
+      grid-template-rows: 170px 1fr;
+      min-height:320px;
+      transition: transform .25s var(--ease), box-shadow .25s var(--ease);
     }
     .benefitCard:hover{
       transform: translateY(-6px);
-      border-color: rgba(244,191,19,.28);
       box-shadow: 0 22px 46px rgba(3,7,18,.12);
     }
-    .benefitTop{
-      display:flex;align-items:center;justify-content:space-between;gap:12px;
+    .benefitMedia{
+      position:relative;
+      background:
+        radial-gradient(700px 280px at 20% 0%, rgba(244,191,19,.18), transparent 60%),
+        radial-gradient(700px 280px at 90% 0%, rgba(14,74,166,.14), transparent 60%),
+        linear-gradient(180deg, rgba(14,74,166,.04), rgba(244,191,19,.03));
+      border-bottom:1px solid rgba(10,18,40,.08);
     }
-    .benefitIcon{
-      width:44px;height:44px;border-radius:16px;
-      border:1px solid rgba(10,18,40,.10);
-      background:rgba(255,255,255,.78);
-      display:grid;place-items:center;
-      font-weight:900;
-      color:var(--blue2);
-      box-shadow: 0 10px 20px rgba(3,7,18,.06);
+    .benefitMedia img{ width:100%; height:100%; object-fit:cover; }
+    .benefitBody{
+      padding:16px 16px 18px;
+      display:flex;
+      flex-direction:column;
+      gap:10px;
     }
-    .benefitChip{
-      display:inline-flex;align-items:center;gap:8px;
-      padding:7px 10px;border-radius:999px;
-      border:1px solid rgba(14,74,166,.18);
+    .benefitPill{
+      width:fit-content;
+      display:inline-flex;align-items:center;gap:10px;
+      padding:8px 12px;border-radius:999px;
       background:rgba(14,74,166,.06);
+      border:1px solid rgba(14,74,166,.14);
       color:var(--blue2);
       font-weight:900;
       font-size:12px;
-      white-space:nowrap;
     }
-    .benefitChip .pDot{
+    .benefitPill .pDot{
       width:8px;height:8px;border-radius:999px;
       background:linear-gradient(180deg,var(--gold2),var(--gold));
       box-shadow:0 0 14px rgba(244,191,19,.25);
     }
-    .benefitCard h3{
-      font-size:16px;
+    .benefitBody h3{
+      font-size:18px;
       font-weight:900;
-      letter-spacing:-.2px;
+      letter-spacing:-.3px;
       color:#0d0f16;
-      margin-top:2px;
     }
-    .benefitCard p{
+    .benefitBody p{
       color:var(--muted);
       font-weight:650;
-      line-height:1.75;
+      line-height:1.8;
       font-size:13px;
     }
 
@@ -645,11 +577,7 @@
         linear-gradient(180deg, rgba(14,74,166,.04), rgba(244,191,19,.03));
       border-bottom:1px solid rgba(10,18,40,.08);
     }
-    .svcMedia img{
-      width:100%;
-      height:100%;
-      object-fit:cover;
-    }
+    .svcMedia img{ width:100%; height:100%; object-fit:cover; }
     .svcBody{
       padding:16px 16px 18px;
       display:flex;
@@ -696,13 +624,7 @@
 
     /* ===== Responsive ===== */
     @media(max-width:980px){
-      .hero{grid-template-columns:1fr;gap:18px;}
-      .heroText{text-align:center;}
-      .ctaRow{justify-content:center;}
       h1{font-size:42px;}
-      .heroCard{min-height:220px;}
-
-      .blockTitle h2{font-size:36px;}
       .tcRow, .tcRow.rightLead{grid-template-columns:1fr;}
       .tcHeading{text-align:center;}
       .tcDesc{margin-left:auto;margin-right:auto;text-align:center;}
@@ -723,7 +645,6 @@
     @media(max-width:560px){
       .container{padding:0 14px;}
       .btn{width:100%;}
-      .heroText{max-width:520px;}
     }
   </style>
 </head>
@@ -767,52 +688,36 @@
       </ul>
 
       <div class="mobileHint">
-        Gestion locative à Nantes : stabilité, cadre clair, suivi, maintenance et réactivité.
+        On s’occupe de tout : gestion complète, standards premium, et loyer garanti chaque mois.
       </div>
     </nav>
   </div>
 
   <main>
-    <!-- HERO -->
+    <!-- HERO (✅ tableau supprimé) -->
     <section class="container hero">
-      <div class="heroText anim" style="--y:18px;--d:0ms;">
+      <div class="anim" style="--y:18px;--d:0ms;">
         <div class="kicker"><span class="dot" aria-hidden="true"></span>Nos services</div>
-        <h1>On s’occupe de tout,<br>et on vise la régularité</h1>
+        <h1>On s’occupe de tout,<br>et votre loyer est garanti</h1>
         <p class="lead">
-          Gestion locative courte durée à Nantes : on gère l’opérationnel et la qualité pour améliorer vos
-          <span class="hl">avis</span> et garder des <span class="hl">revenus réguliers</span>.
+          Notre promesse : <span class="hl">zéro stress</span>.
+          On gère l’opérationnel (voyageurs, ménage, maintenance, optimisation)
+          et vous recevez votre <span class="hl">loyer quoi qu’il arrive</span>.
         </p>
         <div class="ctaRow">
           <a class="btn primary" href="confier-mon-bien.html">Confier mon bien</a>
           <a class="btn ghost" href="contact.html">Parler de mon projet</a>
         </div>
       </div>
-
-      <aside class="heroCard anim" style="--y:18px;--d:120ms;" aria-label="Aperçu">
-        <div class="heroCardInner">
-          <div class="statRow">
-            <div class="stat">
-              <strong>Gestion complète</strong>
-              <span>Voyageurs • Ménage • Check-in/out</span>
-            </div>
-            <div class="stat">
-              <strong>Optimisation</strong>
-              <span>Prix • Calendrier • Annonce</span>
-            </div>
-          </div>
-          <div class="miniLine" aria-hidden="true"></div>
-          <div class="stat">
-            <strong>Objectif</strong>
-            <span>Expérience premium & régularité</span>
-          </div>
-        </div>
-      </aside>
     </section>
 
     <!-- ON S'OCCUPE DE TOUT -->
     <section class="container">
       <div class="blockTitle anim" style="--y:18px;--d:0ms;">
         <h2>On s’occupe de tout</h2>
+        <p>
+          Gestion complète : opérationnel + performance. Et vous, vous gardez la tranquillité.
+        </p>
       </div>
 
       <div class="tc">
@@ -821,8 +726,8 @@
           <div class="tcSide">
             <div class="tcHeading">Gagnez du<br>temps</div>
             <div class="tcDesc">
-              Ne perdez plus de temps avec la gestion quotidienne : messages, check-in/out, ménage, linge, consommables,
-              relation voyageurs.
+              Messages, check-in/out, ménage, linge, consommables, incidents :
+              on gère la gestion quotidienne à votre place.
             </div>
 
             <svg class="tcArrow" viewBox="0 0 220 140" fill="none" aria-hidden="true">
@@ -881,48 +786,48 @@
 
         <div class="divider"></div>
 
-        <!-- ✅ MODIF : Gagnez des revenus constants + contenu plus “gestion locative” -->
+        <!-- ✅ MODIF : LOYER GARANTI -->
         <div class="tcRow rightLead anim" style="--y:18px;--d:80ms;">
           <div class="tcCards">
             <div class="tcCard">
               <div class="tcThumb">
-                <img src="illustration-Creation-dune-annonce-optimisee-OF-CE-min.webp" alt="Annonce optimisée">
+                <img src="illustration-Creation-dune-annonce-optimisee-OF-CE-min.webp" alt="Gestion complète">
               </div>
               <div class="tcBody">
-                <h3>Annonce & positionnement</h3>
-                <p>Annonce claire + infos complètes : plus de demandes qualifiées et moins de temps “vide”.</p>
+                <h3>Gestion complète</h3>
+                <p>On s’occupe de tout : opérationnel, qualité et coordination.</p>
                 <a class="tcMore" href="contact.html">En savoir plus →</a>
               </div>
             </div>
 
             <div class="tcCard">
               <div class="tcThumb">
-                <img src="Illustration-Boost-de-votre-referencemen-OF-CE-min.webp" alt="Sélection et cadre">
+                <img src="Illustration-Boost-de-votre-referencemen-OF-CE-min.webp" alt="Optimisation">
               </div>
               <div class="tcBody">
-                <h3>Cadre & règles de séjour</h3>
-                <p>Règles claires, check-in maîtrisé, process : moins d’imprévus, meilleure régularité.</p>
+                <h3>Optimisation</h3>
+                <p>Prix, calendrier, annonce : on maximise l’occupation et la régularité.</p>
                 <a class="tcMore" href="contact.html">En savoir plus →</a>
               </div>
             </div>
 
             <div class="tcCard">
               <div class="tcThumb">
-                <img src="Illustration-Gestion-dynamique-des-prix-et-calendrier-OF-CE-min.webp" alt="Suivi et régularité">
+                <img src="Illustration-Gestion-dynamique-des-prix-et-calendrier-OF-CE-min.webp" alt="Loyer garanti">
               </div>
               <div class="tcBody">
-                <h3>Suivi performance</h3>
-                <p>Prix & calendrier ajustés selon la demande pour lisser les périodes creuses.</p>
+                <h3>Loyer garanti</h3>
+                <p>Quoi qu’il arrive, vous recevez votre loyer : on prend le risque à notre charge.</p>
                 <a class="tcMore" href="contact.html">En savoir plus →</a>
               </div>
             </div>
           </div>
 
           <div class="tcSide">
-            <div class="tcHeading">Gagnez des<br>revenus constants</div>
+            <div class="tcHeading">Gagnez un<br>loyer garanti</div>
             <div class="tcDesc">
-              On vise la régularité : optimisation, calendrier, standards et process — pour stabiliser l’activité et réduire
-              les “trous” de réservation.
+              Vous ne dépendez pas des aléas : on gère l’activité et on vous verse votre loyer
+              <b>coûte que coûte</b>.
             </div>
 
             <svg class="tcArrow" viewBox="0 0 220 140" fill="none" aria-hidden="true">
@@ -935,68 +840,78 @@
       </div>
     </section>
 
-    <!-- ✅ AJOUT : Les 6 vignettes (photo) -->
+    <!-- ✅ Vos avantages (avec images) -->
     <section class="container benefits">
       <div class="benefitsHeader anim" style="--y:18px;--d:0ms;">
         <h2>Vos avantages</h2>
-        <p>
-          Une gestion pensée pour la tranquillité et la régularité : moins d’imprévus, un cadre clair, et un bien mieux suivi.
-        </p>
+        <p>Des garanties claires : on gère tout, et votre loyer tombe tous les mois.</p>
       </div>
 
       <div class="benefitGrid">
         <article class="benefitCard anim" style="--y:18px;--d:40ms;">
-          <div class="benefitTop">
-            <div class="benefitIcon">🧘</div>
-            <div class="benefitChip"><span class="pDot" aria-hidden="true"></span>Sérénité</div>
+          <div class="benefitMedia">
+            <img src="Illustration-Nettoyage-et-gestion-du-linge-OF-CE-min.webp" alt="Sérénité">
           </div>
-          <h3>Sérénité</h3>
-          <p>On gère l’opérationnel et les imprévus : vous gardez l’esprit tranquille.</p>
+          <div class="benefitBody">
+            <div class="benefitPill"><span class="pDot" aria-hidden="true"></span>Sérénité</div>
+            <h3>Sérénité</h3>
+            <p>On prend en charge l’intégralité : gestion, coordination, incidents. Vous êtes tranquille.</p>
+          </div>
         </article>
 
         <article class="benefitCard anim" style="--y:18px;--d:80ms;">
-          <div class="benefitTop">
-            <div class="benefitIcon">⚖️</div>
-            <div class="benefitChip"><span class="pDot" aria-hidden="true"></span>Cadre</div>
+          <div class="benefitMedia">
+            <img src="illustration-Creation-dune-annonce-optimisee-OF-CE-min.webp" alt="Bail encadré">
           </div>
-          <h3>Bail encadré juridiquement</h3>
-          <p>Documents, règles et process : un cadre clair pour sécuriser la location.</p>
+          <div class="benefitBody">
+            <div class="benefitPill"><span class="pDot" aria-hidden="true"></span>Cadre</div>
+            <h3>Bail encadré juridiquement</h3>
+            <p>Process et règles claires : on sécurise l’activité et on évite les zones floues.</p>
+          </div>
         </article>
 
         <article class="benefitCard anim" style="--y:18px;--d:120ms;">
-          <div class="benefitTop">
-            <div class="benefitIcon">🛡️</div>
-            <div class="benefitChip"><span class="pDot" aria-hidden="true"></span>Protection</div>
+          <div class="benefitMedia">
+            <img src="Illustration-Maintenance-OF-CE-min.webp" alt="Pas de dégradations">
           </div>
-          <h3>Pas de dégradations</h3>
-          <p>Contrôles, standards et suivi : on réduit les risques et on protège le bien.</p>
+          <div class="benefitBody">
+            <div class="benefitPill"><span class="pDot" aria-hidden="true"></span>Protection</div>
+            <h3>Pas de dégradations</h3>
+            <p>Standards premium + contrôles : votre bien reste propre, soigné, et préservé.</p>
+          </div>
         </article>
 
         <article class="benefitCard anim" style="--y:18px;--d:160ms;">
-          <div class="benefitTop">
-            <div class="benefitIcon">🗓️</div>
-            <div class="benefitChip"><span class="pDot" aria-hidden="true"></span>Souplesse</div>
+          <div class="benefitMedia">
+            <img src="Illustration-Entrees-Sorties-CE-min.webp" alt="Flexibilité">
           </div>
-          <h3>Flexibilité</h3>
-          <p>Une organisation simple, une communication claire, et des décisions rapides.</p>
+          <div class="benefitBody">
+            <div class="benefitPill"><span class="pDot" aria-hidden="true"></span>Flexibilité</div>
+            <h3>Flexibilité</h3>
+            <p>On s’adapte à votre projet : organisation simple et décisions rapides.</p>
+          </div>
         </article>
 
         <article class="benefitCard anim" style="--y:18px;--d:200ms;">
-          <div class="benefitTop">
-            <div class="benefitIcon">🧰</div>
-            <div class="benefitChip"><span class="pDot" aria-hidden="true"></span>Suivi</div>
+          <div class="benefitMedia">
+            <img src="Illustration-Communication-avec-les-voyageurs-CE.webp" alt="Entretien régulier">
           </div>
-          <h3>Entretien régulier</h3>
-          <p>Maintenance & interventions : le logement reste en bon état, sans laisser traîner.</p>
+          <div class="benefitBody">
+            <div class="benefitPill"><span class="pDot" aria-hidden="true"></span>Entretien</div>
+            <h3>Entretien régulier</h3>
+            <p>Ménage + réassort + suivi : on évite que les petits soucis deviennent des gros.</p>
+          </div>
         </article>
 
         <article class="benefitCard anim" style="--y:18px;--d:240ms;">
-          <div class="benefitTop">
-            <div class="benefitIcon">📈</div>
-            <div class="benefitChip"><span class="pDot" aria-hidden="true"></span>Régularité</div>
+          <div class="benefitMedia">
+            <img src="Illustration-Gestion-dynamique-des-prix-et-calendrier-OF-CE-min.webp" alt="Rentabilité">
           </div>
-          <h3>Rentabilité</h3>
-          <p>Optimisation prix/calendrier : on vise des revenus plus constants sur l’année.</p>
+          <div class="benefitBody">
+            <div class="benefitPill"><span class="pDot" aria-hidden="true"></span>Loyer garanti</div>
+            <h3>Rentabilité</h3>
+            <p>Quoi qu’il arrive, vous recevez votre loyer : c’est notre engagement n°1.</p>
+          </div>
         </article>
       </div>
     </section>
@@ -1071,7 +986,7 @@
     overlay?.addEventListener("click", (e)=>{ if(e.target === overlay) closeMenu(); });
     window.addEventListener("keydown", (e)=>{ if(e.key === "Escape") closeMenu(); });
 
-    /* HEADER (comme index) */
+    /* HEADER */
     const header = document.getElementById("siteHeader");
     let ticking = false;
     function onScroll(){
