@@ -41,7 +41,6 @@ body::after{
   filter:blur(190px);opacity:.20;z-index:-1;
 }
 
-
 .anim{
   opacity:0;
   transform: translate3d(var(--x,0px), var(--y,18px), 0) scale(.985);
@@ -59,7 +58,6 @@ body::after{
   filter: blur(0);
 }
 
-
 .accent{
   font-family:"DM Serif Display", Georgia, serif;
   font-style: italic;
@@ -67,7 +65,7 @@ body::after{
   letter-spacing:-.2px;
 }
 
-
+/* ===== HEADER ===== */
 header{
   position:fixed;top:0;left:0;width:100%;
   background: rgba(255,255,255,.72);
@@ -252,7 +250,7 @@ body.menu-open .mobileLinks li:nth-child(5) a{ transition-delay:.16s; }
   line-height:1.55;
 }
 
-
+/* ===== HERO ===== */
 .hero{
   padding-top:120px;
   max-width:1200px;
@@ -274,10 +272,7 @@ body.menu-open .mobileLinks li:nth-child(5) a{ transition-delay:.16s; }
   pointer-events:none;
   z-index:-1;
 }
-.heroInner{
-  max-width:900px;
-  margin:0 auto;
-}
+.heroInner{ max-width:900px; margin:0 auto; }
 .hero h1{
   font-size:62px;
   line-height:1.04;
@@ -287,11 +282,12 @@ body.menu-open .mobileLinks li:nth-child(5) a{ transition-delay:.16s; }
 }
 .hero p{
   color:var(--muted);
-  margin:0 auto 22px auto;
+  margin:0 auto 18px auto;
   max-width:70ch;
   line-height:1.85;
   font-weight:600;
 }
+
 .actions{
   display:flex;
   gap:12px;
@@ -344,86 +340,72 @@ body.menu-open .mobileLinks li:nth-child(5) a{ transition-delay:.16s; }
   object-fit:cover;
 }
 
-/* ===== AJOUT : pastilles défilantes (liens ancres, sans hover text) ===== */
+/* ===== MENU QUI TOURNE (pastilles) — version anti-bug (JS) ===== */
 .pillMarquee{
-  width:min(920px, 98%);
-  margin: 14px auto 0;
-  border-radius: 22px;
-  border: 1px solid rgba(10,18,40,.10);
-  background:
-    radial-gradient(900px 200px at 15% 0%, rgba(244,191,19,.10), transparent 60%),
-    radial-gradient(900px 200px at 90% 20%, rgba(14,74,166,.10), transparent 60%),
-    rgba(255,255,255,.72);
-  box-shadow: 0 14px 34px rgba(3,7,18,.06);
-  overflow:hidden;
+  margin:14px auto 6px;
+  max-width:980px;
   position:relative;
-  padding: 12px 0;
+  border-radius:999px;
+  border:1px solid rgba(10,18,40,.10);
+  background: rgba(255,255,255,.65);
+  box-shadow: 0 12px 28px rgba(3,7,18,.06);
+  overflow:hidden;
 }
 .pillMarquee::before,
 .pillMarquee::after{
   content:"";
-  position:absolute;top:0;bottom:0;width:64px;
+  position:absolute;top:0;bottom:0;width:84px;z-index:2;
   pointer-events:none;
-  z-index:2;
 }
 .pillMarquee::before{
   left:0;
-  background: linear-gradient(90deg, rgba(255,255,255,.92), rgba(255,255,255,0));
+  background:linear-gradient(90deg, rgba(255,255,255,.92), rgba(255,255,255,0));
 }
 .pillMarquee::after{
   right:0;
-  background: linear-gradient(270deg, rgba(255,255,255,.92), rgba(255,255,255,0));
+  background:linear-gradient(270deg, rgba(255,255,255,.92), rgba(255,255,255,0));
 }
 .pillTrack{
   display:flex;
-  gap:12px;
+  align-items:center;
+  gap:10px;
+  padding:10px 16px;
   width:max-content;
-  padding-left: 18px;
   will-change: transform;
-  animation: pillScroll 18s linear infinite;
-}
-.pillMarquee:hover .pillTrack{ animation-play-state: paused; }
-@keyframes pillScroll{
-  from{ transform: translateX(0); }
-  to{ transform: translateX(-50%); }
+  transform: translateX(0);
 }
 .pillSet{
   display:flex;
-  gap:12px;
   align-items:center;
+  gap:10px;
 }
 .pill{
   display:inline-flex;
   align-items:center;
   gap:10px;
-  padding: 12px 14px;
-  border-radius: 999px;
-  text-decoration:none;
+  padding:10px 14px;
+  border-radius:999px;
+  border:1px solid rgba(14,74,166,.16);
+  background: rgba(14,74,166,.06);
+  color: var(--blue2);
   font-weight:900;
   font-size:13px;
-  color: var(--blue2);
-  border: 1px solid rgba(10,18,40,.10);
-  background: rgba(255,255,255,.86);
-  box-shadow: 0 12px 26px rgba(3,7,18,.06);
-  transition: transform .18s var(--ease), border-color .18s var(--ease), background .18s var(--ease);
-  user-select:none;
+  text-decoration:none;
   white-space:nowrap;
-}
-.pill .dot{
-  width:10px;height:10px;border-radius:999px;
-  background: linear-gradient(180deg,var(--yellow2),var(--yellow));
-  box-shadow: 0 0 14px rgba(244,191,19,.25);
+  transition: transform .18s var(--ease), background .18s var(--ease), border-color .18s var(--ease);
 }
 .pill:hover{
   transform: translateY(-1px);
+  background: rgba(244,191,19,.12);
   border-color: rgba(244,191,19,.35);
-  background: rgba(255,255,255,.95);
+}
+.pillDot{
+  width:8px;height:8px;border-radius:999px;
+  background: linear-gradient(180deg,var(--yellow2),var(--yellow));
+  box-shadow:0 0 12px rgba(244,191,19,.22);
 }
 
-/* offset ancres sous header fixe */
-.anchor{ scroll-margin-top: 96px; }
-
-
+/* ===== SECTIONS ===== */
 .section{max-width:1200px;margin:110px auto;padding:0 20px;}
 .section h2{
   font-size:40px;
@@ -497,7 +479,6 @@ body.menu-open .mobileLinks li:nth-child(5) a{ transition-delay:.16s; }
 }
 .card:hover .cardMedia img{ transform: scale(1.06); }
 
-
 .apartGrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:22px;}
 .aptCard{
   display:block;
@@ -547,9 +528,7 @@ body.menu-open .mobileLinks li:nth-child(5) a{ transition-delay:.16s; }
   background: linear-gradient(180deg,var(--yellow2),var(--yellow));
 }
 
-.aptBody{
-  padding:18px 18px 20px 18px;
-}
+.aptBody{ padding:18px 18px 20px 18px; }
 .aptTitle{
   font-size:20px;
   font-weight:900;
@@ -577,7 +556,7 @@ body.menu-open .mobileLinks li:nth-child(5) a{ transition-delay:.16s; }
   font-weight:600;
 }
 
-
+/* ===== BANDEAU AVIS ===== */
 .reviewsBand{margin:110px auto 0;max-width:1200px;padding:0 20px;}
 .reviewsWrap{border-radius:26px;overflow:hidden;border:1px solid rgba(244,191,19,.30);box-shadow:0 0 26px rgba(244,191,19,.08), 0 0 22px rgba(14,74,166,.06);}
 .reviewsTop{
@@ -650,12 +629,7 @@ body.menu-open .mobileLinks li:nth-child(5) a{ transition-delay:.16s; }
 .reviewText{color:rgba(0,0,0,.76);font-weight:650;font-size:13px;line-height:1.6;}
 .reviewStars{color:#111;font-weight:900;}
 
-.superhost{max-width:1200px;margin:90px auto 0;padding:0 20px;text-align:center;font-size:18px;color:#334155;font-weight:650;}
-.superhost span{background:linear-gradient(90deg,var(--blue2),var(--yellow));-webkit-background-clip:text;background-clip:text;color:transparent;font-weight:900;}
-
-footer{margin-top:110px;padding:44px 20px;text-align:center;border-top:1px solid var(--stroke);color:#6b7280;font-size:14px;font-weight:650;}
-
-
+/* ===== "On s'occupe de tout" ===== */
 .takeCare{max-width:1200px;margin:110px auto 0;padding:0 20px;}
 .takeCareTitle{text-align:center;font-size:44px;letter-spacing:-.5px;color:var(--blue2);margin:0 0 32px 0;font-weight:900;}
 .takeCareTitle em{font-family:"Georgia",serif;font-style:italic;font-weight:500;}
@@ -687,6 +661,13 @@ footer{margin-top:110px;padding:44px 20px;text-align:center;border-top:1px solid
 .tcMore:hover{text-decoration:underline;}
 .tcDivider{margin:50px 0 0 0;}
 
+/* ===== SUPERHOST ===== */
+.superhost{max-width:1200px;margin:90px auto 0;padding:0 20px;text-align:center;font-size:18px;color:#334155;font-weight:650;}
+.superhost span{background:linear-gradient(90deg,var(--blue2),var(--yellow));-webkit-background-clip:text;background-clip:text;color:transparent;font-weight:900;}
+
+footer{margin-top:110px;padding:44px 20px;text-align:center;border-top:1px solid var(--stroke);color:#6b7280;font-size:14px;font-weight:650;}
+
+/* ===== Responsive ===== */
 @media(max-width:980px){
   .reviewsTop{grid-template-columns:1fr;}
   .ratingBox{justify-self:start;}
@@ -721,7 +702,7 @@ footer{margin-top:110px;padding:44px 20px;text-align:center;border-top:1px solid
   .ratingBox{padding:14px;}
   .bigRate{font-size:38px;}
   .reviewsBottom{padding:16px;}
-  .pill{font-size:12px;padding:11px 12px;}
+  .pillMarquee::before,.pillMarquee::after{width:56px;}
 }
 </style>
 </head>
@@ -770,12 +751,12 @@ footer{margin-top:110px;padding:44px 20px;text-align:center;border-top:1px solid
     </ul>
 
     <div class="mobileHint">
-      Gestion locative courte durée à Nantes : optimisation, ménage, check-in/out, communication voyageurs.
+      Gestion locative à Nantes : on s’occupe de tout, et votre loyer est garanti.
     </div>
   </nav>
 </div>
 
-<section class="hero anchor" id="top">
+<section class="hero">
   <div class="heroInner">
 
     <h1 class="anim" style="--y:22px;--d:0ms;">
@@ -785,30 +766,19 @@ footer{margin-top:110px;padding:44px 20px;text-align:center;border-top:1px solid
 
     <p class="anim" style="--x:-18px;--d:120ms;">
       Entreprise de <b>gestion locative</b> courte durée : optimisation, ménage, check-in/out,
-      communication voyageurs et standards premium — pour <b>maximiser vos revenus</b> et vos <b>avis</b>.
+      communication voyageurs et standards premium — pour <b>maximiser vos avis</b> et garantir une <b>activité régulière</b>.
     </p>
 
-    <!-- ✅ pastilles défilantes (aucun texte hover) -->
-    <div class="pillMarquee anim" style="--y:14px;--d:160ms;" aria-label="Navigation rapide">
-      <div class="pillTrack">
-        <div class="pillSet">
-          <a class="pill" href="#avis"><span class="dot"></span>Avis Airbnb</a>
-          <a class="pill" href="#takecare"><span class="dot"></span>On s’occupe de tout</a>
-          <a class="pill" href="#gestion-complete"><span class="dot"></span>Gestion complète</a>
-          <a class="pill" href="#appartements"><span class="dot"></span>Appartements</a>
-          <a class="pill" href="#proprietaire"><span class="dot"></span>Propriétaire</a>
-          <a class="pill" href="#superhost"><span class="dot"></span>Superhôte</a>
-          <a class="pill" href="#footer"><span class="dot"></span>Bas de page</a>
-        </div>
-
-        <div class="pillSet" aria-hidden="true">
-          <a class="pill" href="#avis"><span class="dot"></span>Avis Airbnb</a>
-          <a class="pill" href="#takecare"><span class="dot"></span>On s’occupe de tout</a>
-          <a class="pill" href="#gestion-complete"><span class="dot"></span>Gestion complète</a>
-          <a class="pill" href="#appartements"><span class="dot"></span>Appartements</a>
-          <a class="pill" href="#proprietaire"><span class="dot"></span>Propriétaire</a>
-          <a class="pill" href="#superhost"><span class="dot"></span>Superhôte</a>
-          <a class="pill" href="#footer"><span class="dot"></span>Bas de page</a>
+    <!-- ✅ Pastilles qui tournent (liens vers services.html#...) -->
+    <div class="pillMarquee anim" id="pillMarquee" style="--y:16px;--d:170ms;" aria-label="Accès rapides vers nos avantages">
+      <div class="pillTrack" id="pillTrack">
+        <div class="pillSet" id="pillSet">
+          <a class="pill" href="services.html#serenite"><span class="pillDot"></span>Sérénité</a>
+          <a class="pill" href="services.html#cadre-juridique"><span class="pillDot"></span>Bail encadré</a>
+          <a class="pill" href="services.html#protection-bien"><span class="pillDot"></span>Bien protégé</a>
+          <a class="pill" href="services.html#flexibilite"><span class="pillDot"></span>Flexibilité</a>
+          <a class="pill" href="services.html#entretien"><span class="pillDot"></span>Entretien</a>
+          <a class="pill" href="services.html#loyer-garanti"><span class="pillDot"></span>Loyer garanti</a>
         </div>
       </div>
     </div>
@@ -824,8 +794,7 @@ footer{margin-top:110px;padding:44px 20px;text-align:center;border-top:1px solid
   </div>
 </section>
 
-<!-- ✅ Bandeau avis Airbnb conservé -->
-<section class="reviewsBand anim anchor" id="avis" style="--y:22px;--d:0ms;" aria-label="Avis voyageurs">
+<section class="reviewsBand anim" style="--y:22px;--d:0ms;" aria-label="Avis voyageurs">
   <div class="reviewsWrap">
 
     <div class="reviewsTop">
@@ -917,8 +886,7 @@ footer{margin-top:110px;padding:44px 20px;text-align:center;border-top:1px solid
   </div>
 </section>
 
-<!-- ✅ On s’occupe de tout conservé + modif "revenus constants" dans le bloc droite -->
-<section class="takeCare anchor" id="takecare" aria-label="On s’occupe de tout">
+<section class="takeCare" aria-label="On s’occupe de tout">
   <h2 class="takeCareTitle anim" style="--y:22px;">On s’occupe <em>de tout</em></h2>
 
   <div class="tcBlock">
@@ -991,7 +959,6 @@ footer{margin-top:110px;padding:44px 20px;text-align:center;border-top:1px solid
 
   <div class="tcDivider"></div>
 
-  <!-- ✅ Bloc droite : “Gagnez des revenus constants” + vignettes adaptées -->
   <div class="tcBlock rightLead">
     <div class="tcCards">
       <div class="tcCard anim" style="--y:18px;--d:0ms;">
@@ -1002,8 +969,8 @@ footer{margin-top:110px;padding:44px 20px;text-align:center;border-top:1px solid
           </picture>
         </div>
         <div class="tcBody">
-          <h4>Bail encadré juridiquement</h4>
-          <p>Activité légale et encadrée : un bail clair + documents pour sécuriser la location.</p>
+          <h4>Annonce & positionnement</h4>
+          <p>Titres, photos, infos : plus de demandes, moins de creux.</p>
           <a class="tcMore" href="services.html">En savoir plus →</a>
         </div>
       </div>
@@ -1016,8 +983,8 @@ footer{margin-top:110px;padding:44px 20px;text-align:center;border-top:1px solid
           </picture>
         </div>
         <div class="tcBody">
-          <h4>Bien préservé</h4>
-          <p>Règles claires + suivi : réduction des risques (dégradations) et qualité du logement maintenue.</p>
+          <h4>Optimisation & calendrier</h4>
+          <p>Tarifs et calendrier ajustés pour lisser l’activité.</p>
           <a class="tcMore" href="services.html">En savoir plus →</a>
         </div>
       </div>
@@ -1030,25 +997,23 @@ footer{margin-top:110px;padding:44px 20px;text-align:center;border-top:1px solid
           </picture>
         </div>
         <div class="tcBody">
-          <h4>Revenus constants</h4>
-          <p>Paiement mensuel, suivi et relances : notre engagement, c’est la régularité.</p>
+          <h4>Loyer garanti</h4>
+          <p>Quoi qu’il arrive, vous recevez votre loyer : on prend le risque.</p>
           <a class="tcMore" href="services.html">En savoir plus →</a>
         </div>
       </div>
     </div>
 
     <div class="tcLeft anim" style="--x:18px;--d:120ms;">
-      <h3 class="tcHeading">Gagnez des<br>revenus constants</h3>
+      <h3 class="tcHeading">Loyer<br>garanti</h3>
       <p class="tcDesc">
-        Une gestion rigoureuse : cadre contractuel, suivi, relances et standards —
-        pour des revenus plus réguliers et moins d’imprévus.
+        On gère l’activité et l’opérationnel. Votre loyer tombe tous les mois, coûte que coûte.
       </p>
     </div>
   </div>
 </section>
 
-<!-- ✅ Gestion complète conservé -->
-<section class="section anchor" id="gestion-complete">
+<section class="section">
   <h2 class="anim" style="--y:20px;">Une gestion complète</h2>
   <div class="grid">
     <a class="card anim" style="--y:18px;--d:0ms;" href="services.html">
@@ -1081,13 +1046,12 @@ footer{margin-top:110px;padding:44px 20px;text-align:center;border-top:1px solid
         </picture>
       </div>
       <h3>Optimisation & prix</h3>
-      <p>Stratégie tarifaire + présentation : plus de réservations, meilleurs revenus.</p>
+      <p>Stratégie tarifaire + présentation : plus de réservations, meilleure régularité.</p>
     </a>
   </div>
 </section>
 
-<!-- ✅ Appartements conservé -->
-<section class="section anchor" id="appartements">
+<section class="section">
   <h2 class="anim" style="--y:20px;">Nos appartements à Nantes</h2>
 
   <div class="apartGrid">
@@ -1129,8 +1093,7 @@ footer{margin-top:110px;padding:44px 20px;text-align:center;border-top:1px solid
   </div>
 </section>
 
-<!-- ✅ Propriétaire conservé -->
-<section class="section anchor" id="proprietaire">
+<section class="section">
   <h2 class="anim" style="--y:20px;">Propriétaire ?</h2>
 
   <div class="grid">
@@ -1169,12 +1132,11 @@ footer{margin-top:110px;padding:44px 20px;text-align:center;border-top:1px solid
   </div>
 </section>
 
-<!-- ✅ Bandeau Superhôte conservé -->
-<div class="superhost anim anchor" id="superhost" style="--y:18px;">
+<div class="superhost anim" style="--y:18px;">
   ⭐ Statut <span>Superhôte Airbnb</span> — basé sur la qualité, la régularité et la satisfaction voyageurs.
 </div>
 
-<footer class="anchor" id="footer">Gamloc Immo — SLP Airbnb à Nantes</footer>
+<footer>Gamloc Immo — SLP Airbnb à Nantes</footer>
 
 <script>
 /* MENU MOBILE */
@@ -1212,7 +1174,6 @@ function onScroll(){
     if(y > 12) header.classList.add("scrolled");
     else header.classList.remove("scrolled");
 
-    // parallax léger (clean)
     if(heroVisual){
       const p = Math.min(y / 700, 1);
       heroVisual.style.transform = `translateY(${p * 10}px)`;
@@ -1235,7 +1196,7 @@ const io = new IntersectionObserver((entries)=>{
 },{threshold:0.12});
 animEls.forEach(el=>io.observe(el));
 
-/* COUNT UP (lent) sur les stats EXISTANTES du bandeau avis Airbnb */
+/* COUNT UP (lent) sur les stats du bandeau avis */
 function animateCount(el){
   if(el.dataset.done === "1") return;
 
@@ -1260,7 +1221,6 @@ function animateCount(el){
   }
   requestAnimationFrame(tick);
 }
-
 const counts = document.querySelectorAll(".count");
 const ioCount = new IntersectionObserver((entries)=>{
   entries.forEach(ent=>{
@@ -1272,22 +1232,57 @@ const ioCount = new IntersectionObserver((entries)=>{
 },{threshold:0.45});
 counts.forEach(el=>ioCount.observe(el));
 
-/* ✅ Scroll ancres avec offset header (sinon ça arrive sous le header) */
-const HEADER_OFFSET = 96;
-document.querySelectorAll('a[href^="#"]').forEach(a=>{
-  a.addEventListener("click", (e)=>{
-    const id = a.getAttribute("href");
-    const target = document.querySelector(id);
-    if(!target) return;
+/* ✅ Marquee anti-bug (boucle parfaite en JS) */
+(function(){
+  const marquee = document.getElementById("pillMarquee");
+  const track = document.getElementById("pillTrack");
+  const set = document.getElementById("pillSet");
+  if(!marquee || !track || !set) return;
 
-    // ferme menu mobile si ouvert
-    if(document.body.classList.contains("menu-open")) closeMenu();
+  let paused = false;
+  marquee.addEventListener("mouseenter", ()=> paused = true);
+  marquee.addEventListener("mouseleave", ()=> paused = false);
 
-    e.preventDefault();
-    const y = target.getBoundingClientRect().top + window.pageYOffset - HEADER_OFFSET;
-    window.scrollTo({ top: y, behavior: "smooth" });
-  });
-});
+  function build(){
+    // reset
+    track.style.transform = "translateX(0px)";
+    // remove old clones
+    [...track.querySelectorAll(".pillSet")].forEach((n, i)=>{ if(i>0) n.remove(); });
+
+    const setWidth = set.getBoundingClientRect().width;
+    const need = Math.ceil((marquee.getBoundingClientRect().width * 2) / setWidth) + 1;
+
+    for(let i=1;i<need;i++){
+      const clone = set.cloneNode(true);
+      clone.removeAttribute("id");
+      track.appendChild(clone);
+    }
+
+    return setWidth;
+  }
+
+  let baseWidth = 0;
+  function refresh(){ baseWidth = build(); }
+  refresh();
+  window.addEventListener("resize", refresh, {passive:true});
+
+  let x = 0;
+  let last = performance.now();
+  const speed = 55; // px/s
+
+  function loop(now){
+    const dt = (now - last) / 1000;
+    last = now;
+
+    if(!paused){
+      x -= speed * dt;
+      if(baseWidth > 0 && (-x) >= baseWidth) x += baseWidth; // boucle au 1er set
+      track.style.transform = `translateX(${x}px)`;
+    }
+    requestAnimationFrame(loop);
+  }
+  requestAnimationFrame(loop);
+})();
 </script>
 
 </body>
