@@ -107,10 +107,18 @@ header.scrolled::after{ opacity:.9; }
 }
 header.scrolled .logo a{ color:#fff; }
 
-.logoMark{
-  width:10px;height:10px;border-radius:999px;
-  background:linear-gradient(180deg,var(--yellow2),var(--yellow));
-  box-shadow:0 0 18px rgba(244,191,19,.28);
+/* ✅ Logo image dans la nav (mets ton fichier ici) */
+.brandLogo{
+  width:34px;height:34px;
+  border-radius:10px;
+  object-fit:cover;
+  border:1px solid rgba(10,18,40,.10);
+  box-shadow: 0 12px 22px rgba(3,7,18,.10);
+  background:#fff;
+}
+header.scrolled .brandLogo{
+  border-color: rgba(255,255,255,.22);
+  background: rgba(255,255,255,.12);
 }
 
 .navlinks{
@@ -315,85 +323,6 @@ body.menu-open .mobileLinks li:nth-child(5) a{ transition-delay:.16s; }
 }
 .btn-outline:hover{background:rgba(14,74,166,.09);transform:translateY(-2px);}
 
-/* ===== Pastilles (icônes monochrome claires) ===== */
-.pillMarquee{
-  margin:12px auto 14px;
-  max-width:980px;
-  position:relative;
-  border-radius:999px;
-  border:1px solid rgba(10,18,40,.10);
-  background: rgba(255,255,255,.65);
-  box-shadow: 0 12px 28px rgba(3,7,18,.06);
-  overflow:hidden;
-
-  touch-action: pan-y;
-  -webkit-user-select:none;
-  user-select:none;
-  -webkit-tap-highlight-color: transparent;
-
-  cursor: grab;
-}
-.pillMarquee.grabbing{ cursor: grabbing; }
-
-.pillMarquee::before,
-.pillMarquee::after{
-  content:"";
-  position:absolute;top:0;bottom:0;width:84px;z-index:2;
-  pointer-events:none;
-}
-.pillMarquee::before{
-  left:0;
-  background:linear-gradient(90deg, rgba(255,255,255,.92), rgba(255,255,255,0));
-}
-.pillMarquee::after{
-  right:0;
-  background:linear-gradient(270deg, rgba(255,255,255,.92), rgba(255,255,255,0));
-}
-.pillTrack{
-  display:flex;align-items:center;gap:10px;
-  padding:10px 16px;
-  width:max-content;
-  will-change: transform;
-  transform: translateX(0);
-}
-.pillSet{display:flex;align-items:center;gap:10px;}
-.pill{
-  display:inline-flex;align-items:center;gap:10px;
-  padding:10px 14px;border-radius:999px;
-  border:1px solid rgba(14,74,166,.16);
-  background: rgba(14,74,166,.06);
-  color: var(--blue2);
-  font-weight:900;font-size:13px;
-  text-decoration:none;
-  white-space:nowrap;
-  transition: transform .18s var(--ease), background .18s var(--ease), border-color .18s var(--ease);
-}
-.pill:hover{
-  transform: translateY(-1px);
-  background: rgba(244,191,19,.12);
-  border-color: rgba(244,191,19,.35);
-}
-.pillDot{
-  width:8px;height:8px;border-radius:999px;
-  background: linear-gradient(180deg,var(--yellow2),var(--yellow));
-  box-shadow:0 0 12px rgba(244,191,19,.22);
-}
-.iconBadge{
-  width:22px;height:22px;border-radius:999px;
-  display:inline-grid;place-items:center;
-  background: rgba(19,42,175,.92);
-  box-shadow: 0 10px 18px rgba(19,42,175,.18);
-  flex: 0 0 auto;
-}
-.iconBadge svg{
-  width:14px;height:14px;
-  stroke:#fff;
-  fill:none;
-  stroke-width:2;
-  stroke-linecap:round;
-  stroke-linejoin:round;
-}
-
 .heroVisual{
   margin:28px auto 0;
   max-width:980px;
@@ -408,14 +337,45 @@ body.menu-open .mobileLinks li:nth-child(5) a{ transition-delay:.16s; }
   padding:14px;
   will-change: transform;
 }
-.heroVisual img{
+
+/* ✅ Hover vidéo (comme conciergelite) */
+.videoHover{
+  position:relative;
+  border-radius:18px;
+  overflow:hidden;
+  border:1px solid rgba(10,18,40,.10);
+  background:#fff;
+}
+.videoHover img{
   width:100%;
   height:auto;
   display:block;
-  border-radius:18px;
-  border:1px solid rgba(10,18,40,.10);
-  background:#fff;
+  border-radius:0;
   object-fit:cover;
+  transform: scale(1);
+  transition: transform .6s var(--ease);
+}
+.vhVideo{
+  position:absolute;
+  inset:0;
+  opacity:0;
+  transition: opacity .35s var(--ease);
+  pointer-events:none;
+}
+.vhVideo::after{
+  content:"";
+  position:absolute; inset:0;
+  background:linear-gradient(180deg, rgba(6,10,22,.20), rgba(6,10,22,.08));
+}
+.vhVideo video{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+@media (hover:hover) and (pointer:fine){
+  .videoHover:hover .vhVideo{ opacity:1; }
+  .videoHover:hover img{ transform: scale(1.03); }
 }
 
 .section{max-width:1200px;margin:110px auto;padding:0 20px;}
@@ -712,7 +672,6 @@ footer{margin-top:110px;padding:44px 20px;text-align:center;border-top:1px solid
   .ratingBox{padding:14px;}
   .bigRate{font-size:38px;}
   .reviewsBottom{padding:16px;}
-  .pillMarquee::before,.pillMarquee::after{width:56px;}
 }
 </style>
 </head>
@@ -722,7 +681,11 @@ footer{margin-top:110px;padding:44px 20px;text-align:center;border-top:1px solid
 <header id="siteHeader">
   <div class="nav">
     <div class="logo">
-      <a href="index.html"><span class="logoMark"></span>GAMLOC IMMO</a>
+      <a href="index.html">
+        <!-- ✅ Mets ton fichier logo ici (ex: logo.png). Pas ailleurs dans la page. -->
+        <img class="brandLogo" src="logo.png" alt="Gamloc Immo">
+        GAMLOC IMMO
+      </a>
     </div>
 
     <ul class="navlinks">
@@ -779,102 +742,23 @@ footer{margin-top:110px;padding:44px 20px;text-align:center;border-top:1px solid
       communication voyageurs et standards premium — pour <b>maximiser vos revenus</b> et vos <b>avis</b>.
     </p>
 
-    <!-- ✅ Menu pastilles (icônes ULTRA CLaires : coeur, doc, bouclier, flèches, clé, €) -->
-    <div class="pillMarquee anim" id="pillMarquee" style="--y:16px;--d:170ms;" aria-label="Accès rapides vers nos avantages">
-      <div class="pillTrack" id="pillTrack">
-        <div class="pillSet" id="pillSet">
-
-          <!-- Sérénité (coeur) -->
-          <a class="pill" href="services.html#serenite">
-            <span class="pillDot"></span>
-            <span class="iconBadge" aria-hidden="true">
-              <svg viewBox="0 0 24 24">
-                <path d="M20.5 8.5c0 6-8.5 11-8.5 11S3.5 14.5 3.5 8.5c0-2.2 1.8-4 4-4 1.4 0 2.7.7 3.5 1.8 0.8-1.1 2.1-1.8 3.5-1.8 2.2 0 4 1.8 4 4z"/>
-              </svg>
-            </span>
-            Sérénité
-          </a>
-
-          <!-- Bail encadré (document) -->
-          <a class="pill" href="services.html#cadre-juridique">
-            <span class="pillDot"></span>
-            <span class="iconBadge" aria-hidden="true">
-              <svg viewBox="0 0 24 24">
-                <path d="M8 3h6l4 4v14H8z"/>
-                <path d="M14 3v5h5"/>
-                <path d="M10 12h6"/>
-                <path d="M10 16h6"/>
-              </svg>
-            </span>
-            Bail encadré
-          </a>
-
-          <!-- Bien protégé (bouclier + check) -->
-          <a class="pill" href="services.html#protection-bien">
-            <span class="pillDot"></span>
-            <span class="iconBadge" aria-hidden="true">
-              <svg viewBox="0 0 24 24">
-                <path d="M12 3l8 4v6c0 5-3.5 8-8 8s-8-3-8-8V7l8-4z"/>
-                <path d="M8.5 12.5l2.2 2.2 4.8-4.8"/>
-              </svg>
-            </span>
-            Bien protégé
-          </a>
-
-          <!-- Flexibilité (flèches) -->
-          <a class="pill" href="services.html#flexibilite">
-            <span class="pillDot"></span>
-            <span class="iconBadge" aria-hidden="true">
-              <svg viewBox="0 0 24 24">
-                <path d="M7 7h10"/>
-                <path d="M14 4l3 3-3 3"/>
-                <path d="M17 17H7"/>
-                <path d="M10 20l-3-3 3-3"/>
-              </svg>
-            </span>
-            Flexibilité
-          </a>
-
-          <!-- Entretien (outil) -->
-          <a class="pill" href="services.html#entretien">
-            <span class="pillDot"></span>
-            <span class="iconBadge" aria-hidden="true">
-              <svg viewBox="0 0 24 24">
-                <path d="M21 7l-5 5"/>
-                <path d="M16 7l5 5"/>
-                <path d="M14 10L5 19"/>
-                <path d="M4 20l1-1"/>
-              </svg>
-            </span>
-            Entretien
-          </a>
-
-          <!-- Loyer garanti (€ + check) -->
-          <a class="pill" href="services.html#loyer-garanti">
-            <span class="pillDot"></span>
-            <span class="iconBadge" aria-hidden="true">
-              <svg viewBox="0 0 24 24">
-                <path d="M14 6c-3 0-5 2.2-5 6s2 6 5 6"/>
-                <path d="M7 10h7"/>
-                <path d="M7 14h7"/>
-                <path d="M16.5 16.5l1.2 1.2 2.8-2.8"/>
-              </svg>
-            </span>
-            Loyer garanti
-          </a>
-
-        </div>
-      </div>
-    </div>
-
     <div class="actions anim" style="--y:18px;--d:200ms;">
       <a class="btn-primary" href="appartements.html">Découvrir nos appartements</a>
       <a class="btn-outline" href="confier-mon-bien.html">Confier mon bien</a>
     </div>
 
     <div class="heroVisual anim" id="heroVisual" style="--y:18px;--d:280ms;">
-      <img src="1e5b38bc-3ac0-46e2-a97c-a5ac7e106f7d.png" alt="Appartement premium">
+      <!-- ✅ au hover: vidéo en fond (mets apartment-loop.mp4 à côté de index.html) -->
+      <div class="videoHover" id="heroVideoHover">
+        <img src="1e5b38bc-3ac0-46e2-a97c-a5ac7e106f7d.png" alt="Appartement premium">
+        <div class="vhVideo" aria-hidden="true">
+          <video id="heroVideo" muted loop playsinline preload="none">
+            <source src="apartment-loop.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
     </div>
+
   </div>
 </section>
 
@@ -1298,15 +1182,12 @@ function animateCount(el){
     const t = Math.min(1, (now - start)/duration);
     const eased = 1 - Math.pow(1 - t, 3);
     const val = from + (to - from)*eased;
-
     el.textContent = (isFloat ? val.toFixed(decimals) : Math.round(val)) + suffix;
-
     if(t < 1) requestAnimationFrame(tick);
     else el.dataset.done = "1";
   }
   requestAnimationFrame(tick);
 }
-
 const counts = document.querySelectorAll(".count");
 const ioCount = new IntersectionObserver((entries)=>{
   entries.forEach(ent=>{
@@ -1318,131 +1199,27 @@ const ioCount = new IntersectionObserver((entries)=>{
 },{threshold:0.45});
 counts.forEach(el=>ioCount.observe(el));
 
-/* ✅ Pastilles tactiles + inertie + boucle */
+/* ✅ Vidéo au hover (desktop) */
 (function(){
-  const marquee = document.getElementById("pillMarquee");
-  const track = document.getElementById("pillTrack");
-  const set = document.getElementById("pillSet");
-  if(!marquee || !track || !set) return;
+  const wrap = document.getElementById("heroVideoHover");
+  const vid  = document.getElementById("heroVideo");
+  if(!wrap || !vid) return;
 
-  function rebuild(){
-    track.style.transform = "translateX(0px)";
-    [...track.querySelectorAll(".pillSet")].forEach((n, i)=>{ if(i>0) n.remove(); });
+  const canHover = window.matchMedia("(hover:hover) and (pointer:fine)").matches;
 
-    const baseW = set.getBoundingClientRect().width;
-    const viewW = marquee.getBoundingClientRect().width;
-
-    const need = Math.ceil((viewW * 2) / baseW) + 2;
-    for(let i=1;i<need;i++){
-      const clone = set.cloneNode(true);
-      clone.removeAttribute("id");
-      track.appendChild(clone);
-    }
-    return baseW;
+  function play(){
+    try{ vid.currentTime = 0; }catch(e){}
+    const p = vid.play();
+    if(p && typeof p.catch === "function") p.catch(()=>{});
+  }
+  function stop(){
+    try{ vid.pause(); vid.currentTime = 0; }catch(e){}
   }
 
-  let baseWidth = 0;
-  function refresh(){ baseWidth = rebuild(); }
-  refresh();
-  window.addEventListener("resize", refresh, {passive:true});
-
-  let x = 0;
-  let v = -55; // px/sec
-  let last = performance.now();
-
-  let isDown = false;
-  let startX = 0, startY = 0;
-  let startOffset = 0;
-
-  let lastMoveT = 0;
-  let lastMoveX = 0;
-
-  let gestureLocked = false;
-  let lock = null; // "x" or "y"
-
-  function setX(val){
-    x = val;
-    if(baseWidth > 0){
-      while(x <= -baseWidth) x += baseWidth;
-      while(x > 0) x -= baseWidth;
-    }
-    track.style.transform = `translateX(${x}px)`;
+  if(canHover){
+    wrap.addEventListener("mouseenter", play);
+    wrap.addEventListener("mouseleave", stop);
   }
-
-  marquee.addEventListener("pointerdown", (e)=>{
-    isDown = true;
-    gestureLocked = false;
-    lock = null;
-
-    marquee.classList.add("grabbing");
-    marquee.setPointerCapture(e.pointerId);
-
-    startX = e.clientX;
-    startY = e.clientY;
-    startOffset = x;
-
-    lastMoveT = performance.now();
-    lastMoveX = e.clientX;
-
-    v *= 0.2;
-  });
-
-  marquee.addEventListener("pointermove", (e)=>{
-    if(!isDown) return;
-
-    const dx = e.clientX - startX;
-    const dy = e.clientY - startY;
-
-    if(!gestureLocked){
-      if(Math.abs(dx) + Math.abs(dy) > 8){
-        lock = Math.abs(dx) > Math.abs(dy) ? "x" : "y";
-        gestureLocked = true;
-      }
-    }
-
-    if(lock === "x"){
-      e.preventDefault();
-      setX(startOffset + dx);
-
-      const now = performance.now();
-      const dt = Math.max(0.001, (now - lastMoveT)/1000);
-      const vx = (e.clientX - lastMoveX) / dt;
-      v = vx;
-
-      lastMoveT = now;
-      lastMoveX = e.clientX;
-    }
-  }, {passive:false});
-
-  function endDrag(){
-    if(!isDown) return;
-    isDown = false;
-    marquee.classList.remove("grabbing");
-
-    const max = 1200;
-    if(v > max) v = max;
-    if(v < -max) v = -max;
-  }
-
-  marquee.addEventListener("pointerup", endDrag);
-  marquee.addEventListener("pointercancel", endDrag);
-  marquee.addEventListener("lostpointercapture", endDrag);
-
-  marquee.addEventListener("dragstart", (e)=> e.preventDefault());
-
-  function loop(now){
-    const dt = (now - last)/1000;
-    last = now;
-
-    if(!isDown){
-      setX(x + v * dt);
-      const auto = -55;
-      const blend = 0.985;
-      v = v * blend + auto * (1 - blend);
-    }
-    requestAnimationFrame(loop);
-  }
-  requestAnimationFrame(loop);
 })();
 </script>
 
