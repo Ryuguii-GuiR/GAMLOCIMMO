@@ -27,7 +27,6 @@
 }
 
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif;}
-html{scroll-behavior:smooth;}
 body{background:var(--bg);color:var(--text);overflow-x:hidden;}
 
 body::before{
@@ -65,7 +64,7 @@ body::after{
   letter-spacing:-.2px;
 }
 
-/* ===== HEADER ===== */
+
 header{
   position:fixed;top:0;left:0;width:100%;
   background: rgba(255,255,255,.72);
@@ -250,7 +249,7 @@ body.menu-open .mobileLinks li:nth-child(5) a{ transition-delay:.16s; }
   line-height:1.55;
 }
 
-/* ===== HERO ===== */
+
 .hero{
   padding-top:120px;
   max-width:1200px;
@@ -272,14 +271,20 @@ body.menu-open .mobileLinks li:nth-child(5) a{ transition-delay:.16s; }
   pointer-events:none;
   z-index:-1;
 }
-.heroInner{max-width:900px;margin:0 auto;}
+.heroInner{
+  max-width:900px;
+  margin:0 auto;
+}
 .hero h1{
-  font-size:62px;line-height:1.04;margin:0 0 14px 0;
-  color:var(--blue2);letter-spacing:-.9px;
+  font-size:62px;
+  line-height:1.04;
+  margin:0 0 14px 0;
+  color:var(--blue2);
+  letter-spacing:-.9px;
 }
 .hero p{
   color:var(--muted);
-  margin:0 auto 18px auto;
+  margin:0 auto 22px auto;
   max-width:70ch;
   line-height:1.85;
   font-weight:600;
@@ -312,9 +317,9 @@ body.menu-open .mobileLinks li:nth-child(5) a{ transition-delay:.16s; }
 }
 .btn-outline:hover{background:rgba(14,74,166,.09);transform:translateY(-2px);}
 
-/* ===== MENU PASTILLES (tactile + inertie) ===== */
+/* ===== Pastilles (monochrome “emoji design” en SVG blanc) ===== */
 .pillMarquee{
-  margin:14px auto 6px;
+  margin:12px auto 14px;
   max-width:980px;
   position:relative;
   border-radius:999px;
@@ -324,8 +329,8 @@ body.menu-open .mobileLinks li:nth-child(5) a{ transition-delay:.16s; }
   overflow:hidden;
 
   touch-action: pan-y;
-  user-select:none;
   -webkit-user-select:none;
+  user-select:none;
   -webkit-tap-highlight-color: transparent;
 
   cursor: grab;
@@ -375,11 +380,22 @@ body.menu-open .mobileLinks li:nth-child(5) a{ transition-delay:.16s; }
   background: linear-gradient(180deg,var(--yellow2),var(--yellow));
   box-shadow:0 0 12px rgba(244,191,19,.22);
 }
-.pillEmoji{
-  font-size:14px;
-  line-height:1;
-  display:inline-flex;
-  transform: translateY(-.5px);
+
+/* icône “monochrome” */
+.iconBadge{
+  width:22px;height:22px;border-radius:999px;
+  display:inline-grid;place-items:center;
+  background: rgba(19,42,175,.92);
+  box-shadow: 0 10px 18px rgba(19,42,175,.18);
+  flex: 0 0 auto;
+}
+.iconBadge svg{
+  width:14px;height:14px;
+  stroke:#fff;
+  fill:none;
+  stroke-width:2;
+  stroke-linecap:round;
+  stroke-linejoin:round;
 }
 
 .heroVisual{
@@ -406,7 +422,7 @@ body.menu-open .mobileLinks li:nth-child(5) a{ transition-delay:.16s; }
   object-fit:cover;
 }
 
-/* ===== SECTIONS ===== */
+
 .section{max-width:1200px;margin:110px auto;padding:0 20px;}
 .section h2{
   font-size:40px;
@@ -480,6 +496,7 @@ body.menu-open .mobileLinks li:nth-child(5) a{ transition-delay:.16s; }
 }
 .card:hover .cardMedia img{ transform: scale(1.06); }
 
+
 .apartGrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:22px;}
 .aptCard{
   display:block;
@@ -529,7 +546,9 @@ body.menu-open .mobileLinks li:nth-child(5) a{ transition-delay:.16s; }
   background: linear-gradient(180deg,var(--yellow2),var(--yellow));
 }
 
-.aptBody{ padding:18px 18px 20px 18px; }
+.aptBody{
+  padding:18px 18px 20px 18px;
+}
 .aptTitle{
   font-size:20px;
   font-weight:900;
@@ -557,7 +576,7 @@ body.menu-open .mobileLinks li:nth-child(5) a{ transition-delay:.16s; }
   font-weight:600;
 }
 
-/* ===== Avis ===== */
+
 .reviewsBand{margin:110px auto 0;max-width:1200px;padding:0 20px;}
 .reviewsWrap{border-radius:26px;overflow:hidden;border:1px solid rgba(244,191,19,.30);box-shadow:0 0 26px rgba(244,191,19,.08), 0 0 22px rgba(14,74,166,.06);}
 .reviewsTop{
@@ -630,7 +649,12 @@ body.menu-open .mobileLinks li:nth-child(5) a{ transition-delay:.16s; }
 .reviewText{color:rgba(0,0,0,.76);font-weight:650;font-size:13px;line-height:1.6;}
 .reviewStars{color:#111;font-weight:900;}
 
-/* ===== TakeCare ===== */
+.superhost{max-width:1200px;margin:90px auto 0;padding:0 20px;text-align:center;font-size:18px;color:#334155;font-weight:650;}
+.superhost span{background:linear-gradient(90deg,var(--blue2),var(--yellow));-webkit-background-clip:text;background-clip:text;color:transparent;font-weight:900;}
+
+footer{margin-top:110px;padding:44px 20px;text-align:center;border-top:1px solid var(--stroke);color:#6b7280;font-size:14px;font-weight:650;}
+
+
 .takeCare{max-width:1200px;margin:110px auto 0;padding:0 20px;}
 .takeCareTitle{text-align:center;font-size:44px;letter-spacing:-.5px;color:var(--blue2);margin:0 0 32px 0;font-weight:900;}
 .takeCareTitle em{font-family:"Georgia",serif;font-style:italic;font-weight:500;}
@@ -661,11 +685,6 @@ body.menu-open .mobileLinks li:nth-child(5) a{ transition-delay:.16s; }
 .tcMore{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-weight:900;font-size:12px;color:var(--blue2);}
 .tcMore:hover{text-decoration:underline;}
 .tcDivider{margin:50px 0 0 0;}
-
-.superhost{max-width:1200px;margin:90px auto 0;padding:0 20px;text-align:center;font-size:18px;color:#334155;font-weight:650;}
-.superhost span{background:linear-gradient(90deg,var(--blue2),var(--yellow));-webkit-background-clip:text;background-clip:text;color:transparent;font-weight:900;}
-
-footer{margin-top:110px;padding:44px 20px;text-align:center;border-top:1px solid var(--stroke);color:#6b7280;font-size:14px;font-weight:650;}
 
 @media(max-width:980px){
   .reviewsTop{grid-template-columns:1fr;}
@@ -750,7 +769,7 @@ footer{margin-top:110px;padding:44px 20px;text-align:center;border-top:1px solid
     </ul>
 
     <div class="mobileHint">
-      Gestion locative à Nantes : on s’occupe de tout, et votre loyer est garanti.
+      Gestion locative courte durée à Nantes : optimisation, ménage, check-in/out, communication voyageurs.
     </div>
   </nav>
 </div>
@@ -765,20 +784,62 @@ footer{margin-top:110px;padding:44px 20px;text-align:center;border-top:1px solid
 
     <p class="anim" style="--x:-18px;--d:120ms;">
       Entreprise de <b>gestion locative</b> courte durée : optimisation, ménage, check-in/out,
-      communication voyageurs et standards premium — pour <b>maximiser vos avis</b> et garantir une <b>activité régulière</b>.
+      communication voyageurs et standards premium — pour <b>maximiser vos revenus</b> et vos <b>avis</b>.
     </p>
 
-    <!-- ✅ Pastilles tactiles (drag + change sens + inertie) -->
+    <!-- ✅ Menu pastilles (icônes monochrome blanches) -->
     <div class="pillMarquee anim" id="pillMarquee" style="--y:16px;--d:170ms;" aria-label="Accès rapides vers nos avantages">
       <div class="pillTrack" id="pillTrack">
         <div class="pillSet" id="pillSet">
-          <!-- ✅ Emojis “design classique” -->
-          <a class="pill" href="services.html#serenite"><span class="pillDot"></span><span class="pillEmoji">🧘</span>Sérénité</a>
-          <a class="pill" href="services.html#cadre-juridique"><span class="pillDot"></span><span class="pillEmoji">⚖️</span>Bail encadré</a>
-          <a class="pill" href="services.html#protection-bien"><span class="pillDot"></span><span class="pillEmoji">🛡️</span>Bien protégé</a>
-          <a class="pill" href="services.html#flexibilite"><span class="pillDot"></span><span class="pillEmoji">🔄</span>Flexibilité</a>
-          <a class="pill" href="services.html#entretien"><span class="pillDot"></span><span class="pillEmoji">🧰</span>Entretien</a>
-          <a class="pill" href="services.html#loyer-garanti"><span class="pillDot"></span><span class="pillEmoji">💶</span>Loyer garanti</a>
+
+          <a class="pill" href="services.html#serenite">
+            <span class="pillDot"></span>
+            <span class="iconBadge" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M12 3v4"/><path d="M7 10c1.5-1.5 8.5-1.5 10 0"/><path d="M6 21c1.5-5 10.5-5 12 0"/></svg>
+            </span>
+            Sérénité
+          </a>
+
+          <a class="pill" href="services.html#cadre-juridique">
+            <span class="pillDot"></span>
+            <span class="iconBadge" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M12 3v18"/><path d="M6 7h12"/><path d="M8 7l-2 6a4 4 0 0 0 4 4"/><path d="M16 7l2 6a4 4 0 0 1-4 4"/></svg>
+            </span>
+            Bail encadré
+          </a>
+
+          <a class="pill" href="services.html#protection-bien">
+            <span class="pillDot"></span>
+            <span class="iconBadge" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M12 3l8 4v6c0 5-3.5 8-8 8s-8-3-8-8V7l8-4z"/><path d="M9 12l2 2 4-4"/></svg>
+            </span>
+            Bien protégé
+          </a>
+
+          <a class="pill" href="services.html#flexibilite">
+            <span class="pillDot"></span>
+            <span class="iconBadge" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M20 7h-6"/><path d="M20 7l-2-2"/><path d="M20 7l-2 2"/><path d="M4 17h6"/><path d="M4 17l2-2"/><path d="M4 17l2 2"/></svg>
+            </span>
+            Flexibilité
+          </a>
+
+          <a class="pill" href="services.html#entretien">
+            <span class="pillDot"></span>
+            <span class="iconBadge" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M14 7l3-3 3 3"/><path d="M5 20l9-9"/><path d="M16 11l3 3"/><path d="M3 21l3-3"/></svg>
+            </span>
+            Entretien
+          </a>
+
+          <a class="pill" href="services.html#loyer-garanti">
+            <span class="pillDot"></span>
+            <span class="iconBadge" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M12 1v22"/><path d="M17 5H9a4 4 0 0 0 0 8h6a4 4 0 0 1 0 8H6"/></svg>
+            </span>
+            Loyer garanti
+          </a>
+
         </div>
       </div>
     </div>
@@ -969,8 +1030,8 @@ footer{margin-top:110px;padding:44px 20px;text-align:center;border-top:1px solid
           </picture>
         </div>
         <div class="tcBody">
-          <h4>Annonce & positionnement</h4>
-          <p>Titres, photos, infos : plus de demandes → moins de creux.</p>
+          <h4>Création d’une annonce optimisée</h4>
+          <p>Présentation, photos, titres : plus de clics → plus de réservations.</p>
           <a class="tcMore" href="services.html">En savoir plus →</a>
         </div>
       </div>
@@ -983,8 +1044,8 @@ footer{margin-top:110px;padding:44px 20px;text-align:center;border-top:1px solid
           </picture>
         </div>
         <div class="tcBody">
-          <h4>Optimisation & calendrier</h4>
-          <p>Tarifs et calendrier ajustés pour lisser l’activité.</p>
+          <h4>Boost de votre référencement</h4>
+          <p>Optimisation Airbnb/Booking pour améliorer la visibilité de l’annonce.</p>
           <a class="tcMore" href="services.html">En savoir plus →</a>
         </div>
       </div>
@@ -997,17 +1058,18 @@ footer{margin-top:110px;padding:44px 20px;text-align:center;border-top:1px solid
           </picture>
         </div>
         <div class="tcBody">
-          <h4>Loyer garanti</h4>
-          <p>Quoi qu’il arrive, votre loyer tombe : on prend le risque.</p>
+          <h4>Gestion dynamique des prix & calendrier</h4>
+          <p>Tarifs ajustés selon la demande, saison, événements + règles de séjour.</p>
           <a class="tcMore" href="services.html">En savoir plus →</a>
         </div>
       </div>
     </div>
 
     <div class="tcLeft anim" style="--x:18px;--d:120ms;">
-      <h3 class="tcHeading">Loyer<br>garanti</h3>
+      <h3 class="tcHeading">Gagnez de<br>l’argent</h3>
       <p class="tcDesc">
-        On gère l’activité et l’opérationnel. Votre loyer tombe tous les mois, coûte que coûte.
+        Optimisation, prix, calendrier : une stratégie qui améliore la visibilité,
+        les réservations et la rentabilité.
       </p>
     </div>
   </div>
@@ -1046,7 +1108,7 @@ footer{margin-top:110px;padding:44px 20px;text-align:center;border-top:1px solid
         </picture>
       </div>
       <h3>Optimisation & prix</h3>
-      <p>Stratégie tarifaire + présentation : plus de réservations, meilleure régularité.</p>
+      <p>Stratégie tarifaire + présentation : plus de réservations, meilleurs revenus.</p>
     </a>
   </div>
 </section>
@@ -1174,6 +1236,7 @@ function onScroll(){
     if(y > 12) header.classList.add("scrolled");
     else header.classList.remove("scrolled");
 
+    // parallax léger (clean)
     if(heroVisual){
       const p = Math.min(y / 700, 1);
       heroVisual.style.transform = `translateY(${p * 10}px)`;
@@ -1196,7 +1259,7 @@ const io = new IntersectionObserver((entries)=>{
 },{threshold:0.12});
 animEls.forEach(el=>io.observe(el));
 
-/* COUNT UP (lent) sur les stats du bandeau avis */
+/* ===== COUNT UP (lent) sur les stats EXISTANTES du bandeau avis Airbnb */
 function animateCount(el){
   if(el.dataset.done === "1") return;
 
@@ -1205,13 +1268,13 @@ function animateCount(el){
   const decimals = parseInt(el.dataset.decimals || "0", 10);
   const isFloat = decimals > 0;
 
-  const duration = 2200;
+  const duration = 2200; // plus lent
   const start = performance.now();
   const from = 0;
 
   function tick(now){
     const t = Math.min(1, (now - start)/duration);
-    const eased = 1 - Math.pow(1 - t, 3);
+    const eased = 1 - Math.pow(1 - t, 3); // ease out
     const val = from + (to - from)*eased;
 
     el.textContent = (isFloat ? val.toFixed(decimals) : Math.round(val)) + suffix;
@@ -1221,12 +1284,13 @@ function animateCount(el){
   }
   requestAnimationFrame(tick);
 }
+
 const counts = document.querySelectorAll(".count");
 const ioCount = new IntersectionObserver((entries)=>{
   entries.forEach(ent=>{
     if(ent.isIntersecting){
       animateCount(ent.target);
-      ioCount.unobserve(ent.target);
+      ioCount.unobserve(ent.target); // une seule fois
     }
   });
 },{threshold:0.45});
@@ -1261,7 +1325,7 @@ counts.forEach(el=>ioCount.observe(el));
   window.addEventListener("resize", refresh, {passive:true});
 
   let x = 0;
-  let v = -55;
+  let v = -55;                 // auto speed px/sec
   let last = performance.now();
 
   let isDown = false;
@@ -1271,6 +1335,7 @@ counts.forEach(el=>ioCount.observe(el));
   let lastMoveT = 0;
   let lastMoveX = 0;
 
+  // detect gesture direction
   let gestureLocked = false;
   let lock = null; // "x" or "y"
 
@@ -1298,7 +1363,7 @@ counts.forEach(el=>ioCount.observe(el));
     lastMoveT = performance.now();
     lastMoveX = e.clientX;
 
-    v *= 0.2;
+    v *= 0.2; // amorti instant
   });
 
   marquee.addEventListener("pointermove", (e)=>{
@@ -1321,8 +1386,8 @@ counts.forEach(el=>ioCount.observe(el));
       const now = performance.now();
       const dt = Math.max(0.001, (now - lastMoveT)/1000);
       const vx = (e.clientX - lastMoveX) / dt;
-
       v = vx;
+
       lastMoveT = now;
       lastMoveX = e.clientX;
     }
@@ -1345,7 +1410,7 @@ counts.forEach(el=>ioCount.observe(el));
   marquee.addEventListener("dragstart", (e)=> e.preventDefault());
 
   function loop(now){
-    const dt = (now - last) / 1000;
+    const dt = (now - last)/1000;
     last = now;
 
     if(!isDown){
