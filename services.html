@@ -29,11 +29,11 @@
     }
 
     *{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;}
+    html{scroll-behavior:smooth;}
     body{background:var(--bg);color:var(--text);overflow-x:hidden;}
     a{color:inherit;text-decoration:none}
     img{max-width:100%;display:block}
     .container{max-width:1200px;margin:0 auto;padding:0 20px;}
-    .center{ text-align:center; }
     .sr-only{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;}
 
     body::before{
@@ -47,21 +47,48 @@
       filter:blur(190px);opacity:.18;z-index:-1;
     }
 
-    /* ===== Header ===== */
+    /* ===== Anim "vol" ===== */
+    .anim{
+      opacity:0;
+      transform: translate3d(var(--x,0px), var(--y,18px), 0) scale(.985);
+      filter: blur(2px);
+      transition:
+        opacity .85s var(--ease),
+        transform .85s var(--ease),
+        filter .85s var(--ease);
+      transition-delay: var(--d,0ms);
+      will-change: transform, opacity, filter;
+    }
+    .anim.in{
+      opacity:1;
+      transform: translate3d(0,0,0) scale(1);
+      filter: blur(0);
+    }
+
+    /* ===== Header (index-like) ===== */
     header{
       position:fixed;top:0;left:0;width:100%;
-      background:var(--headerBlue);
-      backdrop-filter: blur(12px);
-      border-bottom:1px solid rgba(244,191,19,.35);
+      background: rgba(255,255,255,.72);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(10,18,40,.06);
       z-index:1000;
+      transition: background .35s var(--ease), border-color .35s var(--ease), box-shadow .35s var(--ease);
     }
     header::after{
       content:"";position:absolute;bottom:0;left:50%;transform:translateX(-50%);
       width:min(820px, 84%);
       height:1px;
-      background:linear-gradient(90deg, transparent, var(--gold), rgba(255,255,255,.65), transparent);
-      opacity:.85;
+      background:linear-gradient(90deg, transparent, rgba(244,191,19,.95), rgba(255,255,255,.85), transparent);
+      opacity:.55;
+      transition: opacity .35s var(--ease);
     }
+    header.scrolled{
+      background: rgba(19,42,175,.92);
+      border-bottom: 1px solid rgba(244,191,19,.30);
+      box-shadow: 0 18px 55px rgba(3,7,18,.22);
+    }
+    header.scrolled::after{ opacity:.9; }
 
     .nav{
       max-width:1200px;margin:0 auto;
@@ -69,7 +96,7 @@
       padding:14px 20px;gap:18px;
     }
     .brand a{
-      color:rgba(255,255,255,.96);
+      color: var(--blue2);
       font-weight:900;
       letter-spacing:2px;
       font-size:16px;
@@ -77,7 +104,9 @@
       align-items:center;
       gap:10px;
       white-space:nowrap;
+      transition: color .35s var(--ease);
     }
+    header.scrolled .brand a{ color:#fff; }
     .brandDot{
       width:10px;height:10px;border-radius:999px;
       background:linear-gradient(180deg,var(--gold2),var(--gold));
@@ -88,8 +117,11 @@
       display:flex;gap:26px;list-style:none;flex-wrap:wrap;justify-content:flex-end;
     }
     .navlinks a{
-      color:white;font-size:14px;position:relative;opacity:.96;font-weight:850;
+      color: var(--blue2);
+      font-size:14px;position:relative;opacity:.96;font-weight:900;
+      transition: color .35s var(--ease);
     }
+    header.scrolled .navlinks a{ color:#fff; }
     .navlinks a::after{
       content:"";position:absolute;left:0;bottom:-8px;height:2px;width:0%;
       background:linear-gradient(90deg,var(--gold),var(--gold2));
@@ -99,26 +131,34 @@
     .navlinks a.active::after{width:100%;}
     .navlinks a.active{opacity:1;}
 
+    /* menu mobile */
     .menuBtn{
       display:none;
       width:46px;height:46px;
       border-radius:14px;
-      border:1px solid rgba(255,255,255,.22);
-      background:rgba(255,255,255,.10);
+      border:1px solid rgba(10,18,40,.10);
+      background:rgba(255,255,255,.55);
       cursor:pointer;
       position:relative;
-      transition: transform .18s, background .18s;
+      transition: transform .18s, background .18s, border-color .18s;
     }
-    .menuBtn:hover{ background:rgba(255,255,255,.14); transform: translateY(-1px); }
+    header.scrolled .menuBtn{
+      border-color: rgba(255,255,255,.22);
+      background: rgba(255,255,255,.10);
+    }
+    .menuBtn:hover{ background:rgba(255,255,255,.75); transform: translateY(-1px); }
+    header.scrolled .menuBtn:hover{ background:rgba(255,255,255,.14); }
+
     .menuIcon{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:22px;height:16px;}
     .menuIcon span{
-      position:absolute;left:0;right:0;height:2px;border-radius:3px;background:#fff;
-      transition: transform .25s ease, top .25s ease, opacity .18s ease;
+      position:absolute;left:0;right:0;height:2px;border-radius:3px;
+      background: var(--blue2);
+      transition: transform .25s ease, top .25s ease, opacity .18s ease, background .18s ease;
     }
+    header.scrolled .menuIcon span{ background:#fff; }
     .menuIcon span:nth-child(1){ top:0; }
     .menuIcon span:nth-child(2){ top:7px; opacity:.95; }
     .menuIcon span:nth-child(3){ top:14px; }
-
     body.menu-open .menuIcon span:nth-child(1){ top:7px; transform: rotate(45deg); }
     body.menu-open .menuIcon span:nth-child(2){ opacity:0; }
     body.menu-open .menuIcon span:nth-child(3){ top:7px; transform: rotate(-45deg); }
@@ -132,7 +172,6 @@
       z-index:1400;
     }
     body.menu-open .mobileOverlay{opacity:1;pointer-events:auto;}
-
     .mobilePanel{
       position:absolute;top:0;right:0;height:100%;
       width:min(360px, 88vw);
@@ -148,7 +187,6 @@
       padding:16px;
     }
     body.menu-open .mobilePanel{transform: translateX(0);opacity:1;}
-
     .mobileTop{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:6px 4px 12px 4px;}
     .mobileTitle{
       color:rgba(255,255,255,.96);
@@ -171,6 +209,7 @@
       transition: opacity .25s ease, transform .25s ease, background .18s ease, border-color .18s ease;
     }
     .mobileLinks a:hover{ background:rgba(255,255,255,.12); border-color:rgba(244,191,19,.35); }
+    .mobileLinks a .arrow{opacity:.85;}
     body.menu-open .mobileLinks a{opacity:1;transform: translateY(0);}
     body.menu-open .mobileLinks li:nth-child(1) a{ transition-delay:.04s; }
     body.menu-open .mobileLinks li:nth-child(2) a{ transition-delay:.07s; }
@@ -189,21 +228,17 @@
 
     /* ===== Page ===== */
     main{ padding-top:126px; }
+
     .hero{
       margin:40px auto 18px;
       width:100%;
       display:grid;
-      grid-template-columns: 1.1fr 1fr;
-      gap:26px;
+      grid-template-columns: 1fr;
+      gap:18px;
       align-items:center;
-      justify-items:center; /* important: centre les blocs */
-    }
-
-    .heroText{
-      width:100%;
-      max-width:600px;
-      justify-self:center;
-      text-align:left;
+      justify-items:center;
+      text-align:center;
+      max-width:980px;
     }
     .kicker{
       display:inline-flex;align-items:center;gap:10px;
@@ -229,10 +264,10 @@
     .lead{
       color:var(--muted);
       line-height:1.85;
-      max-width:62ch;
+      max-width:70ch;
       font-size:15px;
       font-weight:600;
-      margin-bottom:18px;
+      margin:0 auto 18px auto;
     }
     .hl{
       background:linear-gradient(90deg, rgba(244,191,19,.35), rgba(244,191,19,.10));
@@ -241,8 +276,7 @@
       font-weight:900;
       color:#111;
     }
-
-    .ctaRow{display:flex;gap:12px;flex-wrap:wrap;}
+    .ctaRow{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;}
     .btn{
       display:inline-flex;align-items:center;justify-content:center;gap:10px;
       padding:14px 18px;border-radius:999px;
@@ -264,59 +298,6 @@
       color:var(--blue2);
     }
     .btn:hover{transform:translateY(-2px);box-shadow:0 18px 34px rgba(3,7,18,.10);}
-
-    .heroCard{
-      width:100%;
-      max-width:520px;
-      border-radius:24px;
-      border:1px solid rgba(10,18,40,.10);
-      background:
-        radial-gradient(900px 420px at 20% 20%, rgba(244,191,19,.10), transparent 55%),
-        radial-gradient(900px 420px at 90% 0%, rgba(14,74,166,.10), transparent 55%),
-        linear-gradient(180deg, rgba(255,255,255,.78), rgba(255,255,255,.66));
-      box-shadow: var(--softShadow);
-      padding:18px;
-      overflow:hidden;
-      position:relative;
-      min-height:260px;
-      display:grid;
-      place-items:center;
-      justify-self:center;
-    }
-    .heroCard::after{
-      content:"";
-      position:absolute;inset:-40%;
-      background:conic-gradient(from 180deg, rgba(244,191,19,.22), rgba(14,74,166,.14), rgba(244,191,19,.18));
-      filter: blur(40px);
-      opacity:.45;
-      animation: spin 10s linear infinite;
-    }
-    @keyframes spin{to{transform:rotate(360deg)}}
-    .heroCardInner{
-      position:relative;
-      z-index:1;
-      width:100%;
-      border-radius:18px;
-      border:1px solid rgba(10,18,40,.10);
-      background:rgba(255,255,255,.82);
-      padding:16px;
-      display:grid;
-      gap:12px;
-    }
-    .statRow{display:flex;align-items:center;justify-content:space-between;gap:12px;}
-    .stat{
-      padding:12px 12px;border-radius:16px;
-      border:1px solid rgba(10,18,40,.10);
-      background:rgba(14,74,166,.04);
-      width:100%;
-    }
-    .stat strong{display:block;font-size:18px;color:var(--blue2);font-weight:900;letter-spacing:-.2px;}
-    .stat span{display:block;font-size:12px;color:rgba(13,15,22,.62);font-weight:800;margin-top:3px;}
-    .miniLine{
-      height:10px;border-radius:999px;
-      background:linear-gradient(90deg, rgba(244,191,19,.95), rgba(14,74,166,.35));
-      opacity:.9;
-    }
 
     /* ===== “On s’occupe de tout” ===== */
     .blockTitle{
@@ -342,7 +323,7 @@
 
     .tc{
       margin:26px auto 0;
-      max-width:1100px; /* centre visuellement */
+      max-width:1100px;
       display:grid;
       gap:22px;
     }
@@ -352,7 +333,7 @@
       grid-template-columns: 1fr 1.25fr;
       gap:22px;
       align-items:center;
-      justify-items:center; /* centre */
+      justify-items:center;
     }
     .tcRow.rightLead{ grid-template-columns: 1.25fr 1fr; }
 
@@ -375,11 +356,11 @@
       line-height:1.85;
       font-weight:650;
       margin-bottom:14px;
-      max-width:44ch;
+      max-width:48ch;
     }
 
     .tcArrow{
-      width:180px;
+      width:210px;
       margin-top:10px;
       opacity:.95;
       pointer-events:none;
@@ -406,9 +387,14 @@
       gap:16px;
       padding:16px;
       align-items:center;
+      transition: transform .25s var(--ease), box-shadow .25s var(--ease), border-color .25s var(--ease);
+    }
+    .tcCard:hover{
+      transform: translateY(-6px);
+      border-color: rgba(244,191,19,.28);
+      box-shadow: 0 22px 46px rgba(3,7,18,.12);
     }
 
-    
     .tcThumb{
       width:100%;
       height:140px;
@@ -418,19 +404,7 @@
       background:linear-gradient(180deg, rgba(14,74,166,.06), rgba(244,191,19,.05));
       position:relative;
     }
-    .tcThumb img{
-      width:100%;
-      height:100%;
-      object-fit:cover;
-    }
-    .tcThumb .ph{
-      position:absolute;inset:0;
-      display:grid;place-items:center;
-      font-weight:900;font-size:12px;
-      letter-spacing:.6px;
-      color:rgba(13,15,22,.55);
-      text-transform:uppercase;
-    }
+    .tcThumb img{ width:100%; height:100%; object-fit:cover; }
 
     .tcBody h3{
       margin:0 0 6px 0;
@@ -460,7 +434,97 @@
       background:linear-gradient(90deg, transparent, rgba(10,18,40,.18), transparent);
     }
 
-    
+    /* ===== Vos avantages : vignettes AVEC images (comme "Tous nos services") ===== */
+    .benefits{
+      margin:56px auto 0;
+      max-width:1100px;
+    }
+    .benefitsHeader{
+      text-align:center;
+      max-width:980px;
+      margin:0 auto 18px;
+    }
+    .benefitsHeader h2{
+      font-size:38px;
+      letter-spacing:-.6px;
+      color:var(--blue2);
+      font-weight:900;
+      margin-bottom:10px;
+    }
+    .benefitsHeader p{
+      color:var(--muted);
+      font-weight:650;
+      line-height:1.9;
+      max-width:78ch;
+      margin:0 auto;
+      font-size:15px;
+    }
+
+    .benefitGrid{
+      margin-top:22px;
+      display:grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap:18px;
+    }
+    .benefitCard{
+      border-radius:22px;
+      border:1px solid rgba(10,18,40,.10);
+      background:rgba(255,255,255,.76);
+      box-shadow: var(--softShadow);
+      overflow:hidden;
+      display:grid;
+      grid-template-rows: 170px 1fr;
+      min-height:320px;
+      transition: transform .25s var(--ease), box-shadow .25s var(--ease);
+    }
+    .benefitCard:hover{
+      transform: translateY(-6px);
+      box-shadow: 0 22px 46px rgba(3,7,18,.12);
+    }
+    .benefitMedia{
+      position:relative;
+      background:
+        radial-gradient(700px 280px at 20% 0%, rgba(244,191,19,.18), transparent 60%),
+        radial-gradient(700px 280px at 90% 0%, rgba(14,74,166,.14), transparent 60%),
+        linear-gradient(180deg, rgba(14,74,166,.04), rgba(244,191,19,.03));
+      border-bottom:1px solid rgba(10,18,40,.08);
+    }
+    .benefitMedia img{ width:100%; height:100%; object-fit:cover; }
+    .benefitBody{
+      padding:16px 16px 18px;
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+    }
+    .benefitPill{
+      width:fit-content;
+      display:inline-flex;align-items:center;gap:10px;
+      padding:8px 12px;border-radius:999px;
+      background:rgba(14,74,166,.06);
+      border:1px solid rgba(14,74,166,.14);
+      color:var(--blue2);
+      font-weight:900;
+      font-size:12px;
+    }
+    .benefitPill .pDot{
+      width:8px;height:8px;border-radius:999px;
+      background:linear-gradient(180deg,var(--gold2),var(--gold));
+      box-shadow:0 0 14px rgba(244,191,19,.25);
+    }
+    .benefitBody h3{
+      font-size:18px;
+      font-weight:900;
+      letter-spacing:-.3px;
+      color:#0d0f16;
+    }
+    .benefitBody p{
+      color:var(--muted);
+      font-weight:650;
+      line-height:1.8;
+      font-size:13px;
+    }
+
+    /* ===== Tous nos services ===== */
     .servicesTitle{
       margin:56px auto 18px;
       max-width:980px;
@@ -513,19 +577,7 @@
         linear-gradient(180deg, rgba(14,74,166,.04), rgba(244,191,19,.03));
       border-bottom:1px solid rgba(10,18,40,.08);
     }
-    .svcMedia img{
-      width:100%;
-      height:100%;
-      object-fit:cover;
-    }
-    .svcMedia .ph{
-      position:absolute;inset:0;
-      display:grid;place-items:center;
-      font-weight:900;font-size:12px;
-      letter-spacing:.6px;
-      color:rgba(13,15,22,.55);
-      text-transform:uppercase;
-    }
+    .svcMedia img{ width:100%; height:100%; object-fit:cover; }
     .svcBody{
       padding:16px 16px 18px;
       display:flex;
@@ -559,32 +611,6 @@
       line-height:1.8;
       font-size:13px;
     }
-    .svcActions{
-      margin-top:auto;
-      display:flex;gap:10px;flex-wrap:wrap;
-    }
-    .miniBtn{
-      display:inline-flex;align-items:center;justify-content:center;
-      padding:10px 12px;border-radius:999px;
-      font-weight:900;font-size:12px;
-      border:1px solid rgba(10,18,40,.12);
-      background:rgba(255,255,255,.85);
-      transition: transform .18s var(--ease), box-shadow .18s var(--ease);
-    }
-    .miniBtn:hover{ transform: translateY(-2px); box-shadow: 0 16px 30px rgba(3,7,18,.10); }
-    .miniBtn.primary{
-      background:rgba(14,74,166,.06);
-      border-color: rgba(14,74,166,.20);
-      color:var(--blue2);
-    }
-
-    /* ===== Reveal ===== */
-    .reveal{
-      opacity:0;
-      transform: translateY(14px);
-      transition: opacity .7s var(--ease), transform .7s var(--ease);
-    }
-    .reveal.in{opacity:1;transform: translateY(0);}
 
     footer{
       margin-top:70px;
@@ -598,12 +624,7 @@
 
     /* ===== Responsive ===== */
     @media(max-width:980px){
-      .hero{grid-template-columns:1fr;gap:18px;}
-      .heroText{text-align:center;}
-      .ctaRow{justify-content:center;}
       h1{font-size:42px;}
-      .heroCard{min-height:220px;}
-      .blockTitle h2{font-size:36px;}
       .tcRow, .tcRow.rightLead{grid-template-columns:1fr;}
       .tcHeading{text-align:center;}
       .tcDesc{margin-left:auto;margin-right:auto;text-align:center;}
@@ -611,6 +632,8 @@
       .tcRow.rightLead .tcArrow{transform:none;}
       .tcCard{grid-template-columns:1fr;}
       .tcThumb{height:170px;}
+
+      .benefitGrid{grid-template-columns:1fr;max-width:640px;margin-left:auto;margin-right:auto;}
       .svcGrid{grid-template-columns:1fr;max-width:640px;}
     }
     @media(max-width:820px){
@@ -622,13 +645,12 @@
     @media(max-width:560px){
       .container{padding:0 14px;}
       .btn{width:100%;}
-      .heroText{max-width:520px;}
     }
   </style>
 </head>
 
 <body>
-  <header>
+  <header id="siteHeader">
     <div class="nav">
       <div class="brand">
         <a href="index.html"><span class="brandDot" aria-hidden="true"></span>GAMLOC IMMO</a>
@@ -658,7 +680,7 @@
       </div>
 
       <ul class="mobileLinks">
-    
+        <li><a href="services.html">Nos Services <span class="arrow">›</span></a></li>
         <li><a href="confier-mon-bien.html">Confier mon bien <span class="arrow">›</span></a></li>
         <li><a href="appartements.html">Appartements <span class="arrow">›</span></a></li>
         <li><a href="faq.html">F.A.Q <span class="arrow">›</span></a></li>
@@ -666,64 +688,49 @@
       </ul>
 
       <div class="mobileHint">
-        Gestion locative courte durée à Nantes : optimisation, ménage, check-in/out, communication voyageurs.
+        On s’occupe de tout : gestion complète, standards premium, et loyer garanti chaque mois.
       </div>
     </nav>
   </div>
 
   <main>
-    <!-- HERO (centré) -->
+    <!-- HERO (✅ tableau supprimé) -->
     <section class="container hero">
-      <div class="heroText reveal">
-        <h1>On s’occupe de tout,<br>et on optimise la performance</h1>
+      <div class="anim" style="--y:18px;--d:0ms;">
+      
+        <h1>On s’occupe de tout,<br>et votre loyer est garanti</h1>
         <p class="lead">
-          Gestion locative courte durée à Nantes : on gère l’opérationnel et la performance pour maximiser vos
-          <span class="hl">revenus</span> et vos <span class="hl">avis</span>.
+          Notre promesse : <span class="hl">zéro stress</span>.
+          On gère l’opérationnel (voyageurs, ménage, maintenance, optimisation)
+          et vous recevez votre <span class="hl">loyer quoi qu’il arrive</span>.
         </p>
         <div class="ctaRow">
           <a class="btn primary" href="confier-mon-bien.html">Confier mon bien</a>
           <a class="btn ghost" href="contact.html">Parler de mon projet</a>
         </div>
       </div>
-
-      <aside class="heroCard reveal" aria-label="Aperçu">
-        <div class="heroCardInner">
-          <div class="statRow">
-            <div class="stat">
-              <strong>Gestion complète</strong>
-              <span>Voyageurs • Ménage • Check-in/out</span>
-            </div>
-            <div class="stat">
-              <strong>Optimisation</strong>
-              <span>Prix • Calendrier • Annonce</span>
-            </div>
-          </div>
-          <div class="miniLine" aria-hidden="true"></div>
-          <div class="stat">
-            <strong>Objectif</strong>
-            <span>Plus de réservations & meilleurs avis</span>
-          </div>
-        </div>
-      </aside>
     </section>
 
     <!-- ON S'OCCUPE DE TOUT -->
     <section class="container">
-      <div class="blockTitle reveal">
+      <div class="blockTitle anim" style="--y:18px;--d:0ms;">
         <h2>On s’occupe de tout</h2>
+        <p>
+          Gestion complète : opérationnel + performance. Et vous, vous gardez la tranquillité.
+        </p>
       </div>
 
       <div class="tc">
-    
-        <div class="tcRow reveal">
+
+        <div class="tcRow anim" style="--y:18px;--d:80ms;">
           <div class="tcSide">
             <div class="tcHeading">Gagnez du<br>temps</div>
             <div class="tcDesc">
-              Ne perdez plus de temps avec la gestion quotidienne : messages, check-in/out, ménage, linge, consommables,
-              relation voyageurs.
+              Messages, check-in/out, ménage, linge, consommables, incidents :
+              on gère la gestion quotidienne à votre place.
             </div>
 
-          
+            
               <path d="M10 90 C65 150, 140 150, 200 88" stroke="rgba(244,191,19,.95)" stroke-width="10" stroke-linecap="round"/>
               <path d="M195 88 L168 78" stroke="rgba(244,191,19,.95)" stroke-width="10" stroke-linecap="round"/>
               <path d="M195 88 L176 110" stroke="rgba(244,191,19,.95)" stroke-width="10" stroke-linecap="round"/>
@@ -733,49 +740,45 @@
           <div class="tcCards">
             <div class="tcCard">
               <div class="tcThumb">
-                 <img src="Illustration-Communication-avec-les-voyageurs-CE.webp" alt="Communication voyageurs"> 
-                <div class="ph"></div>
+                <img src="Illustration-Communication-avec-les-voyageurs-CE.webp" alt="Communication voyageurs">
               </div>
               <div class="tcBody">
                 <h3>Communication voyageurs</h3>
                 <p>Réponses rapides, instructions claires, suivi pendant le séjour.</p>
-                <a class="tcMore" href="contact.html"></a>
+                <a class="tcMore" href="contact.html">En savoir plus →</a>
               </div>
             </div>
 
             <div class="tcCard">
               <div class="tcThumb">
-                 <img src="Illustration-Entrees-Sorties-CE-min.webp" alt="Entrées et sorties"> 
-                <div class="ph"></div>
+                <img src="Illustration-Entrees-Sorties-CE-min.webp" alt="Entrées et sorties">
               </div>
               <div class="tcBody">
                 <h3>Entrées & sorties</h3>
                 <p>Accueil, remise des clés, contrôles, coordination et départ fluide.</p>
-                <a class="tcMore" href="contact.html"></a>
+                <a class="tcMore" href="contact.html">En savoir plus →</a>
               </div>
             </div>
 
             <div class="tcCard">
               <div class="tcThumb">
-               <img src="Illustration-Nettoyage-et-gestion-du-linge-OF-CE-min.webp" alt="Ménage et linge"> 
-                <div class="ph"></div>
+                <img src="Illustration-Nettoyage-et-gestion-du-linge-OF-CE-min.webp" alt="Ménage et linge">
               </div>
               <div class="tcBody">
                 <h3>Ménage & linge</h3>
-                <p>Standard Premium : propreté constante, linge, réassort, finitions.</p>
-                <a class="tcMore" href="contact.html"></a>
+                <p>Standard Professionel : propreté constante, linge, ameublement, décoration, finitions.</p>
+                <a class="tcMore" href="contact.html">En savoir plus →</a>
               </div>
             </div>
 
             <div class="tcCard">
               <div class="tcThumb">
-               <img src="Illustration-Maintenance-OF-CE-min.webp" alt="Maintenance"> 
-                <div class="ph"></div>
+                <img src="Illustration-Maintenance-OF-CE-min.webp" alt="Maintenance">
               </div>
               <div class="tcBody">
                 <h3>Maintenance</h3>
                 <p>Gestion des petits incidents et interventions rapides si besoin.</p>
-                <a class="tcMore" href="contact.html"></a>
+                <a class="tcMore" href="contact.html">En savoir plus →</a>
               </div>
             </div>
           </div>
@@ -783,50 +786,48 @@
 
         <div class="divider"></div>
 
-        <!-- Gagnez de l'argent -->
-        <div class="tcRow rightLead reveal">
+        <!-- ✅ MODIF : LOYER GARANTI -->
+        <div class="tcRow rightLead anim" style="--y:18px;--d:80ms;">
           <div class="tcCards">
             <div class="tcCard">
               <div class="tcThumb">
-                 <img src="illustration-Creation-dune-annonce-optimisee-OF-CE-min.webp" alt="Annonce optimisée"> 
-                <div class="ph"></div>
+                <img src="illustration-Creation-dune-annonce-optimisee-OF-CE-min.webp" alt="Gestion complète">
               </div>
               <div class="tcBody">
-                <h3>Création d’une annonce optimisée</h3>
-                <p>Titre, description, photos : plus de clics → plus de réservations.</p>
-                <a class="tcMore" href="contact.html"></a>
+                <h3>Gestion complète</h3>
+                <p>On s’occupe de tout : opérationnel, qualité et coordination.</p>
+                <a class="tcMore" href="contact.html">En savoir plus →</a>
               </div>
             </div>
 
             <div class="tcCard">
               <div class="tcThumb">
-                <img src="Illustration-Boost-de-votre-referencemen-OF-CE-min.webp" alt="Boost référencement"> 
-                <div class="ph"></div>
+                <img src="Illustration-Boost-de-votre-referencemen-OF-CE-min.webp" alt="Optimisation">
               </div>
               <div class="tcBody">
-                <h3>Boost de votre référencement</h3>
-                <p>Optimisation Airbnb/Booking pour améliorer la visibilité.</p>
-                <a class="tcMore" href="contact.html"></a>
+                <h3>Ameublement & Décoration</h3>
+                <p>Notre équipe intervient pour meubler et décorer votre logement si nécessaire.</p>
+                <a class="tcMore" href="contact.html">En savoir plus →</a>
               </div>
             </div>
 
             <div class="tcCard">
               <div class="tcThumb">
-                <img src="Illustration-Gestion-dynamique-des-prix-et-calendrier-OF-CE-min.webp" alt="Gestion des prix et calendrier"> 
-                <div class="ph"></div>
+                <img src="Illustration-Gestion-dynamique-des-prix-et-calendrier-OF-CE-min.webp" alt="Loyer garanti">
               </div>
               <div class="tcBody">
-                <h3>Gestion dynamique des prix & calendrier</h3>
-                <p>Tarifs ajustés selon la demande + règles de séjour.</p>
-                <a class="tcMore" href="contact.html"></a>
+                <h3>Loyer garanti</h3>
+                <p>Quoi qu’il arrive, vous recevez votre loyer : on prend le risque à notre charge.</p>
+                <a class="tcMore" href="contact.html">En savoir plus →</a>
               </div>
             </div>
           </div>
 
           <div class="tcSide">
-            <div class="tcHeading">Gagnez de<br>l’argent</div>
+            <div class="tcHeading">Gagnez une<br>garanti de loyer</div>
             <div class="tcDesc">
-              Stratégie prix, calendrier et annonce : meilleure visibilité, plus de réservations, meilleure rentabilité.
+              Vous ne dépendez pas des aléas : on gère l’activité et on vous verse votre loyer
+              <b>coûte que coûte</b>.
             </div>
 
             
@@ -839,58 +840,120 @@
       </div>
     </section>
 
+    <!-- ✅ Vos avantages (avec images) -->
+    <section class="container benefits">
+      <div class="benefitsHeader anim" style="--y:18px;--d:0ms;">
+        <h2>Vos avantages</h2>
+        <p>Des garanties claires : on gère tout, et votre loyer tombe tous les mois.</p>
+      </div>
+
+      <div class="benefitGrid">
+        <article class="benefitCard anim" style="--y:18px;--d:40ms;">
+          <div class="benefitMedia">
+            <img src="Illustration-Nettoyage-et-gestion-du-linge-OF-CE-min.webp" alt="Sérénité">
+          </div>
+          <div class="benefitBody">
+            <div class="benefitPill"><span class="pDot" aria-hidden="true"></span>Sérénité</div>
+            <h3>Sérénité</h3>
+            <p>On prend en charge l’intégralité : gestion, coordination, incidents. Vous êtes tranquille.</p>
+          </div>
+        </article>
+
+        <article class="benefitCard anim" style="--y:18px;--d:80ms;">
+          <div class="benefitMedia">
+            <img src="illustration-Creation-dune-annonce-optimisee-OF-CE-min.webp" alt="Bail encadré">
+          </div>
+          <div class="benefitBody">
+            <div class="benefitPill"><span class="pDot" aria-hidden="true"></span>Cadre</div>
+            <h3>Bail encadré juridiquement</h3>
+            <p>Process et règles claires : on sécurise l’activité et on évite les zones floues.</p>
+          </div>
+        </article>
+
+        <article class="benefitCard anim" style="--y:18px;--d:120ms;">
+          <div class="benefitMedia">
+            <img src="Illustration-Maintenance-OF-CE-min.webp" alt="Pas de dégradations">
+          </div>
+          <div class="benefitBody">
+            <div class="benefitPill"><span class="pDot" aria-hidden="true"></span>Protection</div>
+            <h3>Pas de dégradations</h3>
+            <p>Standards premium + contrôles : votre bien reste propre, soigné, et préservé.</p>
+          </div>
+        </article>
+
+        <article class="benefitCard anim" style="--y:18px;--d:160ms;">
+          <div class="benefitMedia">
+            <img src="Illustration-Entrees-Sorties-CE-min.webp" alt="Flexibilité">
+          </div>
+          <div class="benefitBody">
+            <div class="benefitPill"><span class="pDot" aria-hidden="true"></span>Flexibilité</div>
+            <h3>Flexibilité</h3>
+            <p>On s’adapte à votre projet : organisation simple et décisions rapides.</p>
+          </div>
+        </article>
+
+        <article class="benefitCard anim" style="--y:18px;--d:200ms;">
+          <div class="benefitMedia">
+            <img src="Illustration-Communication-avec-les-voyageurs-CE.webp" alt="Entretien régulier">
+          </div>
+          <div class="benefitBody">
+            <div class="benefitPill"><span class="pDot" aria-hidden="true"></span>Entretien</div>
+            <h3>Entretien régulier</h3>
+            <p>Ménage + réassort + suivi : on évite que les petits soucis deviennent des gros.</p>
+          </div>
+        </article>
+
+        <article class="benefitCard anim" style="--y:18px;--d:240ms;">
+          <div class="benefitMedia">
+            <img src="Illustration-Gestion-dynamique-des-prix-et-calendrier-OF-CE-min.webp" alt="Rentabilité">
+          </div>
+          <div class="benefitBody">
+            <div class="benefitPill"><span class="pDot" aria-hidden="true"></span>Loyer garanti</div>
+            <h3>Rentabilité</h3>
+            <p>Quoi qu’il arrive, vous recevez votre loyer : c’est notre engagement n°1.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
     <!-- TOUS NOS SERVICES -->
     <section class="container">
-      <div class="servicesTitle reveal">
+      <div class="servicesTitle anim" style="--y:18px;--d:0ms;">
         <h2>Tous nos services</h2>
-        <p>
-          Une gestion complète, pensée pour la performance et la tranquillité.
-        </p>
+        <p>Une gestion complète, pensée pour la performance et la tranquillité.</p>
       </div>
 
       <div class="svcGrid">
-        <article class="svcCard reveal">
+        <article class="svcCard anim" style="--y:18px;--d:40ms;">
           <div class="svcMedia">
-            <img src="1444x920_the-airbnb-app-and-booking-com-app-are-being-displayed-on-a-smartphone-screen-on-november-28-2024-yassine-mahjoub-sipa-mahjoubyassine-by2f0830-credit-yassine-mahjoub-sipa-2411281412.webp" alt="Gestion Airbnb & Booking"> 
-            <div class="ph"></div>
+            <img src="1444x920_the-airbnb-app-and-booking-com-app-are-being-displayed-on-a-smartphone-screen-on-november-28-2024-yassine-mahjoub-sipa-mahjoubyassine-by2f0830-credit-yassine-mahjoub-sipa-2411281412.webp" alt="Gestion Airbnb & Booking">
           </div>
           <div class="svcBody">
             <div class="pill"><span class="pDot" aria-hidden="true"></span>Gestion plateformes</div>
             <h3>Airbnb & Booking</h3>
             <p>Calendriers, messages, règles de séjour, expérience voyageurs maîtrisée.</p>
-            <div class="svcActions">
-            
-            </div>
           </div>
         </article>
 
-        <article class="svcCard reveal">
+        <article class="svcCard anim" style="--y:18px;--d:90ms;">
           <div class="svcMedia">
-             <img src="Illustration-Nettoyage-et-gestion-du-linge-OF-CE-min.webp" alt="Ménage professionnel"> 
-            <div class="ph"></div>
+            <img src="Illustration-Nettoyage-et-gestion-du-linge-OF-CE-min.webp" alt="Ménage professionnel">
           </div>
           <div class="svcBody">
-            <div class="pill"><span class="pDot" aria-hidden="true"></span>Après Chaque Voyageur</div>
+            <div class="pill"><span class="pDot" aria-hidden="true"></span>Après chaque voyageur</div>
             <h3>Ménage & linge</h3>
             <p>Propreté constante, linge, réassort et finitions pour viser les 5 étoiles.</p>
-            <div class="svcActions">
-              
-            </div>
           </div>
         </article>
 
-        <article class="svcCard reveal">
+        <article class="svcCard anim" style="--y:18px;--d:140ms;">
           <div class="svcMedia">
-             <img src="illustration-Creation-dune-annonce-optimisee-OF-CE-min.webp" alt="Optimisation et prix"> 
-            <div class="ph"></div>
+            <img src="illustration-Creation-dune-annonce-optimisee-OF-CE-min.webp" alt="Ameublement, Décoration.">
           </div>
           <div class="svcBody">
             <div class="pill"><span class="pDot" aria-hidden="true"></span>Performance</div>
-            <h3>Optimisation & prix</h3>
-            <p>Stratégie tarifaire + annonce : plus de réservations, meilleurs revenus.</p>
-            <div class="svcActions">
-              
-            </div>
+            <h3>Ameublement & Décoration</h3>
+            <p>Notre équipe intervient pour ameubler et décorer votre logement si nécessaire.</p>
           </div>
         </article>
       </div>
@@ -900,7 +963,7 @@
   </main>
 
   <script>
-    // Mobile menu
+    /* MENU MOBILE */
     const menuBtn = document.getElementById("menuBtn");
     const overlay = document.getElementById("mobileOverlay");
     const menuClose = document.getElementById("menuClose");
@@ -923,8 +986,24 @@
     overlay?.addEventListener("click", (e)=>{ if(e.target === overlay) closeMenu(); });
     window.addEventListener("keydown", (e)=>{ if(e.key === "Escape") closeMenu(); });
 
-    // Reveal on scroll (fluide)
-    const revealEls = document.querySelectorAll(".reveal");
+    /* HEADER */
+    const header = document.getElementById("siteHeader");
+    let ticking = false;
+    function onScroll(){
+      if(ticking) return;
+      ticking = true;
+      requestAnimationFrame(()=>{
+        const y = window.scrollY || 0;
+        if(y > 12) header.classList.add("scrolled");
+        else header.classList.remove("scrolled");
+        ticking = false;
+      });
+    }
+    window.addEventListener("scroll", onScroll, {passive:true});
+    onScroll();
+
+    /* Animations “vol” au scroll */
+    const animEls = document.querySelectorAll(".anim");
     const io = new IntersectionObserver((entries)=>{
       entries.forEach(ent=>{
         if(ent.isIntersecting){
@@ -932,8 +1011,8 @@
           io.unobserve(ent.target);
         }
       });
-    }, {threshold: 0.12});
-    revealEls.forEach(el=>io.observe(el));
+    }, {threshold:0.12});
+    animEls.forEach(el=>io.observe(el));
   </script>
 </body>
 </html>
