@@ -134,7 +134,7 @@ header.scrolled .navlinks a{ color:#fff; }
 }
 .navlinks a:hover::after{width:100%;}
 
-/* menu mobile */
+
 .menuBtn{
   display:none;
   width:46px;height:46px;
@@ -315,7 +315,6 @@ body.menu-open .mobileLinks li:nth-child(5) a{ transition-delay:.16s; }
 }
 .btn-outline:hover{background:rgba(14,74,166,.09);transform:translateY(-2px);}
 
-/* ===== Pastilles (icônes monochrome claires) ===== */
 .pillMarquee{
   margin:12px auto 14px;
   max-width:980px;
@@ -779,12 +778,12 @@ footer{margin-top:110px;padding:44px 20px;text-align:center;border-top:1px solid
       communication voyageurs..
     </p>
 
-    <!-- ✅ Menu pastilles (icônes ULTRA CLaires : coeur, doc, bouclier, flèches, clé, €) -->
+
     <div class="pillMarquee anim" id="pillMarquee" style="--y:16px;--d:170ms;" aria-label="Accès rapides vers nos avantages">
       <div class="pillTrack" id="pillTrack">
         <div class="pillSet" id="pillSet">
 
-          <!-- Sérénité (coeur) -->
+
           <a class="pill" href="services.html#serenite">
             <span class="pillDot"></span>
             <span class="iconBadge" aria-hidden="true">
@@ -809,7 +808,7 @@ footer{margin-top:110px;padding:44px 20px;text-align:center;border-top:1px solid
             Bail encadré
           </a>
 
-          <!-- Bien protégé (bouclier + check) -->
+ 
           <a class="pill" href="services.html#protection-bien">
             <span class="pillDot"></span>
             <span class="iconBadge" aria-hidden="true">
@@ -821,7 +820,7 @@ footer{margin-top:110px;padding:44px 20px;text-align:center;border-top:1px solid
             Bien protégé
           </a>
 
-          <!-- Flexibilité (flèches) -->
+   
           <a class="pill" href="services.html#flexibilite">
             <span class="pillDot"></span>
             <span class="iconBadge" aria-hidden="true">
@@ -835,7 +834,6 @@ footer{margin-top:110px;padding:44px 20px;text-align:center;border-top:1px solid
             Flexibilité
           </a>
 
-          <!-- Entretien (outil) -->
           <a class="pill" href="services.html#entretien">
             <span class="pillDot"></span>
             <span class="iconBadge" aria-hidden="true">
@@ -849,7 +847,7 @@ footer{margin-top:110px;padding:44px 20px;text-align:center;border-top:1px solid
             Entretien
           </a>
 
-          <!-- Loyer garanti (€ + check) -->
+
           <a class="pill" href="services.html#loyer-garanti">
             <span class="pillDot"></span>
             <span class="iconBadge" aria-hidden="true">
@@ -1219,7 +1217,7 @@ footer{margin-top:110px;padding:44px 20px;text-align:center;border-top:1px solid
 <footer>Gamloc Immo — Gestion locative Airbnb à Nantes</footer>
 
 <script>
-/* MENU MOBILE */
+
 const menuBtn = document.getElementById("menuBtn");
 const overlay = document.getElementById("mobileOverlay");
 const menuClose = document.getElementById("menuClose");
@@ -1241,7 +1239,7 @@ menuClose.addEventListener("click", closeMenu);
 overlay.addEventListener("click", (e)=>{ if(e.target === overlay) closeMenu(); });
 window.addEventListener("keydown", (e)=>{ if(e.key === "Escape") closeMenu(); });
 
-/* HEADER INVERSE + parallax léger sur le visuel */
+
 const header = document.getElementById("siteHeader");
 const heroVisual = document.getElementById("heroVisual");
 
@@ -1264,7 +1262,6 @@ function onScroll(){
 window.addEventListener("scroll", onScroll, {passive:true});
 onScroll();
 
-/* Animations "vol" au scroll */
 const animEls = document.querySelectorAll(".anim");
 const io = new IntersectionObserver((entries)=>{
   entries.forEach(ent=>{
@@ -1276,7 +1273,7 @@ const io = new IntersectionObserver((entries)=>{
 },{threshold:0.12});
 animEls.forEach(el=>io.observe(el));
 
-/* COUNT UP */
+
 function animateCount(el){
   if(el.dataset.done === "1") return;
 
@@ -1313,7 +1310,7 @@ const ioCount = new IntersectionObserver((entries)=>{
 },{threshold:0.45});
 counts.forEach(el=>ioCount.observe(el));
 
-/* ✅ Pastilles tactiles + inertie + boucle */
+
 (function(){
   const marquee = document.getElementById("pillMarquee");
   const track = document.getElementById("pillTrack");
@@ -1342,7 +1339,7 @@ counts.forEach(el=>ioCount.observe(el));
   window.addEventListener("resize", refresh, {passive:true});
 
   let x = 0;
-  let v = -55; // px/sec
+  let v = -55; 
   let last = performance.now();
 
   let isDown = false;
@@ -1353,7 +1350,7 @@ counts.forEach(el=>ioCount.observe(el));
   let lastMoveX = 0;
 
   let gestureLocked = false;
-  let lock = null; // "x" or "y"
+  let lock = null;
 
   function setX(val){
     x = val;
