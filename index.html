@@ -113,6 +113,20 @@ header.scrolled .logo a{ color:#fff; }
   box-shadow:0 0 18px rgba(244,191,19,.28);
 }
 
+/* ✅ AJOUT (uniquement pour afficher le logo image dans la navbar) */
+.navLogoImg{
+  width:34px;
+  height:34px;
+  object-fit:cover;
+  border-radius:10px;
+  border:1px solid rgba(10,18,40,.10);
+  background:#fff;
+}
+header.scrolled .navLogoImg{
+  border-color: rgba(255,255,255,.22);
+  background: rgba(255,255,255,.12);
+}
+
 .navlinks{
   display:flex;gap:26px;list-style:none;flex-wrap:wrap;justify-content:flex-end;
 }
@@ -721,7 +735,8 @@ footer{margin-top:110px;padding:44px 20px;text-align:center;border-top:1px solid
 <header id="siteHeader">
   <div class="nav">
     <div class="logo">
-      <a href="index.html"><span class="logoMark"></span>GAMLOC IMMO</a>
+      <!-- ✅ CHANGEMENT : logo image déplacé ici -->
+      <a href="index.html"><img class="navLogoImg" src="GAMLL.png" alt="Gamloc Immo"><span class="logoMark"></span>GAMLOC IMMO</a>
     </div>
 
     <ul class="navlinks">
@@ -870,9 +885,8 @@ footer{margin-top:110px;padding:44px 20px;text-align:center;border-top:1px solid
       <a class="btn-outline" href="confier-mon-bien.html">Confier mon bien</a>
     </div>
 
-     <div class="heroVisual anim" id="heroVisual" style="--y:18px;--d:280ms;">
-      <img src="1e5b38bc-3ac0-46e2-a97c-a5ac7e106f7d.png" alt="Appartement premium">
-    </div>
+    <!-- ✅ CHANGEMENT : suppression du gros logo au milieu (heroVisual supprimé) -->
+
   </div>
 </section>
 
