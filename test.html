@@ -27,7 +27,8 @@ body{font-family:'Inter',sans-serif;background:var(--nuit);color:var(--blanc);ov
 /* ─── NAV ─── */
 nav{position:fixed;top:0;left:0;right:0;z-index:500;padding:24px 6%;display:flex;align-items:center;justify-content:space-between;transition:all .5s}
 nav.solid{background:rgba(11,22,34,.88);backdrop-filter:blur(18px);padding:16px 6%;border-bottom:1px solid rgba(201,169,110,.1)}
-.logo{font-family:'Playfair Display',serif;font-size:1.25rem;font-weight:700;color:var(--blanc);text-decoration:none;letter-spacing:.04em}
+.logo{font-family:'Playfair Display',serif;font-size:1.25rem;font-weight:700;color:var(--blanc);text-decoration:none;letter-spacing:.04em;display:flex;align-items:center;gap:10px}
+.logo img{height:36px;width:auto;filter:brightness(0) invert(1)}
 .logo span{color:var(--or)}
 .nav-links{display:flex;gap:32px;list-style:none}
 .nav-links a{font-size:.78rem;font-weight:500;color:rgba(250,250,248,.55);text-decoration:none;letter-spacing:.1em;text-transform:uppercase;transition:color .2s}
@@ -80,8 +81,6 @@ nav.solid{background:rgba(11,22,34,.88);backdrop-filter:blur(18px);padding:16px 
 .avis-section{background:var(--nuit2);padding:120px 6%;position:relative;overflow:hidden}
 .avis-section::before{content:'';position:absolute;top:-200px;right:-200px;width:500px;height:500px;background:radial-gradient(circle,rgba(201,169,110,.06) 0%,transparent 70%);pointer-events:none}
 .avis-layout{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;margin-top:72px}
-
-/* Counter + stars parallax */
 .avis-left{position:relative}
 .avis-counter-wrap{position:relative;z-index:2}
 .avis-big-num{font-family:'Playfair Display',serif;font-size:clamp(5rem,10vw,10rem);font-weight:700;line-height:1;color:var(--blanc);letter-spacing:-.04em;position:relative;display:inline-block}
@@ -96,12 +95,8 @@ nav.solid{background:rgba(11,22,34,.88);backdrop-filter:blur(18px);padding:16px 
 .avis-avatars img:first-child{margin-left:0}
 .avis-count-text{font-size:.82rem;color:var(--gris)}
 .avis-count-text strong{color:var(--blanc);font-weight:600}
-
-/* Floating stars parallax */
 .float-stars{position:absolute;inset:0;pointer-events:none;overflow:hidden}
 .fstar{position:absolute;font-size:1.2rem;color:var(--or);opacity:.06;animation:float linear infinite}
-
-/* Cards avis */
 .avis-right{display:flex;flex-direction:column;gap:20px}
 .avis-card{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:16px;padding:28px 32px;transform:translateX(60px);opacity:0;transition:all .7s cubic-bezier(.22,1,.36,1);position:relative;overflow:hidden}
 .avis-card::before{content:'';position:absolute;top:0;left:0;width:3px;height:0;background:var(--or);transition:height .4s .2s}
@@ -175,11 +170,13 @@ nav.solid{background:rgba(11,22,34,.88);backdrop-filter:blur(18px);padding:16px 
 .cta-or{color:var(--or)}
 .cta-actions{display:flex;gap:16px;justify-content:center;margin-top:48px;flex-wrap:wrap}
 .superhote{display:inline-flex;align-items:center;gap:10px;margin-top:36px;padding:12px 22px;border:1px solid rgba(201,169,110,.2);border-radius:100px;font-size:.75rem;color:rgba(250,250,248,.45);letter-spacing:.06em}
+.superhote img{height:22px;width:auto;opacity:.6;filter:brightness(0) invert(1)}
 
 /* ─── FOOTER ─── */
 footer{background:var(--nuit);padding:64px 6% 36px;border-top:1px solid rgba(255,255,255,.05)}
 .footer-top{display:flex;justify-content:space-between;gap:48px;margin-bottom:52px;flex-wrap:wrap}
-.footer-logo{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;color:var(--blanc)}
+.footer-logo{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;color:var(--blanc);display:flex;align-items:center;gap:10px}
+.footer-logo img{height:32px;width:auto;filter:brightness(0) invert(1)}
 .footer-logo span{color:var(--or)}
 .footer-tagline{font-size:.8rem;color:var(--gris);margin-top:8px;max-width:240px;line-height:1.6}
 .footer-links{list-style:none;display:flex;flex-direction:column;gap:10px}
@@ -220,7 +217,10 @@ footer{background:var(--nuit);padding:64px 6% 36px;border-top:1px solid rgba(255
 
 <!-- NAV -->
 <nav id="nav">
-  <a href="#" class="logo">GAMLOC <span>IMMO</span></a>
+  <a href="#" class="logo">
+    <img src="https://raw.githubusercontent.com/Ryuguii-GuiR/GAMLOCIMMO/main/GamLocImmoLogo.png" alt="Gamloc Immo Logo"/>
+    GAMLOC <span>IMMO</span>
+  </a>
   <ul class="nav-links">
     <li><a href="#">Nos Services</a></li>
     <li><a href="#">Confier mon bien</a></li>
@@ -235,7 +235,7 @@ footer{background:var(--nuit);padding:64px 6% 36px;border-top:1px solid rgba(255
   <div class="hero-bg">
     <div class="hero-bg-left"></div>
     <div class="hero-bg-right">
-      <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=1200&q=80" alt="Appartement Nantes" id="heroImg"/>
+      <img src="https://raw.githubusercontent.com/Ryuguii-GuiR/GAMLOCIMMO/main/app1img1.avif" alt="Appartement Nantes" id="heroImg"/>
     </div>
     <div class="hero-noise"></div>
     <div class="hero-glow"></div>
@@ -290,14 +290,11 @@ footer{background:var(--nuit);padding:64px 6% 36px;border-top:1px solid rgba(255
 
 <!-- AVIS SECTION -->
 <section class="avis-section" id="avisSection">
-  <!-- Floating stars deco -->
   <div class="float-stars" id="floatStars"></div>
-
   <div class="r"><span class="s-eyebrow">Ce que disent nos voyageurs</span></div>
   <div class="r r1"><h2 class="s-title">Des avis qui<br><em>parlent d'eux-mêmes.</em></h2></div>
 
   <div class="avis-layout">
-    <!-- LEFT: grand compteur -->
     <div class="avis-left">
       <div class="avis-counter-wrap">
         <div class="avis-big-num">
@@ -313,9 +310,9 @@ footer{background:var(--nuit);padding:64px 6% 36px;border-top:1px solid rgba(255
         <div class="avis-label">Note moyenne Airbnb · Basée sur des séjours récents</div>
         <div class="avis-voyageurs">
           <div class="avis-avatars">
-            <img src="https://gamloc-immo.web.app/AIRBNB.png" alt="Alex"/>
-            <img src="https://gamloc-immo.web.app/AIRBNB.png" alt="Sarah"/>
-            <img src="https://gamloc-immo.web.app/AIRBNB.png" alt="Mohamed"/>
+            <img src="https://raw.githubusercontent.com/Ryuguii-GuiR/GAMLOCIMMO/main/AIRBNB.png" alt="Alex"/>
+            <img src="https://raw.githubusercontent.com/Ryuguii-GuiR/GAMLOCIMMO/main/AIRBNB.png" alt="Sarah"/>
+            <img src="https://raw.githubusercontent.com/Ryuguii-GuiR/GAMLOCIMMO/main/AIRBNB.png" alt="Mohamed"/>
           </div>
           <div class="avis-count-text"><strong id="voyageurCount">0</strong> voyageurs satisfaits</div>
         </div>
@@ -324,7 +321,6 @@ footer{background:var(--nuit);padding:64px 6% 36px;border-top:1px solid rgba(255
         </div>
       </div>
     </div>
-    <!-- RIGHT: cards qui slide -->
     <div class="avis-right">
       <div class="avis-card">
         <div class="avis-card-stars">★★★★★</div>
@@ -376,42 +372,42 @@ footer{background:var(--nuit);padding:64px 6% 36px;border-top:1px solid rgba(255
   <div class="services-grid">
     <div class="srv r">
       <div class="srv-num">01</div>
-      <img class="srv-img" src="https://gamloc-immo.web.app/Illustration-Communication-avec-les-voyageurs-CE.webp" alt="Communication"/>
+      <img class="srv-img" src="https://raw.githubusercontent.com/Ryuguii-GuiR/GAMLOCIMMO/main/Illustration-Communication-avec-les-voyageurs-CE.webp" alt="Communication"/>
       <div class="srv-name">Communication voyageurs</div>
       <p class="srv-desc">Réponses rapides, instructions claires, suivi pendant le séjour pour des voyageurs rassurés.</p>
       <a href="https://gamloc-immo.web.app/services.html" class="srv-link">En savoir plus →</a>
     </div>
     <div class="srv r r1">
       <div class="srv-num">02</div>
-      <img class="srv-img" src="https://gamloc-immo.web.app/Illustration-Entrees-Sorties-CE-min.webp" alt="Entrées sorties"/>
+      <img class="srv-img" src="https://raw.githubusercontent.com/Ryuguii-GuiR/GAMLOCIMMO/main/Illustration-Entrees-Sorties-CE-min.webp" alt="Entrées sorties"/>
       <div class="srv-name">Entrées & sorties</div>
       <p class="srv-desc">Accueil personnalisé, remise des clés, contrôle du logement, coordination fluide.</p>
       <a href="https://gamloc-immo.web.app/services.html" class="srv-link">En savoir plus →</a>
     </div>
     <div class="srv r r2">
       <div class="srv-num">03</div>
-      <img class="srv-img" src="https://gamloc-immo.web.app/Illustration-Nettoyage-et-gestion-du-linge-OF-CE-min.webp" alt="Ménage"/>
+      <img class="srv-img" src="https://raw.githubusercontent.com/Ryuguii-GuiR/GAMLOCIMMO/main/Illustration-Nettoyage-et-gestion-du-linge-OF-CE-min.webp" alt="Ménage"/>
       <div class="srv-name">Ménage & linge</div>
       <p class="srv-desc">Nettoyage professionnel après chaque voyageur, linge de qualité fourni et changé systématiquement.</p>
       <a href="https://gamloc-immo.web.app/services.html" class="srv-link">En savoir plus →</a>
     </div>
     <div class="srv r">
       <div class="srv-num">04</div>
-      <img class="srv-img" src="https://gamloc-immo.web.app/Illustration-Maintenance-OF-CE-min.webp" alt="Maintenance"/>
+      <img class="srv-img" src="https://raw.githubusercontent.com/Ryuguii-GuiR/GAMLOCIMMO/main/Illustration-Maintenance-OF-CE-min.webp" alt="Maintenance"/>
       <div class="srv-name">Maintenance</div>
       <p class="srv-desc">Gestion des petits incidents, fuites, pannes — interventions rapides pour un bien impeccable.</p>
       <a href="https://gamloc-immo.web.app/services.html" class="srv-link">En savoir plus →</a>
     </div>
     <div class="srv r r1">
       <div class="srv-num">05</div>
-      <img class="srv-img" src="https://gamloc-immo.web.app/illustration-Creation-dune-annonce-optimisee-OF-CE-min.webp" alt="Annonce"/>
+      <img class="srv-img" src="https://raw.githubusercontent.com/Ryuguii-GuiR/GAMLOCIMMO/main/illustration-Creation-dune-annonce-optimisee-OF-CE-min.webp" alt="Annonce"/>
       <div class="srv-name">Annonce optimisée</div>
       <p class="srv-desc">Photos, titres, description : une annonce pensée pour les algorithmes Airbnb et Booking.</p>
       <a href="https://gamloc-immo.web.app/services.html" class="srv-link">En savoir plus →</a>
     </div>
     <div class="srv r r2">
       <div class="srv-num">06</div>
-      <img class="srv-img" src="https://gamloc-immo.web.app/Illustration-Gestion-dynamique-des-prix-et-calendrier-OF-CE-min.webp" alt="Prix"/>
+      <img class="srv-img" src="https://raw.githubusercontent.com/Ryuguii-GuiR/GAMLOCIMMO/main/Illustration-Gestion-dynamique-des-prix-et-calendrier-OF-CE-min.webp" alt="Prix"/>
       <div class="srv-name">Gestion dynamique des prix</div>
       <p class="srv-desc">Tarification selon la demande, saison et événements locaux pour maximiser vos revenus.</p>
       <a href="https://gamloc-immo.web.app/services.html" class="srv-link">En savoir plus →</a>
@@ -422,7 +418,7 @@ footer{background:var(--nuit);padding:64px 6% 36px;border-top:1px solid rgba(255
 <!-- SPLIT PARALLAX -->
 <div class="split-section" id="splitSection">
   <div class="split-img-wrap">
-    <img src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=900&q=80" alt="Appartement Nantes" id="splitImg"/>
+    <img src="https://raw.githubusercontent.com/Ryuguii-GuiR/GAMLOCIMMO/main/app2img1.avif" alt="Appartement Nantes" id="splitImg"/>
   </div>
   <div class="split-text-wrap">
     <div class="split-inner">
@@ -454,7 +450,7 @@ footer{background:var(--nuit);padding:64px 6% 36px;border-top:1px solid rgba(255
   <div class="apparts-grid">
     <a href="https://gamloc-immo.web.app/appartement-centre-ville.html" class="appart">
       <div class="appart-img-wrap">
-        <img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=800&q=80" alt="Le Nid du Bouffay"/>
+        <img src="https://raw.githubusercontent.com/Ryuguii-GuiR/GAMLOCIMMO/main/app1img1.avif" alt="Le Nid du Bouffay"/>
         <div class="appart-badge">Hyper centre</div>
       </div>
       <div class="appart-body">
@@ -469,7 +465,7 @@ footer{background:var(--nuit);padding:64px 6% 36px;border-top:1px solid rgba(255
     </a>
     <a href="https://gamloc-immo.web.app/studio-ile-de-nantes.html" class="appart">
       <div class="appart-img-wrap">
-        <img src="https://images.unsplash.com/photo-1493809842364-78817add7ffb?w=800&q=80" alt="Cocon de Chevert"/>
+        <img src="https://raw.githubusercontent.com/Ryuguii-GuiR/GAMLOCIMMO/main/app2img1.avif" alt="Cocon de Chevert"/>
         <div class="appart-badge">Île de Nantes</div>
       </div>
       <div class="appart-body">
@@ -496,7 +492,10 @@ footer{background:var(--nuit);padding:64px 6% 36px;border-top:1px solid rgba(255
     <a href="https://gamloc-immo.web.app/contact.html" class="btn-ghost">Nous contacter</a>
   </div>
   <div class="r r3" style="text-align:center">
-    <span class="superhote">⭐ Statut Superhôte Airbnb — qualité, régularité et satisfaction voyageurs</span>
+    <span class="superhote">
+      <img src="https://raw.githubusercontent.com/Ryuguii-GuiR/GAMLOCIMMO/main/hd-airbnb-superhost-badge-logo-png-image-7017516947897882fy8exzval.png" alt="Superhôte Airbnb"/>
+      Statut Superhôte Airbnb — qualité, régularité et satisfaction voyageurs
+    </span>
   </div>
 </section>
 
@@ -504,7 +503,10 @@ footer{background:var(--nuit);padding:64px 6% 36px;border-top:1px solid rgba(255
 <footer>
   <div class="footer-top">
     <div>
-      <div class="footer-logo">GAMLOC <span>IMMO</span></div>
+      <div class="footer-logo">
+        <img src="https://raw.githubusercontent.com/Ryuguii-GuiR/GAMLOCIMMO/main/GamLocImmoLogo.png" alt="Logo Gamloc Immo"/>
+        GAMLOC <span>IMMO</span>
+      </div>
       <p class="footer-tagline">Gestion locative courte durée à Nantes. Loyer garanti, zéro stress.</p>
     </div>
     <ul class="footer-links">
@@ -571,11 +573,8 @@ const ratingObs=new IntersectionObserver(entries=>{
   entries.forEach(e=>{
     if(e.isIntersecting && !ratingDone){
       ratingDone=true;
-      // counter de 0 à 5.0
       animCount(ratingEl,5,1800,'',1);
-      // voyageurs counter
       animCount(voyageurEl,47,2000);
-      // étoiles qui s'allument une par une
       const stars=starsRow.querySelectorAll('.star');
       stars.forEach((s,i)=>setTimeout(()=>s.classList.add('lit'),400+i*220));
       ratingObs.unobserve(e.target);
