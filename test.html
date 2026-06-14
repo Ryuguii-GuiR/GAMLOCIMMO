@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Gamloc Immo — Gestion Locative Airbnb à Nantes</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --nuit:#0B1622;
+  --nuit2:#0F1E30;
+  --or:#C9A96E;
+  --or2:#E8D5B0;
+  --blanc:#FAFAF8;
+  --gris:#8A95A3;
+  --gris2:#F4F3F0;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--nuit);color:var(--blanc);overflow-x:hidden}
+
+/* ─── CURSOR ─── */
+.cursor{position:fixed;width:10px;height:10px;background:var(--or);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:transform .1s;mix-blend-mode:difference}
+.cursor-ring{position:fixed;width:36px;height:36px;border:1px solid rgba(201,169,110,.4);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:all .18s ease}
+
+/* ─── NAV ─── */
+nav{position:fixed;top:0;left:0;right:0;z-index:500;padding:24px 6%;display:flex;align-items:center;justify-content:space-between;transition:all .5s}
+nav.solid{background:rgba(11,22,34,.88);backdrop-filter:blur(18px);padding:16px 6%;border-bottom:1px solid rgba(201,169,110,.1)}
+.logo{font-family:'Playfair Display',serif;font-size:1.25rem;font-weight:700;color:var(--blanc);text-decoration:none;letter-spacing:.04em}
+.logo span{color:var(--or)}
+.nav-links{display:flex;gap:32px;list-style:none}
+.nav-links a{font-size:.78rem;font-weight:500;color:rgba(250,250,248,.55);text-decoration:none;letter-spacing:.1em;text-transform:uppercase;transition:color .2s}
+.nav-links a:hover{color:var(--or)}
+.nav-btn{background:var(--or);color:var(--nuit)!important;padding:9px 22px;border-radius:3px;font-weight:600!important;opacity:1!important;transition:transform .2s,box-shadow .2s!important}
+.nav-btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(201,169,110,.35)}
+
+/* ─── HERO ─── */
+.hero{position:relative;height:100vh;min-height:700px;display:flex;align-items:center;overflow:hidden}
+.hero-bg{position:absolute;inset:0;z-index:0}
+.hero-bg-left{position:absolute;inset:0;background:var(--nuit);z-index:1}
+.hero-bg-right{position:absolute;top:0;right:0;width:48%;height:100%;z-index:0;overflow:hidden}
+.hero-bg-right img{width:100%;height:100%;object-fit:cover;opacity:.45;transform:scale(1.08);transition:transform 8s ease}
+.hero-bg-right::after{content:'';position:absolute;inset:0;background:linear-gradient(to right,var(--nuit) 0%,transparent 35%),linear-gradient(to top,var(--nuit) 0%,transparent 30%)}
+.hero-noise{position:absolute;inset:0;z-index:2;opacity:.03;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");background-size:180px}
+.hero-glow{position:absolute;top:20%;left:20%;width:600px;height:600px;background:radial-gradient(circle,rgba(201,169,110,.07) 0%,transparent 65%);z-index:2;pointer-events:none}
+.hero-content{position:relative;z-index:3;padding:0 6%;max-width:760px}
+.hero-eyebrow{display:flex;align-items:center;gap:10px;font-size:.7rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--or);margin-bottom:32px;opacity:0;animation:fadeUp .8s .3s forwards}
+.hero-eyebrow::before{content:'';display:inline-block;width:28px;height:1px;background:var(--or)}
+.hero-h1{font-family:'Playfair Display',serif;font-size:clamp(3rem,5.5vw,5.2rem);font-weight:700;line-height:1.06;letter-spacing:-.02em;color:var(--blanc);margin-bottom:28px;opacity:0;animation:fadeUp .8s .5s forwards}
+.hero-h1 em{font-style:italic;color:var(--or);display:block}
+.hero-sub{font-size:1.02rem;font-weight:300;line-height:1.8;color:rgba(250,250,248,.55);max-width:480px;margin-bottom:48px;opacity:0;animation:fadeUp .8s .7s forwards}
+.hero-actions{display:flex;gap:14px;align-items:center;opacity:0;animation:fadeUp .8s .9s forwards}
+.btn-gold{background:var(--or);color:var(--nuit);padding:15px 36px;border-radius:3px;font-size:.85rem;font-weight:700;text-decoration:none;letter-spacing:.06em;text-transform:uppercase;transition:transform .2s,box-shadow .2s}
+.btn-gold:hover{transform:translateY(-3px);box-shadow:0 14px 36px rgba(201,169,110,.3)}
+.btn-ghost{border:1px solid rgba(250,250,248,.18);color:rgba(250,250,248,.7);padding:15px 32px;border-radius:3px;font-size:.85rem;font-weight:500;text-decoration:none;letter-spacing:.04em;transition:all .2s}
+.btn-ghost:hover{border-color:var(--or);color:var(--or)}
+.hero-scroll{position:absolute;bottom:40px;left:6%;z-index:3;display:flex;align-items:center;gap:12px;opacity:0;animation:fadeUp .8s 1.2s forwards}
+.scroll-line{width:1px;height:48px;background:linear-gradient(to bottom,var(--or),transparent);animation:scrollPulse 2s infinite}
+.scroll-text{font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(250,250,248,.35);writing-mode:vertical-rl}
+.hero-stats{position:absolute;bottom:40px;right:6%;z-index:3;display:flex;gap:40px;opacity:0;animation:fadeUp .8s 1.1s forwards}
+.hero-stat .num{font-family:'Playfair Display',serif;font-size:2.2rem;font-weight:700;color:var(--blanc);line-height:1}
+.hero-stat .num span{color:var(--or)}
+.hero-stat .lbl{font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gris);margin-top:4px}
+
+/* ─── MARQUEE ─── */
+.marquee-wrap{overflow:hidden;background:var(--or);padding:14px 0;position:relative;z-index:10}
+.marquee-track{display:flex;gap:0;width:max-content;animation:marquee 22s linear infinite}
+.marquee-item{display:flex;align-items:center;gap:20px;padding:0 28px;font-size:.72rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--nuit);white-space:nowrap}
+.marquee-dot{width:5px;height:5px;background:var(--nuit);border-radius:50%;opacity:.4}
+
+/* ─── SECTION BASE ─── */
+.s{padding:110px 6%}
+.s-eyebrow{font-size:.68rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--or);margin-bottom:18px}
+.s-title{font-family:'Playfair Display',serif;font-size:clamp(2rem,3.5vw,3.2rem);font-weight:700;line-height:1.12;letter-spacing:-.02em;margin-bottom:20px}
+.s-title em{font-style:italic;color:var(--or)}
+.s-sub{font-size:.97rem;color:var(--gris);line-height:1.75;max-width:480px}
+
+/* ─── AVIS SECTION ─── */
+.avis-section{background:var(--nuit2);padding:120px 6%;position:relative;overflow:hidden}
+.avis-section::before{content:'';position:absolute;top:-200px;right:-200px;width:500px;height:500px;background:radial-gradient(circle,rgba(201,169,110,.06) 0%,transparent 70%);pointer-events:none}
+.avis-layout{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;margin-top:72px}
+
+/* Counter + stars parallax */
+.avis-left{position:relative}
+.avis-counter-wrap{position:relative;z-index:2}
+.avis-big-num{font-family:'Playfair Display',serif;font-size:clamp(5rem,10vw,10rem);font-weight:700;line-height:1;color:var(--blanc);letter-spacing:-.04em;position:relative;display:inline-block}
+.avis-big-num .gold{color:var(--or)}
+.avis-stars-row{display:flex;gap:6px;margin-top:8px;margin-bottom:20px}
+.star{font-size:1.5rem;color:var(--or);opacity:0;transform:translateY(20px) scale(.8);transition:all .4s}
+.star.lit{opacity:1;transform:translateY(0) scale(1)}
+.avis-label{font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gris)}
+.avis-voyageurs{margin-top:36px;display:flex;align-items:center;gap:14px}
+.avis-avatars{display:flex}
+.avis-avatars img{width:38px;height:38px;border-radius:50%;border:2px solid var(--nuit2);margin-left:-10px;object-fit:cover}
+.avis-avatars img:first-child{margin-left:0}
+.avis-count-text{font-size:.82rem;color:var(--gris)}
+.avis-count-text strong{color:var(--blanc);font-weight:600}
+
+/* Floating stars parallax */
+.float-stars{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.fstar{position:absolute;font-size:1.2rem;color:var(--or);opacity:.06;animation:float linear infinite}
+
+/* Cards avis */
+.avis-right{display:flex;flex-direction:column;gap:20px}
+.avis-card{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:16px;padding:28px 32px;transform:translateX(60px);opacity:0;transition:all .7s cubic-bezier(.22,1,.36,1);position:relative;overflow:hidden}
+.avis-card::before{content:'';position:absolute;top:0;left:0;width:3px;height:0;background:var(--or);transition:height .4s .2s}
+.avis-card.visible{transform:translateX(0);opacity:1}
+.avis-card.visible::before{height:100%}
+.avis-card:hover{border-color:rgba(201,169,110,.2);background:rgba(255,255,255,.05);transform:translateX(0) translateY(-2px)}
+.avis-card-stars{color:var(--or);font-size:.85rem;margin-bottom:12px;letter-spacing:2px}
+.avis-card-text{font-size:.92rem;color:rgba(250,250,248,.7);line-height:1.7;font-style:italic;margin-bottom:16px}
+.avis-card-author{font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--or2)}
+.avis-card-source{font-size:.7rem;color:rgba(250,250,248,.25);margin-top:3px}
+
+/* ─── SERVICES ─── */
+.services-section{background:var(--nuit);padding:120px 6%}
+.services-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:72px;gap:32px;flex-wrap:wrap}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,.05);border-radius:20px;overflow:hidden}
+.srv{background:var(--nuit);padding:44px 36px;position:relative;overflow:hidden;transition:background .3s;cursor:default}
+.srv::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(201,169,110,.06) 0%,transparent 60%);opacity:0;transition:opacity .4s}
+.srv:hover{background:#0d1a28}
+.srv:hover::after{opacity:1}
+.srv-img{width:72px;height:72px;object-fit:contain;margin-bottom:24px;filter:brightness(0) invert(1);opacity:.5;transition:opacity .3s,transform .3s}
+.srv:hover .srv-img{opacity:.85;transform:scale(1.06)}
+.srv-num{position:absolute;top:28px;right:28px;font-family:'Playfair Display',serif;font-size:3.5rem;font-weight:700;color:rgba(201,169,110,.06);line-height:1;transition:color .3s}
+.srv:hover .srv-num{color:rgba(201,169,110,.12)}
+.srv-name{font-family:'Playfair Display',serif;font-size:1.08rem;font-weight:700;color:var(--blanc);margin-bottom:10px}
+.srv-desc{font-size:.82rem;color:var(--gris);line-height:1.65}
+.srv-link{display:inline-flex;align-items:center;gap:6px;margin-top:18px;font-size:.72rem;font-weight:700;color:var(--or);text-decoration:none;letter-spacing:.1em;text-transform:uppercase;opacity:0;transform:translateY(6px);transition:all .3s}
+.srv:hover .srv-link{opacity:1;transform:translateY(0)}
+
+/* ─── PARALLAX SPLIT ─── */
+.split-section{display:grid;grid-template-columns:1fr 1fr;min-height:640px;overflow:hidden}
+.split-img-wrap{position:relative;overflow:hidden}
+.split-img-wrap img{width:100%;height:100%;object-fit:cover;transform:scale(1.15);transition:transform .1s linear}
+.split-img-wrap::after{content:'';position:absolute;inset:0;background:linear-gradient(to right,transparent 60%,rgba(11,22,34,.9) 100%),linear-gradient(to bottom,rgba(11,22,34,.3) 0%,transparent 40%)}
+.split-text-wrap{background:var(--nuit2);display:flex;align-items:center;padding:80px 7%}
+.split-inner{max-width:500px}
+.checklist{list-style:none;margin-top:36px;display:flex;flex-direction:column;gap:16px}
+.checklist li{display:flex;align-items:flex-start;gap:14px;font-size:.9rem;color:rgba(250,250,248,.7);line-height:1.55;transform:translateX(-20px);opacity:0;transition:all .6s}
+.checklist li.visible{transform:translateX(0);opacity:1}
+.chk{min-width:22px;height:22px;width:22px;background:rgba(201,169,110,.15);border:1px solid rgba(201,169,110,.3);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--or);font-size:.65rem;margin-top:1px}
+
+/* ─── APPARTS ─── */
+.apparts-section{background:var(--nuit);padding:120px 6%}
+.apparts-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:56px;flex-wrap:wrap;gap:24px}
+.apparts-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.appart{border-radius:20px;overflow:hidden;position:relative;text-decoration:none;display:block;border:1px solid rgba(255,255,255,.06);transform:translateY(40px);opacity:0;transition:all .8s cubic-bezier(.22,1,.36,1)}
+.appart.visible{transform:translateY(0);opacity:1}
+.appart:hover .appart-img-wrap img{transform:scale(1.07)}
+.appart-img-wrap{height:280px;overflow:hidden;position:relative}
+.appart-img-wrap img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
+.appart-img-wrap::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(11,22,34,.85) 0%,transparent 55%)}
+.appart-badge{position:absolute;top:18px;left:18px;background:var(--or);color:var(--nuit);font-size:.65rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;padding:5px 13px;border-radius:100px;z-index:1}
+.appart-body{background:rgba(255,255,255,.03);padding:28px 32px;border-top:1px solid rgba(255,255,255,.05)}
+.appart-location{font-size:.7rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--or);margin-bottom:8px}
+.appart-name{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;color:var(--blanc);margin-bottom:10px}
+.appart-desc{font-size:.83rem;color:var(--gris);line-height:1.6}
+.appart-meta{display:flex;gap:18px;margin-top:18px;padding-top:18px;border-top:1px solid rgba(255,255,255,.06)}
+.appart-meta span{font-size:.78rem;color:var(--gris)}
+.appart:hover{border-color:rgba(201,169,110,.2);box-shadow:0 30px 80px rgba(0,0,0,.4)}
+
+/* ─── STATS ─── */
+.stats-band{background:var(--or);padding:72px 6%;display:grid;grid-template-columns:repeat(3,1fr);gap:40px}
+.stat-item{text-align:center}
+.stat-num{font-family:'Playfair Display',serif;font-size:clamp(2.4rem,4vw,3.8rem);font-weight:700;color:var(--nuit);line-height:1}
+.stat-num sup{font-size:50%}
+.stat-lbl{font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(15,27,45,.55);margin-top:6px}
+
+/* ─── CTA ─── */
+.cta-section{background:var(--nuit2);padding:120px 6%;text-align:center;position:relative;overflow:hidden}
+.cta-section::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:700px;height:700px;background:radial-gradient(circle,rgba(201,169,110,.06) 0%,transparent 65%);pointer-events:none}
+.cta-section .s-title{font-size:clamp(2.4rem,4.5vw,4rem)}
+.cta-or{color:var(--or)}
+.cta-actions{display:flex;gap:16px;justify-content:center;margin-top:48px;flex-wrap:wrap}
+.superhote{display:inline-flex;align-items:center;gap:10px;margin-top:36px;padding:12px 22px;border:1px solid rgba(201,169,110,.2);border-radius:100px;font-size:.75rem;color:rgba(250,250,248,.45);letter-spacing:.06em}
+
+/* ─── FOOTER ─── */
+footer{background:var(--nuit);padding:64px 6% 36px;border-top:1px solid rgba(255,255,255,.05)}
+.footer-top{display:flex;justify-content:space-between;gap:48px;margin-bottom:52px;flex-wrap:wrap}
+.footer-logo{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;color:var(--blanc)}
+.footer-logo span{color:var(--or)}
+.footer-tagline{font-size:.8rem;color:var(--gris);margin-top:8px;max-width:240px;line-height:1.6}
+.footer-links{list-style:none;display:flex;flex-direction:column;gap:10px}
+.footer-links a{font-size:.82rem;color:var(--gris);text-decoration:none;transition:color .2s}
+.footer-links a:hover{color:var(--or)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.05);padding-top:24px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+.footer-copy{font-size:.74rem;color:rgba(255,255,255,.2)}
+
+/* ─── KEYFRAMES ─── */
+@keyframes fadeUp{to{opacity:1;transform:translateY(0)}}
+@keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+@keyframes scrollPulse{0%,100%{opacity:1}50%{opacity:.3}}
+@keyframes float{0%{transform:translateY(0) rotate(0deg)}100%{transform:translateY(-100vh) rotate(360deg)}}
+
+/* ─── REVEAL ─── */
+.r{opacity:0;transform:translateY(32px);transition:opacity .8s cubic-bezier(.22,1,.36,1),transform .8s cubic-bezier(.22,1,.36,1)}
+.r.visible{opacity:1;transform:translateY(0)}
+.r1{transition-delay:.1s}.r2{transition-delay:.2s}.r3{transition-delay:.3s}.r4{transition-delay:.4s}
+
+/* ─── RESPONSIVE ─── */
+@media(max-width:900px){
+  .avis-layout,.split-section,.apparts-grid,.stats-band{grid-template-columns:1fr}
+  .services-grid{grid-template-columns:1fr 1fr}
+  .nav-links{display:none}
+  .hero-stats{display:none}
+  .hero-bg-right{display:none}
+}
+@media(max-width:600px){
+  .s{padding:72px 5%}
+  .services-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cur"></div>
+<div class="cursor-ring" id="curRing"></div>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#" class="logo">GAMLOC <span>IMMO</span></a>
+  <ul class="nav-links">
+    <li><a href="#">Nos Services</a></li>
+    <li><a href="#">Confier mon bien</a></li>
+    <li><a href="#">Nos Appartements</a></li>
+    <li><a href="#">F.A.Q</a></li>
+    <li><a href="https://gamloc-immo.web.app/contact.html" class="nav-btn">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-bg">
+    <div class="hero-bg-left"></div>
+    <div class="hero-bg-right">
+      <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=1200&q=80" alt="Appartement Nantes" id="heroImg"/>
+    </div>
+    <div class="hero-noise"></div>
+    <div class="hero-glow"></div>
+  </div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">Gestion locative courte durée · Nantes</p>
+    <h1 class="hero-h1">
+      Profitez de vos proches,
+      <em>on gère vos biens.</em>
+    </h1>
+    <p class="hero-sub">Loyer garanti chaque mois. Ameublement, ménage, check-in/out, communication voyageurs — on s'occupe de tout.</p>
+    <div class="hero-actions">
+      <a href="https://gamloc-immo.web.app/confier-mon-bien.html" class="btn-gold">Confier mon bien</a>
+      <a href="https://gamloc-immo.web.app/appartements.html" class="btn-ghost">Voir les appartements</a>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <div class="scroll-line"></div>
+    <span class="scroll-text">Scroll</span>
+  </div>
+  <div class="hero-stats">
+    <div class="hero-stat">
+      <div class="num"><span id="heroStar">5</span><span>★</span></div>
+      <div class="lbl">Note Airbnb</div>
+    </div>
+    <div class="hero-stat">
+      <div class="num"><span>100</span><span>%</span></div>
+      <div class="lbl">Loyers versés</div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-wrap">
+  <div class="marquee-track" id="mTrack">
+    <span class="marquee-item">Gestion Airbnb & Booking<span class="marquee-dot"></span></span>
+    <span class="marquee-item">Loyer Garanti<span class="marquee-dot"></span></span>
+    <span class="marquee-item">Ménage Professionnel<span class="marquee-dot"></span></span>
+    <span class="marquee-item">Superhôte Certifié<span class="marquee-dot"></span></span>
+    <span class="marquee-item">Check-in / Check-out<span class="marquee-dot"></span></span>
+    <span class="marquee-item">Optimisation des Prix<span class="marquee-dot"></span></span>
+    <span class="marquee-item">Nantes Centre<span class="marquee-dot"></span></span>
+    <span class="marquee-item">Gestion Airbnb & Booking<span class="marquee-dot"></span></span>
+    <span class="marquee-item">Loyer Garanti<span class="marquee-dot"></span></span>
+    <span class="marquee-item">Ménage Professionnel<span class="marquee-dot"></span></span>
+    <span class="marquee-item">Superhôte Certifié<span class="marquee-dot"></span></span>
+    <span class="marquee-item">Check-in / Check-out<span class="marquee-dot"></span></span>
+    <span class="marquee-item">Optimisation des Prix<span class="marquee-dot"></span></span>
+    <span class="marquee-item">Nantes Centre<span class="marquee-dot"></span></span>
+  </div>
+</div>
+
+<!-- AVIS SECTION -->
+<section class="avis-section" id="avisSection">
+  <!-- Floating stars deco -->
+  <div class="float-stars" id="floatStars"></div>
+
+  <div class="r"><span class="s-eyebrow">Ce que disent nos voyageurs</span></div>
+  <div class="r r1"><h2 class="s-title">Des avis qui<br><em>parlent d'eux-mêmes.</em></h2></div>
+
+  <div class="avis-layout">
+    <!-- LEFT: grand compteur -->
+    <div class="avis-left">
+      <div class="avis-counter-wrap">
+        <div class="avis-big-num">
+          <span id="ratingCounter">0</span><span class="gold">/5</span>
+        </div>
+        <div class="avis-stars-row" id="starsRow">
+          <span class="star">★</span>
+          <span class="star">★</span>
+          <span class="star">★</span>
+          <span class="star">★</span>
+          <span class="star">★</span>
+        </div>
+        <div class="avis-label">Note moyenne Airbnb · Basée sur des séjours récents</div>
+        <div class="avis-voyageurs">
+          <div class="avis-avatars">
+            <img src="https://gamloc-immo.web.app/AIRBNB.png" alt="Alex"/>
+            <img src="https://gamloc-immo.web.app/AIRBNB.png" alt="Sarah"/>
+            <img src="https://gamloc-immo.web.app/AIRBNB.png" alt="Mohamed"/>
+          </div>
+          <div class="avis-count-text"><strong id="voyageurCount">0</strong> voyageurs satisfaits</div>
+        </div>
+        <div style="margin-top:36px">
+          <a href="https://www.airbnb.fr/users/profile/1470707298093313243" target="_blank" class="btn-gold" style="font-size:.78rem;padding:12px 28px">Voir tous les avis Airbnb →</a>
+        </div>
+      </div>
+    </div>
+    <!-- RIGHT: cards qui slide -->
+    <div class="avis-right">
+      <div class="avis-card">
+        <div class="avis-card-stars">★★★★★</div>
+        <p class="avis-card-text">"Appartement impeccable, très bien situé. Check-in simple et communication au top. Je recommande vivement."</p>
+        <div class="avis-card-author">Alex</div>
+        <div class="avis-card-source">Airbnb · Séjour vérifié</div>
+      </div>
+      <div class="avis-card">
+        <div class="avis-card-stars">★★★★★</div>
+        <p class="avis-card-text">"Séjour parfait : literie confortable, logement très propre, et super réactivité. On reviendra sans hésiter."</p>
+        <div class="avis-card-author">Sarah</div>
+        <div class="avis-card-source">Airbnb · Séjour vérifié</div>
+      </div>
+      <div class="avis-card">
+        <div class="avis-card-stars">★★★★★</div>
+        <p class="avis-card-text">"Hôte très sympa, logement conforme aux photos, quartier agréable. Expérience au top du début à la fin."</p>
+        <div class="avis-card-author">Mohamed</div>
+        <div class="avis-card-source">Airbnb · Séjour vérifié</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS BAND -->
+<div class="stats-band">
+  <div class="stat-item r">
+    <div class="stat-num"><span id="s1">0</span><sup>%</sup></div>
+    <div class="stat-lbl">Loyers versés à temps</div>
+  </div>
+  <div class="stat-item r r1">
+    <div class="stat-num"><span id="s2">0</span><sup>★</sup></div>
+    <div class="stat-lbl">Note moyenne Airbnb</div>
+  </div>
+  <div class="stat-item r r2">
+    <div class="stat-num"><span id="s3">0</span><sup>h</sup></div>
+    <div class="stat-lbl">Délai de réponse moyen</div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section class="services-section s">
+  <div class="services-head">
+    <div>
+      <p class="s-eyebrow r">Ce qu'on fait pour vous</p>
+      <h2 class="s-title r r1">On s'occupe <em>de tout.</em></h2>
+    </div>
+    <p class="s-sub r r2">Ne perdez plus de temps. Messages, entrées/sorties, ménage, linge, consommables — tout est géré.</p>
+  </div>
+  <div class="services-grid">
+    <div class="srv r">
+      <div class="srv-num">01</div>
+      <img class="srv-img" src="https://gamloc-immo.web.app/Illustration-Communication-avec-les-voyageurs-CE.webp" alt="Communication"/>
+      <div class="srv-name">Communication voyageurs</div>
+      <p class="srv-desc">Réponses rapides, instructions claires, suivi pendant le séjour pour des voyageurs rassurés.</p>
+      <a href="https://gamloc-immo.web.app/services.html" class="srv-link">En savoir plus →</a>
+    </div>
+    <div class="srv r r1">
+      <div class="srv-num">02</div>
+      <img class="srv-img" src="https://gamloc-immo.web.app/Illustration-Entrees-Sorties-CE-min.webp" alt="Entrées sorties"/>
+      <div class="srv-name">Entrées & sorties</div>
+      <p class="srv-desc">Accueil personnalisé, remise des clés, contrôle du logement, coordination fluide.</p>
+      <a href="https://gamloc-immo.web.app/services.html" class="srv-link">En savoir plus →</a>
+    </div>
+    <div class="srv r r2">
+      <div class="srv-num">03</div>
+      <img class="srv-img" src="https://gamloc-immo.web.app/Illustration-Nettoyage-et-gestion-du-linge-OF-CE-min.webp" alt="Ménage"/>
+      <div class="srv-name">Ménage & linge</div>
+      <p class="srv-desc">Nettoyage professionnel après chaque voyageur, linge de qualité fourni et changé systématiquement.</p>
+      <a href="https://gamloc-immo.web.app/services.html" class="srv-link">En savoir plus →</a>
+    </div>
+    <div class="srv r">
+      <div class="srv-num">04</div>
+      <img class="srv-img" src="https://gamloc-immo.web.app/Illustration-Maintenance-OF-CE-min.webp" alt="Maintenance"/>
+      <div class="srv-name">Maintenance</div>
+      <p class="srv-desc">Gestion des petits incidents, fuites, pannes — interventions rapides pour un bien impeccable.</p>
+      <a href="https://gamloc-immo.web.app/services.html" class="srv-link">En savoir plus →</a>
+    </div>
+    <div class="srv r r1">
+      <div class="srv-num">05</div>
+      <img class="srv-img" src="https://gamloc-immo.web.app/illustration-Creation-dune-annonce-optimisee-OF-CE-min.webp" alt="Annonce"/>
+      <div class="srv-name">Annonce optimisée</div>
+      <p class="srv-desc">Photos, titres, description : une annonce pensée pour les algorithmes Airbnb et Booking.</p>
+      <a href="https://gamloc-immo.web.app/services.html" class="srv-link">En savoir plus →</a>
+    </div>
+    <div class="srv r r2">
+      <div class="srv-num">06</div>
+      <img class="srv-img" src="https://gamloc-immo.web.app/Illustration-Gestion-dynamique-des-prix-et-calendrier-OF-CE-min.webp" alt="Prix"/>
+      <div class="srv-name">Gestion dynamique des prix</div>
+      <p class="srv-desc">Tarification selon la demande, saison et événements locaux pour maximiser vos revenus.</p>
+      <a href="https://gamloc-immo.web.app/services.html" class="srv-link">En savoir plus →</a>
+    </div>
+  </div>
+</section>
+
+<!-- SPLIT PARALLAX -->
+<div class="split-section" id="splitSection">
+  <div class="split-img-wrap">
+    <img src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=900&q=80" alt="Appartement Nantes" id="splitImg"/>
+  </div>
+  <div class="split-text-wrap">
+    <div class="split-inner">
+      <p class="s-eyebrow r">Pour les propriétaires</p>
+      <h2 class="s-title r r1" style="color:var(--blanc)">Un loyer garanti,<br><em>chaque mois.</em></h2>
+      <p class="s-sub r r2">Fini les mois sans locataire. Gamloc vous verse un loyer fixe, qu'il y ait des voyageurs ou non.</p>
+      <ul class="checklist" id="checklist">
+        <li><span class="chk">✓</span>Loyer versé mensuellement, peu importe le taux d'occupation</li>
+        <li><span class="chk">✓</span>Zéro gestion de votre côté — on s'occupe de tout</li>
+        <li><span class="chk">✓</span>Bail encadré et bien protégé en permanence</li>
+        <li><span class="chk">✓</span>Flexibilité pour récupérer votre bien quand vous le souhaitez</li>
+      </ul>
+      <div style="margin-top:44px" class="r r3">
+        <a href="https://gamloc-immo.web.app/confier-mon-bien.html" class="btn-gold">Estimer mes revenus →</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- APPARTS -->
+<section class="apparts-section">
+  <div class="apparts-head">
+    <div>
+      <p class="s-eyebrow r">Nos logements</p>
+      <h2 class="s-title r r1">Nos appartements<br><em>à Nantes.</em></h2>
+    </div>
+    <a href="https://gamloc-immo.web.app/appartements.html" class="btn-gold r r2">Voir tous →</a>
+  </div>
+  <div class="apparts-grid">
+    <a href="https://gamloc-immo.web.app/appartement-centre-ville.html" class="appart">
+      <div class="appart-img-wrap">
+        <img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=800&q=80" alt="Le Nid du Bouffay"/>
+        <div class="appart-badge">Hyper centre</div>
+      </div>
+      <div class="appart-body">
+        <div class="appart-location">📍 Centre-ville · Nantes</div>
+        <div class="appart-name">Le Nid du Bouffay</div>
+        <p class="appart-desc">Confort premium, emplacement stratégique au cœur de Nantes.</p>
+        <div class="appart-meta">
+          <span>🛏️ 4 couchages</span>
+          <span>⭐ 5.0 Airbnb</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://gamloc-immo.web.app/studio-ile-de-nantes.html" class="appart">
+      <div class="appart-img-wrap">
+        <img src="https://images.unsplash.com/photo-1493809842364-78817add7ffb?w=800&q=80" alt="Cocon de Chevert"/>
+        <div class="appart-badge">Île de Nantes</div>
+      </div>
+      <div class="appart-body">
+        <div class="appart-location">🌿 Île de Nantes · Calme</div>
+        <div class="appart-name">Cocon de Chevert</div>
+        <p class="appart-desc">Design moderne, atmosphère apaisante, parfait pour des séjours ressourçants.</p>
+        <div class="appart-meta">
+          <span>🛏️ 4 couchages</span>
+          <span>⭐ 5.0 Airbnb</span>
+        </div>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section s">
+  <div class="r"><span class="s-eyebrow" style="text-align:center;display:block">Vous avez un bien ?</span></div>
+  <h2 class="s-title r r1" style="text-align:center;font-size:clamp(2.4rem,5vw,4.5rem)">
+    Confiez-nous votre bien.<br><span class="cta-or">On fait le reste.</span>
+  </h2>
+  <div class="cta-actions r r2">
+    <a href="https://gamloc-immo.web.app/confier-mon-bien.html" class="btn-gold">Obtenir une estimation gratuite</a>
+    <a href="https://gamloc-immo.web.app/contact.html" class="btn-ghost">Nous contacter</a>
+  </div>
+  <div class="r r3" style="text-align:center">
+    <span class="superhote">⭐ Statut Superhôte Airbnb — qualité, régularité et satisfaction voyageurs</span>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <div class="footer-logo">GAMLOC <span>IMMO</span></div>
+      <p class="footer-tagline">Gestion locative courte durée à Nantes. Loyer garanti, zéro stress.</p>
+    </div>
+    <ul class="footer-links">
+      <li><a href="https://gamloc-immo.web.app/services.html">Nos Services</a></li>
+      <li><a href="https://gamloc-immo.web.app/confier-mon-bien.html">Confier mon bien</a></li>
+      <li><a href="https://gamloc-immo.web.app/appartements.html">Nos Appartements</a></li>
+      <li><a href="https://gamloc-immo.web.app/faq.html">F.A.Q</a></li>
+      <li><a href="https://gamloc-immo.web.app/contact.html">Contact</a></li>
+    </ul>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-copy">© 2025 Gamloc Immo — Tous droits réservés</p>
+    <p class="footer-copy">⭐ Superhôte Airbnb certifié · Nantes</p>
+  </div>
+</footer>
+
+<script>
+// ── CURSOR
+const cur = document.getElementById('cur');
+const curRing = document.getElementById('curRing');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px'});
+(function ringLoop(){rx+=(mx-rx)*.12;ry+=(my-ry)*.12;curRing.style.left=rx+'px';curRing.style.top=ry+'px';requestAnimationFrame(ringLoop)})();
+
+// ── NAV SCROLL
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>nav.classList.toggle('solid',scrollY>60));
+
+// ── HERO PARALLAX
+const heroImg=document.getElementById('heroImg');
+window.addEventListener('scroll',()=>{
+  const p=scrollY/window.innerHeight;
+  if(heroImg) heroImg.style.transform=`scale(1.08) translateY(${p*40}px)`;
+});
+
+// ── INTERSECTION OBSERVER (reveal)
+const revealAll=document.querySelectorAll('.r,.avis-card,.appart,.checklist li');
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}});
+},{threshold:.13});
+revealAll.forEach(el=>obs.observe(el));
+
+// ── COUNTER ANIMATION
+function animCount(el,target,duration,suffix='',decimals=0){
+  const start=performance.now();
+  function step(now){
+    const p=Math.min((now-start)/duration,1);
+    const ease=1-Math.pow(1-p,4);
+    const val=ease*target;
+    el.textContent=decimals?val.toFixed(decimals):Math.round(val);
+    if(p<1) requestAnimationFrame(step);
+  }
+  requestAnimationFrame(step);
+}
+
+// Rating counter + stars
+let ratingDone=false;
+const ratingEl=document.getElementById('ratingCounter');
+const starsRow=document.getElementById('starsRow');
+const voyageurEl=document.getElementById('voyageurCount');
+const avisSection=document.getElementById('avisSection');
+
+const ratingObs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting && !ratingDone){
+      ratingDone=true;
+      // counter de 0 à 5.0
+      animCount(ratingEl,5,1800,'',1);
+      // voyageurs counter
+      animCount(voyageurEl,47,2000);
+      // étoiles qui s'allument une par une
+      const stars=starsRow.querySelectorAll('.star');
+      stars.forEach((s,i)=>setTimeout(()=>s.classList.add('lit'),400+i*220));
+      ratingObs.unobserve(e.target);
+    }
+  });
+},{threshold:.3});
+if(avisSection) ratingObs.observe(avisSection);
+
+// Stats band counters
+let statsDone=false;
+const statsBand=document.querySelector('.stats-band');
+const statsObs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting && !statsDone){
+      statsDone=true;
+      animCount(document.getElementById('s1'),100,1600);
+      animCount(document.getElementById('s2'),5,1400,'',1);
+      animCount(document.getElementById('s3'),1,1000,'',0);
+      statsObs.unobserve(e.target);
+    }
+  });
+},{threshold:.4});
+if(statsBand) statsObs.observe(statsBand);
+
+// ── FLOATING STARS deco
+const floatStars=document.getElementById('floatStars');
+if(floatStars){
+  for(let i=0;i<18;i++){
+    const s=document.createElement('span');
+    s.textContent='★';
+    s.className='fstar';
+    s.style.cssText=`left:${Math.random()*100}%;bottom:${Math.random()*-20}%;font-size:${.8+Math.random()*1.4}rem;animation-duration:${12+Math.random()*20}s;animation-delay:${Math.random()*-20}s;opacity:${.03+Math.random()*.07}`;
+    floatStars.appendChild(s);
+  }
+}
+
+// ── SPLIT SECTION IMG PARALLAX
+const splitImg=document.getElementById('splitImg');
+const splitSection=document.getElementById('splitSection');
+if(splitImg && splitSection){
+  window.addEventListener('scroll',()=>{
+    const rect=splitSection.getBoundingClientRect();
+    const mid=rect.top+rect.height/2-window.innerHeight/2;
+    splitImg.style.transform=`scale(1.15) translateY(${mid*0.08}px)`;
+  });
+}
+
+// ── CHECKLIST staggered reveal
+const checkItems=document.querySelectorAll('.checklist li');
+const checkObs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      checkItems.forEach((li,i)=>setTimeout(()=>li.classList.add('visible'),i*130));
+      checkObs.unobserve(e.target);
+    }
+  });
+},{threshold:.2});
+const checklist=document.getElementById('checklist');
+if(checklist) checkObs.observe(checklist);
+</script>
+</body>
+</html>
